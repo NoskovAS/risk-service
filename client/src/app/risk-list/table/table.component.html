@@ -1,0 +1,146 @@
+<div class="table-container">
+  <table class="table table-hover table-responsive table-bordered" height="50%" align="center">
+    <thead class="thead-default">
+      <tr>
+        <th class="col1">
+          <div class="pointer" (click)="sort('riskname')">
+            Название риска
+            <i class="fa" [ngClass]="{'fa-sort': column != 'riskname', 'fa-sort-asc': (column == 'riskname' && isDesc),
+                    'fa-sort-desc': (column == 'riskname' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col2">
+          <div class="pointer" (click)="sort('priority')">
+            Приоритет
+            <i class="fa" [ngClass]="{'fa-sort': column != 'priority', 'fa-sort-asc': (column == 'priority' && isDesc),
+                    'fa-sort-desc': (column == 'priority' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col3">
+          <div class="pointer" (click)="sort('hoursinfluence')">
+            Влияние (часы)
+            <i class="fa" [ngClass]="{'fa-sort': column != 'hoursinfluence', 'fa-sort-asc': (column == 'hoursinfluence' && isDesc),
+                    'fa-sort-desc': (column == 'hoursinfluence' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col4">
+          <div class="pointer" (click)="sort('costinfluence')">
+            Влияние ($)
+            <i class="fa" [ngClass]="{'fa-sort': column != 'costinfluence', 'fa-sort-asc': (column == 'costinfluence' && isDesc),
+                    'fa-sort-desc': (column == 'costinfluence' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col5">
+          <div class="pointer" (click)="sort('commonChance')">
+            Уточненная вероятность
+            <i class="fa" [ngClass]="{'fa-sort': column != 'commonChance', 'fa-sort-asc': (column == 'commonChance' && isDesc),
+                    'fa-sort-desc': (column == 'commonChance' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col6">
+          <div class="pointer" (click)="sort('date')">
+            Дата
+            <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc),
+                    'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col7">
+          <div class="pointer" (click)="sort('suggestions')">
+            Предложения
+            <i class="fa" [ngClass]="{'fa-sort': column != 'suggestions', 'fa-sort-asc': (column == 'suggestions' && isDesc),
+                    'fa-sort-desc': (column == 'suggestions' && !isDesc) }" aria-hidden="true"> </i>
+          </div>
+        </th>
+        <th class="col8">
+          <i class="material-icons md-48 pointer" (click)="tableClear()">delete_sweep</i>
+          <i class="material-icons md-48 pointer" (click)="togglefilter()">filter_list</i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="filter" *ngIf="visible === true && items.length > 1">
+        <td class="col1">
+          <input class="filter-input" type="search" [(ngModel)]="searchRisks" class="form-control" placeholder="Search By Risk Name"
+          />
+        </td>
+        <td class="col2">
+          <input class="filter-input" type="search" [(ngModel)]="searchPriorityes" class="form-control" placeholder="Search By Priority"
+          />
+        </td>
+        <td class="col3">
+          <input class="filter-input" type="search" [(ngModel)]="searchHours" class="form-control" placeholder="Search By Influence(hours)"
+          />
+        </td>
+        <td class="col4">
+          <input class="filter-input" type="search" [(ngModel)]="searchCosts" class="form-control" placeholder="Search By Influence($)"
+          />
+        </td>
+        <td class="col5">
+          <input class="filter-input" type="search" [(ngModel)]="searchChances" class="form-control" placeholder="Search By Chance"
+          />
+        </td>
+        <td class="col6">
+          <input class="filter-input" type="search" [(ngModel)]="searchDates" class="form-control" placeholder="Search By Date" />
+        </td>
+        <td class="col7">
+          <input class="filter-input" type="search" [(ngModel)]="searchSuggestions" class="form-control" placeholder="Search By Suggestions"
+          />
+        </td>
+        <td class="col8">
+        </td>
+      </tr>
+      <tr *ngFor="let item of selectedItems | riskFilter : searchRisks
+          | priorityFilter : searchPriorityes | hoursFilter : searchHours | costFilter: searchCosts 
+          | chanceFilter : searchChances | dateFilter: searchDates | suggestionFilter : searchSuggestions 
+          | orderBy: {property: column, direction: direction}; let i = index; trackBy: trackByFn">
+        <td class="col1">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.riskname}}</div>
+          <input *ngIf="allowChange" > </td>
+        <td class="col2">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.priority}}</div>
+          <input *ngIf="allowChange" type="number"> </td>
+        <td class="col3">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.hoursinfluence}}</div>
+          <input *ngIf="allowChange" type="number"> </td>
+        <td class="col4">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.costinfluence | currency:"USD":true:'4.1-2' }}</div>
+          <input *ngIf="allowChange" type="number"> </td>
+        <td class="col5">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.commonChance}}</div>
+          <input *ngIf="allowChange" type="number"> </td>
+        <td class="col6">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.date}}</div>
+          <input *ngIf="allowChange" type="number"> </td>
+        <td class="col7">
+          <div contenteditable="true" *ngIf="!allowChange">{{item.suggestions}}</div>
+          <input *ngIf="allowChange" type="text"> </td>
+        <td class="col8">
+          <app-item-edit [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
+          <app-item-del [index]="item.index" [i]="i" [items]="items" (deleted)="deleted($event)"></app-item-del>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="paggination jumbotron">
+    <app-pagination [offset]="offset" [limit]="limit" [size]="count" (pageChange)="onPageChange($event)"></app-pagination>
+  </div>
+  <div class="tfooter jumbotron">
+    <div class="limit-set" *ngIf="items.length > 10">
+      <div class="pre">
+        <pre>Set number of risks per page:</pre>
+      </div>
+      <div class="select">
+        <select class="form-control"  id="limit" [(ngModel)]="limit">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option *ngIf="items.length > 15" value="15">15</option>
+          <option *ngIf="items.length > 20" value="20">20</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="total">
+      <pre>Total risks: {{items.length}}</pre>
+    </div>
+  </div>
+</div>

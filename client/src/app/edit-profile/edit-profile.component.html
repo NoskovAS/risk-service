@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 edit-profile-form">
+        <h1 class="mb-3 bd-text-purple-bright">Edit Profile</h1>
+        <form class="" novalidate [formGroup]="editProfileForm" (submit)="onProfileSubmit()">
+          <div class="form-group">
+            <label class="form-label" for="firstname">First name</label>
+            <input class="form-input form-control" id="firstname" type="text" formControlName="firstname" >
+            <app-validator-message [field]="editProfileForm.get('firstname')"></app-validator-message>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastname">Last name</label>
+            <input class="form-input form-control" id="lastname" type="text" formControlName="lastname">
+            <app-validator-message [field]="editProfileForm.get('lastname')"></app-validator-message>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-input form-control" id="username" type="text" value="username" formControlName="username">
+            <app-validator-message [field]="editProfileForm.get('username')"></app-validator-message>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input form-control" id="email" type="text" formControlName="email">
+            <app-validator-message [field]="editProfileForm.get('email')"></app-validator-message>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn" type="submit" value="Profile" [disabled]="editProfileForm.invalid"><i class="material-icons">save</i> Save changes</button>
+            <button class="btn" [routerLink]="['/profile']"><i class="material-icons">cancel</i> Cancel changes</button>
+          </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

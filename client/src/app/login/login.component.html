@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 login-form">
+        <h1 class="mb-3 bd-text-purple-bright">Sign Up</h1>
+        <p class="tss">
+          Don't have a Risk Service account?
+          <a class="link link--underline" [routerLink]="['/register']">Create account</a>
+        </p>
+        <div *ngIf="!logSuccess" class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" (click)="logSuccess=true">&times;</button>
+          <strong>Warning! </strong>This username does not exist
+        </div>
+        <div *ngIf="!passSuccess" class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" (click)="passSuccess=true">&times;</button>
+          <strong>Warning! </strong>Please use a valid password
+        </div>
+        <form class="" novalidate [formGroup]="loginForm" (submit)="onLoginSubmit()">
+          <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username">
+            <app-validator-message [field]="loginForm.get('username')"></app-validator-message>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-input form-control" id="password" type="password" formControlName="password" placeholder="Password">
+            <app-validator-message [field]="loginForm.get('password')"></app-validator-message>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn" type="submit" value="Login" [disabled]="loginForm.invalid">Sign in</button>
+          </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

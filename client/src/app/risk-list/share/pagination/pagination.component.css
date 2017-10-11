@@ -1,0 +1,17 @@
+/* .page {
+    margin-left: 40%;
+} */
+
+.paggination {
+    display: flex;
+}
+
+.navigation {
+    margin-right: auto;
+    padding-left: 2%;
+}
+
+.page {
+    margin-left: auto;
+    padding-right: 2%;
+}

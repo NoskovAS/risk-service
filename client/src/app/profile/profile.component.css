@@ -1,0 +1,35 @@
+.profile-form {
+    margin-top: 4%;
+}
+
+h1 {
+    color: blueviolet;
+    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Button */
+.btn {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1.4px;
+    border-color: blueviolet;
+    color: blueviolet;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background-color: blueviolet;
+    color: white;
+    font-size: 18px;
+}
+
+.btn:disabled {
+    background-color: rgba(128, 128, 128, 0.69);
+    color: #BDBDBD;
+    border-color: rgba(128, 128, 128, 0.69);;
+}
+
+.btn:disabled:hover {
+    background-color: rgba(128, 128, 128, 0.69);
+    color: #BDBDBD;
+    border-color: rgba(128, 128, 128, 0.69);;
+}

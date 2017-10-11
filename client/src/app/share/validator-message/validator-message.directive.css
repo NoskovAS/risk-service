@@ -1,0 +1,32 @@
+.alert {
+  background-color: black;
+  background: #f2edda;
+  padding: 5px; 
+  font-size: .9em;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: 2s alertAnim forwards;
+  margin-top: 2%;
+  border: 1px solid rgba(255, 0, 0, 0.49);
+  background-color: rgba(238, 173, 173, 0.19);
+}
+
+.err-message {
+    list-style-type: none;    
+}
+
+.material-icons {
+    position: relative;
+    top:6px;
+}
+
+@keyframes alertAnim {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
