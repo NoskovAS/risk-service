@@ -9,7 +9,6 @@
       </div>
     </div>
   </div>
-
   <form class="" novalidate [formGroup]="riskForm" (ngSubmit)="onRiskSubmit(riskForm)">
     <div class="row">
       <div class="col"></div>
@@ -32,6 +31,14 @@
           </div>
           <app-validator-message [field]="riskForm.get('costinfluence')"></app-validator-message>
         </div>
+        <div class="col hoursinfluence">
+          <div class="form-group inner-addon right-addon">
+            <label class="form-label" for="hoursinfluence">Влияние в часах</label>
+            <i class="material-icons pointer" (click)="clearFormInput('hoursinfluence')">clear</i>
+            <input class="form-input form-control" id="hoursinfluence" type="number" min="0" formControlName="hoursinfluence">
+          </div>
+          <app-validator-message [field]="riskForm.get('hoursinfluence')"></app-validator-message>
+        </div>
         <div class="col impact">
           <div class="form-group inner-addon right-addon">
             <label class="form-label" for="impact">Вероятность возникновения</label>
@@ -42,6 +49,19 @@
           </div>
           <app-validator-message [field]="riskForm.get('impact')"></app-validator-message>
         </div>
+      </div>
+      <div class="col"></div>
+      <div class="col-sm-5 two">
+        <div class="col probability">
+          <div class="form-group inner-addon right-addon">
+            <label class="form-label" for="probability">Коэффициент влияния</label>
+            <i class="material-icons pointer" (click)="clearFormInput('probability')">clear</i>
+            <select formControlName="probability" id="probability" class="form-control form-select">
+              <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
+            </select>
+          </div>
+          <app-validator-message [field]="riskForm.get('probability')"></app-validator-message>
+        </div>
         <div class="col numberOfSprints">
           <div class="form-group inner-addon right-addon">
             <label class="form-label" for="numberOfSprints">Общее количество спринтов</label>
@@ -49,28 +69,6 @@
             <input class="form-input form-control" id="numberOfSprints" type="text" min="0" formControlName="numberOfSprints">
           </div>
           <app-validator-message [field]="riskForm.get('numberOfSprints')"></app-validator-message>
-        </div>
-      </div>
-      <div class="col"></div>
-      <div class="col-sm-5 two">
-        <div class="col hoursinfluence">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="hoursinfluence">Влияние в часах</label>
-            <i class="material-icons pointer" (click)="clearFormInput('hoursinfluence')">clear</i>
-            <input class="form-input form-control" id="hoursinfluence" type="number" min="0" formControlName="hoursinfluence">
-          </div>
-          <app-validator-message [field]="riskForm.get('hoursinfluence')"></app-validator-message>
-        </div>
-        <div class="col probability">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="probability">Коэффициент влияния</label>
-            <i class="material-icons pointer" (click)="clearFormInput('probability')">clear</i>
-            <!-- <input class="form-input form-control" id="probability" type="text" formControlName="probability"> -->
-            <select formControlName="probability" id="probability" class="form-control form-select">
-              <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
-            </select>
-          </div>
-          <app-validator-message [field]="riskForm.get('probability')"></app-validator-message>
         </div>
         <div class="col riskSprints">
           <div class="form-group inner-addon right-addon">

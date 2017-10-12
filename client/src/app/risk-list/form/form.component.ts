@@ -123,11 +123,6 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
             return this.check = 6;
         }
         this.riskForm.value.suggestions = this.suggestSelected;
-        /* if (this.childParentService.getVariable() === true) {
-            if (this.items.length > 0) {
-                this.index = (this.tableService.findMaxItem(this.items)) + 1;
-            }
-        } */
         if (this.items.length > 0) {
             this.index = (this.tableService.findMaxItem(this.items)) + 1;
         }
