@@ -25,6 +25,7 @@ import { SharedModule } from './share/shared.module';
 import { FooterComponent } from './footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminService } from './service/admin/admin.service';
 
 
 
@@ -59,6 +60,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     TableService,
     ProfileService,
     ValidatorService,
+    AdminService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

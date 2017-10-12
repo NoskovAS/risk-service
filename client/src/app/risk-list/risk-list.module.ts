@@ -21,7 +21,9 @@ import { ItemEditComponent } from './share/item-edit/item-edit.component';
     ReactiveFormsModule,
     SharedModule
   ],
-  exports: [],
+  exports: [
+    TableComponent
+  ],
   declarations: [
     RiskListComponent,
     TableComponent,

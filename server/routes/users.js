@@ -81,5 +81,19 @@ router.post('/editProfile', (req, res, next) => {
     return res.json({success: true, msg: 'Successfull change'});
   });
 });
+
+
+// GetUsers
+router.post('/getUsers', (req, res, next) => {
+  "use strict"
+  User.find(function (err, user){
+    if (err) {
+      res.status(500).send(err)
+    } else {
+      console.log('Successful' + user);
+      res.send(user);
+    }
+  })
+})
   
 module.exports = router;
