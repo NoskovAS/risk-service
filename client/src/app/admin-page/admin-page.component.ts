@@ -26,7 +26,6 @@ export class AdminPageComponent implements OnInit {
           data[i].email));
       }
     });
-    console.log('users: ' + this.users[1]);
   }
 
 }
