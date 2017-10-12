@@ -79,8 +79,12 @@
         <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
         <td>
           <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
+          <i class="material-icons pointer" (click)="riskRecovery(user.username)" >subject</i>
         </td>
       </tr>
     </tbody>
   </table>
+  <app-table *ngIf="displayTable" [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>   <!-- [riskForm]="riskForm" [items]="items" (tableCleared)="tableClear($event)" -->
 </div>
+
+<!-- *ngIf="displayTable" -->

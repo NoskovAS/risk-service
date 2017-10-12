@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { ChildParentService } from '../../service/child-parent/child-parent.service';
@@ -10,7 +10,7 @@ import { Data } from '../data.class';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit, AfterContentChecked {
+export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   @Input() riskForm: FormGroup;
   @Input() items;
   @Input() deleted;
@@ -44,6 +44,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {
     this.selectedRow = 1;
+    this.childParentService.passVariable(localStorage.getItem('username'));
   }
 
   ngAfterContentChecked() {
@@ -51,6 +52,10 @@ export class TableComponent implements OnInit, AfterContentChecked {
     this.firstitem = this.lastitem - this.limit;
     this.selectedItems = this.items.slice(this.firstitem, this.lastitem);
     this.count = this.items.length;
+  }
+
+  ngOnDestroy() {
+    this.items = [];
   }
 
   sort(property: string) {
