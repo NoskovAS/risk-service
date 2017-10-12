@@ -22,7 +22,7 @@ import { ItemEditComponent } from './share/item-edit/item-edit.component';
     SharedModule
   ],
   exports: [
-    TableComponent
+    ItemDelComponent
   ],
   declarations: [
     RiskListComponent,

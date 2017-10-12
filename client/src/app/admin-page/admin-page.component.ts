@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { RiskListModule } from '../risk-list/risk-list.module';
 import { Users } from './users.class';
 import { AdminService } from '../service/admin/admin.service';
@@ -8,7 +8,7 @@ import { AdminService } from '../service/admin/admin.service';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css']
 })
-export class AdminPageComponent implements OnInit {
+export class AdminPageComponent implements OnInit, OnChanges {
   users: Users[] = [];
 
   constructor(private adminService: AdminService) { }
@@ -16,6 +16,9 @@ export class AdminPageComponent implements OnInit {
   ngOnInit() {
     this.users = [];
     this.getUsers();
+  }
+
+  ngOnChanges() {
   }
 
   getUsers() {

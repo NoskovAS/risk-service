@@ -16,9 +16,9 @@ export class ItemDelComponent implements OnInit {
   delPerform: boolean = true;
 
   constructor(
-      private riskListService: RiskListService,
-      private childParentService: ChildParentService
-    ) {}
+    private riskListService: RiskListService,
+    private childParentService: ChildParentService,
+  ) { }
 
   ngOnInit() {
   }
@@ -29,7 +29,6 @@ export class ItemDelComponent implements OnInit {
       username: localStorage.getItem('username'),
     };
 
-
     // delete risks
     this.riskListService.deleteRisk(SerialNumber).subscribe(data => {
       if (data.success) {
@@ -39,12 +38,5 @@ export class ItemDelComponent implements OnInit {
         console.log('Wrong removal');
       }
     });
-
-
-
-    this.childParentService.passVariable(this.delPerform);
-
   }
-
-
 }

@@ -83,17 +83,35 @@ router.post('/editProfile', (req, res, next) => {
 });
 
 
-// GetUsers
+// Get users
 router.post('/getUsers', (req, res, next) => {
   "use strict"
   User.find(function (err, user){
     if (err) {
       res.status(500).send(err)
     } else {
-      console.log('Successful' + user);
       res.send(user);
     }
   })
+})
+
+// Delete user
+router.post('/deleteUser', (req, res, next) => {
+  "use strict"
+  const username = req.body.username;
+  User.findOne({ username: username }, function (err, user){
+    
+    if(err) throw err;
+
+    // delete him
+    User.deleteOne({username: username }, function(err, removed) {
+      if (err) {
+        res.status(500).send(err)
+      } else {
+        return res.json({success: true, msg: 'Successfull user deleted'});
+      }
+    });
+  });
 })
   
 module.exports = router;

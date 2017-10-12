@@ -24,8 +24,8 @@ import { ValidatorService } from './service/validator/validator.service';
 import { SharedModule } from './share/shared.module';
 import { FooterComponent } from './footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminService } from './service/admin/admin.service';
+import { AdminPageModule } from './admin-page/admin-page.module';
 
 
 
@@ -38,8 +38,7 @@ import { AdminService } from './service/admin/admin.service';
     NavbarComponent,
     EditProfileComponent,
     FooterComponent,
-    LandingPageComponent,
-    AdminPageComponent
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +49,8 @@ import { AdminService } from './service/admin/admin.service';
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AdminPageModule
   ],
   exports: [],
   providers: [

@@ -14,7 +14,6 @@ export class TableComponent implements OnInit, AfterContentChecked {
   @Input() riskForm: FormGroup;
   @Input() items;
   @Input() deleted;
-  // @Output() index = 100500;
   @Output() tableCleared: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   visible: boolean = false;

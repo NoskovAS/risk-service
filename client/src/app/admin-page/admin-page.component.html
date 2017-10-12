@@ -1,13 +1,12 @@
-<div class="row">
-    <div class="page-header">
-      <h1 class="mb-3 bd-text-purple-bright">Admin page
-        <br>
-        <small class="small">User's table</small>
-      </h1>
-    </div>
-</div>
-
 <div class="container">
+    <div class="row">
+        <div class="page-header">
+          <h1 class="mb-3 bd-text-purple-bright">Admin page
+            <br>
+            <small class="small">User's table</small>
+          </h1>
+        </div>
+    </div>
   <table class="table table-hover table-responsive table-bordered">
     <thead class="thead-default">
       <tr>
@@ -39,14 +38,22 @@
                     'fa-sort-desc': (column == 'riskname' && !isDesc) }" aria-hidden="true"> </i> -->
           </div>
         </th>
+        <th>
+            <div class="pointer" > <!-- (click)="sort('riskname')" -->
+              Delete
+            </div>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users" >
+      <tr *ngFor="let user of users; let i = index" >
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
+        <td>
+          <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -48,7 +48,6 @@ router.post('/deleteRisk', (req, res, next) => {
   const i = req.body.index;
   const username = req.body.username;
   Risk.find({ index: i, username: username }, function(err, risk) {
-    console.log("I: "+i+", Risk: "+risk);
     if (err) throw err;
 
 
