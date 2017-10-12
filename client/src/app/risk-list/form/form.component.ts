@@ -96,6 +96,7 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
             'impact': ['', Validators.required],
             'riskSprints': ['', Validators.required],
             'numberOfSprints': ['', Validators.required],
+            'date': new Date,
             'suggestions': ['', Validators.required],
             'validate': ''
         });
@@ -144,7 +145,7 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
             form.value.hoursinfluence,
             form.value.costinfluence,
             this.tableService.chanceCalculate(form.value.riskSprints, form.value.numberOfSprints),
-            this.tableService.formatDate(new Date()),
+            form.value.date,
             form.value.suggestions,
             this.index)
         );
@@ -153,7 +154,7 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
 
     // Saving risks in the DB
     public onRiskSubmit(form) {
-        this.addItem(form);
+        /* this.addItem(form); */
 
         const risk = {
             riskname: form.value.riskname,
@@ -165,7 +166,7 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
             costinfluence: form.value.costinfluence,
             commonChance: this.tableService.chanceCalculate(form.value.riskSprints, form.value.numberOfSprints),
             username: localStorage.getItem('username'),
-            date: this.tableService.formatDate(new Date()),
+            date: new Date,
             suggestions: form.value.suggestions,
             index: this.index
         };

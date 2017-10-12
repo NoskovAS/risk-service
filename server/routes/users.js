@@ -13,6 +13,7 @@ router.post('/register', (req, res, next) => {
     lastname: req.body.lastname,
     username: req.body.username,
     email: req.body.email,
+    date: req.body.date,
     password: req.body.password.pwd,
   });
   User.addUser(newUser, (err, user) => {

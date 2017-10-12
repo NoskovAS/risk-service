@@ -43,7 +43,7 @@ exports: [
   SuggestionFilterPipe,
 ],
 providers: [
-  ValidatorMessageComponent
+  ValidatorMessageComponent,
 ]
 })
 export class SharedModule {}

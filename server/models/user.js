@@ -22,10 +22,14 @@ const UserSchema = mongoose.Schema({
         unique: true,
         required: true
     },
+    date: {
+        type: Date,
+        required: true
+    },
     password: {
         type: String,
         required: true
-  }
+    }
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

@@ -109,7 +109,7 @@
           <div contenteditable="true" *ngIf="!allowChange">{{item.commonChance}}</div>
           <input *ngIf="allowChange" type="number"> </td>
         <td class="col6">
-          <div contenteditable="true" *ngIf="!allowChange">{{item.date}}</div>
+          <div contenteditable="true" *ngIf="!allowChange">{{item.date | date: 'dd MMMM yyyy'}}</div>
           <input *ngIf="allowChange" type="number"> </td>
         <td class="col7">
           <div contenteditable="true" *ngIf="!allowChange">{{item.suggestions}}</div>

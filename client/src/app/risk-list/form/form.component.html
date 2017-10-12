@@ -116,7 +116,7 @@
     </div>
     <div class="row add">
       <div class="buttonAdd">
-        <button type="submit" class="btn " [disabled]="riskForm.invalid">
+        <button type="submit" class="btn " [disabled]="riskForm.invalid" (click)="addItem(riskForm)">
           <!-- (click)="addItem(riskForm)" -->
           Добавить риск
         </button>

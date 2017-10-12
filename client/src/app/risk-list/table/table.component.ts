@@ -43,7 +43,6 @@ export class TableComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit() {
-    /* this.router.navigate(['/page', 1]); */
     this.selectedRow = 1;
   }
 

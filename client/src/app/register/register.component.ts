@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from
 import { ValidateService } from '../service/validator/validate.service';
 import { AuthService } from '../service/auth/auth.service';
 import { ValidatorService } from '../service/validator/validator.service';
+import { TableService } from '../service/table/table.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
   constructor(private validateService: ValidateService,
               private validatorService: ValidatorService,
               private authService: AuthService,
+              private tableService: TableService,
               private router: Router,
               private fb: FormBuilder
   ) {
@@ -29,6 +31,7 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
       lastname: ['', [Validators.required, validatorService.stringValidator()]],
       username: ['', [Validators.required, validatorService.stringValidator()]],
       email: ['', emailValidator],
+      date: new Date,
       password: fb.group({
         pwd: ['', pwdValidators],
         confirm: ['', pwdValidators]
@@ -44,6 +47,7 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
 
   onRegisterSubmit() {
     const user = this.registerForm.value;
+    console.log(user.date);
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {
