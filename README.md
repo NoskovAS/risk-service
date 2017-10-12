@@ -3,9 +3,7 @@ Educational full stack project with frontend on Angular and backend in Node JS +
 
 # Usage & Demo
 - - -
-# Dependencies 
-  ## Installation
-
+# Dependencies
   ### NodeJS
 
   Install [Node.js](http://nodejs.org/) and node dependencies:
