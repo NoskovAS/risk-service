@@ -24,6 +24,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
   direction: number;
 
   displayTable: boolean = false;
+  username: string;
 
   constructor(private adminService: AdminService,
               private tableService: TableService,
@@ -67,7 +68,6 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
       }
     });
 
-    this.displayTable === true ? this.displayTable = false : this.displayTable = true;
   }
 
   tableClear() {
@@ -83,11 +83,16 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
-
   sort(property: string) {
     this.isDesc = !this.isDesc; // change the direction
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
+  }
+
+  toggleTable(username, i) {
+    this.username = username;
+    this.riskRecovery(username);
+    this.displayTable = true;
   }
 
 }

@@ -7,7 +7,7 @@ const User = require('../models/user');
 
 // Register
 router.post('/register', (req, res, next) => {
-    "use strict";
+  "use strict";
   let newUser = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -17,10 +17,16 @@ router.post('/register', (req, res, next) => {
     password: req.body.password.pwd,
   });
   User.addUser(newUser, (err, user) => {
-    if(err){
-      res.json({success: false, msg:'Failed to register user'});
+    if (err) {
+      res.json({
+        success: false,
+        msg: 'Failed to register user'
+      });
     } else {
-      res.json({success: true, msg:'User registered'});
+      res.json({
+        success: true,
+        msg: 'User registered'
+      });
     }
   });
 });
@@ -31,21 +37,24 @@ router.post('/authenticate', (req, res, next) => {
   const password = req.body.password;
 
   User.getUserByUsername(username, (err, user) => {
-    if(err) throw err;
-    if(!user){
-      return res.json({success: false, msg: 'User not found'});
+    if (err) throw err;
+    if (!user) {
+      return res.json({
+        success: false,
+        msg: 'User not found'
+      });
     }
 
     User.comparePassword(password, user.password, (err, isMatch) => {
-      if(err) throw err;
-      if(isMatch){
+      if (err) throw err;
+      if (isMatch) {
         const token = jwt.sign(user, config.secret, {
-           expiresIn: 604800  // 1 week
+          expiresIn: 604800 // 1 week
         });
 
         res.json({
           success: true,
-          token: 'JWT '+token,
+          token: 'JWT ' + token,
           user: {
             id: user._id,
             firstname: user.firstname,
@@ -55,31 +64,43 @@ router.post('/authenticate', (req, res, next) => {
           }
         });
       } else {
-        return res.json({success: false, msg: 'Wrong password'});
+        return res.json({
+          success: false,
+          msg: 'Wrong password'
+        });
       }
     });
   });
 });
 
 // Get profile
-router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  res.json({user: req.user});
+router.get('/profile', passport.authenticate('jwt', {
+  session: false
+}), (req, res, next) => {
+  res.json({
+    user: req.user
+  });
 });
 
 // Edit profile
 router.post('/editProfile', (req, res, next) => {
   "use strict";
   const oldUsername = req.body.oldUsername;
-  User.findOne({ username: oldUsername }, function (err, user){
-    if(err) throw err;
+  User.findOne({
+    username: oldUsername
+  }, function (err, user) {
+    if (err) throw err;
 
     user.lastname = req.body.lastname,
-    user.firstname = req.body.firstname,
-    user.email = req.body.email,
-    user.username = req.body.username,
-    user.save();
+      user.firstname = req.body.firstname,
+      user.email = req.body.email,
+      user.username = req.body.username,
+      user.save();
 
-    return res.json({success: true, msg: 'Successfull change'});
+    return res.json({
+      success: true,
+      msg: 'Successfull change'
+    });
   });
 });
 
@@ -87,7 +108,7 @@ router.post('/editProfile', (req, res, next) => {
 // Get users
 router.post('/getUsers', (req, res, next) => {
   "use strict"
-  User.find(function (err, user){
+  User.find(function (err, user) {
     if (err) {
       res.status(500).send(err)
     } else {
@@ -100,19 +121,26 @@ router.post('/getUsers', (req, res, next) => {
 router.post('/deleteUser', (req, res, next) => {
   "use strict"
   const username = req.body.username;
-  User.findOne({ username: username }, function (err, user){
-    
-    if(err) throw err;
+  User.findOne({
+    username: username
+  }, function (err, user) {
+
+    if (err) throw err;
 
     // delete him
-    User.deleteOne({username: username }, function(err, removed) {
+    User.deleteOne({
+      username: username
+    }, function (err, removed) {
       if (err) {
         res.status(500).send(err)
       } else {
-        return res.json({success: true, msg: 'Successfull user deleted'});
+        return res.json({
+          success: true,
+          msg: 'Successfull user deleted'
+        });
       }
     });
   });
 })
-  
+
 module.exports = router;

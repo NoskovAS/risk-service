@@ -7,7 +7,7 @@ const User = require('../models/user');
 
 
 router.post('/table', (req, res, next) => {
-    "use strict";
+  "use strict";
   let newRisk = new Risk({
     username: req.body.username,
     riskname: req.body.riskname,
@@ -21,19 +21,24 @@ router.post('/table', (req, res, next) => {
   });
 
   // Save the risk
-    newRisk.save(function(err) {
+  newRisk.save(function (err) {
     if (err) throw err;
 
     console.log('Risk created!');
-    res.json({success: true, msg:'Risk registered'});
+    res.json({
+      success: true,
+      msg: 'Risk registered'
+    });
   });
-});  
+});
 
 // Get the risk
 router.post('/getRisk', (req, res, next) => {
   "use strict";
   const username = req.body.username;
-  Risk.find({"username": username}, function (err, risk) {
+  Risk.find({
+    "username": username
+  }, function (err, risk) {
     if (err) {
       res.status(500).send(err)
     } else {
@@ -47,16 +52,25 @@ router.post('/deleteRisk', (req, res, next) => {
   "use strict";
   const i = req.body.index;
   const username = req.body.username;
-  Risk.find({ index: i, username: username }, function(err, risk) {
+  Risk.find({
+    index: i,
+    username: username
+  }, function (err, risk) {
     if (err) throw err;
 
 
     // delete him
-    Risk.deleteOne({ index: i, username: username }, function(err,removed) {
+    Risk.deleteOne({
+      index: i,
+      username: username
+    }, function (err, removed) {
       if (err) {
         res.status(500).send(err)
       } else {
-        return res.json({success: true, msg: 'Successfully deleted'});
+        return res.json({
+          success: true,
+          msg: 'Successfully deleted'
+        });
       }
     });
   });
@@ -66,7 +80,9 @@ router.post('/deleteRisk', (req, res, next) => {
 router.post('/clearTable', (req, res, next) => {
   "use strict";
   const username = req.body.username;
-  Risk.remove({"username": username}, function(err) {
+  Risk.remove({
+    "username": username
+  }, function (err) {
     if (err) {
       console.log(err)
     } else {

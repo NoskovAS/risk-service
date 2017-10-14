@@ -39,8 +39,10 @@
           </div>
         </th>
         <th>
-          <div class="pointer">
+          <div class="pointer" (click)="sort('date')">
             Date of registration
+            <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc),
+                    'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
           </div>
         </th>
         <th>
@@ -71,7 +73,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users | orderBy: {property: column, direction: direction}; let i = index">
+      <tr *ngFor="let user of users | orderBy: {property: column, direction: direction}; let i = index; trackBy: trackByFn">
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.username}}</td>
@@ -79,12 +81,19 @@
         <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
         <td>
           <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
-          <i class="material-icons pointer" (click)="riskRecovery(user.username)" >subject</i>
+          <i class="material-icons pointer" (click)="toggleTable(user.username, i)">subject</i>
         </td>
       </tr>
     </tbody>
   </table>
-  <app-table *ngIf="displayTable" [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>   <!-- [riskForm]="riskForm" [items]="items" (tableCleared)="tableClear($event)" -->
+  <div class="row" *ngIf="displayTable">
+    <div class="">
+      <h2 class="mb-3 bd-text-purple-bright">{{username}} risk table 
+        <button class="btn" (click)="displayTable = false">Close table</button>
+        <br>
+        <!-- <small class="small">User's table</small> -->
+      </h2>
+    </div>
+    <app-table  [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>
+  </div>
 </div>
-
-<!-- *ngIf="displayTable" -->
