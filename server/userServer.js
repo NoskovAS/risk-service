@@ -9,15 +9,7 @@ const http = require('http');
 mongoose.Promise = global.Promise;
 const config = require('./config/database');
 
-/* const https = require('https');
-const HTTPS_PORT = 3443; */
 const HTTP_PORT = 3000;
-
-// Setup HTTPS
-/* var options = {
-  key: fs.readFileSync('./config/https/private.key'),
-  cert: fs.readFileSync('./config/https/certificate.pem')
-}; */
 
 // Connect To Database
 mongoose.connect(config.database, {
@@ -49,7 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 /* app.use(bodyParser()); */
 app.use(bodyParser.json());
 
-
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -63,20 +54,6 @@ app.use('/users', users);
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
 });
-
-/* // HTTPS
-var secureServer = https.createServer({
-  key: fs.readFileSync('./config/https/private.key'),
-  cert: fs.readFileSync('./config/https/certificate.pem')
-}, app)
-.listen(HTTPS_PORT, function () {
-  console.log('Secure Server listening on port ' + HTTPS_PORT);
-});
-
-var insecureServer = http.createServer(app).listen(HTTP_PORT, function() {
-console.log('Insecure Server listening on port ' + HTTP_PORT);
-}) */
-
 
 // Start Server
 app.listen(HTTP_PORT, () => {

@@ -9,9 +9,9 @@ import { AuthService } from '../service/auth/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  private logo = ('./assets/logo.png');
+  public logo = ('./assets/logo.png');
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private router: Router) { }
 
   ngOnInit() {

@@ -22,6 +22,7 @@
         "styles.css"
       ],
       "scripts": [],
+      "serviceWorker": true,
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-validator-message',
   template: `
-    <div class="alert alert-danger" *ngIf="field.invalid && field.touched && validatorMessages?.length">
+    <div class="alert alert-danger" *ngIf="field.invalid && field.touched">
       <li class="err-message" *ngFor="let errMsg of validatorMessages"><i class="material-icons">error</i> {{errMsg}}</li>
     </div>
   `,
@@ -44,8 +44,6 @@ export class ValidatorMessageComponent {
     Object.keys(field.errors).forEach((error: string) => {
       errors.push(config[error]);
     });
-
-    /* this.errToggle.emit(); */
 
     return errors;
   }

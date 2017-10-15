@@ -32,6 +32,14 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   firstitem: number;
   lastitem: number;
 
+  searchRisks: string;
+  searchPriorityes: string;
+  searchHours: string;
+  searchCosts: string;
+  searchChances: string;
+  searchDates: string;
+  searchSuggestions: string;
+
   // Variable for change table row from EventEmitter
   allowChange: boolean = false;
 

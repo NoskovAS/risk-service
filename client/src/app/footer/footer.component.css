@@ -1,0 +1,18 @@
+.footer-row {
+    padding-top: 30px; 
+    line-height: 2.5
+}
+
+.footer {
+    background-color: #563d7c;
+    height: 100px;
+}
+
+span {
+    color: white;
+}
+
+.ion {
+    color: white;
+    font-size: 2rem;
+}

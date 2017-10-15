@@ -73,6 +73,13 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 
+// Admin authenticate
+router.post('/authenticate', (req, res, next) => {
+  console.log('Workde');
+  const username = req.body.username;
+  const password = req.body.password;
+})
+
 // Get profile
 router.get('/profile', passport.authenticate('jwt', {
   session: false

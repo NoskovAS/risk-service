@@ -8,6 +8,8 @@ import { Data } from '../risk-list/data.class';
 import { Risk } from '../risk-list/risk.class';
 import { RiskListService } from '../service/risk-list/risk-list.service';
 import { ChildParentService } from '../service/child-parent/child-parent.service';
+import { AuthService } from '../service/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -26,12 +28,21 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
   displayTable: boolean = false;
   username: string;
 
-  constructor(private adminService: AdminService,
-              private tableService: TableService,
-              private riskListService: RiskListService,
-              private childParentService: ChildParentService) { }
+  admUsername: string;
+  admPass: string;
+
+  constructor(
+    private adminService: AdminService,
+    private tableService: TableService,
+    private riskListService: RiskListService,
+    private childParentService: ChildParentService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
+    this.admUsername = prompt('Login: ', '');
+    this.admPass = prompt('Password ', '');
+    this.verifyAdmin();
     this.users = [];
     this.getUsers();
   }
@@ -41,6 +52,24 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.adminItems = [];
+  }
+
+  verifyAdmin() {
+    const admin = {
+      username: this.admUsername,
+      password: this.admPass
+    };
+
+    this.authService.authenticateUser(admin).subscribe(data => {
+      console.log(data);
+      if (data.success) {
+        return true;
+      } else {
+        this.router.navigate(['login']);
+        return false;
+      }
+
+    });
   }
 
   getUsers() {
@@ -72,14 +101,14 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
 
   tableClear() {
     const user = {
-        username: localStorage.getItem('username'),
+      username: localStorage.getItem('username'),
     };
 
     // clear table
     this.riskListService.clearTable(user).subscribe(data => {
-        this.adminItems = [];
-        /* this.tableCleared.emit(); */
-        console.log('Successful clear');
+      this.adminItems = [];
+      /* this.tableCleared.emit(); */
+      console.log('Successful clear');
     });
   }
 
