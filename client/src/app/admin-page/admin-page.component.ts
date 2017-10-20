@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { RiskListModule } from '../risk-list/risk-list.module';
 import { Users } from './users/users.class';
 import { AdminService } from '../service/admin/admin.service';
@@ -10,6 +10,7 @@ import { RiskListService } from '../service/risk-list/risk-list.service';
 import { ChildParentService } from '../service/child-parent/child-parent.service';
 import { AuthService } from '../service/auth/auth.service';
 import { Router } from '@angular/router';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-page',
@@ -17,52 +18,50 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
-  users: Users[] = [];
-  adminItems: Data[] = [];
+  @ViewChild('adminValid') adminValid: ElementRef;
+  public adminForm: FormGroup = null;
+  adminSuccess: boolean = false;
 
-  // Sort
-  isDesc: boolean = false;
-  column: string;
-  direction: number;
-
-  displayTable: boolean = false;
-  username: string;
-
-  admUsername: string;
-  admPass: string;
-
-  constructor(
-    private adminService: AdminService,
-    private tableService: TableService,
-    private riskListService: RiskListService,
-    private childParentService: ChildParentService,
+  constructor(private router: Router,
     private authService: AuthService,
-    private router: Router) { }
+    private fb: FormBuilder) {
+
+    this.adminForm = fb.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
-    /* this.admUsername = prompt('Login: ', '');
-    this.admPass = prompt('Password ', '');
-    this.verifyAdmin(); */
-    this.users = [];
-    this.getUsers();
+    this.adminValid.nativeElement.click();
   }
 
-  ngOnChanges() {
-  }
+  ngOnChanges() { }
 
-  ngOnDestroy() {
-    this.adminItems = [];
-  }
+  ngOnDestroy() { }
 
-  verifyAdmin() {
+  /* onAdminSubmit(resolution) {
+    if (resolution === false) {
+      this.router.navigate(['login']);
+    } else if (resolution === true) {
+      return true;
+    }
+  } */
+
+  onAdminSubmit(toggle) {
+    if (toggle === false) {
+      this.router.navigate(['login']);
+      return false;
+    }
     const admin = {
-      username: this.admUsername,
-      password: this.admPass
+      username: this.adminForm.value.login,
+      password: this.adminForm.value.password
     };
 
     this.authService.authenticateUser(admin).subscribe(data => {
       console.log(data);
       if (data.success) {
+        this.adminSuccess = true;
         return true;
       } else {
         this.router.navigate(['login']);
@@ -71,57 +70,4 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
 
     });
   }
-
-  getUsers() {
-    // get users
-    this.adminService.getUsers().subscribe(data => {
-      for (let i = 0; i !== data.length; i++) {
-        this.users.push(new Users(data[i].firstname, data[i].lastname, data[i].username,
-          data[i].email, data[i].date));
-      }
-    });
-  }
-
-  // Recovery risks in table
-  public riskRecovery(username = 'Semon') {
-    this.adminItems = [];
-    const user = {
-      username
-    };
-
-    // get risks
-    this.riskListService.getRisks(user).subscribe(data => {
-      for (let i = 0; i !== data.length; i++) {
-        this.adminItems.push(new Data(data[i].riskname, data[i].priority, data[i].hoursinfluence,
-          data[i].costinfluence, data[i].commonChance, data[i].date, data[i].suggestions, data[i].index));
-      }
-    });
-
-  }
-
-  tableClear() {
-    const user = {
-      username: localStorage.getItem('username'),
-    };
-
-    // clear table
-    this.riskListService.clearTable(user).subscribe(data => {
-      this.adminItems = [];
-      /* this.tableCleared.emit(); */
-      console.log('Successful clear');
-    });
-  }
-
-  sort(property: string) {
-    this.isDesc = !this.isDesc; // change the direction
-    this.column = property;
-    this.direction = this.isDesc ? 1 : -1;
-  }
-
-  toggleTable(username, i) {
-    this.username = username;
-    this.riskRecovery(username);
-    this.displayTable = true;
-  }
-
 }

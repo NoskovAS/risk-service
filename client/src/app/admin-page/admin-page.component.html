@@ -1,118 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="page-header">
-      <h1 class="mb-3 bd-text-purple-bright">Admin page
-        <br>
-        <small class="small">User's table</small>
-      </h1>
-    </div>
-  </div>
-  <table class="table table-hover table-responsive table-bordered">
-    <thead class="thead-default">
-      <tr>
-        <th>
-          <div class="pointer" (click)="sort('firstname')">
-            First name
-            <i class="fa" [ngClass]="{'fa-sort': column != 'firstname', 'fa-sort-asc': (column == 'firstname' && isDesc),
-                      'fa-sort-desc': (column == 'firstname' && !isDesc) }" aria-hidden="true"> </i>
-          </div>
-        </th>
-        <th>
-          <div class="pointer" (click)="sort('lastname')">
-            Last name
-            <i class="fa" [ngClass]="{'fa-sort': column != 'lastname', 'fa-sort-asc': (column == 'lastname' && isDesc),
-                    'fa-sort-desc': (column == 'lastname' && !isDesc) }" aria-hidden="true"> </i>
-          </div>
-        </th>
-        <th>
-          <div class="pointer" (click)="sort('username')">
-            Username
-            <i class="fa" [ngClass]="{'fa-sort': column != 'username', 'fa-sort-asc': (column == 'username' && isDesc),
-                    'fa-sort-desc': (column == 'username' && !isDesc) }" aria-hidden="true"> </i>
-          </div>
-        </th>
-        <th>
-          <div class="pointer" (click)="sort('email')">
-            Email
-            <i class="fa" [ngClass]="{'fa-sort': column != 'email', 'fa-sort-asc': (column == 'email' && isDesc),
-                    'fa-sort-desc': (column == 'email' && !isDesc) }" aria-hidden="true"> </i>
-          </div>
-        </th>
-        <th>
-          <div class="pointer" (click)="sort('date')">
-            Date of registration
-            <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc),
-                    'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
-          </div>
-        </th>
-        <th>
-          <div class="">
-            Delete
-          </div>
-        </th>
-      </tr>
-      <tr>
-        <!-- <tr class="filter" *ngIf="visible === true && users.length > 1">
-          <td class="col1">
-            <input class="filter-input" type="search" [(ngModel)]="searchFirstname" class="form-control" placeholder="Search By First Name"
-            />
-          </td>
-          <td class="col2">
-            <input class="filter-input" type="search" [(ngModel)]="searchLastname" class="form-control" placeholder="Search By Last Name"
-            />
-          </td>
-          <td class="col3">
-            <input class="filter-input" type="search" [(ngModel)]="searchUsername" class="form-control" placeholder="Search By Username"
-            />
-          </td>
-          <td class="col4">
-            <input class="filter-input" type="search" [(ngModel)]="searchEmail" class="form-control" placeholder="Search By Email"
-            />
-          </td>
-        </tr> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users | orderBy: {property: column, direction: direction}; let i = index;">
-        <td>{{user.firstname}}</td>
-        <td>{{user.lastname}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
-        <td>
-          <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
-          <i class="material-icons pointer" (click)="toggleTable(user.username, i)">subject</i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="row" *ngIf="displayTable">
-    <div class="">
-      <h2 class="mb-3 bd-text-purple-bright">{{username}} risk table
-        <button class="btn" (click)="displayTable = false">Close table</button>
-        <br>
-      </h2>
-    </div>
-    <app-table [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>
-  </div>
-</div>
+<button id="adminValid" #adminValid [hidden]="true" data-toggle="modal" data-target="#admin"></button>
 
-<div class="modal fade" id="adminValid" tabindex="-1" role="dialog" aria-labelledby="adminValid" aria-hidden="true">
+<div class="modal fade" id="admin" tabindex="-1" role="dialog" 
+    aria-labelledby="admin" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Clear table</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title">Admin Dashboard</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onAdminSubmit(false)">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to clear the table?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="tableClear()">Clear</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form class="" novalidate [formGroup]="adminForm">
+          <div class="form-group">
+            <label class="form-label" for="login">Login</label>
+            <input class="form-input form-control" id="login" type="text" formControlName="login" placeholder="Login">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-input form-control" id="password" type="password" formControlName="password" placeholder="Password">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="onAdminSubmit()" data-dismiss="modal">Sign In</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onAdminSubmit(false)">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
+
+<div>
+  <app-admin-dashboard *ngIf="adminSuccess"></app-admin-dashboard>
 </div>
