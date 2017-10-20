@@ -29,7 +29,7 @@
             <i class="material-icons pointer" (click)="clearFormInput('costinfluence')">clear</i>
             <input class="form-input form-control" id="costinfluence" type="number" min="0" formControlName="costinfluence">
           </div>
-          <app-validator-message [field]="riskForm.get('costinfluence')"></app-validator-message>
+          <app-validator-message [field]="riskForm.get('costinfluence')" ></app-validator-message>
         </div>
         <div class="col hoursinfluence">
           <div class="form-group inner-addon right-addon">
@@ -117,16 +117,10 @@
     <div class="row add">
       <div class="buttonAdd">
         <button type="submit" class="btn " [disabled]="riskForm.invalid" (click)="addItem(riskForm)">
-          <!-- (click)="addItem(riskForm)" -->
           Добавить риск
         </button>
       </div>
     </div>
-    <!-- <div class="row">
-      <div class="alert alert-info" role="alert">
-        Заполните пожалуйста все поля!
-      </div>
-    </div> -->
   </form>
   <app-table [riskForm]="riskForm" [items]="items" (tableCleared)="tableClear($event)"></app-table>
 </div>

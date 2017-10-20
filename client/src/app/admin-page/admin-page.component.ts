@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { RiskListModule } from '../risk-list/risk-list.module';
-import { Users } from './users.class';
+import { Users } from './users/users.class';
 import { AdminService } from '../service/admin/admin.service';
 import { SharedModule } from '../share/shared.module';
 import { TableService } from '../service/table/table.service';
@@ -40,9 +40,9 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
     private router: Router) { }
 
   ngOnInit() {
-    this.admUsername = prompt('Login: ', '');
+    /* this.admUsername = prompt('Login: ', '');
     this.admPass = prompt('Password ', '');
-    this.verifyAdmin();
+    this.verifyAdmin(); */
     this.users = [];
     this.getUsers();
   }

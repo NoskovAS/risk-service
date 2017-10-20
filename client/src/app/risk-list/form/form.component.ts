@@ -131,7 +131,9 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
 
     ngOnDestroy() { }
 
-    @HostListener('document:click') onMouseEnter() { }
+    @HostListener('document:click') onMouseEnter() {
+        console.log('trrttr');
+    }
 
     // Adding table values from array
     public addItem(form) {
@@ -154,8 +156,6 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
 
     // Saving risks in the DB
     public onRiskSubmit(form) {
-        /* this.addItem(form); */
-
         const risk = {
             riskname: form.value.riskname,
             priority: this.tableService.priorityCalculate(

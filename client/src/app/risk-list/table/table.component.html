@@ -52,7 +52,7 @@
           </div>
         </th>
         <th class="col8">
-          <i class="material-icons md-48 pointer" (click)="tableClear()">delete_sweep</i>
+          <i class="material-icons md-48 pointer" data-toggle="modal" data-target="#clearTable" >delete_sweep</i>
           <i class="material-icons md-48 pointer" (click)="togglefilter()">filter_list</i>
         </th>
       </tr>
@@ -143,4 +143,26 @@
       <pre>Total risks: {{items.length}}</pre>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="clearTable" tabindex="-1" role="dialog" 
+aria-labelledby="clearTable" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Clear table</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to clear the table?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="tableClear()">Clear</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</div>
 </div>
