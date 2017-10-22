@@ -76,6 +76,7 @@
 .total {
     margin-left: auto;
     padding-right: 2%;
+    overflow: hidden;
 }
 
 .limit-set {

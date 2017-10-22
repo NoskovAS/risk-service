@@ -28,7 +28,7 @@
       </ul>
     </nav>
   </div>
-  <div class="page">
+  <div class="page" *ngIf="totalPages > 1">
     <pre>Page: {{currentPage}} / {{totalPages}}</pre>
   </div>
 

@@ -28,3 +28,25 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.icon {
+    vertical-align: middle;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color:#868e96;
+}
+
+.navbar-dark:hover .navbar-nav:hover .nav-link:hover {
+    color:#ffffff;
+}
+
+.nav-link {
+    color:#868e96;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.nav-link:hover {
+    color:#ffffff;
+}

@@ -27,11 +27,6 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.getPages(this.offset, this.limit, this.size);
-    /* console.log('offset: ' + this.offset);
-    console.log('size: ' + this.size);
-    console.log('range: ' + this.range);
-    console.log('currentPage: ' + this.currentPage);
-    console.log('totalPages: ' + this.totalPages); */
   }
 
   getPages(offset: number, limit: number, size: number) {

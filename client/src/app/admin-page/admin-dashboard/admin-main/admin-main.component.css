@@ -24,7 +24,7 @@
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     height: 100%;
-    width: 200px;
+    width: 300px;
 }
 
 .sidebar-nav {
@@ -33,9 +33,10 @@
 }
 
 .nav-link {
-    color:#cdbfe3;
+    color:#868e96;
     padding-bottom: 5px;
     padding-top: 5px;
+    padding-bottom: 23px;
 }
 
 .nav-link:hover {
@@ -46,4 +47,9 @@
 .icon {
     padding: 0px;
     vertical-align: middle;
+}
+
+/* Tavle card */
+.table-card {
+    margin-top: 30px;
 }

@@ -15,3 +15,7 @@
     margin-left: auto;
     padding-right: 2%;
 }
+
+pre {
+    overflow-x: hidden;
+}
