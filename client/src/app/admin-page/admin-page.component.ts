@@ -3,14 +3,14 @@ import { RiskListModule } from '../risk-list/risk-list.module';
 import { Users } from './users/users.class';
 import { AdminService } from '../service/admin/admin.service';
 import { SharedModule } from '../share/shared.module';
-import { TableService } from '../service/table/table.service';
 import { Data } from '../risk-list/data.class';
 import { Risk } from '../risk-list/risk.class';
-import { RiskListService } from '../service/risk-list/risk-list.service';
 import { ChildParentService } from '../service/child-parent/child-parent.service';
 import { AuthService } from '../service/auth/auth.service';
 import { Router } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavbarService } from '../service/navbar/navbar.service';
+import { FooterService } from '../service/footer/footer.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -19,12 +19,18 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild('adminValid') adminValid: ElementRef;
+
   public adminForm: FormGroup = null;
+
+  adminInit: boolean;
   adminSuccess: boolean = false;
 
   constructor(private router: Router,
     private authService: AuthService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private childParentService: ChildParentService,
+    private navbarService: NavbarService,
+    private footerService: FooterService) {
 
     this.adminForm = fb.group({
       login: ['', Validators.required],
@@ -33,20 +39,17 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
+    this.navbarService.hide();
+    this.footerService.hide();
     this.adminValid.nativeElement.click();
   }
 
   ngOnChanges() { }
 
-  ngOnDestroy() { }
-
-  /* onAdminSubmit(resolution) {
-    if (resolution === false) {
-      this.router.navigate(['login']);
-    } else if (resolution === true) {
-      return true;
-    }
-  } */
+  ngOnDestroy() {
+    this.navbarService.show();
+    this.footerService.show();
+  }
 
   onAdminSubmit(toggle) {
     if (toggle === false) {
@@ -58,8 +61,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
       password: this.adminForm.value.password
     };
 
-    this.authService.authenticateUser(admin).subscribe(data => {
-      console.log(data);
+    this.authService.authenticateAdmin(admin).subscribe(data => {
       if (data.success) {
         this.adminSuccess = true;
         return true;

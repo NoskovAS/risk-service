@@ -9,11 +9,11 @@ import { Data } from '../../../risk-list/data.class';
 import { Users } from '../../users/users.class';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  selector: 'app-admin-main',
+  templateUrl: './admin-main.component.html',
+  styleUrls: ['./admin-main.component.css']
 })
-export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
+export class AdminMainComponent implements OnInit, OnChanges, OnDestroy {
   users: Users[] = [];
   adminItems: Data[] = [];
 
@@ -34,15 +34,14 @@ export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
     private riskListService: RiskListService,
     private childParentService: ChildParentService,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router) {}
 
   ngOnInit() {
     this.users = [];
     this.getUsers();
   }
 
-  ngOnChanges() {
-  }
+  ngOnChanges() {}
 
   ngOnDestroy() {
     this.adminItems = [];
@@ -100,5 +99,5 @@ export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
     this.displayTable = true;
   }
 
-}
 
+}

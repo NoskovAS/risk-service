@@ -6,11 +6,11 @@ const config = require('../config/database');
 const UserSchema = mongoose.Schema({
   firstname: {
     type: String,
-    required: true
+    /* required: true */
   },
   lastname: {
     type: String,
-    required: true
+    /* required: true */
   },
   username: {
     type: String,
@@ -20,11 +20,11 @@ const UserSchema = mongoose.Schema({
   email: {
     type: String,
     unique: true,
-    required: true
+    /* required: true */
   },
   date: {
     type: Date,
-    required: true
+    /* required: true */
   },
   password: {
     type: String,

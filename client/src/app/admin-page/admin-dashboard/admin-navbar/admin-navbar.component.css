@@ -1,0 +1,30 @@
+/* .navbar-nav {
+    float:none;
+    margin:0 auto;
+    text-align: center;
+} */
+
+.exit-batton {
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+/* Icons */
+.notifications {
+    color: white;
+    margin-right: 20px;
+}
+
+.messages {
+    color: white;
+    margin-right: 20px;
+}
+
+.pointer {
+    cursor: pointer;
+    /* Disabled double click selection */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

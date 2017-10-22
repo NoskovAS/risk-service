@@ -15,6 +15,8 @@ import { TableService } from '../service/table/table.service';
 
 export class RegisterComponent implements OnInit, AfterContentChecked {
   public registerForm: FormGroup = null;
+  fieldError: boolean = false;
+
 
   constructor(private validateService: ValidateService,
               private validatorService: ValidatorService,
@@ -43,19 +45,23 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {}
 
-  ngAfterContentChecked() { }
+  ngAfterContentChecked() {}
 
   onRegisterSubmit() {
+    if ((this.registerForm.value.firstname === '') ||
+       (this.registerForm.value.lastname === '') ||
+       (this.registerForm.value.username === '') ||
+       (this.registerForm.value.email === '') ||
+       (this.registerForm.value.password === '')) {
+         this.fieldError = true;
+    }
     const user = this.registerForm.value;
-    console.log(user.date);
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {
       if (data.success) {
-        console.log('Successfull registred');
         this.router.navigate(['/login']);
       } else {
-        console.log('Wrong registred');
         this.router.navigate(['/register']);
       }
     });

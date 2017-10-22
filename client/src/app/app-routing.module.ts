@@ -8,21 +8,25 @@ import { RiskListComponent } from './risk-list/risk-list.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AuthGuard } from './guard/auth.guard';
-import { AdminGuard } from './admin-page/admin-guard/admin.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdminDashboardComponent } from './admin-page/admin-dashboard/admin-dashboard.component';
+// Temp
 
 const routes: Routes = [
     /* {path: '', redirectTo: '/login', pathMatch: 'full'}, */
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: '', component: LandingPageComponent},
-    {path: 'admin', component: AdminPageComponent, /* canActivate: [AdminGuard] */},
-    {path: 'risk-list', component: RiskListComponent, canActivate: [AuthGuard] },
-    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-    {path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard]},
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: '', component: LandingPageComponent },
+    { path: 'admin', component: AdminDashboardComponent }, /* AdminPageComponent */
+    { path: 'risk-list', component: RiskListComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard] },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

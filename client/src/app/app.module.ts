@@ -26,6 +26,9 @@ import { FooterComponent } from './footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminService } from './service/admin/admin.service';
 import { AdminPageModule } from './admin-page/admin-page.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterService } from './service/footer/footer.service';
+import { NavbarService } from './service/navbar/navbar.service';
 
 
 
@@ -38,7 +41,8 @@ import { AdminPageModule } from './admin-page/admin-page.module';
     NavbarComponent,
     EditProfileComponent,
     FooterComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,8 @@ import { AdminPageModule } from './admin-page/admin-page.module';
     ProfileService,
     ValidatorService,
     AdminService,
+    NavbarService,
+    FooterService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

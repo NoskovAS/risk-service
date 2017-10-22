@@ -8,60 +8,47 @@
         Already have a Risk Service account?
         <a class="link link--underline" [routerLink]="['/login']">Sign in</a>
       </p>
+      <div *ngIf="fieldError" class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" (click)="fieldError=false">&times;</button>
+        <strong>Warning! </strong>Please fill in all fields
+      </div>
       <form class="" novalidate [formGroup]="registerForm" (submit)="onRegisterSubmit()">
         <div class="form-group">
           <label class="form-label" for="firstname">First name</label>
           <input class="form-input form-control" id="firstname" type="text" formControlName="firstname" placeholder="First name" aria-describedby="firstnameHelpBlock">
-          <small id="firstnameHelpBlock" class="form-text text-muted">
-            5-30 characters long, no spaces and special characters
-          </small>
           <app-validator-message [field]="registerForm.get('firstname')"></app-validator-message>
         </div>
         <div class="form-group">
           <label class="form-label" for="lastname">Last name</label>
           <input class="form-input form-control" id="lastname" type="text" formControlName="lastname" placeholder="Last name" aria-describedby="lastnameHelpBlock">
-          <small id="lastnameHelpBlock" class="form-text text-muted">
-            5-30 characters long, no spaces and special characters
-          </small>
           <app-validator-message [field]="registerForm.get('lastname')"></app-validator-message>
         </div>
         <div class="form-group">
           <label class="form-label" for="username">Username</label>
           <input class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username" aria-describedby="usernameHelpBlock">
-          <small id="usernameHelpBlock" class="form-text text-muted">
-              5-30 characters long, no spaces and special characters
-          </small>
           <app-validator-message [field]="registerForm.get('username')"></app-validator-message>
         </div>
         <div class="form-group">
           <label class="form-label" for="email">Email</label>
           <input class="form-input form-control" id="email" type="text" formControlName="email" placeholder="Email" aria-describedby="emailHelpBlock">
-          <small id="emailHelpBlock" class="form-text text-muted">
-              Email address in the correct format
-          </small>
           <app-validator-message [field]="registerForm.get('email')"></app-validator-message>
         </div>
         <div class="form-group" formGroupName="password">
           <div class="form-group">
             <label class="form-label" for="pwd">Password</label>
             <input class="form-input form-control" id="pwd" type="password" formControlName="pwd" placeholder="Password" aria-describedby="passHelpBlock">
-            <small id="passHelpBlock" class="form-text text-muted">
-                No spaces and special characters, the minimum length is 6 characters
-            </small>
             <app-validator-message [field]="registerForm.get('password').get('pwd')"></app-validator-message>
           </div>
           <div class="form-group">
             <label class="form-label" for="pwd">Confirm</label>
-            <input class="form-input form-control" id="confirm" type="password" formControlName="confirm" placeholder="Confirm password" aria-describedby="confirmHelpBlock">
-            <small id="confirmHelpBlock" class="form-text text-muted">
-                Confirm password
-            </small>
+            <input class="form-input form-control" id="confirm" type="password" formControlName="confirm" placeholder="Confirm password"
+              aria-describedby="confirmHelpBlock">
             <app-validator-message [field]="registerForm.get('password').get('confirm')"></app-validator-message>
           </div>
           <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
         </div>
         <div class="form-group text-center">
-          <button class="btn btn-block btn-lg" type="submit" value="Register" [disabled]="registerForm.invalid">Create Account</button>
+          <button class="btn btn-block btn-lg" type="submit" value="Register">Create Account</button>
         </div>
       </form>
     </div>

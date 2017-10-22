@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const Admin = require('../models/admin');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -74,11 +75,36 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Admin authenticate
-router.post('/authenticate', (req, res, next) => {
-  console.log('Workde');
+router.post('/admin', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-})
+
+  Admin.getByName(username, (err, admin) => {
+    if (err) throw err;
+    if (!admin) {
+      return res.json({
+        success: false,
+      });
+    }
+
+    Admin.comparePassword(password, admin.password, (err, isMatch) => {
+      if (err) throw err;
+      if (isMatch) {
+        const token = jwt.sign(admin, config.secret, {
+          expiresIn: 604800 // 1 week
+        });
+
+        res.json({
+          success: true,
+        });
+      } else {
+        return res.json({
+          success: false,
+        });
+      }
+    });
+  });
+});
 
 // Get profile
 router.get('/profile', passport.authenticate('jwt', {

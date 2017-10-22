@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
+import { NavbarService } from '../service/navbar/navbar.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
   public logo = ('./assets/logo.png');
 
   constructor(public authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              public navbarService: NavbarService) { }
 
   ngOnInit() {
   }

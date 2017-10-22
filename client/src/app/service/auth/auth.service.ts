@@ -27,6 +27,13 @@ export class AuthService {
             .map(res => res.json());
     }
 
+    authenticateAdmin(admin) {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('http://localhost:3000/users/admin', admin, {headers: headers})
+            .map(res => res.json());
+    }
+
     loggedIn() {
         return localStorage.getItem('user');
     }
