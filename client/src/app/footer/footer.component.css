@@ -10,14 +10,14 @@
 .footer {
     background-color: white;
     height: 100px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.836);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.589);
 }
 
 span {
-    color: #0044ff;;
+    color: #1793d3;
 }
 
 .ion {
-    color: #0044ff;;
+    color: #1793d3;
     font-size: 2rem;
 }

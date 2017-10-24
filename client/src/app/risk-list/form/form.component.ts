@@ -12,10 +12,10 @@ import { ChildParentService } from '../../service/child-parent/child-parent.serv
     styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
-    errorMessage: boolean = false;
+    formError: boolean = false;
+    formSuccess: boolean = false;
 
-
-    user; // User object
+    user: Object; // User object
     public riskForm: FormGroup = null;
 
     items: Data[] = [];
@@ -156,6 +156,14 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
 
     // Saving risks in the DB
     public onRiskSubmit(form) {
+        if (this.riskForm.invalid) {
+            this.formError = true;
+            console.log('this.formError: ' + this.formError);
+            return;
+        }
+
+        this.addItem(form);
+
         const risk = {
             riskname: form.value.riskname,
             priority: this.tableService.priorityCalculate(
@@ -180,6 +188,7 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
             }
         });
         this.index++;
+        this.formSuccess = true;
     }
 
     // Recovery risks in table

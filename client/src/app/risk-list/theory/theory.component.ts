@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./theory.component.css']
 })
 export class TheoryComponent implements OnInit {
+  user: Object;
 
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage['user']);
   }
 
 }

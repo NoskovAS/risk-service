@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
-
+  user: Object;
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage['user']);
   }
 
 }

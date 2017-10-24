@@ -1,11 +1,30 @@
 <body>
-    <div class="container-fluid">
-      <div class="row theory-module">
-        <!-- Sidebar -->
-        <div class="col-md-2 menu">
-            <app-risk-sidebar></app-risk-sidebar>
+  <div class="container-fluid">
+    <div class="row theory-module">
+      <!-- Sidebar -->
+      <div class="col-md-2 menu">
+        <app-risk-sidebar></app-risk-sidebar>
+      </div>
+      <!-- Sidebar -->
+      <div class="col-md-10">
+        <div class="row title-row">
+          <div class="col-md-2">
+            <h5 class="mb-3 bd-text-purple-bright left-title">
+              Theory
+            </h5>
+          </div>
+          <div class="col-md-7"></div>
+          <div class="col-md-3">
+            <h6 *ngIf="user" class="mb-3 bd-text-purple-bright right-title">
+              User:
+              <small class="small-right">{{user.firstname}} {{user.lastname}}</small>
+            </h6>
+          </div>
         </div>
-        <!-- Sidebar -->
+        <div class="row">
+
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
