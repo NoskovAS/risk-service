@@ -2,6 +2,10 @@
     margin-bottom: 10%;
 }
 
+body {
+    background-color: whitesmoke;
+}
+
 .col1,
 .col2,
 .col3,
@@ -22,7 +26,7 @@
 }
 
 .col3 {
-    width: 11%;
+    width: 12%;
 }
 
 .col4 {
@@ -30,7 +34,7 @@
 }
 
 .col5 {
-    width: 12%;
+    width: 10%;
 }
 
 .col6 {
@@ -42,7 +46,7 @@
 }
 
 .col8 {
-    width: 7%;
+    width: 6%;
 }
 
 .pointer {

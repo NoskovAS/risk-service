@@ -1,147 +1,178 @@
 .user {
-    margin: auto;
-    margin-top: 2%;
+  margin: auto;
+  margin-top: 2%;
 }
 
-h1 {
-    color: blueviolet;
-    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    text-align: center;
+body {
+  background-color: whitesmoke;
 }
 
-.add {
-    margin-bottom: 5em;
-    margin-top: 2em;
-}
-/* input {
-    display: inline;
+.form-module {
+    margin-bottom: 20px;
 }
 
-.form-control {
-    display: inline;
-    width: 95%;
-    padding: .5rem .75rem;
-    font-size: 1rem;
-    line-height: 1.25;
-    color: #495057;
-    background-color: #fff;
-    background-image: none;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-    margin: 0;
-}*/
-/* 
-.form-control {
-    display: inline;
-    margin: 0;
-} 
- */
- .form-group {
-    /* margin: 0; */
-    padding: 0;
- }
-
- .close {
-     padding-top: 180%;
- }
-
- .col {
-     padding-right: 0;
+.main-module {
+    border-bottom: 2px solid #1793d3;
 }
 
 .add {
-    position: relative;
+  margin-bottom: 5em;
+  margin-top: 2em;
 }
+
+.form-group {
+  padding: 0;
+}
+
+.close {
+  padding-top: 180%;
+}
+
+.col {
+  padding-right: 0;
+}
+
+.add {
+  position: relative;
+}
+
 .buttonAdd {
-    margin: auto;
+  margin: auto;
 }
 
 .small {
-    color: black;
-    font-family: cursive;
-	font-size: 24px;
-}
-
-h1 {
-    font: Lucida, sans-serif;
-    color: blueviolet;
+  color: black;
+  font-family: cursive;
+  font-size: 24px;
 }
 
 /* Button */
 .btn {
-    background-color: rgba(0, 0, 0, 0);
-    border-width: 1.4px;
-    border-color: blueviolet;
-    color: blueviolet;
-    font-size: 18px;
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 1.4px;
+  border-color: blueviolet;
+  color: blueviolet;
+  font-size: 18px;
 }
 
 .btn:hover {
-    background-color: blueviolet;
-    color: white;
-    font-size: 18px;
+  background-color: blueviolet;
+  color: white;
+  font-size: 18px;
 }
 
 .btn:disabled {
-    background-color: rgba(128, 128, 128, 0.69);
-    color: #BDBDBD;
-    border-color: rgba(128, 128, 128, 0.69);;
+  background-color: rgba(128, 128, 128, 0.69);
+  color: #BDBDBD;
+  border-color: rgba(128, 128, 128, 0.69);
 }
 
 .btn:disabled:hover {
-    background-color: rgba(128, 128, 128, 0.69);
-    color: #BDBDBD;
-    border-color: rgba(128, 128, 128, 0.69);;
+  background-color: rgba(128, 128, 128, 0.69);
+  color: #BDBDBD;
+  border-color: rgba(128, 128, 128, 0.69);
 }
 
-/* icon input position */
-
 /* enable absolute positioning */
-.inner-addon { 
-    position: relative; 
+.inner-addon {
+  position: relative;
 }
 
 /* style icon */
 .inner-addon .material-icons {
-    position: absolute;
-    padding: 10px;
-    /* pointer-events: none; */
+  position: absolute;
+  padding: 10px;
 }
 
 .material-icons {
-    bottom: -3px;
+  bottom: -3px;
 }
 
 /* align icon */
-.right-addon .material-icons  { right:  10px;}
-/* .right-addon .material-icons { right: 0px;} */
+.right-addon .material-icons {
+  right: 10px;
+}
 
 /* add padding  */
-.right-addon input   { padding-right:  40px; }
-/* .right-addon input { padding-right: 30px; } */
+.right-addon input {
+  padding-right: 40px;
+}
 
 select {
-    padding: 0;
-    padding-right: 30px;
+  padding: 0;
+  padding-right: 30px;
 }
 
 .pointer {
-    cursor: pointer;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
-
-
-
-/* Hide html input arrows for number type */
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.menu {
+  background-color: #343a40;
+}
+
+.title-row {
+  background-color: #1793d3;
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+.left-title {
+  margin-top: 18px;
+  margin-left: 5px;
+  color: white;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.right-title {
+  margin-top: 20px;
+  margin-left: 40px;
+  color: white;
+}
+
+.small-right {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.form-label {
+  margin-left: 20px;
+  margin-bottom: 2px;
+  line-height: 1.45455;
+  font-weight: 300;
+  letter-spacing: 0.016em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+/* Sidebar */
+.sidebar-item {
+  margin-left: 30px;
+  margin-top: 20px;
+  color: white;
+  font-size: 18px;
+}
+
+.sidebar-title {
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #d6d6d6;
+  font-size: 18px;
+}
+
+.sidebar-row {
+    background-color: #1793d3;
 }

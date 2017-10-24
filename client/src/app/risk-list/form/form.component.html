@@ -1,126 +1,163 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="user" *ngIf="user">
-      <div class="page-header">
-        <h1 class="mb-3 bd-text-purple-bright">List of risks
-          <br>
-          <small class="small">User: {{user.firstname}} {{user.lastname}}</small>
-        </h1>
-      </div>
-    </div>
-  </div>
-  <form class="" novalidate [formGroup]="riskForm" (ngSubmit)="onRiskSubmit(riskForm)">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-sm-5 one">
-        <div class="col riskname">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="riskname">Название риска</label>
-            <i class="material-icons pointer" (click)="clearFormInput('riskname')">clear</i>
-            <select class="form-control " id="riskname" formControlName="riskname" [(ngModel)]="riskSelected">
-              <option *ngFor="let riskname of riskItems" [ngValue]="riskname.name">{{riskname.name}}</option>
-            </select>
-          </div>
-          <app-validator-message [field]="riskForm.get('riskname')"></app-validator-message>
+<body>
+  <div class="container-fluid">
+    <div class="row form-module">
+      <div class="col-md-2 menu">
+        <div class="row">
+          <h5 class="sidebar-title">Risk List</h5>
         </div>
-        <div class="col costinfluence">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="costinfluence">Влияние в затратах</label>
-            <i class="material-icons pointer" (click)="clearFormInput('costinfluence')">clear</i>
-            <input class="form-input form-control" id="costinfluence" type="number" min="0" formControlName="costinfluence">
-          </div>
-          <app-validator-message [field]="riskForm.get('costinfluence')" ></app-validator-message>
+        <div class="row sidebar-row">
+          <a class="pointer" >
+              <h6 class="sidebar-item">Table</h6>
+          </a>
         </div>
-        <div class="col hoursinfluence">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="hoursinfluence">Влияние в часах</label>
-            <i class="material-icons pointer" (click)="clearFormInput('hoursinfluence')">clear</i>
-            <input class="form-input form-control" id="hoursinfluence" type="number" min="0" formControlName="hoursinfluence">
-          </div>
-          <app-validator-message [field]="riskForm.get('hoursinfluence')"></app-validator-message>
+        <div class="row sidebar-row">
+          <a class="pointer">
+              <h6 class="sidebar-item">Charts</h6>
+          </a>
         </div>
-        <div class="col impact">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="impact">Вероятность возникновения</label>
-            <i class="material-icons pointer" (click)="clearFormInput('impact')">clear</i>
-            <select formControlName="impact" id="impact" class="form-control form-select">
-              <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
-            </select>
-          </div>
-          <app-validator-message [field]="riskForm.get('impact')"></app-validator-message>
+        <div class="row sidebar-row">
+          <a class="pointer">
+              <h6 class="sidebar-item">Theory</h6>
+          </a>
         </div>
       </div>
-      <div class="col"></div>
-      <div class="col-sm-5 two">
-        <div class="col probability">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="probability">Коэффициент влияния</label>
-            <i class="material-icons pointer" (click)="clearFormInput('probability')">clear</i>
-            <select formControlName="probability" id="probability" class="form-control form-select">
-              <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
-            </select>
+      <div class="col-md-10 main-module">
+        <form class="" novalidate [formGroup]="riskForm" (ngSubmit)="onRiskSubmit(riskForm)">
+          <div class="row title-row">
+            <div class="col-md-2">
+              <h5 class="mb-3 bd-text-purple-bright left-title">
+                List of risks
+              </h5>
+            </div>
+            <div class="col-md-7"></div>
+            <div class="col-md-3">
+              <h6 *ngIf="user" class="mb-3 bd-text-purple-bright right-title">
+                User:
+                <small class="small-right">{{user.firstname}} {{user.lastname}}</small>
+              </h6>
+            </div>
+
+            <!-- <div class="user" *ngIf="user">
+                  <div class="page-header">
+                    <h1 class="mb-3 bd-text-purple-bright">List of risks
+                      <br>
+                      <small class="small">User: {{user.firstname}} {{user.lastname}}</small>
+                    </h1>
+                  </div>
+                </div> -->
+
           </div>
-          <app-validator-message [field]="riskForm.get('probability')"></app-validator-message>
-        </div>
-        <div class="col numberOfSprints">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="numberOfSprints">Общее количество спринтов</label>
-            <i class="material-icons pointer" (click)="clearFormInput('numberOfSprints')">clear</i>
-            <input class="form-input form-control" id="numberOfSprints" type="text" min="0" formControlName="numberOfSprints">
-          </div>
-          <app-validator-message [field]="riskForm.get('numberOfSprints')"></app-validator-message>
-        </div>
-        <div class="col riskSprints">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="riskSprints">Количество спринтов с рисками</label>
-            <i class="material-icons pointer" (click)="clearFormInput('riskSprints')">clear</i>
-            <input class="form-input form-control" id="riskSprints" type="text" min="0" formControlName="riskSprints">
-          </div>
-          <app-validator-message [field]="riskForm.get('riskSprints')"></app-validator-message>
-        </div>
-        <div class="col suggestions">
-          <div class="form-group inner-addon right-addon">
-            <label class="form-label" for="suggestions">Предложения</label>
-            <i class="material-icons pointer" (click)="clearFormInput('suggestions')">clear</i>
-            <div id="suggestions">
-              <select *ngIf="check == 1" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
-                <option value="undefined" disabled selected hidden></option>
-                <option *ngFor="let suggest of suggestItems1" [ngValue]="suggest.name">{{suggest.name}}</option>
-              </select>
-              <select *ngIf="check == 2" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
-                <option value="undefined" disabled selected hidden></option>
-                <option *ngFor="let suggest of suggestItems2" [ngValue]="suggest.name">{{suggest.name}}</option>
-              </select>
-              <select *ngIf="check == 3" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
-                <option value="undefined" disabled selected hidden></option>
-                <option *ngFor="let suggest of suggestItems3" [ngValue]="suggest.name">{{suggest.name}}</option>
-              </select>
-              <select *ngIf="check == 4" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
-                <option value="undefined" disabled selected hidden></option>
-                <option *ngFor="let suggest of suggestItems4" [ngValue]="suggest.name">{{suggest.name}}</option>
-              </select>
-              <select *ngIf="check == 5" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
-                <option value="undefined" disabled selected hidden></option>
-                <option *ngFor="let suggest of suggestItems5" [ngValue]="suggest.name">{{suggest.name}}</option>
-              </select>
-              <select *ngIf="check == 6" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
-                <option value="undefined" disabled selected hidden></option>
-                <option *ngFor="let suggest of suggestItems6" [ngValue]="suggest.name">{{suggest.name}}</option>
-              </select>
+          <div class="row">
+            <div class="col-md-6 one">
+              <div class="col riskname">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="riskname">Название риска</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('riskname')">clear</i>
+                  <select class="form-control " id="riskname" formControlName="riskname" [(ngModel)]="riskSelected">
+                    <option *ngFor="let riskname of riskItems" [ngValue]="riskname.name">{{riskname.name}}</option>
+                  </select>
+                </div>
+                <app-validator-message [field]="riskForm.get('riskname')"></app-validator-message>
+              </div>
+              <div class="col costinfluence">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="costinfluence">Влияние в затратах</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('costinfluence')">clear</i>
+                  <input class="form-input form-control" id="costinfluence" type="number" min="0" formControlName="costinfluence">
+                </div>
+                <app-validator-message [field]="riskForm.get('costinfluence')"></app-validator-message>
+              </div>
+              <div class="col hoursinfluence">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="hoursinfluence">Влияние в часах</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('hoursinfluence')">clear</i>
+                  <input class="form-input form-control" id="hoursinfluence" type="number" min="0" formControlName="hoursinfluence">
+                </div>
+                <app-validator-message [field]="riskForm.get('hoursinfluence')"></app-validator-message>
+              </div>
+              <div class="col impact">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="impact">Вероятность возникновения</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('impact')">clear</i>
+                  <select formControlName="impact" id="impact" class="form-control form-select">
+                    <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
+                  </select>
+                </div>
+                <app-validator-message [field]="riskForm.get('impact')"></app-validator-message>
+              </div>
+            </div>
+            <div class="col-md-6 two">
+              <div class="col probability">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="probability">Коэффициент влияния</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('probability')">clear</i>
+                  <select formControlName="probability" id="probability" class="form-control form-select">
+                    <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
+                  </select>
+                </div>
+                <app-validator-message [field]="riskForm.get('probability')"></app-validator-message>
+              </div>
+              <div class="col numberOfSprints">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="numberOfSprints">Общее количество спринтов</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('numberOfSprints')">clear</i>
+                  <input class="form-input form-control" id="numberOfSprints" type="text" min="0" formControlName="numberOfSprints">
+                </div>
+                <app-validator-message [field]="riskForm.get('numberOfSprints')"></app-validator-message>
+              </div>
+              <div class="col riskSprints">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="riskSprints">Количество спринтов с рисками</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('riskSprints')">clear</i>
+                  <input class="form-input form-control" id="riskSprints" type="text" min="0" formControlName="riskSprints">
+                </div>
+                <app-validator-message [field]="riskForm.get('riskSprints')"></app-validator-message>
+              </div>
+              <div class="col suggestions">
+                <div class="form-group inner-addon right-addon">
+                  <label class="form-label" for="suggestions">Предложения</label>
+                  <i class="material-icons pointer" (click)="clearFormInput('suggestions')">clear</i>
+                  <div id="suggestions">
+                    <select *ngIf="check == 1" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
+                      <option value="undefined" disabled selected hidden></option>
+                      <option *ngFor="let suggest of suggestItems1" [ngValue]="suggest.name">{{suggest.name}}</option>
+                    </select>
+                    <select *ngIf="check == 2" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
+                      <option value="undefined" disabled selected hidden></option>
+                      <option *ngFor="let suggest of suggestItems2" [ngValue]="suggest.name">{{suggest.name}}</option>
+                    </select>
+                    <select *ngIf="check == 3" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
+                      <option value="undefined" disabled selected hidden></option>
+                      <option *ngFor="let suggest of suggestItems3" [ngValue]="suggest.name">{{suggest.name}}</option>
+                    </select>
+                    <select *ngIf="check == 4" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
+                      <option value="undefined" disabled selected hidden></option>
+                      <option *ngFor="let suggest of suggestItems4" [ngValue]="suggest.name">{{suggest.name}}</option>
+                    </select>
+                    <select *ngIf="check == 5" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
+                      <option value="undefined" disabled selected hidden></option>
+                      <option *ngFor="let suggest of suggestItems5" [ngValue]="suggest.name">{{suggest.name}}</option>
+                    </select>
+                    <select *ngIf="check == 6" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected">
+                      <option value="undefined" disabled selected hidden></option>
+                      <option *ngFor="let suggest of suggestItems6" [ngValue]="suggest.name">{{suggest.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <app-validator-message [field]="riskForm.get('suggestions')"></app-validator-message>
+              </div>
             </div>
           </div>
-          <app-validator-message [field]="riskForm.get('suggestions')"></app-validator-message>
-        </div>
-      </div>
-      <div class="col"></div>
-    </div>
-    <div class="row add">
-      <div class="buttonAdd">
-        <button type="submit" class="btn " [disabled]="riskForm.invalid" (click)="addItem(riskForm)">
-          Добавить риск
-        </button>
+          <div class="row add">
+            <div class="buttonAdd">
+              <button type="submit" class="btn " [disabled]="riskForm.invalid" (click)="addItem(riskForm)">
+                Добавить риск
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-  </form>
-  <app-table [riskForm]="riskForm" [items]="items" (tableCleared)="tableClear($event)"></app-table>
-</div>
+    <app-table [riskForm]="riskForm" [items]="items" (tableCleared)="tableClear($event)"></app-table>
+  </div>
+</body>

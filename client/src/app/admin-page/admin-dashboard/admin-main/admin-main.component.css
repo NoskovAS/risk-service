@@ -1,55 +1,5 @@
-.pointer {
-    cursor: pointer;
-    /* Disabled double click selection */
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 .main {
     margin-top: 56px;
     margin-right: 15px; 
     margin-left: 15px; 
-}
-
-/* Sidebar */
-.sidebar {
-    position: fixed; 
-    background-color: #343a40;
-    overflow: hidden;
-    z-index: 1000;
-    overflow-y: auto;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    height: 100%;
-    width: 300px;
-}
-
-.sidebar-nav {
-    margin-left: 20px;
-    margin-top: 15px;
-}
-
-.nav-link {
-    color:#868e96;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-bottom: 23px;
-}
-
-.nav-link:hover {
-    color:#ffffff;
-}
-
-/* Material icon's */
-.icon {
-    padding: 0px;
-    vertical-align: middle;
-}
-
-/* Tavle card */
-.table-card {
-    margin-top: 30px;
 }

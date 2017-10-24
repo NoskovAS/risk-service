@@ -10,6 +10,7 @@ a {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: whitesmoke;
 }
 
 .content {
@@ -18,8 +19,4 @@ a {
 
 app-footer {
   flex: 0 0 auto;
-} 
-
-.footer {
-  margin-top: 100px;
 }

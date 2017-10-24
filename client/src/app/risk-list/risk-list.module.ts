@@ -11,6 +11,7 @@ import { ItemDelComponent } from './share/item-del/item-del.component';
 import { ChildParentService } from '../service/child-parent/child-parent.service';
 import { PaginationComponent } from './share/pagination/pagination.component';
 import { ItemEditComponent } from './share/item-edit/item-edit.component';
+import { FormSidebarComponent } from './share/form-sidebar/form-sidebar.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ItemEditComponent } from './share/item-edit/item-edit.component';
     FormComponent,
     ItemDelComponent,
     PaginationComponent,
-    ItemEditComponent
+    ItemEditComponent,
+    FormSidebarComponent
   ],
   providers: [
     ChildParentService

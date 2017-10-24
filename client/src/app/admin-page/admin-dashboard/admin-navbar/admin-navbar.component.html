@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Dashboard</a>
+  <a class="navbar-brand brand">Dashboard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,14 +9,15 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <form class="form-inline my-2 my-lg-0">
-            <i class="material-icons md-light pointer messages">message</i>
-            <i class="material-icons md-light pointer notifications">notifications_active</i>
+      <i class="material-icons md-light pointer messages">message</i>
+      <i class="material-icons md-light pointer notifications">notifications_active</i>
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
     <ul class="navbar-nav exit-batton">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="material-icons icon">exit_to_app</i> Exit</a>
+        <a class="nav-link" [routerLink]="['../login']" routerLinkActive="active">
+          <i class="material-icons icon">exit_to_app</i> Exit</a>
       </li>
     </ul>
   </div>

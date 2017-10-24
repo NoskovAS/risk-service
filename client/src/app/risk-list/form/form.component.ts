@@ -205,5 +205,4 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     tableClear(emit) {
         this.index = 0;
     }
-
 }

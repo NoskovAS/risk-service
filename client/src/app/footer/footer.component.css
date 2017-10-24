@@ -1,18 +1,23 @@
-.footer-row {
-    padding-top: 30px; 
-    line-height: 2.5
+.first-row {
+    padding-top: 15px; 
+    line-height: 1.5
+}
+
+.second-row {
+    line-height: 1.5
 }
 
 .footer {
-    background-color: #563d7c;
+    background-color: white;
     height: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.836);
 }
 
 span {
-    color: white;
+    color: #0044ff;;
 }
 
 .ion {
-    color: white;
+    color: #0044ff;;
     font-size: 2rem;
 }

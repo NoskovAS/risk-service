@@ -8,12 +8,12 @@ import { RiskListModule } from '../risk-list/risk-list.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminNavbarComponent } from './admin-dashboard/admin-navbar/admin-navbar.component';
 import { AdminMainComponent } from './admin-dashboard/admin-main/admin-main.component';
-import { AdminFooterComponent } from './admin-dashboard/admin-footer/admin-footer.component';
 import { DashboardChartsComponent } from './admin-dashboard/admin-main/dashboard-charts/dashboard-charts.component';
 import { DashboardTablesComponent } from './admin-dashboard/admin-main/dashboard-tables/dashboard-tables.component';
 import { DashboardMessagesComponent } from './admin-dashboard/admin-main/dashboard-messages/dashboard-messages.component';
 import { RouterModule } from '@angular/router';
-import { AdminPageRoutingModule } from './admin-page-routing.module';
+import { AdminPageRoutingModule } from './admin-page.routing.module';
+import { AdminSidebarComponent } from './share/admin-sidebar/admin-sidebar.component';
 
 @NgModule({
   imports: [
@@ -31,10 +31,10 @@ import { AdminPageRoutingModule } from './admin-page-routing.module';
     AdminDashboardComponent,
     AdminNavbarComponent,
     AdminMainComponent,
-    AdminFooterComponent,
     DashboardChartsComponent,
     DashboardTablesComponent,
-    DashboardMessagesComponent
+    DashboardMessagesComponent,
+    AdminSidebarComponent
   ],
   providers: [
   ]

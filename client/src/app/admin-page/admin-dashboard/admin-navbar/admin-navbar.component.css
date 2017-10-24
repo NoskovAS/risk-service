@@ -5,48 +5,54 @@
 } */
 
 .exit-batton {
-    margin-right: 10px;
-    margin-left: 15px;
+  margin-right: 10px;
+  margin-left: 15px;
 }
 
+
 /* Icons */
+
 .notifications {
-    color: white;
-    margin-right: 20px;
+  color: white;
+  margin-right: 20px;
 }
 
 .messages {
-    color: white;
-    margin-right: 20px;
+  color: white;
+  margin-right: 20px;
 }
 
 .pointer {
-    cursor: pointer;
-    /* Disabled double click selection */
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  cursor: pointer;
+  /* Disabled double click selection */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .icon {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color:#868e96;
+  color: #868e96;
 }
 
 .navbar-dark:hover .navbar-nav:hover .nav-link:hover {
-    color:#ffffff;
+  color: #ffffff;
 }
 
 .nav-link {
-    color:#868e96;
-    padding-bottom: 5px;
-    padding-top: 5px;
+  color: #868e96;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .nav-link:hover {
-    color:#ffffff;
+  color: #ffffff;
+}
+
+a:not([href]):not([tabindex]) {
+  color:white;
 }
