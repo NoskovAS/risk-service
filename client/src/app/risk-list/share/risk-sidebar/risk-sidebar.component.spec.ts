@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormSidebarComponent } from './form-sidebar.component';
+import { RiskSidebarComponent } from './risk-sidebar.component';
 
 describe('FormSidebarComponent', () => {
-  let component: FormSidebarComponent;
-  let fixture: ComponentFixture<FormSidebarComponent>;
+  let component: RiskSidebarComponent;
+  let fixture: ComponentFixture<RiskSidebarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormSidebarComponent ]
+      declarations: [ RiskSidebarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormSidebarComponent);
+    fixture = TestBed.createComponent(RiskSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

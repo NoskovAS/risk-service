@@ -1,0 +1,23 @@
+body {
+    display: flex;
+  background-color: whitesmoke;
+  flex: 1;
+}
+content {
+    
+}
+
+.pointer {
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.menu {
+    z-index: 1000;
+  /* position: fixed; */
+  background-color: #343a40;
+  height: 100%;
+}

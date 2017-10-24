@@ -6,7 +6,7 @@ a {
   cursor: pointer;
 }
 
-.wrapper {
+/* .wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -16,7 +16,8 @@ a {
 .content {
   flex: 1 0 auto;
 }
-
-app-footer {
+ */
+/* app-footer {
   flex: 0 0 auto;
 }
+ */

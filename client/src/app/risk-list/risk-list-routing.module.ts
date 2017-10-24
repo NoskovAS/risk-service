@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RiskListComponent } from './risk-list.component';
 import { TableComponent } from './table/table.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TheoryComponent } from './theory/theory.component';
+import { SettingsComponent } from './settings/settings.component';
+import { FormComponent } from './form/form.component';
 
 const riskRoutes: Routes = [
     {
@@ -16,22 +20,22 @@ const riskRoutes: Routes = [
             {
                 path: 'table',
                 pathMatch: 'full',
-                component: RiskListComponent
+                component: FormComponent
             },
             {
                 path: 'charts',
                 pathMatch: 'full',
-                component: RiskListComponent
+                component: ChartsComponent
             },
             {
                 path: 'theory',
                 pathMatch: 'full',
-                component: RiskListComponent
+                component: TheoryComponent
             },
             {
                 path: 'settings',
                 pathMatch: 'full',
-                component: RiskListComponent
+                component: SettingsComponent
             }
         ]
     },

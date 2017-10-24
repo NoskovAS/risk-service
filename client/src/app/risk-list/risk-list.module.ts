@@ -11,7 +11,10 @@ import { ItemDelComponent } from './share/item-del/item-del.component';
 import { ChildParentService } from '../service/child-parent/child-parent.service';
 import { PaginationComponent } from './share/pagination/pagination.component';
 import { ItemEditComponent } from './share/item-edit/item-edit.component';
-import { FormSidebarComponent } from './share/form-sidebar/form-sidebar.component';
+import { RiskSidebarComponent } from './share/risk-sidebar/risk-sidebar.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TheoryComponent } from './theory/theory.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { FormSidebarComponent } from './share/form-sidebar/form-sidebar.componen
     ItemDelComponent,
     PaginationComponent,
     ItemEditComponent,
-    FormSidebarComponent
+    RiskSidebarComponent,
+    ChartsComponent,
+    TheoryComponent,
+    SettingsComponent
   ],
   providers: [
     ChildParentService
