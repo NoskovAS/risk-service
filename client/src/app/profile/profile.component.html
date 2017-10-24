@@ -1,34 +1,37 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div *ngIf="user" class="profile-form">
-        <h1 class="mb-3 bd-text-purple-bright">{{user.firstname}} {{user.lastname}} Profile</h1>
-        <form>
-          <div class="form-group">
-            <label class="form-label">First Name</label>
-            <li class="li">{{user.firstname}}</li>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Last Name</label>
-            <li class="li">{{user.lastname}}</li>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Username</label>
-            <li class="li">{{user.username}}</li>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <li class="li">{{user.email}}</li>
-          </div>
-          <div class="form-group text-center">
-            <button class="btn" [routerLink]="['/editProfile']"><i class="material-icons">person</i> Edit profile</button>
-            <button class="btn" [routerLink]="['/risk-list']"><i class="material-icons">home</i> Home</button>
-          </div>
-
-        </form>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div *ngIf="user" class="profile-form">
+          <h1 class="mb-3 bd-text-purple-bright">{{user.firstname}} {{user.lastname}} Profile</h1>
+          <form>
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <li class="li">{{user.firstname}}</li>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <li class="li">{{user.lastname}}</li>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Username</label>
+              <li class="li">{{user.username}}</li>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <li class="li">{{user.email}}</li>
+            </div>
+            <div class="form-group text-center">
+              <button class="btn" [routerLink]="['/editProfile']">
+                <i class="material-icons">person</i> Edit profile</button>
+              <button class="btn" [routerLink]="['/risk-list']">
+                <i class="material-icons">home</i> Home</button>
+            </div>
+          </form>
+        </div>
       </div>
+      <div class="col-md-4"></div>
     </div>
-    <div class="col-md-4"></div>
   </div>
-</div>
+</body>

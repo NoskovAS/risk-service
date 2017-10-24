@@ -11,16 +11,23 @@ import { AuthGuard } from './guard/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminDashboardComponent } from './admin-page/admin-dashboard/admin-dashboard.component';
 import { AdminPageRoutingModule } from './admin-page/admin-page.routing.module';
+import { RiskListRoutingModule } from './risk-list/risk-list-routing.module';
 // Temp
 
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'risk-list', component: RiskListComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard] },
     /* AdminPageComponent */
+    {
+        path: 'risklist',
+        canActivate: [AuthGuard],
+        children: [
+            { path: '', component: RiskListComponent }
+        ]
+    },
     {
         path: 'admin',
         children: [
@@ -33,7 +40,8 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes),
-        AdminPageRoutingModule
+        AdminPageRoutingModule,
+        RiskListRoutingModule
     ],
     exports: [RouterModule]
 })

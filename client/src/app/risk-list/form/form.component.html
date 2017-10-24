@@ -1,26 +1,11 @@
 <body>
   <div class="container-fluid">
     <div class="row form-module">
+      <!-- Sidebar -->
       <div class="col-md-2 menu">
-        <div class="row">
-          <h5 class="sidebar-title">Risk List</h5>
-        </div>
-        <div class="row sidebar-row">
-          <a class="pointer" >
-              <h6 class="sidebar-item">Table</h6>
-          </a>
-        </div>
-        <div class="row sidebar-row">
-          <a class="pointer">
-              <h6 class="sidebar-item">Charts</h6>
-          </a>
-        </div>
-        <div class="row sidebar-row">
-          <a class="pointer">
-              <h6 class="sidebar-item">Theory</h6>
-          </a>
-        </div>
+          <app-form-sidebar></app-form-sidebar>
       </div>
+      <!-- Sidebar -->
       <div class="col-md-10 main-module">
         <form class="" novalidate [formGroup]="riskForm" (ngSubmit)="onRiskSubmit(riskForm)">
           <div class="row title-row">
