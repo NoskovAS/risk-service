@@ -26,7 +26,7 @@
             <div class="col-md-6 one">
               <div class="col riskname">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="riskname">Название риска</label>
+                  <label class="form-label" for="riskname">Risk name</label>
                   <i class="material-icons pointer" (click)="clearFormInput('riskname')">clear</i>
                   <select class="form-control " id="riskname" formControlName="riskname" [(ngModel)]="riskSelected" required>
                     <option *ngFor="let riskname of riskItems" [ngValue]="riskname.name">{{riskname.name}}</option>
@@ -36,7 +36,7 @@
               </div>
               <div class="col costinfluence">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="costinfluence">Влияние в затратах</label>
+                  <label class="form-label" for="costinfluence">Influence in costs</label>
                   <i class="material-icons pointer" (click)="clearFormInput('costinfluence')">clear</i>
                   <input class="form-input form-control" id="costinfluence" type="number" min="0" formControlName="costinfluence" required>
                 </div>
@@ -44,7 +44,7 @@
               </div>
               <div class="col hoursinfluence">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="hoursinfluence">Влияние в часах</label>
+                  <label class="form-label" for="hoursinfluence">Influence in hours</label>
                   <i class="material-icons pointer" (click)="clearFormInput('hoursinfluence')">clear</i>
                   <input class="form-input form-control" id="hoursinfluence" type="number" min="0" formControlName="hoursinfluence" required>
                 </div>
@@ -52,7 +52,7 @@
               </div>
               <div class="col impact">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="impact">Вероятность возникновения</label>
+                  <label class="form-label" for="impact">Probability of occurrence</label>
                   <i class="material-icons pointer" (click)="clearFormInput('impact')">clear</i>
                   <select formControlName="impact" id="impact" class="form-control form-select" required>
                     <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
@@ -64,7 +64,7 @@
             <div class="col-md-6 two">
               <div class="col probability">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="probability">Коэффициент влияния</label>
+                  <label class="form-label" for="probability">Сoefficient of influence</label>
                   <i class="material-icons pointer" (click)="clearFormInput('probability')">clear</i>
                   <select formControlName="probability" id="probability" class="form-control form-select" required>
                     <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
@@ -74,7 +74,7 @@
               </div>
               <div class="col numberOfSprints">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="numberOfSprints">Общее количество спринтов</label>
+                  <label class="form-label" for="numberOfSprints">Total number of sprints</label>
                   <i class="material-icons pointer" (click)="clearFormInput('numberOfSprints')">clear</i>
                   <input class="form-input form-control" id="numberOfSprints" type="text" min="0" formControlName="numberOfSprints" required>
                 </div>
@@ -82,7 +82,7 @@
               </div>
               <div class="col riskSprints">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="riskSprints">Количество спринтов с рисками</label>
+                  <label class="form-label" for="riskSprints">Number of risk sprints</label>
                   <i class="material-icons pointer" (click)="clearFormInput('riskSprints')">clear</i>
                   <input class="form-input form-control" id="riskSprints" type="text" min="0" formControlName="riskSprints" required>
                 </div>
@@ -90,7 +90,7 @@
               </div>
               <div class="col suggestions">
                 <div class="form-group inner-addon right-addon">
-                  <label class="form-label" for="suggestions">Предложения</label>
+                  <label class="form-label" for="suggestions">Suggestions</label>
                   <i class="material-icons pointer" (click)="clearFormInput('suggestions')">clear</i>
                   <div id="suggestions">
                     <select *ngIf="check == 1" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
@@ -126,7 +126,7 @@
           <div class="row add-row">
             <div class="buttonAdd">
               <button type="submit" class="btn">
-                Добавить риск
+                  Add risk
               </button>
             </div>
           </div>
@@ -138,9 +138,9 @@
                 <strong>Warning! </strong>Please fill in all fields
               </div>
               <div *ngIf="formSuccess" class="alert alert-primary" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" (click)="!onRiskSubmit">&times;</button>
-                  <strong>Warning! </strong>Please fill in all fields
-                </div>
+                <button type="button" class="close" data-dismiss="alert" (click)="!onRiskSubmit">&times;</button>
+                <strong>Warning! </strong>Please fill in all fields
+              </div>
             </div>
             <div class="col-md-4"></div>
           </div>

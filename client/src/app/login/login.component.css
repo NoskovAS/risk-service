@@ -1,9 +1,13 @@
-body {
+/* body {
     background-color: whitesmoke;
-}
+} */
 
 .login-form {
     margin-top: 2%;
+}
+
+.login-main {
+    margin-bottom: 200px;
 }
 
 h1 {

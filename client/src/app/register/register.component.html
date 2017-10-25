@@ -46,7 +46,9 @@
                 aria-describedby="confirmHelpBlock">
               <app-validator-message [field]="registerForm.get('password').get('confirm')"></app-validator-message>
             </div>
-            <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
+            <div *ngIf="(this.registerForm.value.password.pwd > 1) || (this.registerForm.value.password.confirm > 1)">
+                <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
+            </div>
           </div>
           <div class="form-group text-center">
             <button class="btn btn-block btn-lg" type="submit" value="Register">Create Account</button>

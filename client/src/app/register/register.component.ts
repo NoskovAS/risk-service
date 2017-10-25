@@ -45,7 +45,9 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {}
 
-  ngAfterContentChecked() {}
+  ngAfterContentChecked() {
+    console.log(this.registerForm.value.password.pwd);
+  }
 
   onRegisterSubmit() {
     if ((this.registerForm.value.firstname === '') ||

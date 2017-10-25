@@ -8,16 +8,15 @@ body {
 }
 
 .form-module {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .main-module {
-    border-bottom: 2px solid #1793d3;
+  border-bottom: 2px solid #1793d3;
 }
 
 .add-row {
-  /* margin-bottom: 5em;
-  margin-top: 2em; */
+
 }
 
 .form-group {
@@ -34,10 +33,11 @@ body {
 
 .add-row {
   position: relative;
+  margin-top: 20px;
 }
 
 .bottom-row {
-  margin-bottom: 40px;
+  margin-bottom: 70px;
 }
 
 .buttonAdd {
@@ -50,17 +50,22 @@ body {
   font-size: 24px;
 }
 
+
 /* Button */
+
 .btn {
   background-color: rgba(0, 0, 0, 0);
   border-width: 1.4px;
-  border-color: #1793d3;;
-  color: #1793d3;;
+  border-color: #1793d3;
+  ;
+  color: #1793d3;
+  ;
   font-size: 18px;
 }
 
 .btn:hover {
-  background-color: #1793d3;;
+  background-color: #1793d3;
+  ;
   color: white;
   font-size: 18px;
 }
@@ -77,12 +82,16 @@ body {
   border-color: rgba(128, 128, 128, 0.69);
 }
 
+
 /* enable absolute positioning */
+
 .inner-addon {
   position: relative;
 }
 
+
 /* style icon */
+
 .inner-addon .material-icons {
   position: absolute;
   padding: 10px;
@@ -92,12 +101,16 @@ body {
   bottom: -3px;
 }
 
+
 /* align icon */
+
 .right-addon .material-icons {
   right: 10px;
 }
 
+
 /* add padding  */
+
 .right-addon input {
   padding-right: 40px;
 }
@@ -107,12 +120,18 @@ select {
   padding-right: 30px;
 }
 
+
 /* Validation CSS classes */
-.ng-valid[required], .ng-valid.required  {
-  border-left: 4px solid #42A948; /* green */
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 4px solid #42A948;
+  /* green */
 }
-.ng-invalid:not(form)  {
-  border-left: 4px solid #cf4b4bc5; /* red */
+
+.ng-invalid:not(form) {
+  border-left: 4px solid #cf4b4bc5;
+  /* red */
 }
 
 .pointer {

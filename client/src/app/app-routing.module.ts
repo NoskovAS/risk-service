@@ -15,7 +15,10 @@ import { RiskListRoutingModule } from './risk-list/risk-list-routing.module';
 // Temp
 
 const routes: Routes = [
-    { path: '', component: LandingPageComponent },
+    {
+        path: '',
+        component: LandingPageComponent,
+    },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },

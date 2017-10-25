@@ -122,10 +122,36 @@
         </tr>
       </tbody>
     </table>
-    <div class="paggination jumbotron">
+
+    <div class="paggination">
       <app-pagination [offset]="offset" [limit]="limit" [size]="count" (pageChange)="onPageChange($event)"></app-pagination>
     </div>
-    <div class="tfooter jumbotron">
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="limit-set" *ngIf="items.length > 10">
+          <div class="set">
+            <pre>Set number of risks per page:</pre>
+          </div>
+          <div class="select">
+            <select class="form-control" id="limit" [(ngModel)]="limit">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option *ngIf="items.length > 15" value="15">15</option>
+              <option *ngIf="items.length > 20" value="20">20</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col-md-2">
+        <div class="total">
+          <pre>Total risks: {{items.length}}</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="tfooter">
       <div class="limit-set" *ngIf="items.length > 10">
         <div class="pre">
           <pre>Set number of risks per page:</pre>
@@ -138,12 +164,11 @@
             <option *ngIf="items.length > 20" value="20">20</option>
           </select>
         </div>
-
       </div>
       <div class="total">
         <pre>Total risks: {{items.length}}</pre>
       </div>
-    </div>
+    </div> -->
   </div>
 
 

@@ -94,9 +94,9 @@ td  {
 }
 
 .total {
-    margin-left: auto;
-    padding-right: 2%;
+    margin-left: 40px;
     overflow: hidden;
+    min-width: 150px
 }
 
 .limit-set {
@@ -105,11 +105,9 @@ td  {
     padding-left: 2%;
 }
 
-.pre {
-    margin-left: auto;
-    padding-right: 2%;
-    margin-top: 3%;
-    width: 95%;
+.set {
+    margin-left: 22px;
+    margin-top: 5px;
 }
 
 .select {
@@ -121,10 +119,4 @@ td  {
 select.form-control:not([size]):not([multiple]) {
     height: 2.2em;
     width: 4.15em;
-}
-
-.jumbotron {
-    padding-bottom: 0%;
-    padding-top: 1%;
-    margin-bottom: 2px;
 }
