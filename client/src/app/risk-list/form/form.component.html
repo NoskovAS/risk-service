@@ -28,9 +28,10 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="riskname">Risk name</label>
                   <i class="material-icons pointer" (click)="clearFormInput('riskname')">clear</i>
-                  <select class="form-control " id="riskname" formControlName="riskname" [(ngModel)]="riskSelected" required>
+                  <select *ngIf="!ownRisk" class="form-control " id="riskname" formControlName="riskname" [(ngModel)]="riskSelected" required>
                     <option *ngFor="let riskname of riskItems" [ngValue]="riskname.name">{{riskname.name}}</option>
                   </select>
+                  <input *ngIf="ownRisk" class="form-input form-control" id="riskname" type="text" formControlName="riskname" required>
                 </div>
                 <!-- <app-validator-message [field]="riskForm.get('riskname')"></app-validator-message> -->
               </div>
@@ -76,7 +77,7 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="numberOfSprints">Total number of sprints</label>
                   <i class="material-icons pointer" (click)="clearFormInput('numberOfSprints')">clear</i>
-                  <input class="form-input form-control" id="numberOfSprints" type="text" min="0" formControlName="numberOfSprints" required>
+                  <input class="form-input form-control" id="numberOfSprints" type="number" min="0" formControlName="numberOfSprints" required>
                 </div>
                 <!-- <app-validator-message [field]="riskForm.get('numberOfSprints')"></app-validator-message> -->
               </div>
@@ -84,7 +85,7 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="riskSprints">Number of risk sprints</label>
                   <i class="material-icons pointer" (click)="clearFormInput('riskSprints')">clear</i>
-                  <input class="form-input form-control" id="riskSprints" type="text" min="0" formControlName="riskSprints" required>
+                  <input class="form-input form-control" id="riskSprints" type="number" min="0" formControlName="riskSprints" required>
                 </div>
                 <!-- <app-validator-message [field]="riskForm.get('riskSprints')"></app-validator-message> -->
               </div>
@@ -92,41 +93,62 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="suggestions">Suggestions</label>
                   <i class="material-icons pointer" (click)="clearFormInput('suggestions')">clear</i>
-                  <div id="suggestions">
-                    <select *ngIf="check == 1" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                  <div *ngIf="!ownRisk" id="suggestions">
+                    <select *ngIf="riskCheck == 1" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems1" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="check == 2" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck == 2" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems2" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="check == 3" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck == 3" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems3" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="check == 4" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck == 4" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems4" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="check == 5" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck == 5" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems5" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="check == 6" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck == 6" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems6" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
                   </div>
+                  <input *ngIf="ownRisk" type="text" class="form-input form-control" id="suggestions" formControlName="suggestions" required>
                 </div>
                 <!-- <app-validator-message [field]="riskForm.get('suggestions')"></app-validator-message> -->
               </div>
             </div>
           </div>
+          <div class="row setting-row">
+            <div class="col-md-3">
+              <div class="clear-button">
+                <div class="">
+                  <button type="button" class="btn-link pointer" (click)="clearInputs()">
+                    Clear Table Fields
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col"></div>
+            <div class="col-md-2 own">
+              <div class="own-input">
+                <div class="own-title">
+                  Own Risk:
+                  <input class="pointer" type="checkbox" autocomplete="off" (click)="toggleOwn()">
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row add-row">
             <div class="buttonAdd">
-              <button type="submit" class="btn">
-                  Add risk
+              <button type="submit" class="btn btn-secondary pointer">
+                Add Risk
               </button>
             </div>
           </div>
@@ -134,11 +156,11 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <div *ngIf="formError" class="alert alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="alert" (click)="formError=false">&times;</button>
+                <button type="button" class="close pointer" data-dismiss="alert" (click)="formError=false">&times;</button>
                 <strong>Warning! </strong>Please fill in all fields
               </div>
               <div *ngIf="formSuccess" class="alert alert-primary" role="alert">
-                <button type="button" class="close" data-dismiss="alert" (click)="!onRiskSubmit">&times;</button>
+                <button type="button" class="close pointer" data-dismiss="alert" (click)="!onRiskSubmit">&times;</button>
                 <strong>Warning! </strong>Please fill in all fields
               </div>
             </div>
@@ -146,6 +168,7 @@
           </div>
           <div class="row bottom-row"></div>
         </form>
+
       </div>
     </div>
     <app-table [riskForm]="riskForm" [items]="items" (tableCleared)="tableClear($event)"></app-table>

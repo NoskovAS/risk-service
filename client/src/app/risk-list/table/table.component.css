@@ -93,21 +93,26 @@ td  {
     display: flex;
 }
 
-.total {
-    margin-left: 40px;
-    overflow: hidden;
-    min-width: 150px
+.under-table-row {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .limit-set {
     display: flex;
     margin-right: auto;
-    padding-left: 2%;
 }
 
 .set {
-    margin-left: 22px;
     margin-top: 5px;
+}
+
+.total {
+    margin-top: 3px;
+}
+
+.pre-total {
+    min-width: 190px;
 }
 
 .select {

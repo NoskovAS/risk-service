@@ -14,6 +14,7 @@ import { ChildParentService } from '../../service/child-parent/child-parent.serv
 export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     formError: boolean = false;
     formSuccess: boolean = false;
+    ownRisk: boolean = false;
 
     user: Object; // User object
     public riskForm: FormGroup = null;
@@ -24,7 +25,7 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     riskSelected;
     suggestSelected;
     dergeeSelected;
-    check: number = 1; // If it is true, suggestions input are included (riskname check in input)
+    riskCheck: number = 1; // If it is true, suggestions input are included (riskname check in input)
 
     // Risk name options
     riskItems: any[] = [
@@ -111,17 +112,17 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     ngAfterContentChecked() {
         this.riskForm.value.suggestions = this.suggestSelected;
         if (this.riskForm.value.riskname === 'Реализация важного модуля в проекте') {
-            return this.check = 1;
+            return this.riskCheck = 1;
         } else if (this.riskForm.value.riskname === 'Задержка в покупке оборудования/ПО') {
-            return this.check = 2;
+            return this.riskCheck = 2;
         } else if (this.riskForm.value.riskname === 'Внутренние сложности календарного планирования') {
-            return this.check = 3;
+            return this.riskCheck = 3;
         } else if (this.riskForm.value.riskname === 'Отсутствие коммуникации между представителем и заказчиком') {
-            return this.check = 4;
+            return this.riskCheck = 4;
         } else if (this.riskForm.value.riskname === 'Недостаток квалифицированных специалистов') {
-            return this.check = 5;
+            return this.riskCheck = 5;
         } else if (this.riskForm.value.riskname === 'Высокая вероятность изменения требований проекта') {
-            return this.check = 6;
+            return this.riskCheck = 6;
         }
         this.riskForm.value.suggestions = this.suggestSelected;
         if (this.items.length > 0) {
@@ -213,5 +214,13 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
 
     tableClear(emit) {
         this.index = 0;
+    }
+
+    public toggleOwn() {
+        this.ownRisk === false ? this.ownRisk = true : this.ownRisk = false;
+    }
+
+    public clearInputs() {
+        this.riskForm.reset();
     }
 }

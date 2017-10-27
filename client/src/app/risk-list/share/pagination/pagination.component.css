@@ -4,18 +4,17 @@
 
 .paggination {
     display: flex;
+    margin: 0;
 }
 
 .navigation {
     margin-right: auto;
-    padding-left: 2%;
-}
-
-.page {
-    margin-left: auto;
-    padding-right: 2%;
 }
 
 pre {
     overflow-x: hidden;
+}
+
+.pre-page {
+    margin-top: 8px;
 }
