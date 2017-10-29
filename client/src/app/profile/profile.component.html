@@ -1,37 +1,30 @@
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <div *ngIf="user" class="profile-form">
-          <h1 class="mb-3 bd-text-purple-bright">{{user.firstname}} {{user.lastname}} Profile</h1>
-          <form>
-            <div class="form-group">
-              <label class="form-label">First Name</label>
-              <li class="li">{{user.firstname}}</li>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Last Name</label>
-              <li class="li">{{user.lastname}}</li>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Username</label>
-              <li class="li">{{user.username}}</li>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <li class="li">{{user.email}}</li>
-            </div>
-            <div class="form-group text-center">
-              <button class="btn" [routerLink]="['/editProfile']">
-                <i class="material-icons">person</i> Edit profile</button>
-              <button class="btn" [routerLink]="['/risk-list']">
-                <i class="material-icons">home</i> Home</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
+<div class="container container-fluid">
+
+  <div class="row title-row">
+    <h1 class="title">My Account</h1>
   </div>
-</body>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-3 menu">
+      <div class="menu-item" [routerLinkActive]="['active']" [routerLink]="['account']">
+        <a class="pointer menu-link">
+          <h5>Basic Information</h5>
+        </a>
+      </div>
+      <div class="menu-item" [routerLinkActive]="['active']" [routerLink]="['password']">
+        <a class="pointer menu-link">
+          <h5>Change Password</h5>
+        </a>
+      </div>
+      <div class="menu-item" [routerLinkActive]="['active']" [routerLink]="['delete_acct']">
+        <a class="pointer menu-link">
+          <h5>Delete Account</h5>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-1"></div>
+  </div>

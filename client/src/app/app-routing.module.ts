@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminDashboardComponent } from './admin-page/admin-dashboard/admin-dashboard.component';
 import { AdminPageRoutingModule } from './admin-page/admin-page.routing.module';
 import { RiskListRoutingModule } from './risk-list/risk-list-routing.module';
+import { BasicInfoComponent } from './profile/basic-info/basic-info.component';
+import { ProfileRoutingModule } from './profile/profile-routing.module';
 // Temp
 
 const routes: Routes = [
@@ -21,7 +23,6 @@ const routes: Routes = [
     },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard] },
     /* AdminPageComponent */
     {
@@ -37,6 +38,13 @@ const routes: Routes = [
             {path: '', component: AdminPageComponent},
         ]
     },
+    {
+        path: 'profile',
+        canActivate: [AuthGuard],
+        children: [
+            {path: '', component: BasicInfoComponent},
+        ]
+    },
     { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -44,7 +52,8 @@ const routes: Routes = [
     imports: [
         RouterModule.forRoot(routes),
         AdminPageRoutingModule,
-        RiskListRoutingModule
+        RiskListRoutingModule,
+        ProfileRoutingModule
     ],
     exports: [RouterModule]
 })

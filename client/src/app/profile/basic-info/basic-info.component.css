@@ -1,0 +1,48 @@
+.basic {
+    background-color: white;
+    margin-bottom: 100px
+}
+
+.edit-profile-form {
+    display: inline-block;
+    margin-left: 20px;
+    width: 100%;
+}
+
+.form-label {
+    margin-bottom: 1px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-input {
+    display: inline-block;
+    height: 45px;
+    width: 100%;
+}
+
+.title {
+    margin-bottom: 20px;
+    margin: 30px auto 20px 20px;
+}
+
+.alert-success {
+    margin-left: 20px;
+}
+
+.title,
+.form-label,
+.alert-success {
+    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+}
+
+.pointer {
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+

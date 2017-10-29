@@ -1,39 +1,55 @@
-body {
-    background-color: whitesmoke;
+.title-row {
+    margin-bottom: 50px;
+}
+
+.title {
+    margin: auto;
+    margin-top: 20px;
+    font-weight: 300;
+    color: #204056;
+    font-size: 40px;
+    line-height: 46px;
+}
+
+.menu {
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    height: 50px;
+}
+
+.menu-item,
+.title
+h5 {
+    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+}
+
+.pointer {
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.active {
+    background-color: #ffffff;
+}
+
+.menu-link,
+.menu-item
+{
+    border: none;
+    outline: none;
+}
+
+h5 {
+    padding: 14px 5px 15px 15px;
+    margin: 0;
+    font-size: 1.01rem;
 }
 
 .profile-form {
     margin-top: 4%;
-}
-
-h1 {
-    color: blueviolet;
-    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* Button */
-.btn {
-    background-color: rgba(0, 0, 0, 0);
-    border-width: 1.4px;
-    border-color: blueviolet;
-    color: blueviolet;
-    font-size: 18px;
-}
-
-.btn:hover {
-    background-color: blueviolet;
-    color: white;
-    font-size: 18px;
-}
-
-.btn:disabled {
-    background-color: rgba(128, 128, 128, 0.69);
-    color: #BDBDBD;
-    border-color: rgba(128, 128, 128, 0.69);;
-}
-
-.btn:disabled:hover {
-    background-color: rgba(128, 128, 128, 0.69);
-    color: #BDBDBD;
-    border-color: rgba(128, 128, 128, 0.69);;
 }

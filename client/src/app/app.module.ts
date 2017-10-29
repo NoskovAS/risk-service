@@ -29,6 +29,9 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterService } from './service/footer/footer.service';
 import { NavbarService } from './service/navbar/navbar.service';
+import { BasicInfoComponent } from './profile/basic-info/basic-info.component';
+import { PassChangeComponent } from './profile/pass-change/pass-change.component';
+import { AccountDelComponent } from './profile/account-del/account-del.component';
 
 
 
@@ -42,7 +45,10 @@ import { NavbarService } from './service/navbar/navbar.service';
     EditProfileComponent,
     FooterComponent,
     LandingPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BasicInfoComponent,
+    PassChangeComponent,
+    AccountDelComponent
   ],
   imports: [
     BrowserModule,

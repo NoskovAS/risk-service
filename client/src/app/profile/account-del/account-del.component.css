@@ -1,0 +1,31 @@
+.delete-row {
+    background-color: white;
+    margin-bottom: 200px;
+}
+
+.title {
+    margin-bottom: 20px;
+    margin: 30px auto 0px 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.del-button {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.pointer {
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.title,
+p {
+    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+}
