@@ -3,7 +3,7 @@
     <div class="row login-main">
       <div class="col-md-4"></div>
       <div class="col-md-4 login-form">
-        <h1 class="mb-3 bd-text-purple-bright">Sign Up</h1>
+        <h1 class="title">Sign Up</h1>
         <p class="tss">
           Don't have a Risk Service account?
           <a class="link link--underline" [routerLink]="['/register']">Create account</a>
@@ -28,7 +28,7 @@
             <app-validator-message [field]="loginForm.get('password')"></app-validator-message>
           </div>
           <div class="form-group text-center">
-            <button class="btn btn-block btn-lg" type="submit" value="Login">Sign in</button>
+            <button class="btn btn-block btn-lg btn-primary pointer" type="submit" value="Login">Sign in</button>
           </div>
         </form>
       </div>

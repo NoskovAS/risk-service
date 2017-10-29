@@ -215,3 +215,10 @@ input::-webkit-inner-spin-button {
 .probability-select {
   padding-left: 10px;
 }
+
+.left-title,
+.right-title,
+.form-label
+.buttonAdd {
+  font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+}

@@ -1,39 +1,36 @@
 body {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .register-form {
-    margin-top: 2%;
+  margin-top: 2%;
+  margin-bottom: 100px;
 }
 
 h1 {
-    color: blueviolet;
-    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1793d3;
 }
 
-/* Button */
+.tss,
+.title,
+.form-label,
+.btn-block {
+  font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.link {
+  text-decoration: underline;
+}
+
 .btn {
-    background-color: rgba(0, 0, 0, 0);
-    border-width: 1.4px;
-    border-color: blueviolet;
-    color: blueviolet;
-    font-size: 18px;
+  margin-top: 30px;
 }
 
-.btn:hover {
-    background-color: blueviolet;
-    color: white;
-    font-size: 18px;
-}
-
-.btn:disabled {
-    background-color: rgba(128, 128, 128, 0.69);
-    color: #BDBDBD;
-    border-color: rgba(128, 128, 128, 0.69);;
-}
-
-.btn:disabled:hover {
-    background-color: rgba(128, 128, 128, 0.69);
-    color: #BDBDBD;
-    border-color: rgba(128, 128, 128, 0.69);
+.pointer {
+  cursor: pointer;
+  /* Disabled double click selection */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

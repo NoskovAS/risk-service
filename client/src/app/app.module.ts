@@ -12,7 +12,6 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RiskListComponent } from './risk-list/risk-list.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 import { AuthGuard } from './guard/auth.guard';
 import { ProfileService } from './service/profile/profile.service';
@@ -29,10 +28,7 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterService } from './service/footer/footer.service';
 import { NavbarService } from './service/navbar/navbar.service';
-import { BasicInfoComponent } from './profile/basic-info/basic-info.component';
-import { PassChangeComponent } from './profile/pass-change/pass-change.component';
-import { AccountDelComponent } from './profile/account-del/account-del.component';
-
+import { ProfileModule } from './profile/profile.module';
 
 
 @NgModule({
@@ -42,13 +38,9 @@ import { AccountDelComponent } from './profile/account-del/account-del.component
     RegisterComponent,
     ProfileComponent,
     NavbarComponent,
-    EditProfileComponent,
     FooterComponent,
     LandingPageComponent,
     PageNotFoundComponent,
-    BasicInfoComponent,
-    PassChangeComponent,
-    AccountDelComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +52,8 @@ import { AccountDelComponent } from './profile/account-del/account-del.component
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    AdminPageModule
+    AdminPageModule,
+    ProfileModule
   ],
   exports: [],
   providers: [

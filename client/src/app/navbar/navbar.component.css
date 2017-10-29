@@ -22,7 +22,7 @@
 }
 
 .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.55);
+  background-color: #1793d3;
   border-width: 2px;
 }
 
@@ -37,7 +37,7 @@ h6 {
 }
 
 title {
-  font-family: Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+  font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
   line-height: 1.5;
   font-weight: 700;
   color: #0a0a0abe;

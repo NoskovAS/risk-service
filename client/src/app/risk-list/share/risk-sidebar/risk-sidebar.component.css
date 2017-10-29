@@ -39,3 +39,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.sidebar-row {
+  font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+}

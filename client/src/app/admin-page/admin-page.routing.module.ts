@@ -11,7 +11,7 @@ import { AdminMainComponent } from './admin-dashboard/admin-main/admin-main.comp
 const adminRoutes: Routes = [
     {
         path: 'admin',
-        component: AdminDashboardComponent, // AdminPageComponent
+        component: AdminPageComponent, // AdminPageComponent
         children: [
             {
                 path: '',

@@ -214,8 +214,13 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     }
 
     public toggleOwn() {
-        this.ownRisk === false ? this.ownRisk = true : this.ownRisk = false;
-        this.riskCheck = 0;
+        if (this.ownRisk === false) {
+            this.ownRisk = true;
+            this.riskCheck = 0;
+        } else {
+            this.ownRisk = false;
+            this.riskCheck = 1;
+        }
     }
 
     public clearInputs() {
