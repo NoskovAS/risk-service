@@ -95,19 +95,12 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   }
 
   editRow(index, $event) {
-    this.trackByFn(index, 2);
     console.log('index: ' + index);
     /* this.allowChange === false ? this.allowChange = true : this.allowChange = false; */
   }
 
   testfoo(text) {
     console.log('fjfjf' + text);
-  }
-
-  trackByFn(index, item) {
-    /* console.log('index: ' + index);
-    console.log('item: ' + item); */
-
   }
 
 }

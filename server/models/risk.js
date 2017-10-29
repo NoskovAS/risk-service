@@ -33,7 +33,7 @@ const RiskSchema = mongoose.Schema({
     },
     suggestions: {
         type: String,
-        required: true
+        /* required: true */
     },
     index: {
         type: Number,

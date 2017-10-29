@@ -208,3 +208,10 @@ input::-webkit-inner-spin-button {
   letter-spacing: 0.016em;
   font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
+
+.impact-select,
+.riskname-select,
+.suggestions-select,
+.probability-select {
+  padding-left: 10px;
+}

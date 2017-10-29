@@ -29,6 +29,9 @@ export class ItemDelComponent implements OnInit {
       username: localStorage.getItem('username'),
     };
 
+    console.log('I: ' + i + ' ' + SerialNumber.username);
+    console.log('Index: ' + SerialNumber.index + ' ' + SerialNumber.username);
+
     // delete risks
     this.riskListService.deleteRisk(SerialNumber).subscribe(data => {
       if (data.success) {

@@ -28,7 +28,7 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="riskname">Risk name</label>
                   <i class="material-icons pointer" (click)="clearFormInput('riskname')">clear</i>
-                  <select *ngIf="!ownRisk" class="form-control " id="riskname" formControlName="riskname" [(ngModel)]="riskSelected" required>
+                  <select *ngIf="!ownRisk" class="form-control form-select riskname-select" id="riskname" formControlName="riskname" [(ngModel)]="riskSelected" required>
                     <option *ngFor="let riskname of riskItems" [ngValue]="riskname.name">{{riskname.name}}</option>
                   </select>
                   <input *ngIf="ownRisk" class="form-input form-control" id="riskname" type="text" formControlName="riskname" required>
@@ -55,7 +55,7 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="impact">Probability of occurrence</label>
                   <i class="material-icons pointer" (click)="clearFormInput('impact')">clear</i>
-                  <select formControlName="impact" id="impact" class="form-control form-select" required>
+                  <select formControlName="impact" id="impact" class="form-control form-select impact-select" required>
                     <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
                   </select>
                 </div>
@@ -67,7 +67,7 @@
                 <div class="form-group inner-addon right-addon">
                   <label class="form-label" for="probability">Сoefficient of influence</label>
                   <i class="material-icons pointer" (click)="clearFormInput('probability')">clear</i>
-                  <select formControlName="probability" id="probability" class="form-control form-select" required>
+                  <select formControlName="probability" id="probability" class="form-control form-select probability-select" required>
                     <option *ngFor="let items of degree" [ngValue]="items.name">{{items.name}}</option>
                   </select>
                 </div>
@@ -94,32 +94,32 @@
                   <label class="form-label" for="suggestions">Suggestions</label>
                   <i class="material-icons pointer" (click)="clearFormInput('suggestions')">clear</i>
                   <div *ngIf="!ownRisk" id="suggestions">
-                    <select *ngIf="riskCheck == 1" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck === 1" class="form-control form-select suggestions-select" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems1" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="riskCheck == 2" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck === 2" class="form-control form-select suggestions-select" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems2" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="riskCheck == 3" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck === 3" class="form-control form-select suggestions-select" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems3" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="riskCheck == 4" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck === 4" class="form-control form-select suggestions-select" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems4" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="riskCheck == 5" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck === 5" class="form-control form-select suggestions-select" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems5" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
-                    <select *ngIf="riskCheck == 6" class="form-control" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
+                    <select *ngIf="riskCheck === 6" class="form-control form-select suggestions-select" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                       <option value="undefined" disabled selected hidden></option>
                       <option *ngFor="let suggest of suggestItems6" [ngValue]="suggest.name">{{suggest.name}}</option>
                     </select>
                   </div>
-                  <input *ngIf="ownRisk" type="text" class="form-input form-control" id="suggestions" formControlName="suggestions" required>
+                  <input *ngIf="ownRisk" type="text" class="form-input form-control" id="suggestions" formControlName="suggestions" [(ngModel)]="suggestSelected" required>
                 </div>
                 <!-- <app-validator-message [field]="riskForm.get('suggestions')"></app-validator-message> -->
               </div>
@@ -157,10 +157,6 @@
             <div class="col-md-4">
               <div *ngIf="formError" class="alert alert-danger" role="alert">
                 <button type="button" class="close pointer" data-dismiss="alert" (click)="formError=false">&times;</button>
-                <strong>Warning! </strong>Please fill in all fields
-              </div>
-              <div *ngIf="formSuccess" class="alert alert-primary" role="alert">
-                <button type="button" class="close pointer" data-dismiss="alert" (click)="!onRiskSubmit">&times;</button>
                 <strong>Warning! </strong>Please fill in all fields
               </div>
             </div>

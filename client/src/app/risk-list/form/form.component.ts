@@ -13,7 +13,6 @@ import { ChildParentService } from '../../service/child-parent/child-parent.serv
 })
 export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     formError: boolean = false;
-    formSuccess: boolean = false;
     ownRisk: boolean = false;
 
     user: Object; // User object
@@ -133,7 +132,6 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     ngOnDestroy() { }
 
     @HostListener('document:click') onMouseEnter() {
-        console.log('trrttr');
     }
 
     // Adding table values from array
@@ -159,7 +157,6 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
     public onRiskSubmit(form) {
         if (this.riskForm.invalid) {
             this.formError = true;
-            console.log('this.formError: ' + this.formError);
             return;
         }
 
@@ -189,7 +186,6 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
             }
         });
         this.index++;
-        this.formSuccess = true;
     }
 
     // Recovery risks in table
@@ -214,10 +210,12 @@ export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
 
     tableClear(emit) {
         this.index = 0;
+        console.log('emit tableClear' + this.index);
     }
 
     public toggleOwn() {
         this.ownRisk === false ? this.ownRisk = true : this.ownRisk = false;
+        this.riskCheck = 0;
     }
 
     public clearInputs() {

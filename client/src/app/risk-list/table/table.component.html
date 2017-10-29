@@ -93,29 +93,23 @@
         <tr *ngFor="let item of selectedItems | riskFilter : searchRisks
                 | priorityFilter : searchPriorityes | hoursFilter : searchHours | costFilter: searchCosts 
                 | chanceFilter : searchChances | dateFilter: searchDates | suggestionFilter : searchSuggestions 
-                | orderBy: {property: column, direction: direction}; let i = index; trackBy: trackByFn">
+                | orderBy: {property: column, direction: direction}; let i = index">
           <td class="col1">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.riskname}}</div>
-            <input *ngIf="allowChange"> </td>
+            <div contenteditable="true" >{{item.riskname}}</div>
           <td class="col2">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.priority}}</div>
-            <input *ngIf="allowChange" type="number"> </td>
+            <div contenteditable="true" >{{item.priority}}</div>
           <td class="col3">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.hoursinfluence}}</div>
-            <input *ngIf="allowChange" type="number"> </td>
+            <div contenteditable="true" >{{item.hoursinfluence}}</div>
           <td class="col4">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.costinfluence | currency:"USD":true:'4.1-2' }}</div>
-            <input *ngIf="allowChange" type="number"> </td>
+            <div contenteditable="true" >{{item.costinfluence | currency:"USD":true:'4.1-2' }}</div>
           <td class="col5">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.commonChance}}</div>
-            <input *ngIf="allowChange" type="number"> </td>
+            <div contenteditable="true" >{{item.commonChance}}</div>
           <td class="col6">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.date | date: 'dd MMMM yyyy'}}</div>
-            <input *ngIf="allowChange" type="number"> </td>
+            <div contenteditable="true" >{{item.date | date: 'dd MMMM yyyy'}}</div>
           <td class="col7">
-            <div contenteditable="true" *ngIf="!allowChange">{{item.suggestions}}</div>
-            <input *ngIf="allowChange" type="text"> </td>
+            <div contenteditable="true" >{{item.suggestions}}</div>
           <td class="col8">
+            {{i}} {{item.index}}
             <app-item-edit [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
             <app-item-del [index]="item.index" [i]="i" [items]="items" (deleted)="deleted($event)"></app-item-del>
           </td>
