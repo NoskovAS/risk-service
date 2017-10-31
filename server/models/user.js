@@ -28,7 +28,7 @@ const UserSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
+    required: true 
   }
 });
 
@@ -51,6 +51,16 @@ module.exports.addUser = function (newUser, callback) {
       if (err) throw err;
       newUser.password = hash;
       newUser.save(callback);
+    });
+  });
+}
+
+module.exports.editPass = function (password, user, callback) {
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) => {
+      if (err) throw err;
+      user.password = hash;
+      user.save(callback);
     });
   });
 }

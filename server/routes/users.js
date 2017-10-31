@@ -137,6 +137,52 @@ router.post('/editProfile', (req, res, next) => {
   });
 });
 
+// Edit password
+router.post('/editPassword', (req, res, next) => {
+  "use strict"
+  const username = req.body.username;
+  const currentPass = req.body.currentPass;
+  const password = req.body.password.pwd;
+
+  User.getUserByUsername(username, (err, user) => {
+    if (err) throw err;
+    if (!user) {
+      return res.json({
+        success: false,
+        msg: 'User not found'
+      });
+    }
+
+    User.comparePassword(currentPass, user.password, (err, isMatch) => {
+      if (err) throw err;
+      if (isMatch) {
+        const token = jwt.sign(user, config.secret, {
+          expiresIn: 604800 // 1 week
+        });
+
+        User.editPass(password, user, (err, user) => {
+          if (err) {
+            res.json({
+              success: false,
+              msg: 'Failed to change pass'
+            });
+          } else {
+            res.json({
+              success: true,
+              msg: 'User pass edit'
+            });
+          }
+        });
+      } else {
+        return res.json({
+          success: false,
+          msg: 'Wrong current password'
+        });
+      }
+    });
+  });
+})
+
 
 // Get users
 router.post('/getUsers', (req, res, next) => {

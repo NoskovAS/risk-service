@@ -17,6 +17,14 @@ export class ProfileService {
             .map(res => res.json());
     }
 
+    editPassword(user) {
+        console.log(user);
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('http://localhost:3000/users/editPassword', user, {headers: headers})
+            .map(res => res.json());
+    }
+
     getProfile() {
         const headers = new Headers();
         this.loadToken();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidateService } from '../../service/validator/validate.service';
 import { ProfileService } from '../../service/profile/profile.service';
@@ -10,10 +10,15 @@ import { FormBuilder, ValidatorFn, Validators, AbstractControl, FormGroup } from
   templateUrl: './pass-change.component.html',
   styleUrls: ['./pass-change.component.css']
 })
-export class PassChangeComponent implements OnInit {
+export class PassChangeComponent implements OnInit, AfterContentChecked {
   public passwordForm: FormGroup = null;
 
-  changed: boolean = false;
+  public errors = {
+    changed: false,
+    changedError: false,
+    noMatch: false,
+    fieldError: false
+  };
 
   constructor(private router: Router,
     private validateService: ValidateService,
@@ -22,22 +27,60 @@ export class PassChangeComponent implements OnInit {
     private validatorService: ValidatorService) {
 
     const pwdValidators: ValidatorFn[] = [Validators.required, Validators.minLength(6), Validators.maxLength(20)];
-    const emailValidator: ValidatorFn[] = [Validators.email];
 
     this.passwordForm = this.fb.group({
-      password: ['', [Validators.required, this.validatorService.stringValidator()]],
-      confirm: ['', [Validators.required, this.validatorService.stringValidator()]],
-      currentPass: ['', [Validators.required, this.validatorService.stringValidator()]]
+      password: fb.group({
+        pwd: ['', pwdValidators],
+        confirm: ['', pwdValidators]
+      }, {
+          validator: validatorService.passwordsAreEqual()
+        }),
+      currentPass: ['', Validators.required],
+      username: []
     });
-   }
+  }
 
   ngOnInit() {
   }
 
+  ngAfterContentChecked() {
+  }
+
   onChangeSubmit() {
-    console.log(this.passwordForm.value.password);
-    console.log(this.passwordForm.value.confirm);
-    console.log(this.passwordForm.value.currentPass);
+    this.errors.changed = false;
+    this.errors.changedError = false;
+    this.errors.fieldError = false;
+    this.errors.noMatch = false;
+
+    if ((this.passwordForm.value.password.pwd === '') ||
+      (this.passwordForm.value.password.confirm === '') ||
+      (this.passwordForm.value.currentPass === '')) {
+        console.log('fieldError');
+      this.errors.fieldError = true;
+      return;
+    }
+
+    if (this.passwordForm.value.password.pwd !== this.passwordForm.value.password.confirm) {
+      console.log('noMatch');
+      this.errors.noMatch = true;
+      return;
+    }
+
+    this.passwordForm.patchValue({
+      username: localStorage.getItem('username')
+    });
+
+    const user = this.passwordForm.value;
+
+    this.profileService.editPassword(user).subscribe(data => {
+      if (data.success) {
+        this.errors.changed = true;
+        console.log('Successfull pass change');
+      } else {
+        this.errors.changedError = true;
+        console.log('Wrong pass change');
+      }
+    });
   }
 
 }
