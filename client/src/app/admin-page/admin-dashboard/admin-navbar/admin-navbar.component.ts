@@ -16,7 +16,6 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('ngOnDestroy navbar');
     this.navbarService.show();
     this.footerService.show();
   }

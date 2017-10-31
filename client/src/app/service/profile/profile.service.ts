@@ -18,7 +18,6 @@ export class ProfileService {
     }
 
     editPassword(user) {
-        console.log(user);
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:3000/users/editPassword', user, {headers: headers})
@@ -31,6 +30,13 @@ export class ProfileService {
         headers.append('authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
         return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+            .map(res => res.json());
+    }
+
+    deleteUser(user) {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('http://localhost:3000/users/deleteUser', user, {headers: headers})
             .map(res => res.json());
     }
 
