@@ -7,6 +7,7 @@
     display: inline-block;
     margin-left: 20px;
     width: 100%;
+    max-width: 400px;
 }
 
 .form-label {
@@ -15,6 +16,7 @@
 
 .form-group {
     margin-bottom: 30px;
+    margin-right: 40px;
 }
 
 .form-input {
@@ -45,4 +47,3 @@
     -ms-user-select: none;
     user-select: none;
 }
-
