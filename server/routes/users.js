@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const config = require('../config/database');
-const User = require('../models/user');
-const Admin = require('../models/admin');
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const config = require("../config/database");
+const User = require("../models/user");
+const Admin = require("../models/admin");
 
 // Register
-router.post('/register', (req, res, next) => {
+router.post("/register", (req, res, next) => {
   "use strict";
   let newUser = new User({
     firstname: req.body.firstname,
@@ -15,25 +15,25 @@ router.post('/register', (req, res, next) => {
     username: req.body.username,
     email: req.body.email,
     date: req.body.date,
-    password: req.body.password.pwd,
+    password: req.body.password.pwd
   });
   User.addUser(newUser, (err, user) => {
     if (err) {
       res.json({
         success: false,
-        msg: 'Failed to register user'
+        msg: "Failed to register user"
       });
     } else {
       res.json({
         success: true,
-        msg: 'User registered'
+        msg: "User registered"
       });
     }
   });
 });
 
 // Authenticate
-router.post('/authenticate', (req, res, next) => {
+router.post("/authenticate", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -42,7 +42,7 @@ router.post('/authenticate', (req, res, next) => {
     if (!user) {
       return res.json({
         success: false,
-        msg: 'User not found'
+        msg: "User not found"
       });
     }
 
@@ -55,7 +55,7 @@ router.post('/authenticate', (req, res, next) => {
 
         res.json({
           success: true,
-          token: 'JWT ' + token,
+          token: "JWT " + token,
           user: {
             id: user._id,
             firstname: user.firstname,
@@ -67,7 +67,7 @@ router.post('/authenticate', (req, res, next) => {
       } else {
         return res.json({
           success: false,
-          msg: 'Wrong password'
+          msg: "Wrong password"
         });
       }
     });
@@ -75,7 +75,7 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Admin authenticate
-router.post('/admin', (req, res, next) => {
+router.post("/admin", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -83,7 +83,7 @@ router.post('/admin', (req, res, next) => {
     if (err) throw err;
     if (!admin) {
       return res.json({
-        success: false,
+        success: false
       });
     }
 
@@ -95,11 +95,11 @@ router.post('/admin', (req, res, next) => {
         });
 
         res.json({
-          success: true,
+          success: true
         });
       } else {
         return res.json({
-          success: false,
+          success: false
         });
       }
     });
@@ -107,39 +107,46 @@ router.post('/admin', (req, res, next) => {
 });
 
 // Get profile
-router.get('/profile', passport.authenticate('jwt', {
-  session: false
-}), (req, res, next) => {
-  res.json({
-    user: req.user
-  });
-});
+router.get(
+  "/profile",
+  passport.authenticate("jwt", {
+    session: false
+  }),
+  (req, res, next) => {
+    res.json({
+      user: req.user
+    });
+  }
+);
 
 // Edit profile
-router.post('/editProfile', (req, res, next) => {
+router.post("/editProfile", (req, res, next) => {
   "use strict";
   const oldUsername = req.body.oldUsername;
-  User.findOne({
-    username: oldUsername
-  }, function (err, user) {
-    if (err) throw err;
+  User.findOne(
+    {
+      username: oldUsername
+    },
+    function(err, user) {
+      if (err) throw err;
 
-    user.lastname = req.body.lastname,
-      user.firstname = req.body.firstname,
-      user.email = req.body.email,
-      user.username = req.body.username,
-      user.save();
+      (user.lastname = req.body.lastname),
+        (user.firstname = req.body.firstname),
+        (user.email = req.body.email),
+        (user.username = req.body.username),
+        user.save();
 
-    return res.json({
-      success: true,
-      msg: 'Successfull change'
-    });
-  });
+      return res.json({
+        success: true,
+        msg: "Successfull change"
+      });
+    }
+  );
 });
 
 // Edit password
-router.post('/editPassword', (req, res, next) => {
-  "use strict"
+router.post("/editPassword", (req, res, next) => {
+  "use strict";
   const username = req.body.username;
   const currentPass = req.body.currentPass;
   const password = req.body.password.pwd;
@@ -149,7 +156,7 @@ router.post('/editPassword', (req, res, next) => {
     if (!user) {
       return res.json({
         success: false,
-        msg: 'User not found'
+        msg: "User not found"
       });
     }
 
@@ -164,62 +171,66 @@ router.post('/editPassword', (req, res, next) => {
           if (err) {
             res.json({
               success: false,
-              msg: 'Failed to change pass'
+              msg: "Failed to change pass"
             });
           } else {
             res.json({
               success: true,
-              msg: 'User pass edit'
+              msg: "User pass edit"
             });
           }
         });
       } else {
         return res.json({
           success: false,
-          msg: 'Wrong current password'
+          msg: "Wrong current password"
         });
       }
     });
   });
-})
-
+});
 
 // Get users
-router.post('/getUsers', (req, res, next) => {
-  "use strict"
-  User.find(function (err, user) {
+router.post("/getUsers", (req, res, next) => {
+  "use strict";
+  User.find(function(err, user) {
     if (err) {
-      res.status(500).send(err)
+      res.status(500).send(err);
     } else {
       res.send(user);
     }
-  })
-})
+  });
+});
 
 // Delete user
-router.post('/deleteUser', (req, res, next) => {
-  "use strict"
+router.post("/deleteUser", (req, res, next) => {
+  "use strict";
   const username = req.body.username;
-  User.findOne({
-    username: username
-  }, function (err, user) {
-
-    if (err) throw err;
-
-    // delete him
-    User.deleteOne({
+  User.findOne(
+    {
       username: username
-    }, function (err, removed) {
-      if (err) {
-        res.status(500).send(err)
-      } else {
-        return res.json({
-          success: true,
-          msg: 'Successfull user deleted'
-        });
-      }
-    });
-  });
-})
+    },
+    function(err, user) {
+      if (err) throw err;
+
+      // delete him
+      User.deleteOne(
+        {
+          username: username
+        },
+        function(err, removed) {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            return res.json({
+              success: true,
+              msg: "Successfull user deleted"
+            });
+          }
+        }
+      );
+    }
+  );
+});
 
 module.exports = router;

@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const config = require('../config/database');
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const config = require("../config/database");
 
 // User Schema
 const UserSchema = mongoose.Schema({
   firstname: {
-    type: String,
+    type: String
     /* required: true */
   },
   lastname: {
-    type: String,
+    type: String
     /* required: true */
   },
   username: {
@@ -19,33 +19,33 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true,
+    unique: true
     /* required: true */
   },
   date: {
-    type: Date,
+    type: Date
     /* required: true */
   },
   password: {
     type: String,
-    required: true 
+    required: true
   }
 });
 
-const User = module.exports = mongoose.model('User', UserSchema);
+const User = (module.exports = mongoose.model("User", UserSchema));
 
-module.exports.getUserById = function (id, callback) {
+module.exports.getUserById = function(id, callback) {
   User.findById(id, callback);
-}
+};
 
-module.exports.getUserByUsername = function (username, callback) {
+module.exports.getUserByUsername = function(username, callback) {
   const query = {
     username: username
-  }
+  };
   User.findOne(query, callback);
-}
+};
 
-module.exports.addUser = function (newUser, callback) {
+module.exports.addUser = function(newUser, callback) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if (err) throw err;
@@ -53,9 +53,9 @@ module.exports.addUser = function (newUser, callback) {
       newUser.save(callback);
     });
   });
-}
+};
 
-module.exports.editPass = function (password, user, callback) {
+module.exports.editPass = function(password, user, callback) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, (err, hash) => {
       if (err) throw err;
@@ -63,15 +63,15 @@ module.exports.editPass = function (password, user, callback) {
       user.save(callback);
     });
   });
-}
+};
 
-module.exports.comparePassword = function (candidatePassword, hash, callback) {
+module.exports.comparePassword = function(candidatePassword, hash, callback) {
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if (err) throw err;
     callback(null, isMatch);
   });
-}
+};
 
-module.exports.saveUser = function (callback) {
+module.exports.saveUser = function(callback) {
   User.save(callback);
-}
+};

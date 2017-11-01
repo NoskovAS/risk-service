@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RiskListModule } from './risk-list/risk-list.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -53,7 +54,8 @@ import { ProfileModule } from './profile/profile.module';
     ReactiveFormsModule,
     SharedModule,
     AdminPageModule,
-    ProfileModule
+    ProfileModule,
+    ChartsModule
   ],
   exports: [],
   providers: [
