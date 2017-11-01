@@ -40,7 +40,7 @@ router.post('/getRisk', (req, res, next) => {
     "username": username
   }, function (err, risk) {
     if (err) {
-      res.status(500).send(err)
+      res.status(500).send(err);
     } else {
       res.send(risk);
     }
@@ -65,7 +65,7 @@ router.post('/deleteRisk', (req, res, next) => {
       username: username
     }, function (err, removed) {
       if (err) {
-        res.status(500).send(err)
+        res.status(500).send(err);
       } else {
         return res.json({
           success: true,
@@ -84,7 +84,7 @@ router.post('/clearTable', (req, res, next) => {
     "username": username
   }, function (err) {
     if (err) {
-      console.log(err)
+      console.log(err);
     } else {
       res.end('success table clear');
     }
