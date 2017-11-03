@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserDelComponent } from './user-del.component';
+import { CostRisksComponent } from './cost-risks.component';
 
-describe('UserDelComponent', () => {
-  let component: UserDelComponent;
-  let fixture: ComponentFixture<UserDelComponent>;
+describe('CostRisksComponent', () => {
+  let component: CostRisksComponent;
+  let fixture: ComponentFixture<CostRisksComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserDelComponent ]
+      declarations: [ CostRisksComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserDelComponent);
+    fixture = TestBed.createComponent(CostRisksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

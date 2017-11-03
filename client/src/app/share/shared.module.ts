@@ -12,6 +12,7 @@ import { ChanceFilterPipe,
          DateFilterPipe,
          SuggestionFilterPipe
       } from '../pipes/index';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ declarations: [
   HoursFilterPipe,
   PriorityFilterPipe,
   RiskFilterPipe,
-  SuggestionFilterPipe,
+  SuggestionFilterPipe
 ],
 exports: [
   ValidatorMessageComponent,
@@ -41,9 +42,10 @@ exports: [
   PriorityFilterPipe,
   RiskFilterPipe,
   SuggestionFilterPipe,
+  ChartsModule
 ],
 providers: [
-  ValidatorMessageComponent,
+  ValidatorMessageComponent
 ]
 })
 export class SharedModule {}

@@ -21,17 +21,19 @@
             </h6>
           </div>
         </div>
-        <div class="row">
+        <div class="row main-row container">
+          <div class="col-md-6">
+            <div class="card">
+              <h6 class="card-header">The graph of the dependence of the influence of costs on various risks</h6>
+              <app-cost-risks [items]="items" [abscissa]="abscissa" [ordinate]="ordinate"></app-cost-risks>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <!-- <app-cost-risks></app-cost-risks> -->
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="card">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card"></div>
       </div>
     </div>
   </div>
