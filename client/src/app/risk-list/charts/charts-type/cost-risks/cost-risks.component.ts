@@ -2,17 +2,17 @@ import { Component, OnInit, Input, OnDestroy, AfterContentChecked, OnChanges } f
 import { TableComponent } from '../../../table/table.component';
 import { FormComponent } from '../../../form/form.component';
 import { ChartsComponent } from '../../charts.component';
+import { Data } from '../../../data.class';
 
 @Component({
   selector: 'app-cost-risks',
   templateUrl: './cost-risks.component.html',
   styleUrls: ['./cost-risks.component.css'],
-  providers: [TableComponent, FormComponent]
 })
 export class CostRisksComponent implements OnInit, OnDestroy, AfterContentChecked, OnChanges {
-  @Input() items;
-  @Input() abscissa;
-  @Input() ordinate = [];
+  @Input() items: Data[];
+  @Input() abscissa = [];
+  @Input() ordinate;
 
 
   // lineChart
@@ -23,16 +23,15 @@ export class CostRisksComponent implements OnInit, OnDestroy, AfterContentChecke
 
   // Pie
   public pieChartType: string = 'pie';
-  public pieChartLabels: string[] = this.ordinate;
+  public pieChartLabels: string[] = [];
   public pieChartData: number[] = [300, 500, 100];
 
 
-  constructor(public tableComponent: TableComponent,
-    public formComponent: FormComponent,
-    public chartsComponent: ChartsComponent) {
+  constructor(public chartsComponent: ChartsComponent) {
   }
 
   ngOnInit() {
+    console.log('OOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!LLLLLLLLLLLL  ' + this.items);
   }
 
   ngAfterContentChecked() {
@@ -43,16 +42,15 @@ export class CostRisksComponent implements OnInit, OnDestroy, AfterContentChecke
 
   ngOnDestroy() { }
 
-  private riskSampling() {
+  /* private riskSampling() {
     for (let i = 0; i = this.items.length; i++) {
       console.log(this.items.length);
-      /* this.ordinate.push(this.items[i].riskname); */
+      this.ordinate.push(this.items[i].riskname);
     }
-  }
+  } */
 
   public chartClicked(e: any): void {
     console.log(e);
-    this.riskSampling();
   }
 
   public chartHovered(e: any): void {

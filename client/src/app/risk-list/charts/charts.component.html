@@ -22,17 +22,21 @@
           </div>
         </div>
         <div class="row main-row container">
-          <div class="col-md-6">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
             <div class="card">
               <h6 class="card-header">The graph of the dependence of the influence of costs on various risks</h6>
-              <app-cost-risks [items]="items" [abscissa]="abscissa" [ordinate]="ordinate"></app-cost-risks>
+              <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                >
+                <!-- (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)" -->
+            </canvas>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="card">
-              <!-- <app-cost-risks></app-cost-risks> -->
-            </div>
-          </div>
+          <div class="col-md-1"></div>
         </div>
       </div>
     </div>
