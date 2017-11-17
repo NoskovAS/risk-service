@@ -29,7 +29,7 @@ declarations: [
   HoursFilterPipe,
   PriorityFilterPipe,
   RiskFilterPipe,
-  SuggestionFilterPipe
+  SuggestionFilterPipe,
 ],
 exports: [
   ValidatorMessageComponent,

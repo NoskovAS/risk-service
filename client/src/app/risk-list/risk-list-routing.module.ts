@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { RiskListComponent } from './risk-list.component';
 import { TableComponent } from './table/table.component';
 import { ChartsComponent } from './charts/charts.component';
-import { TheoryComponent } from './theory/theory.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FormComponent } from './form/form.component';
 
