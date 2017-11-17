@@ -28,11 +28,6 @@ const riskRoutes: Routes = [
                 component: ChartsComponent
             },
             {
-                path: 'theory',
-                pathMatch: 'full',
-                component: TheoryComponent
-            },
-            {
                 path: 'settings',
                 pathMatch: 'full',
                 component: SettingsComponent
