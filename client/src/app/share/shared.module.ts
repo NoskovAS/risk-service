@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ValidatorMessageComponent } from './validator-message/validator-message.directive';
-import { CustomSelectComponent } from './custom-select/custom-select.component';
 import { NgSelectorComponent } from './ng-selector/ng-selector.component';
 import { ChanceFilterPipe,
          OrderByPipe,
@@ -20,7 +19,6 @@ import { ChartsModule } from 'ng2-charts';
  ],
 declarations: [
   ValidatorMessageComponent,
-  CustomSelectComponent,
   NgSelectorComponent,
   OrderByPipe,
   ChanceFilterPipe,
@@ -33,7 +31,6 @@ declarations: [
 ],
 exports: [
   ValidatorMessageComponent,
-  CustomSelectComponent,
   OrderByPipe,
   ChanceFilterPipe,
   CostFilterPipe,

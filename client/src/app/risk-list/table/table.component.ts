@@ -96,7 +96,6 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   editRow(index, $event) {
     console.log('index: ' + index);
-    /* this.allowChange === false ? this.allowChange = true : this.allowChange = false; */
   }
 
   testfoo(text) {

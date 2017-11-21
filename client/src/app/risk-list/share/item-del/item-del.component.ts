@@ -23,6 +23,10 @@ export class ItemDelComponent implements OnInit {
   ngOnInit() {
   }
 
+  foo() {
+    console.log('Fooooo!');
+  }
+
   riskDelete(index: number = this.index, i: number = this.i) {
     const SerialNumber = {
       index: index,
