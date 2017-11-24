@@ -8,12 +8,12 @@ import 'rxjs/Rx';
 import 'rxjs/add/operator/takeWhile';
 
 @Component({
-  selector: 'app-cost-risks',
-  templateUrl: './cost-risks.component.html',
-  styleUrls: ['./cost-risks.component.css'],
+  selector: 'app-risks-pie',
+  templateUrl: './risks-pie.component.html',
+  styleUrls: ['./risks-pie.component.css'],
 })
 
-export class CostRisksComponent implements OnInit, AfterContentChecked {
+export class RisksPieComponent implements OnInit, AfterContentChecked {
   @Input() riskSample;
   @Input() items: Data[];
   isDataAvailable: boolean = false;
@@ -55,43 +55,7 @@ export class CostRisksComponent implements OnInit, AfterContentChecked {
     );
   }
 
-  ngAfterContentChecked() {
-  }
-
-  private getRisks(riskSample) {
-    /* let riskStream$ = Observable
-      .of(riskSample)
-      .takeWhile(() => riskSample === [])
-      .subscribe(val => console.log('takeWhile', val)); */
-    /*   .subscribe(
-        function(data) {
-          console.log('Subscribe: ' + data);
-          this.isDataAvailable = true;
-        },
-        function(error) {
-          console.log('Error: ' + error);
-          this.isDataAvailable = true;
-        },
-        function() {
-          this.isDataAvailable = true;
-          console.log('Complited');
-        }
-      ); */
-
-    /* riskStream$
-     .subscribe(
-       function(data) {
-         console.log('Subscribe: ' + data);
-         this.isDataAvailable = true;
-       },
-       function(error) {
-         console.log('Error: ' + error);
-       },
-       function() {
-         console.log('Complited');
-       }
-     ); */
-  }
+  ngAfterContentChecked() {}
 
   // events
   public chartClicked(e: any): void {

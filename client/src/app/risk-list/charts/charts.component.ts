@@ -2,8 +2,6 @@ import { Component, OnInit, AfterContentChecked, OnDestroy, Output } from '@angu
 import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { Data } from '../data.class';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
-import { ArrayObservable } from 'rxjs/observable/ArrayObservable';
 
 @Component({
   selector: 'app-charts',

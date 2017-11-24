@@ -26,10 +26,23 @@
           <div class="col-md-12">
             <div class="card">
               <h6 class="card-header">The graph of the dependence of the influence of costs on various risks</h6>
-              <app-cost-risks [riskSample]="riskSample"></app-cost-risks>
+              <app-risks-pie [riskSample]="riskSample"></app-risks-pie>
             </div>
           </div>
          <!--  <div class="col-md-1"></div> -->
+        </div>
+        <div class="row second-row">
+          <div class="col-md-6">
+            <div class="card">
+              <h6 class="card-header text-center">Number of risks with different priorities</h6>
+              <app-risks-priority [prioritySample]="prioritySample"></app-risks-priority>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <h6 class="card-header">Chart #3</h6>
+            </div>
+          </div>
         </div>
       </div>
     </div>

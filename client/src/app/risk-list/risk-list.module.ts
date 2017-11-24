@@ -14,7 +14,8 @@ import { ItemEditComponent } from './share/item-edit/item-edit.component';
 import { RiskSidebarComponent } from './share/risk-sidebar/risk-sidebar.component';
 import { ChartsComponent } from './charts/charts.component';
 import { SettingsComponent } from './settings/settings.component';
-import { CostRisksComponent } from './charts/charts-type/cost-risks/cost-risks.component';
+import { RisksPieComponent } from './charts/charts-type/risks-pie/risks-pie.component';
+import { RisksPriorityComponent } from './charts/charts-type/risks-priority/risks-priority.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { CostRisksComponent } from './charts/charts-type/cost-risks/cost-risks.c
     RiskSidebarComponent,
     ChartsComponent,
     SettingsComponent,
-    CostRisksComponent
+    RisksPieComponent,
+    RisksPriorityComponent
   ],
   providers: [
     ChildParentService
