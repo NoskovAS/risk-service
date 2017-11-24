@@ -3,6 +3,7 @@ import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { Data } from '../data.class';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { ArrayObservable } from 'rxjs/observable/ArrayObservable';
 
 @Component({
   selector: 'app-charts',
@@ -20,24 +21,6 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
   private chanceSample: any[] = [];
   private suggestionsSample: any[] = [];
 
-  // Pie chart data
-  private firstRisk: number = 0;
-  private otherRisk: number = 0;
-  private seventhRisk: number = 0;
-  private sixthRisk: number = 0;
-  private fifthRisk: number = 0;
-  private fourthRisk: number = 0;
-  private thirdRisk: number = 0;
-  private secondRisk: number = 0;
-
-    /* 'Реализация важного модуля в проекте',
-    'Задержка в покупке оборудования/ПО',
-    'Внутренние сложности календарного планирования',
-    'Отсутствие коммуникации между представителем и заказчиком',
-    'Недостаток квалифицированных специалистов',
-    'Высокая вероятность изменения требований проекта' */
-
-
   constructor(private riskListService: RiskListService) { }
 
   ngOnInit() {
@@ -48,7 +31,7 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
   ngAfterContentChecked() {
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
 
   // Recovery risks in table
@@ -70,7 +53,6 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
       this.sampling('priority');
       this.sampling('commonChance');
       this.sampling('suggestions');
-      this.riskSelect();
     });
   }
 
@@ -88,34 +70,5 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
     if (item === 'suggestions') { this.suggestionsSample = sampleArray; }
   }
 
-  private riskSelect() {
-    for (let i = 0; i <= this.riskSample.length; i++) {
-      if (this.riskSample[i] === 'Реализация важного модуля в проекте') {
-        this.firstRisk++;
-        continue;
-      }
-      if (this.riskSample[i] === 'Задержка в покупке оборудования/ПО') {
-        this.secondRisk++;
-        continue;
-      }
-      if (this.riskSample[i] === 'Внутренние сложности календарного планирования') {
-        this.thirdRisk++;
-        continue;
-      }
-      if (this.riskSample[i] === 'Отсутствие коммуникации между представителем и заказчиком') {
-        this.fourthRisk++;
-        continue;
-      }
-      if (this.riskSample[i] === 'Недостаток квалифицированных специалистов') {
-        this.fifthRisk++;
-        continue;
-      }
-      if (this.riskSample[i] === 'Высокая вероятность изменения требований проекта') {
-        this.sixthRisk++;
-        continue;
-      } /* else {
-        this.otherRisk++;
-      } */
-    }
-  }
+
 }

@@ -21,15 +21,15 @@
             </h6>
           </div>
         </div>
-        <div class="row main-row container">
-          <div class="col-md-1"></div>
-          <div class="col-md-10">
+        <div class="row main-row">
+          <!-- <div class="col-md-1"></div> -->
+          <div class="col-md-12">
             <div class="card">
               <h6 class="card-header">The graph of the dependence of the influence of costs on various risks</h6>
-              <app-cost-risks></app-cost-risks>
+              <app-cost-risks [riskSample]="riskSample"></app-cost-risks>
             </div>
           </div>
-          <div class="col-md-1"></div>
+         <!--  <div class="col-md-1"></div> -->
         </div>
       </div>
     </div>
