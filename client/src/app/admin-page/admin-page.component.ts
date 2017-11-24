@@ -56,6 +56,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
       this.router.navigate(['login']);
       return false;
     }
+
     const admin = {
       username: this.adminForm.value.login,
       password: this.adminForm.value.password

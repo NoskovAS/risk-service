@@ -9,52 +9,16 @@ import { Data } from '../../../data.class';
   templateUrl: './cost-risks.component.html',
   styleUrls: ['./cost-risks.component.css'],
 })
-export class CostRisksComponent implements OnInit, OnDestroy, AfterContentChecked, OnChanges {
+export class CostRisksComponent implements OnInit, AfterContentChecked {
   @Input() items: Data[];
-  @Input() abscissa = [];
-  @Input() ordinate;
-
-
-  // lineChart
-  public lineChartData: Array<any> = [];
-  public lineChartLabels: Array<any> = [];
-  public lineChartType: string = 'line';
-
-
-  // Pie
-  public pieChartType: string = 'pie';
-  public pieChartLabels: string[] = [];
-  public pieChartData: number[] = [300, 500, 100];
-
+  @Input() riskSample;
 
   constructor(public chartsComponent: ChartsComponent) {
   }
 
   ngOnInit() {
-    console.log('OOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!LLLLLLLLLLLL  ' + this.items);
   }
 
   ngAfterContentChecked() {
   }
-
-  ngOnChanges() {
-  }
-
-  ngOnDestroy() { }
-
-  /* private riskSampling() {
-    for (let i = 0; i = this.items.length; i++) {
-      console.log(this.items.length);
-      this.ordinate.push(this.items[i].riskname);
-    }
-  } */
-
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
 }

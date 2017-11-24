@@ -10,25 +10,32 @@ import 'rxjs/Rx';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
+  items: Data[] = [];
   user: Object;
-  @Output() items: Data[] = [];
 
-  costSample: any[] = [];
-  riskSample: string[] = [];
+  private riskSample: string[] = [];
+  private costSample: any[] = [];
+  private hoursSample: any[] = [];
+  private prioritySample: any[] = [];
+  private chanceSample: any[] = [];
+  private suggestionsSample: any[] = [];
 
   // Pie chart data
-  public firstRisk: number = 0;
-  public otherRisk: number = 0;
-  public seventhRisk: number = 0;
-  public sixthRisk: number = 0;
-  public fifthRisk: number = 0;
-  public fourthRisk: number = 0;
-  public thirdRisk: number = 0;
-  public secondRisk: number = 0;
+  private firstRisk: number = 0;
+  private otherRisk: number = 0;
+  private seventhRisk: number = 0;
+  private sixthRisk: number = 0;
+  private fifthRisk: number = 0;
+  private fourthRisk: number = 0;
+  private thirdRisk: number = 0;
+  private secondRisk: number = 0;
 
-  public pieChartType: string = 'pie';
-  public pieChartLabels: string[] = [];
-  public pieChartData: number[] = [];
+    /* 'Реализация важного модуля в проекте',
+    'Задержка в покупке оборудования/ПО',
+    'Внутренние сложности календарного планирования',
+    'Отсутствие коммуникации между представителем и заказчиком',
+    'Недостаток квалифицированных специалистов',
+    'Высокая вероятность изменения требований проекта' */
 
 
   constructor(private riskListService: RiskListService) { }
@@ -41,19 +48,11 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
   ngAfterContentChecked() {
   }
 
-  ngOnDestroy() {
-    this.firstRisk = 0;
-    this.secondRisk = 0;
-    this.thirdRisk = 0;
-    this.fourthRisk = 0;
-    this.fifthRisk = 0;
-    this.sixthRisk = 0;
-    this.seventhRisk = 0;
-  }
+  ngOnDestroy() {}
 
 
   // Recovery risks in table
-  public riskRecovery() {
+  private riskRecovery() {
     const user = {
       username: localStorage.getItem('username'),
     };
@@ -64,102 +63,59 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
         this.items.push(new Data(data[i].riskname, data[i].priority, data[i].hoursinfluence,
           data[i].costinfluence, data[i].commonChance, data[i].date, data[i].suggestions, data[i].index));
       }
-      this.costSampling();
-      this.riskSampling();
+      /* Extracting data from array */
+      this.sampling('riskname');
+      this.sampling('costinfluence');
+      this.sampling('hoursinfluence');
+      this.sampling('priority');
+      this.sampling('commonChance');
+      this.sampling('suggestions');
       this.riskSelect();
-
-      this.pieChartLabels = this.riskSample;
     });
   }
 
-  private costSampling() {
+  /* Extracting the required data from an array */
+  private sampling(item) {
+    let sampleArray: any[] = [];
     for (let i = 0; i < this.items.length; i++) {
-      this.costSample.push(this.items[i].costinfluence);
+      sampleArray.push(this.items[i][item]);
     }
-  }
-
-  private riskSampling() {
-    for (let i = 0; i < this.items.length; i++) {
-      this.riskSample.push(this.items[i].riskname);
-    }
+    if (item === 'riskname') { this.riskSample = sampleArray; }
+    if (item === 'costinfluence') { this.costSample = sampleArray; }
+    if (item === 'hoursinfluence') { this.hoursSample = sampleArray; }
+    if (item === 'priority') { this.prioritySample = sampleArray; }
+    if (item === 'commonChance') { this.chanceSample = sampleArray; }
+    if (item === 'suggestions') { this.suggestionsSample = sampleArray; }
   }
 
   private riskSelect() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].riskname === 'Реализация важного модуля в проекте') {
+    for (let i = 0; i <= this.riskSample.length; i++) {
+      if (this.riskSample[i] === 'Реализация важного модуля в проекте') {
         this.firstRisk++;
         continue;
       }
-      if (this.items[i].riskname === 'Задержка в покупке оборудования/ПО') {
+      if (this.riskSample[i] === 'Задержка в покупке оборудования/ПО') {
         this.secondRisk++;
         continue;
       }
-      if (this.items[i].riskname === 'Внутренние сложности календарного планирования') {
+      if (this.riskSample[i] === 'Внутренние сложности календарного планирования') {
         this.thirdRisk++;
         continue;
       }
-      if (this.items[i].riskname === 'Отсутствие коммуникации между представителем и заказчиком') {
+      if (this.riskSample[i] === 'Отсутствие коммуникации между представителем и заказчиком') {
         this.fourthRisk++;
         continue;
       }
-      if (this.items[i].riskname === 'Недостаток квалифицированных специалистов') {
+      if (this.riskSample[i] === 'Недостаток квалифицированных специалистов') {
         this.fifthRisk++;
         continue;
       }
-      if (this.items[i].riskname === 'Высокая вероятность изменения требований проекта') {
+      if (this.riskSample[i] === 'Высокая вероятность изменения требований проекта') {
         this.sixthRisk++;
         continue;
-      } else {
+      } /* else {
         this.otherRisk++;
-      }
+      } */
     }
-    console.log(
-      this.firstRisk + ' ' +
-      this.secondRisk + ' ' +
-      this.thirdRisk + ' ' +
-      this.fourthRisk + ' ' +
-      this.fifthRisk + ' ' +
-      this.sixthRisk + ' ' +
-      this.otherRisk
-    );
-    if (this.firstRisk !== 0) {
-      console.log('Oppa!');
-      this.pieChartData.push(this.fifthRisk);
-    }
-    if (this.secondRisk !== 0) {
-      console.log('Oppa1!');
-      this.pieChartData.push(this.secondRisk);
-    }
-    if (this.thirdRisk !== 0) {
-      console.log('Oppa2!');
-      this.pieChartData.push(this.thirdRisk);
-    }
-    if (this.fourthRisk !== 0) {
-      console.log('Oppa3!');
-      this.pieChartData.push(this.fourthRisk);
-    }
-    if (this.fifthRisk !== 0) {
-      console.log('Oppa4!');
-      this.pieChartData.push(this.fifthRisk);
-    }
-    if (this.sixthRisk !== 0) {
-      console.log('Oppa5!');
-      this.pieChartData.push(this.sixthRisk);
-    }
-    if (this.otherRisk !== 0) {
-      console.log('OppaOther!');
-      this.pieChartData.push(this.otherRisk);
-    }
-    /* this.pieChartData.push(
-      this.firstRisk,
-      this.secondRisk,
-      this.thirdRisk,
-      this.fourthRisk,
-      this.fifthRisk,
-      this.sixthRisk,
-      this.otherRisk
-    ); */
-    console.log('pieChartData: ' + this.pieChartData);
   }
-
 }
