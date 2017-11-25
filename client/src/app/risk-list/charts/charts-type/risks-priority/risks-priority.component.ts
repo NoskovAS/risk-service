@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class RisksPriorityComponent implements OnInit, AfterContentChecked {
   @Input() prioritySample;
+  isDataAvailable: boolean = false;
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -85,5 +86,6 @@ export class RisksPriorityComponent implements OnInit, AfterContentChecked {
       { data: [firstPriority, secondPriority, thirdPriority, fourthPriority, sixthPriority, ninthPriority], label: 'Number of risks' }
     ];
     this.barChartData = clone;
+    this.isDataAvailable = true;
   }
 }

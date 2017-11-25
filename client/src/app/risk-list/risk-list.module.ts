@@ -16,6 +16,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { SettingsComponent } from './settings/settings.component';
 import { RisksPieComponent } from './charts/charts-type/risks-pie/risks-pie.component';
 import { RisksPriorityComponent } from './charts/charts-type/risks-priority/risks-priority.component';
+import { RisksCostsComponent } from './charts/charts-type/risks-costs/risks-costs.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { RisksPriorityComponent } from './charts/charts-type/risks-priority/risk
     ChartsComponent,
     SettingsComponent,
     RisksPieComponent,
-    RisksPriorityComponent
+    RisksPriorityComponent,
+    RisksCostsComponent
   ],
   providers: [
     ChildParentService

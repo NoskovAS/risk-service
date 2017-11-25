@@ -1,4 +1,4 @@
-<div style="display: block">
+<div *ngIf="isDataAvailable" style="display: block">
     <canvas baseChart
       [datasets]="barChartData"
       [labels]="barChartLabels"
