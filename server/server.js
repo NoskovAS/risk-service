@@ -10,7 +10,8 @@ mongoose.Promise = global.Promise;
 const config = require("./config/database");
 const routes = require('./config/route-config');
 
-const HTTP_PORT = 3000;
+/* const HTTP_PORT = 3000; 8080 */
+const HTTP_PORT = process.env.PORT || 3000;
 
 // Connect To Database
 mongoose.connect(config.database, {
