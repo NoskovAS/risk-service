@@ -7,11 +7,11 @@ import { TableService } from '../../service/table/table.service';
 import { ChildParentService } from '../../service/child-parent/child-parent.service';
 
 @Component({
-    selector: 'app-form',
-    templateUrl: './form.component.html',
-    styleUrls: ['./form.component.css']
+    selector: 'app-risk-form',
+    templateUrl: './risk-form.component.html',
+    styleUrls: ['./risk-form.component.css']
 })
-export class FormComponent implements OnInit, AfterContentChecked, OnDestroy {
+export class RiskFormComponent implements OnInit, AfterContentChecked, OnDestroy {
     formError: boolean = false;
     ownRisk: boolean = false;
 

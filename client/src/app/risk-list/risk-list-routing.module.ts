@@ -4,7 +4,7 @@ import { RiskListComponent } from './risk-list.component';
 import { TableComponent } from './table/table.component';
 import { ChartsComponent } from './charts/charts.component';
 import { SettingsComponent } from './settings/settings.component';
-import { FormComponent } from './form/form.component';
+import { RiskFormComponent } from './risk-form/risk-form.component';
 
 const riskRoutes: Routes = [
     {
@@ -19,7 +19,7 @@ const riskRoutes: Routes = [
             {
                 path: 'table',
                 pathMatch: 'full',
-                component: FormComponent
+                component: RiskFormComponent
             },
             {
                 path: 'charts',

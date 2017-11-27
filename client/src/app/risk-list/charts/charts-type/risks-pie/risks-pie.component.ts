@@ -1,11 +1,6 @@
-import { Component, OnInit, Input, OnDestroy, AfterContentChecked } from '@angular/core';
-import { TableComponent } from '../../../table/table.component';
-import { FormComponent } from '../../../form/form.component';
-import { ChartsComponent } from '../../charts.component';
-import { Data } from '../../../data.class';
+import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import 'rxjs/add/operator/takeWhile';
 
 @Component({
   selector: 'app-risks-pie',
@@ -15,7 +10,6 @@ import 'rxjs/add/operator/takeWhile';
 
 export class RisksPieComponent implements OnInit, AfterContentChecked {
   @Input() riskSample;
-  @Input() items: Data[];
   isDataAvailable: boolean = false;
 
   // Pie
@@ -38,7 +32,7 @@ export class RisksPieComponent implements OnInit, AfterContentChecked {
   private sixthRisk: number = 0;
   private otherRisk: number = 0;
 
-  constructor(public chartsComponent: ChartsComponent) {
+  constructor() {
   }
 
   ngOnInit() {
