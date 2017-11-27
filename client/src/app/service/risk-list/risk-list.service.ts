@@ -14,28 +14,28 @@ export class RiskListService {
     addingRisk(risk) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3001/risks/table', risk, {headers: headers})
+        return this.http.post('http://localhost:3000/risks/table', risk, {headers: headers})
             .map(res => res.json());
     }
 
     getRisks(user) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3001/risks/getRisk', user, {headers: headers})
+        return this.http.post('http://localhost:3000/risks/getRisk', user, {headers: headers})
             .map(res => res.json());
     }
 
     deleteRisk(SerialNumber) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3001/risks/deleteRisk', SerialNumber, {headers: headers})
+        return this.http.post('http://localhost:3000/risks/deleteRisk', SerialNumber, {headers: headers})
             .map(res => res.json());
     }
 
     clearTable(user) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3001/risks/clearTable', user, {headers: headers});
+        return this.http.post('http://localhost:3000/risks/clearTable', user, {headers: headers});
     }
 
     getUsername() {

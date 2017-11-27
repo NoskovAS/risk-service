@@ -9,17 +9,24 @@ export class AdminService {
   constructor(private http: Http,
     private router: Router) { }
 
+  authenticateAdmin(admin) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/admin/authenticate', admin, { headers: headers })
+      .map(res => res.json());
+  }
+
   getUsers() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/getUsers', { headers: headers })
+    return this.http.post('http://localhost:3000/admin/getUsers', { headers: headers })
       .map(res => res.json());
   }
 
   deleteUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/deleteUser', user, { headers: headers })
+    return this.http.post('http://localhost:3000/admin/deleteUser', user, { headers: headers })
       .map(res => res.json());
   }
 

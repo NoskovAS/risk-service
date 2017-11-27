@@ -74,38 +74,6 @@ router.post("/authenticate", (req, res, next) => {
   });
 });
 
-// Admin authenticate
-router.post("/admin", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  Admin.getByName(username, (err, admin) => {
-    if (err) throw err;
-    if (!admin) {
-      return res.json({
-        success: false
-      });
-    }
-
-    Admin.comparePassword(password, admin.password, (err, isMatch) => {
-      if (err) throw err;
-      if (isMatch) {
-        const token = jwt.sign(admin, config.secret, {
-          expiresIn: 604800 // 1 week
-        });
-
-        res.json({
-          success: true
-        });
-      } else {
-        return res.json({
-          success: false
-        });
-      }
-    });
-  });
-});
-
 // Get profile
 router.get(
   "/profile",
@@ -123,18 +91,17 @@ router.get(
 router.post("/editProfile", (req, res, next) => {
   "use strict";
   const oldUsername = req.body.oldUsername;
-  User.findOne(
-    {
+  User.findOne({
       username: oldUsername
     },
-    function(err, user) {
+    function (err, user) {
       if (err) throw err;
 
       (user.lastname = req.body.lastname),
-        (user.firstname = req.body.firstname),
-        (user.email = req.body.email),
-        (user.username = req.body.username),
-        user.save();
+      (user.firstname = req.body.firstname),
+      (user.email = req.body.email),
+      (user.username = req.body.username),
+      user.save();
 
       return res.json({
         success: true,
@@ -188,49 +155,6 @@ router.post("/editPassword", (req, res, next) => {
       }
     });
   });
-});
-
-// Get users
-router.post("/getUsers", (req, res, next) => {
-  "use strict";
-  User.find(function(err, user) {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.send(user);
-    }
-  });
-});
-
-// Delete user
-router.post("/deleteUser", (req, res, next) => {
-  "use strict";
-  const username = req.body.username;
-  User.findOne(
-    {
-      username: username
-    },
-    function(err, user) {
-      if (err) throw err;
-
-      // delete him
-      User.deleteOne(
-        {
-          username: username
-        },
-        function(err, removed) {
-          if (err) {
-            res.status(500).send(err);
-          } else {
-            return res.json({
-              success: true,
-              msg: "Successfull user deleted"
-            });
-          }
-        }
-      );
-    }
-  );
 });
 
 module.exports = router;

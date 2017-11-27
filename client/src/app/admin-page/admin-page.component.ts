@@ -26,7 +26,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
   adminSuccess: boolean = false;
 
   constructor(private router: Router,
-    private authService: AuthService,
+    private adminService: AdminService,
     private fb: FormBuilder,
     private childParentService: ChildParentService,
     private navbarService: NavbarService,
@@ -62,7 +62,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
       password: this.adminForm.value.password
     };
 
-    this.authService.authenticateAdmin(admin).subscribe(data => {
+    this.adminService.authenticateAdmin(admin).subscribe(data => {
       if (data.success) {
         this.adminSuccess = true;
         return true;

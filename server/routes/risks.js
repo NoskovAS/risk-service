@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-const config = require("../config/database");
 const Risk = require("../models/risk");
-const User = require("../models/user");
 
 router.post("/table", (req, res, next) => {
   "use strict";
@@ -20,7 +17,7 @@ router.post("/table", (req, res, next) => {
   });
 
   // Save the risk
-  newRisk.save(function(err) {
+  newRisk.save(function (err) {
     if (err) throw err;
 
     console.log("Risk created!");
@@ -35,11 +32,10 @@ router.post("/table", (req, res, next) => {
 router.post("/getRisk", (req, res, next) => {
   "use strict";
   const username = req.body.username;
-  Risk.find(
-    {
+  Risk.find({
       username: username
     },
-    function(err, risk) {
+    function (err, risk) {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -54,21 +50,19 @@ router.post("/deleteRisk", (req, res, next) => {
   "use strict";
   const i = req.body.index;
   const username = req.body.username;
-  Risk.find(
-    {
+  Risk.find({
       index: i,
       username: username
     },
-    function(err, risk) {
+    function (err, risk) {
       if (err) throw err;
 
       // delete him
-      Risk.deleteOne(
-        {
+      Risk.deleteOne({
           index: i,
           username: username
         },
-        function(err, removed) {
+        function (err, removed) {
           if (err) {
             res.status(500).send(err);
           } else {
@@ -87,11 +81,10 @@ router.post("/deleteRisk", (req, res, next) => {
 router.post("/clearTable", (req, res, next) => {
   "use strict";
   const username = req.body.username;
-  Risk.remove(
-    {
+  Risk.remove({
       username: username
     },
-    function(err) {
+    function (err) {
       if (err) {
         console.log(err);
       } else {

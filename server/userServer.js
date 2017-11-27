@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const http = require("http");
 mongoose.Promise = global.Promise;
 const config = require("./config/database");
+const routes = require('./config/route-config');
 
 const HTTP_PORT = 3000;
 
@@ -28,9 +29,6 @@ mongoose.connection.on("error", err => {
 
 const app = express();
 
-const users = require("./routes/users");
-const risks = require("./routes/risks");
-
 // CORS Middleware
 app.use(cors());
 
@@ -47,8 +45,7 @@ app.use(passport.session());
 
 require("./config/passport")(passport);
 
-app.use("/users", users);
-/* app.use('/risks', risks); */
+app.use("/", routes);
 
 // Index Route
 app.get("/", (req, res) => {
