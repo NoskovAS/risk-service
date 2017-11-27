@@ -1,3 +1,11 @@
-<p>
-  risks-costs works!
-</p>
+<div *ngIf="isDataAvailable">
+  <canvas class="risk-cost" baseChart
+    [data]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [chartType]="lineChartType"
+    [legend]="lineChartLegend"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)">
+  </canvas>
+</div>

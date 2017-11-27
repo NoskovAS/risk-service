@@ -32,13 +32,7 @@ export class RisksPriorityComponent implements OnInit, AfterContentChecked {
         this.prioritySelect(this.prioritySample);
       }, 1000);
     });
-    this.prioritySample.subscribe(
-      value => console.log('value: ' + value),
-      error => console.log('Error'),
-      function () {
-        console.log('Complited');
-      }
-    );
+    this.prioritySample.subscribe();
   }
 
   ngAfterContentChecked() { }
