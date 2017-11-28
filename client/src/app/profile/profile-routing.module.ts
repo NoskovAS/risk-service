@@ -4,11 +4,13 @@ import { BasicInfoComponent } from './basic-info/basic-info.component';
 import { ProfileComponent } from './profile.component';
 import { AccountDelComponent } from './account-del/account-del.component';
 import { PassChangeComponent } from './pass-change/pass-change.component';
+import { AuthGuard } from '../guard/auth.guard';
 
 const profileRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

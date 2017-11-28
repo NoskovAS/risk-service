@@ -5,11 +5,13 @@ import { TableComponent } from './table/table.component';
 import { ChartsComponent } from './charts/charts.component';
 import { SettingsComponent } from './settings/settings.component';
 import { RiskFormComponent } from './risk-form/risk-form.component';
+import { AuthGuard } from '../guard/auth.guard';
 
 const riskRoutes: Routes = [
     {
         path: 'risk-list',
         component: RiskListComponent,
+        canActivate: [AuthGuard],
         children: [
             {
                 path: '',

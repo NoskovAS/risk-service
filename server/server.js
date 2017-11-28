@@ -5,8 +5,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const mongoose = require("mongoose");
-const http = require("http");
-mongoose.Promise = global.Promise;
+/* const http = require("http"); */
+/* mongoose.Promise = global.Promise; */
 const config = require("./config/database");
 const routes = require('./config/route-config');
 const morgan = require('morgan');
@@ -46,7 +46,6 @@ app.use(morgan('combined', {stream: accessLogStream}));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Body Parser Middleware
-/* app.use(bodyParser()); */
 app.use(bodyParser.json());
 
 // Passport Middleware

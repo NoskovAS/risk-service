@@ -24,7 +24,6 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     {
         path: 'risklist',
-        canActivate: [AuthGuard],
         children: [
             { path: '', component: RiskListComponent }
         ]
@@ -37,7 +36,6 @@ const routes: Routes = [
     },
     {
         path: 'profile',
-        canActivate: [AuthGuard],
         children: [
             {path: '', component: BasicInfoComponent},
         ]
