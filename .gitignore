@@ -41,3 +41,9 @@ testem.log
 .DS_Store
 Thumbs.db
 server/node_modules
+
+# Morgan log's
+server/access.log
+
+# database config
+server/config/database.js

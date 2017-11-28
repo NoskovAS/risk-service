@@ -9,9 +9,13 @@ const http = require("http");
 mongoose.Promise = global.Promise;
 const config = require("./config/database");
 const routes = require('./config/route-config');
+const morgan = require('morgan');
 
 /* const HTTP_PORT = 3000; 8080 */
 const HTTP_PORT = process.env.PORT || 3000;
+
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 
 // Connect To Database
 mongoose.connect(config.database, {
@@ -32,6 +36,11 @@ const app = express();
 
 // CORS Middleware
 app.use(cors());
+
+// Morgan logger
+app.use(morgan('tiny'));
+// setup the logger
+app.use(morgan('combined', {stream: accessLogStream}));
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, "public")));
