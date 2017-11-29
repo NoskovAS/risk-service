@@ -117,7 +117,7 @@
           </td>
           <td class="col8">
             <app-item-edit [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
-            <app-item-del [index]="item.index" [i]="i" [items]="items" (deleted)="deleted($event)"></app-item-del>
+            <app-item-del [index]="item.index" [i]="i" [items]="items" [limit]="limit" (deleted)="deleted($event)"></app-item-del>
           </td>
         </tr>
       </tbody>

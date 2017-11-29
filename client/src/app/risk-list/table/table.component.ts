@@ -98,8 +98,4 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
     console.log('index: ' + index);
   }
 
-  testfoo(text) {
-    console.log('fjfjf' + text);
-  }
-
 }

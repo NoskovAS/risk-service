@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { ChildParentService } from '../../../service/child-parent/child-parent.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   currentPage: number;
   totalPages: number;
 
-  constructor() { }
+  constructor(private childParentService: ChildParentService) { }
 
   ngOnInit() {
     this.getPages(this.offset, this.limit, this.size);
@@ -27,6 +28,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.getPages(this.offset, this.limit, this.size);
+    this.childParentService.passVariable(this.currentPage);
   }
 
   getPages(offset: number, limit: number, size: number) {
@@ -34,7 +36,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.totalPages = this.getTotalPages(limit, size);
     this.pages = Observable
       .range(-this.range, this.range * 2 + 1)
-      // tslint:disable-next-line:no-shadowed-variable
       .map(offset => this.currentPage + offset)
       .filter(page => this.isValidPageNumber(page, this.totalPages))
       .toArray();
