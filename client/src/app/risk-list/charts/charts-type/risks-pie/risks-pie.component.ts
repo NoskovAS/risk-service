@@ -23,6 +23,10 @@ export class RisksPieComponent implements OnInit, AfterContentChecked {
   ];
   public pieChartData: number[] = [];
   public pieChartType: string = 'pie';
+  public pieChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
 
   private firstRisk: number = 0;
   private secondRisk: number = 0;

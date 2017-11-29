@@ -22,24 +22,22 @@
           </div>
         </div>
         <div class="row main-row">
-          <!-- <div class="col-md-1"></div> -->
           <div class="col-md-12">
             <div class="card">
               <h6 class="card-header text-center">The graph of the dependence of the influence of costs on various risks</h6>
               <app-risks-pie [riskSample]="riskSample"></app-risks-pie>
             </div>
           </div>
-         <!--  <div class="col-md-1"></div> -->
         </div>
         <div class="row second-row">
           <div class="col-md-6">
-            <div class="card">
+            <div class="card card-left">
               <h6 class="card-header text-center">Number of risks with different priorities</h6>
               <app-risks-priority [prioritySample]="prioritySample"></app-risks-priority>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="card">
+            <div class="card card-right">
               <h6 class="card-header text-center">Influence in costs for each risk</h6>
               <app-risks-costs [costSample]="costSample" [riskSample]="riskSample"></app-risks-costs>
             </div>

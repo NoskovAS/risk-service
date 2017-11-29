@@ -3,9 +3,6 @@ body {
   background-color: whitesmoke;
   flex: 1;
 }
-content {
-    
-}
 
 .pointer {
   cursor: pointer;
@@ -64,4 +61,8 @@ content {
 .second-row {
   margin-top: 50px;
   margin-bottom: 100px;
+}
+
+.card {
+  box-shadow: 0 0 20px rgba(134, 134, 134, 0.5);
 }

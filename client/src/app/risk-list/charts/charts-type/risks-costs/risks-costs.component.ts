@@ -29,6 +29,16 @@ export class RisksCostsComponent implements OnInit, OnDestroy {
       }]
     }
   };
+  public lineChartColors: Array<any> = [
+    {
+      backgroundColor: 'rgb(0, 255, 179)',
+      borderColor: 'rgba(0, 68, 255,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: 'rgb(148, 0, 148)',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
 
   constructor() { }
 

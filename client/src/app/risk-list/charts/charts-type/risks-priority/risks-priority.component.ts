@@ -21,6 +21,16 @@ export class RisksPriorityComponent implements OnInit, AfterContentChecked {
   public barChartData: any[] = [
     { data: [], label: 'Number of risks' }, // y
   ];
+  public barChartColors: Array<any> = [
+    {
+      backgroundColor: 'rgb(255, 0, 21)',
+      borderColor: 'rgb(148, 0, 148)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ]
 
   constructor() { }
 
