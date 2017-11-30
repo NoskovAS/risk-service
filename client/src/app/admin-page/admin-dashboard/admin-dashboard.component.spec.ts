@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminDashboardComponent } from './admin-dashboard.component';
+import { NavbarService } from '../../service/navbar/navbar.service';
+import { FooterService } from '../../service/footer/footer.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AdminSidebarComponent } from '../share/admin-sidebar/admin-sidebar.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+
 
 describe('AdminDashboardComponent', () => {
   let component: AdminDashboardComponent;
@@ -8,7 +14,9 @@ describe('AdminDashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminDashboardComponent ]
+      imports: [RouterTestingModule],
+      declarations: [ AdminDashboardComponent, AdminSidebarComponent, AdminNavbarComponent ],
+      providers: [NavbarService, FooterService]
     })
     .compileComponents();
   }));

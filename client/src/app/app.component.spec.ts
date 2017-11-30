@@ -1,11 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SharedModule } from './share/shared.module';
+import { RiskListModule } from './risk-list/risk-list.module';
+import { AdminPageModule } from './admin-page/admin-page.module';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [],
       declarations: [
         AppComponent
       ],
+      providers: [SharedModule, RiskListModule, AdminPageModule]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

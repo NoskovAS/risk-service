@@ -13,7 +13,7 @@ export class UserDelComponent implements OnInit {
 
   constructor(private adminService: AdminService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   userDelete(username: string = this.username, i: number = this.i) {
     const user = {

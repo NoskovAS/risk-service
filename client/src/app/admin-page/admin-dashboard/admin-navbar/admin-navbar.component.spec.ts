@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminNavbarComponent } from './admin-navbar.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NavbarService } from '../../../service/navbar/navbar.service';
+import { FooterService } from '../../../service/footer/footer.service';
 
 describe('AdminNavbarComponent', () => {
   let component: AdminNavbarComponent;
@@ -8,7 +11,9 @@ describe('AdminNavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminNavbarComponent ]
+      imports: [RouterTestingModule],
+      declarations: [ AdminNavbarComponent ],
+      providers: [NavbarService, FooterService]
     })
     .compileComponents();
   }));

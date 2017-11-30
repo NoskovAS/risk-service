@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDelComponent } from './user-del.component';
+import { AdminService } from '../../../service/admin/admin.service';
+import { HttpModule } from '@angular/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserDelComponent', () => {
   let component: UserDelComponent;
@@ -8,9 +11,11 @@ describe('UserDelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserDelComponent ]
+      imports: [HttpModule, RouterTestingModule],
+      declarations: [UserDelComponent],
+      providers: [AdminService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
