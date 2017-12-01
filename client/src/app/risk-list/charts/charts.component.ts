@@ -12,12 +12,12 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
   items: Data[] = [];
   user: Object;
 
-  private riskSample: string[] = [];
-  private costSample: any[] = [];
-  private hoursSample: any[] = [];
-  private prioritySample: any[] = [];
-  private chanceSample: any[] = [];
-  private suggestionsSample: any[] = [];
+  public riskSample: string[] = [];
+  public costSample: any[] = [];
+  public hoursSample: any[] = [];
+  public prioritySample: any[] = [];
+  public chanceSample: any[] = [];
+  public suggestionsSample: any[] = [];
 
   constructor(private riskListService: RiskListService) { }
 

@@ -36,6 +36,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.totalPages = this.getTotalPages(limit, size);
     this.pages = Observable
       .range(-this.range, this.range * 2 + 1)
+      // tslint:disable-next-line:no-shadowed-variable
       .map(offset => this.currentPage + offset)
       .filter(page => this.isValidPageNumber(page, this.totalPages))
       .toArray();

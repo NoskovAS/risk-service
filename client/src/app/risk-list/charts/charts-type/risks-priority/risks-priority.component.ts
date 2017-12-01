@@ -30,7 +30,7 @@ export class RisksPriorityComponent implements OnInit, AfterContentChecked {
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
-  ]
+  ];
 
   constructor() { }
 
