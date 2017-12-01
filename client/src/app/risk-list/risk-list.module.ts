@@ -13,7 +13,6 @@ import { PaginationComponent } from './share/pagination/pagination.component';
 import { ItemEditComponent } from './share/item-edit/item-edit.component';
 import { RiskSidebarComponent } from './share/risk-sidebar/risk-sidebar.component';
 import { ChartsComponent } from './charts/charts.component';
-import { SettingsComponent } from './settings/settings.component';
 import { RisksPieComponent } from './charts/charts-type/risks-pie/risks-pie.component';
 import { RisksPriorityComponent } from './charts/charts-type/risks-priority/risks-priority.component';
 import { RisksCostsComponent } from './charts/charts-type/risks-costs/risks-costs.component';
@@ -39,7 +38,6 @@ import { RisksCostsComponent } from './charts/charts-type/risks-costs/risks-cost
     ItemEditComponent,
     RiskSidebarComponent,
     ChartsComponent,
-    SettingsComponent,
     RisksPieComponent,
     RisksPriorityComponent,
     RisksCostsComponent

@@ -8,6 +8,7 @@ import { RisksPriorityComponent } from './charts-type/risks-priority/risks-prior
 import { RisksPieComponent } from './charts-type/risks-pie/risks-pie.component';
 import { RiskSidebarComponent } from '../share/risk-sidebar/risk-sidebar.component';
 import { RisksCostsComponent } from './charts-type/risks-costs/risks-costs.component';
+import { ChartsModule } from 'ng2-charts';
 
 describe('ChartsComponent', () => {
   let component: ChartsComponent;
@@ -15,7 +16,7 @@ describe('ChartsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, RouterTestingModule],
+      imports: [HttpModule, RouterTestingModule, ChartsModule],
       declarations: [
         ChartsComponent,
         RisksPriorityComponent,

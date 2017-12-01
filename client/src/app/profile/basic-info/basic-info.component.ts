@@ -12,7 +12,7 @@ import { ValidatorService } from '../../service/validator/validator.service';
 })
 export class BasicInfoComponent implements OnInit, AfterContentChecked {
   public editProfileForm: FormGroup = null;
-  user = JSON.parse(localStorage.user);
+  user = JSON.parse(localStorage.getItem('user'));
 
   update: boolean = false;
 

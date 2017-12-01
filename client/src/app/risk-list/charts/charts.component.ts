@@ -23,7 +23,7 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   ngOnInit() {
     this.riskRecovery();
-    this.user = JSON.parse(localStorage['user']);
+    this.user = JSON.parse(localStorage.getItem('user') || 'null');
   }
 
   ngAfterContentChecked() {

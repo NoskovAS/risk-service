@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ValidatorMessageComponent } from './validator-message/validator-message.directive';
-import { NgSelectorComponent } from './ng-selector/ng-selector.component';
 import {
   ChanceFilterPipe,
   OrderByPipe,
@@ -22,7 +21,6 @@ import { LoaderComponent } from './loader/loader.component';
   ],
   declarations: [
     ValidatorMessageComponent,
-    NgSelectorComponent,
     OrderByPipe,
     ChanceFilterPipe,
     CostFilterPipe,

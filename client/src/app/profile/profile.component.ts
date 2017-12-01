@@ -9,7 +9,7 @@ import { ProfileService } from '../service/profile/profile.service';
 })
 
 export class ProfileComponent implements OnInit {
-    user = JSON.parse(localStorage.user);
+    user = JSON.parse(localStorage.getItem('user') || 'null');
 
     constructor() {}
 
