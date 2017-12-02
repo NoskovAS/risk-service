@@ -1,9 +1,14 @@
 .first-row {
-    padding-top: 15px; 
+    padding-top: 15px;
     line-height: 1.5
 }
 
 .second-row {
+    margin-top: 10px;
+    line-height: 1.5
+}
+
+.third-row {
     line-height: 1.5
 }
 
@@ -13,11 +18,16 @@
     /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.589); */
 }
 
-span {
-    color: #1793d3;
+a {
+    text-decoration: none;
 }
 
 .ion {
-    color: #1793d3;
     font-size: 2rem;
+}
+
+span,
+a,
+.ion {
+    color: #1793d3;
 }

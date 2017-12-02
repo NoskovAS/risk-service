@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-md-4"></div>
+        <div class="col text-center">
+            <h1>Report A Problem</h1>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row area-row">
+        <div class="col-md-3"></div>
+        <div class="col">
+            <form novalidate [formGroup]="reportForm" (submit)="sendReport()">
+                <div class="form-group">
+                    <textarea class="form-input form-control" id="Textarea" formControlName="report" placeholder="Please describe your problem" [style.border-color]="borderColor" [style.border-width.px]="borderWidth">
+                  </textarea>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-lg btn-primary pointer" type="submit" value="report">Send Report</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

@@ -30,6 +30,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterService } from './service/footer/footer.service';
 import { NavbarService } from './service/navbar/navbar.service';
 import { ProfileModule } from './profile/profile.module';
+import { ReportComponent } from './footer/report/report.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ProfileModule } from './profile/profile.module';
     FooterComponent,
     LandingPageComponent,
     PageNotFoundComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

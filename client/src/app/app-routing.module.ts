@@ -13,6 +13,7 @@ import { AdminPageRoutingModule } from './admin-page/admin-page.routing.module';
 import { RiskListRoutingModule } from './risk-list/risk-list-routing.module';
 import { BasicInfoComponent } from './profile/basic-info/basic-info.component';
 import { ProfileRoutingModule } from './profile/profile-routing.module';
+import { ReportComponent } from './footer/report/report.component';
 // Temp
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     {
+        path: 'report',
+        canActivate: [AuthGuard],
+        component: ReportComponent
+    },
+    {
         path: 'risklist',
         children: [
             { path: '', component: RiskListComponent }
@@ -31,13 +37,13 @@ const routes: Routes = [
     {
         path: 'admin',
         children: [
-            {path: '', component: AdminPageComponent},
+            { path: '', component: AdminPageComponent },
         ]
     },
     {
         path: 'profile',
         children: [
-            {path: '', component: BasicInfoComponent},
+            { path: '', component: BasicInfoComponent },
         ]
     },
     { path: '**', component: PageNotFoundComponent },

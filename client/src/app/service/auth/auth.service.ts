@@ -12,8 +12,7 @@ export class AuthService {
     risk: any;
     public host: string;
 
-    constructor(private http: Http,
-        private router: Router) {
+    constructor(private http: Http) {
         this.host = environment.host;
     }
 
