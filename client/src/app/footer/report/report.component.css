@@ -15,14 +15,21 @@ textarea {
     user-select: none;
 }
 
+.alert-success,
+h1 {
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
 h1 {
     margin-top: 20px;
     margin-bottom: 40px;
-    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
     color: #204056;
 }
 
 button {
     margin-top: 20px;
+}
+
+.alert-row {
     margin-bottom: 45px;
 }

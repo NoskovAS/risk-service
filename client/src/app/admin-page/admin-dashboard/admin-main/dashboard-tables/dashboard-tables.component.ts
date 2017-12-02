@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnChanges, OnDestroy } from '@angular/core';
 import { AdminService } from '../../../../service/admin/admin.service';
 import { TableService } from '../../../../service/table/table.service';
 import { RiskListService } from '../../../../service/risk-list/risk-list.service';
@@ -13,9 +13,11 @@ import { Data } from '../../../../risk-list/data.class';
   templateUrl: './dashboard-tables.component.html',
   styleUrls: ['./dashboard-tables.component.css']
 })
-export class DashboardTablesComponent implements OnInit, OnChanges, OnDestroy {
+export class DashboardTablesComponent implements OnInit, AfterContentChecked, OnChanges, OnDestroy {
   users: Users[] = [];
   adminItems: Data[] = [];
+  // The variable show that the current route is the main (Admin Dashboard)
+  mainComponent: boolean = false;
 
   // Sort
   isDesc: boolean = false;
@@ -27,6 +29,21 @@ export class DashboardTablesComponent implements OnInit, OnChanges, OnDestroy {
 
   admUsername: string;
   admPass: string;
+  sidebarToggled: boolean = false;
+
+  /* Page styles */
+  card = {
+    marginTop: '20',
+    marginLeft: '20',
+    marginRight: '0',
+    width: '95'
+  };
+
+  riskCard = {
+    marginTop: '10',
+    marginLeft: '20',
+    width: '95'
+  };
 
   constructor(
     private adminService: AdminService,
@@ -34,14 +51,27 @@ export class DashboardTablesComponent implements OnInit, OnChanges, OnDestroy {
     private riskListService: RiskListService,
     private childParentService: ChildParentService,
     private authService: AuthService,
-    private router: Router) {}
+    private router: Router) { }
 
   ngOnInit() {
+    if (this.router.url === '/admin/tables') {
+      this.mainComponent = true;
+    }
+    // Get variable for editing page view after sidebar edit
     this.users = [];
     this.getUsers();
   }
 
-  ngOnChanges() {}
+  ngAfterContentChecked() {
+    this.sidebarToggled = this.childParentService.getVariable();
+    if (this.sidebarToggled) {
+      this.editPage(true);
+    } else {
+      this.editPage(false);
+    }
+  }
+
+  ngOnChanges() { }
 
   ngOnDestroy() {
     this.adminItems = [];
@@ -99,6 +129,14 @@ export class DashboardTablesComponent implements OnInit, OnChanges, OnDestroy {
     this.displayTable = true;
   }
 
-
+  editPage(flag: boolean) {
+    if (flag) {
+      this.card.marginLeft = '-135';
+      this.card.width = '108';
+    } else {
+      this.card.marginLeft = '20';
+      this.card.width = '95';
+    }
+  }
 
 }

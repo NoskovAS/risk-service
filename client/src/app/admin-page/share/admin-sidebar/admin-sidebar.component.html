@@ -1,29 +1,30 @@
-<div class="sidebar">
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav navbar-nav">
-      <li>
-        <a class="nav-link" [routerLink]="['../admin']" routerLinkActive="active">
-          <i class="material-icons icon">dashboard</i> Dashboard</a>
-      </li>
-      <li>
-        <a class="nav-link" [routerLink]="['tables']" routerLinkActive="active">
-          <i class="material-icons icon">reorder</i> Tables</a>
-      </li>
-      <li>
-        <a class="nav-link" [routerLink]="['charts']" routerLinkActive="active">
-          <i class="material-icons icon">show_chart</i> Charts</a>
-      </li>
-      <li>
-        <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active">
-          <i class="material-icons icon">message</i> Messages</a>
-      </li>
-    </ul>
-  </div>
-  <div>
-    <button class="button pointer">
-        <i class="material-icons icon leftIcon">keyboard_arrow_left</i>
+<div class="sidebar" [style.width.px]="sidebarWidth">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav navbar-nav" [style.margin-left.px]="navMarginLeft">
+            <li>
+                <a class="nav-link" [routerLink]="['../admin']" routerLinkActive="active">
+                    <i class="material-icons icon">dashboard</i><span *ngIf="navLinkActive">Dashboard</span></a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['tables']" routerLinkActive="active">
+                    <i class="material-icons icon">reorder</i><span *ngIf="navLinkActive">Tables</span></a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['charts']" routerLinkActive="active">
+                    <i class="material-icons icon">show_chart</i><span *ngIf="navLinkActive">Charts</span></a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active">
+                    <i class="material-icons icon">message</i><span *ngIf="navLinkActive">Messages</span></a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <button class="button pointer" (click)="toggleSidebarType()" [style.width.px]="buttonWidth">
+        <i *ngIf="navLinkActive" class="material-icons icon leftIcon">keyboard_arrow_left</i>
+        <i *ngIf="!navLinkActive" class="material-icons icon rightIcon">keyboard_arrow_right</i>
     </button>
-  </div>
-  <!-- sidebar-wrapper -->
+    </div>
+    <!-- sidebar-wrapper -->
 </div>

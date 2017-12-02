@@ -1,63 +1,64 @@
 /* Sidebar */
 
 .sidebar {
-  position: fixed;
-  background-color: #343a40;
-  overflow: hidden;
-  z-index: 1000;
-  overflow-y: auto;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  height: 100%;
-  width: 220px;
-  margin-top: 55px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.836);
+    position: fixed;
+    background-color: #343a40;
+    overflow: hidden;
+    z-index: 1000;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    height: 100%;
+    /*   width: 220px; */
+    margin-top: 55px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.836);
 }
 
 .sidebar-nav {
-  margin-left: 20px;
-  margin-top: 15px;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
 .nav-link {
-  color: #868e96;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  padding-bottom: 23px;
+    color: #868e96;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 23px;
 }
 
 .nav-link:hover {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 
 /* Material icon's */
 
 .icon {
-  padding: 0px;
-  vertical-align: middle;
+    padding: 0px;
+    vertical-align: middle;
 }
 
 .pointer {
-  cursor: pointer;
-  /* Disabled double click selection */
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    cursor: pointer;
+    /* Disabled double click selection */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .button {
-  width: 220px;
-  height: 50px;
-  border: none;
-  outline: none;
-  background-color: rgb(24, 22, 22);
-  position: absolute;
-  bottom: 55px;
+    /* width: 220px; */
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: rgb(24, 22, 22);
+    position: absolute;
+    bottom: 55px;
 }
 
-.leftIcon {
-  color: white; 
+.leftIcon,
+.rightIcon {
+    color: white;
 }

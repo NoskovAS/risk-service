@@ -1,0 +1,18 @@
+/* .main {
+    margin-top: 56px;
+} */
+
+
+/* .card {
+    margin: 20px 0px 0px 20px;
+    width: 95%;
+} */
+
+.pointer {
+    cursor: pointer;
+    /* Disabled double click selection */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

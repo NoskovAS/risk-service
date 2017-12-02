@@ -9,7 +9,7 @@ export class AdminService {
     public host: string;
 
     constructor(private http: Http,
-                private router: Router) {
+        private router: Router) {
         this.host = environment.host;
     }
 
@@ -31,6 +31,20 @@ export class AdminService {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/deleteUser', user, { headers: headers })
+            .map(res => res.json());
+    }
+
+    sendReport(reportMessage) {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.host + 'admin/getReport', reportMessage, { headers: headers })
+            .map(res => res.json());
+    }
+
+    getReports() {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.host + 'admin/getReports', { headers: headers })
             .map(res => res.json());
     }
 

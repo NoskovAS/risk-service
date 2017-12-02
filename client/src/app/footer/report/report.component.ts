@@ -2,7 +2,7 @@ import { Component, OnInit, AfterContentChecked, HostListener, ElementRef } from
 import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { ValidateService } from '../../service/validator/validate.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FooterService } from '../../service/footer/footer.service';
+import { AdminService } from '../../service/admin/admin.service';
 
 @Component({
   selector: 'app-report',
@@ -12,27 +12,25 @@ import { FooterService } from '../../service/footer/footer.service';
 export class ReportComponent implements OnInit, AfterContentChecked {
   public reportForm: FormGroup = null;
   username: string = localStorage.getItem('username');
-  reportError: boolean = false;
+  reportSuccess: boolean = false;
   borderColor: string = '#204056';
   borderWidth: number = 1;
 
   constructor(private router: Router,
-              private validateService: ValidateService,
-              private fb: FormBuilder,
-              private footerService: FooterService,
-              private eRef: ElementRef
+    private validateService: ValidateService,
+    private fb: FormBuilder,
+    private adminService: AdminService,
+    private eRef: ElementRef
   ) {
-    this.reportForm = fb.group ({
+    this.reportForm = fb.group({
       username: [this.username, Validators.required],
       report: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  ngAfterContentChecked() {
-  }
+  ngAfterContentChecked() {}
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
@@ -43,19 +41,25 @@ export class ReportComponent implements OnInit, AfterContentChecked {
   }
 
   sendReport() {
-    const reportMessage = this.reportForm.value;
+    const reportMessage = {
+      username: this.reportForm.value.username,
+      report: this.reportForm.value.report
+    };
+
     if ((this.reportForm.value.report === '') || (this.reportForm.value.report === undefined)) {
       this.borderWidth = 3;
       this.borderColor = 'red';
-      this.reportError = true;
       return;
     }
 
-    this.footerService.sendReport().subscribe(data => {
+    this.adminService.sendReport(reportMessage).subscribe(data => {
       if (data.success) {
-        console.log('Success!');
+        this.borderWidth = 3;
+        this.borderColor = 'green';
+        this.reportSuccess = true;
+        console.log('Successful addition');
       } else {
-        console.log('Not success(');
+        console.log('Unsuccessful addition');
       }
     });
   }

@@ -1,0 +1,28 @@
+<div class="main" [style.margin-top.px]="mainMarginTop">
+    <div class="row">
+        <div *ngIf="mainComponent" class="col-md-2"></div>
+        <div class="col">
+            <div class="card messages-card" [style.margin-left.px]="card.marginLeft" [style.margin-top.px]="card.marginTop" [style.width.%]="card.width">
+                <div class="card-header">
+                    <h5 class="">Reports</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover table-responsive-lg table-bordered">
+                        <thead class="thead-default">
+                            <tr>
+                                <th>Username</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let report of reports">
+                                <td>{{report.username}}</td>
+                                <td>{{report.message}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

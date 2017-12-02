@@ -1,95 +1,79 @@
 <div class="main">
-  <div class="row">
-    <div class="col"></div>
-    <div class="col-md-10">
-      <div class="card table-card">
-        <div class="card-header">
-          <h5 class="">User's table</h5>
+    <div class="row">
+        <div *ngIf="mainComponent" class="col-md-2"></div>
+        <div class="col">
+            <div class="card table-card" [style.margin-left.px]="card.marginLeft" [style.margin-top.px]="card.marginTop" [style.width.%]="card.width">
+                <div class="card-header">
+                    <h5 class="">User's table</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover table-responsive-lg table-bordered">
+                        <thead class="thead-default">
+                            <tr>
+                                <th>
+                                    <div class="pointer" (click)="sort('firstname')">
+                                        First name
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pointer" (click)="sort('lastname')">
+                                        Last name
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pointer" (click)="sort('username')">
+                                        Username
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pointer" (click)="sort('email')">
+                                        Email
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pointer" (click)="sort('date')">
+                                        Date of registration
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="">
+                                        Delete
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users | orderBy: {property: column, direction: direction}; let i = index;">
+                                <td>{{user.firstname}}</td>
+                                <td>{{user.lastname}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
+                                <td>
+                                    <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
+                                    <i class="material-icons pointer" (click)="toggleTable(user.username, i)">subject</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card risk-table-card" *ngIf="displayTable" [style.margin-left.px]="riskCard.marginLeft" [style.margin-top.px]="riskCard.marginTop" [style.width.%]="riskCard.width">
+                <div class="card-header">
+                    <h5 class="mb-3 bd-text-purple-bright">{{username}}
+                        <small>risk table</small>
+                        <button class="btn btn-primary pointer" (click)="displayTable = false">Close table</button>
+                        <br>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <app-table [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <table class="table table-hover table-responsive-lg table-bordered">
-            <thead class="thead-default">
-              <tr>
-                <th>
-                  <div class="pointer" (click)="sort('firstname')">
-                    First name
-                  </div>
-                </th>
-                <th>
-                  <div class="pointer" (click)="sort('lastname')">
-                    Last name
-                  </div>
-                </th>
-                <th>
-                  <div class="pointer" (click)="sort('username')">
-                    Username
-                  </div>
-                </th>
-                <th>
-                  <div class="pointer" (click)="sort('email')">
-                    Email
-                  </div>
-                </th>
-                <th>
-                  <div class="pointer" (click)="sort('date')">
-                    Date of registration
-                  </div>
-                </th>
-                <th>
-                  <div class="">
-                    Delete
-                  </div>
-                </th>
-              </tr>
-              <tr>
-                <!-- <tr class="filter" *ngIf="visible === true && users.length > 1">
-                        <td class="col1">
-                          <input class="filter-input" type="search" [(ngModel)]="searchFirstname" class="form-control" placeholder="Search By First Name"
-                          />
-                        </td>
-                        <td class="col2">
-                          <input class="filter-input" type="search" [(ngModel)]="searchLastname" class="form-control" placeholder="Search By Last Name"
-                          />
-                        </td>
-                        <td class="col3">
-                          <input class="filter-input" type="search" [(ngModel)]="searchUsername" class="form-control" placeholder="Search By Username"
-                          />
-                        </td>
-                        <td class="col4">
-                          <input class="filter-input" type="search" [(ngModel)]="searchEmail" class="form-control" placeholder="Search By Email"
-                          />
-                        </td>
-                      </tr> -->
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let user of users | orderBy: {property: column, direction: direction}; let i = index;">
-                <td>{{user.firstname}}</td>
-                <td>{{user.lastname}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
-                <td>
-                  <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
-                  <i class="material-icons pointer" (click)="toggleTable(user.username, i)">subject</i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="card riskTable-card" style="width: 1095px;" *ngIf="displayTable">
-        <div class="card-header">
-          <h5 class="mb-3 bd-text-purple-bright">{{username}} 
-            <small>risk table</small>
-            <button class="btn" (click)="displayTable = false">Close table</button>
-            <br>
-          </h5>
-        </div>
-        <div class="card-body">
-            <app-table [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
+
+<!-- style="width: 1095px;" -->

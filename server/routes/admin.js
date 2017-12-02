@@ -4,9 +4,10 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/database");
 const User = require("../models/user");
 const Admin = require("../models/admin");
+const Report = require("../models/report");
 
 // Admin authenticate
-router.post("/authenticate", (req, res, next) => {
+router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
@@ -40,7 +41,7 @@ router.post("/authenticate", (req, res, next) => {
 // Get users
 router.post("/getUsers", (req, res, next) => {
     "use strict";
-    User.find(function (err, user) {
+    User.find(function(err, user) {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -50,20 +51,20 @@ router.post("/getUsers", (req, res, next) => {
 });
 
 // Delete user
-router.post("/deleteUser", (req, res, next) => {
+router.post('/deleteUser', (req, res, next) => {
     "use strict";
     const username = req.body.username;
     User.findOne({
             username: username
         },
-        function (err, user) {
+        function(err, user) {
             if (err) throw err;
 
             // delete him
             User.deleteOne({
                     username: username
                 },
-                function (err, removed) {
+                function(err, removed) {
                     if (err) {
                         res.status(500).send(err);
                     } else {
@@ -76,6 +77,40 @@ router.post("/deleteUser", (req, res, next) => {
             );
         }
     );
+});
+
+router.post('/getReport', (req, res, next) => {
+    "use strict";
+    console.log('req.body.username: ' + req.body.username);
+    console.log('req.body.report: ' + req.body.report);
+
+    let newReport = new Report({
+        username: req.body.username,
+        message: req.body.report,
+    });
+
+    // Save the risk
+    newReport.save(function(err) {
+        if (err) throw err;
+
+        console.log("Report added!");
+        res.json({
+            success: true,
+            msg: "Report added"
+        });
+    });
+});
+
+router.post('/getReports', (req, res, next) => {
+    "use strict";
+    Report.find(function(err, user) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            /* console.log('res.send(user): ' + res.send(user)); */
+            res.send(user);
+        }
+    });
 });
 
 module.exports = router;
