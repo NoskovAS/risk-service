@@ -27,6 +27,10 @@
     padding-bottom: 23px;
 }
 
+.active {
+    color: white;
+}
+
 .nav-link:hover {
     color: #ffffff;
 }
@@ -61,4 +65,8 @@
 .leftIcon,
 .rightIcon {
     color: white;
+}
+
+span {
+    margin-left: 10px;
 }

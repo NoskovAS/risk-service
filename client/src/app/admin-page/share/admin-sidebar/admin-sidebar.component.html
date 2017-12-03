@@ -1,9 +1,8 @@
 <div class="sidebar" [style.width.px]="sidebarWidth">
-    <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav navbar-nav" [style.margin-left.px]="navMarginLeft">
             <li>
-                <a class="nav-link" [routerLink]="['../admin']" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['../admin']">
                     <i class="material-icons icon">dashboard</i><span *ngIf="navLinkActive">Dashboard</span></a>
             </li>
             <li>
@@ -26,5 +25,4 @@
         <i *ngIf="!navLinkActive" class="material-icons icon rightIcon">keyboard_arrow_right</i>
     </button>
     </div>
-    <!-- sidebar-wrapper -->
 </div>

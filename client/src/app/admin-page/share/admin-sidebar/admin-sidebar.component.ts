@@ -27,8 +27,10 @@ export class AdminSidebarComponent implements OnInit {
     } else {
       this.sidebarWidth = '220';
       this.buttonWidth = '220';
-      this.navLinkActive = true;
       this.sidebarType.emit(false);
+      setTimeout(() => {
+        this.navLinkActive = true;
+      }, 300);
     }
   }
 

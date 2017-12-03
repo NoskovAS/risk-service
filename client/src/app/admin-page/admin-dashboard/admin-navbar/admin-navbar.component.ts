@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavbarService } from '../../../service/navbar/navbar.service';
 import { FooterService } from '../../../service/footer/footer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -10,7 +11,8 @@ import { FooterService } from '../../../service/footer/footer.service';
 export class AdminNavbarComponent implements OnInit, OnDestroy {
 
   constructor(private navbarService: NavbarService,
-              private footerService: FooterService) { }
+              private footerService: FooterService,
+              private router: Router) { }
 
   ngOnInit() {
   }

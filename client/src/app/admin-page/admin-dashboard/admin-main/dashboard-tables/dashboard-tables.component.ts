@@ -39,12 +39,6 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
     width: '95'
   };
 
-  riskCard = {
-    marginTop: '10',
-    marginLeft: '20',
-    width: '95'
-  };
-
   constructor(
     private adminService: AdminService,
     private tableService: TableService,
@@ -63,7 +57,7 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
   }
 
   ngAfterContentChecked() {
-    this.sidebarToggled = this.childParentService.getVariable();
+    this.sidebarToggled = this.childParentService.getSecondVariable();
     if (this.sidebarToggled) {
       this.editPage(true);
     } else {
@@ -123,10 +117,10 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
     this.direction = this.isDesc ? 1 : -1;
   }
 
-  toggleTable(username, i) {
+  toggleTable(username) {
     this.username = username;
     this.riskRecovery(username);
-    this.displayTable = true;
+    this.displayTable === false ? this.displayTable = true : this.displayTable = false;
   }
 
   editPage(flag: boolean) {

@@ -5,7 +5,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ChildParentService {
-    variable;
+    variable: any;
+    secondVar: any;
 
     passVariable(index) {
         this.variable = index;
@@ -13,6 +14,14 @@ export class ChildParentService {
 
     getVariable() {
         return this.variable;
+    }
+
+    passSecondVariable(index) {
+        this.secondVar = index;
+    }
+
+    getSecondVariable() {
+        return this.secondVar;
     }
 
 

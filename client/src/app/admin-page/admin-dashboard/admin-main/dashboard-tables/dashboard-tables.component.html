@@ -53,27 +53,22 @@
                                 <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
                                 <td>
                                     <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
-                                    <i class="material-icons pointer" (click)="toggleTable(user.username, i)">subject</i>
+                                    <i class="material-icons pointer" (click)="toggleTable(user.username)">subject</i>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="card risk-table-card" *ngIf="displayTable" [style.margin-left.px]="riskCard.marginLeft" [style.margin-top.px]="riskCard.marginTop" [style.width.%]="riskCard.width">
-                <div class="card-header">
-                    <h5 class="mb-3 bd-text-purple-bright">{{username}}
-                        <small>risk table</small>
-                        <button class="btn btn-primary pointer" (click)="displayTable = false">Close table</button>
-                        <br>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <app-table [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>
+                <div class="card-footer" *ngIf="displayTable">
+                    <div class="table-title">
+                        <h5>Table Of Risks</h5>
+                        <h6 class="mb-3 bd-text-purple-bright">Username: {{username}}</h6>
+                    </div>
+                    <div class="risk-table">
+                        <app-table [items]="adminItems" (tableCleared)="tableClear($event)"></app-table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- style="width: 1095px;" -->

@@ -45,7 +45,7 @@ export class DashboardMessagesComponent implements OnInit, AfterContentChecked {
   }
 
   ngAfterContentChecked() {
-    this.sidebarToggled = this.childParentService.getVariable();
+    this.sidebarToggled = this.childParentService.getSecondVariable();
     if (this.sidebarToggled) {
       this.editPage(true);
     } else {

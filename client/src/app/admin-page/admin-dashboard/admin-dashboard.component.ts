@@ -22,10 +22,10 @@ export class AdminDashboardComponent implements OnInit {
   toggleSidebar(emit) {
     if (emit === true) {
       // Small sidebar
-      this.childParentService.passVariable(true);
+      this.childParentService.passSecondVariable(true);
     } else {
       // Big sidebar
-      this.childParentService.passVariable(false);
+      this.childParentService.passSecondVariable(false);
     }
   }
 
