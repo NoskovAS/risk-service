@@ -1,45 +1,45 @@
 /* Sidebar */
 
-.sidebar-body{
-  margin-bottom: 20px;
+.sidebar-body {
+    margin-bottom: 5px;
 }
 
 .sidebar-item {
-  margin-left: 30px;
-  margin-top: 20px;
-  color: white;
-  font-size: 18px;
+    margin-left: 30px;
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
 }
 
 .sidebar-title {
-  margin-left: 30px;
-  margin-top: 21px;
-  margin-bottom: 20px;
-  color: #d6d6d6;
-  font-size: 18px;
+    margin-left: 30px;
+    margin-top: 19px;
+    margin-bottom: 20px;
+    color: #d6d6d6;
+    font-size: 18px;
 }
 
 .sidebar-row {
-  border: none;
-  outline: none;
+    border: none;
+    outline: none;
 }
 
 .active {
-  background-color: #1793d3;
+    background-color: #1793d3;
 }
 
 .sidebar-link {
-  width: 100%;
+    width: 100%;
 }
 
 .pointer {
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .sidebar-row {
-  font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
 }

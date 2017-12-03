@@ -1,68 +1,72 @@
 body {
     display: flex;
-  background-color: whitesmoke;
-  flex: 1;
+    background-color: whitesmoke;
+    flex: 1;
+    min-height: 1000px;
 }
 
 .pointer {
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .menu {
-  /* z-index: 1000; */
-  /* position: fixed; */
-  background-color: #343a40;
-  height: 500px;
+    background-color: #343a40;
 }
 
+
 /* Title */
+
 .title-row {
-  background-color: #1793d3;
-  height: 60px;
-  margin-bottom: 30px;
+    background-color: #1793d3;
+    height: 60px;
+    margin-bottom: 30px;
 }
 
 .left-title {
-  margin-top: 18px;
-  margin-left: 5px;
-  color: white;
-  font-size: 1.5em;
-  font-weight: 600;
+    margin-top: 18px;
+    margin-left: 5px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 .right-title {
-  margin-top: 20px;
-  margin-left: 40px;
-  color: white;
+    margin-top: 20px;
+    margin-left: 40px;
+    color: white;
 }
 
 .small-right {
-  font-weight: bold;
-  font-size: 1em;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 .form-label {
-  margin-left: 20px;
-  margin-bottom: 2px;
-  line-height: 1.45455;
-  font-weight: 300;
-  letter-spacing: 0.016em;
-  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    margin-left: 20px;
+    margin-bottom: 2px;
+    line-height: 1.45455;
+    font-weight: 300;
+    letter-spacing: 0.016em;
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .testp {
-  margin-top: 800px;
+    margin-top: 800px;
 }
 
 .second-row {
-  margin-top: 50px;
-  margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .card {
-  box-shadow: 0 0 20px rgba(134, 134, 134, 0.5);
+    box-shadow: 0 0 20px rgba(134, 134, 134, 0.5);
+}
+
+.card-footer {
+    font-size: 0.8em;
 }
