@@ -56,4 +56,14 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     });
   }
 
+  facebookAuth() {
+    this.authService.facebookAuthenticate().subscribe(data => {
+      console.log('ROBOTAET: data: ' + data);
+      if (data.success) {
+        this.logSuccess = true;
+        this.router.navigate(['risk-list']); // table
+      }
+    });
+  }
+
 }

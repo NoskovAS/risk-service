@@ -13,7 +13,6 @@ import {
 } from '../pipes/index';
 import { ChartsModule } from 'ng2-charts';
 import { LoaderComponent } from './loader/loader.component';
-import { FocusOutDirective } from './focus-out/focus-out.directive';
 
 
 @NgModule({
@@ -30,8 +29,7 @@ import { FocusOutDirective } from './focus-out/focus-out.directive';
     PriorityFilterPipe,
     RiskFilterPipe,
     SuggestionFilterPipe,
-    LoaderComponent,
-    FocusOutDirective,
+    LoaderComponent
   ],
   exports: [
     ValidatorMessageComponent,

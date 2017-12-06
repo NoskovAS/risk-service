@@ -46,7 +46,7 @@ const routes: Routes = [
             { path: '', component: BasicInfoComponent },
         ]
     },
-    { path: '**', component: PageNotFoundComponent },
+    /* { path: '**', component: PageNotFoundComponent }, */
 ];
 
 @NgModule({

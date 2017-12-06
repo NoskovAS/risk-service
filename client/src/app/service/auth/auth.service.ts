@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
+
 import { environment } from '../../../environments/environment';
 
 
@@ -27,6 +27,12 @@ export class AuthService {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/authenticate', user, { headers: headers })
+            .map(res => res.json());
+    }
+
+    facebookAuthenticate() {
+        console.log('this.host + auth/facebook: ' + this.host + 'users/auth/facebook');
+        return this.http.get(this.host + 'users/auth/facebook', {withCredentials: true})
             .map(res => res.json());
     }
 
