@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FacebookAuthComponent } from './facebook-auth.component';
+import { SocialAuthComponent } from './social-auth.component';
 
-describe('FacebookAuthComponent', () => {
-  let component: FacebookAuthComponent;
-  let fixture: ComponentFixture<FacebookAuthComponent>;
+describe('SocialAuthComponent', () => {
+  let component: SocialAuthComponent;
+  let fixture: ComponentFixture<SocialAuthComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FacebookAuthComponent ]
+      declarations: [ SocialAuthComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FacebookAuthComponent);
+    fixture = TestBed.createComponent(SocialAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

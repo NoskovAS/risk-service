@@ -37,14 +37,23 @@ export class AuthService {
             .map(res => res.json());
     }
 
+    googleGetData() {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get(this.host + 'users/getGoogleData', { headers: headers } )
+            .map(res => res.json());
+    }
+
     loggedIn() {
         return localStorage.getItem('user');
     }
 
     storeUserData(token, user) {
-        localStorage.setItem('id_token', token);
+        if ((token !== undefined) || (token !== null)) {
+            localStorage.setItem('id_token', token);
+            this.authToken = token;
+        }
         localStorage.setItem('user', JSON.stringify(user));
-        this.authToken = token;
         this.user = user;
     }
 

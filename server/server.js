@@ -10,6 +10,7 @@ mongoose.Promise = global.Promise;
 const config = require("./config/database");
 const routes = require('./config/route-config');
 const morgan = require('morgan');
+const host = require('./config/host');
 
 
 /* const HTTP_PORT = 3000; 8080 */
@@ -35,34 +36,8 @@ mongoose.connection.on("error", err => {
 
 const app = express();
 
-const allowedOrigins = [
-    'http://localhost:8080',
-    'http://localhost:8080/users/auth/facebook/callback',
-    'http://localhost:8080/users/auth/facebook/',
-    'http://localhost:4200',
-    'http://localhost:4200/login',
-    'https://www.facebook.com/dialog/oauth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fusers%2Fauth%2Ffacebook%2Fcallback&scope=email&client_id=1964292910503901'
-];
 // CORS Middleware
-app.use(cors({
-
-    origin: function(origin, callback) {
-
-        // allow requests with no origin 
-        // (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-
-        if (allowedOrigins.indexOf(origin) === -1) {
-            var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-            return callback(new Error(msg), false); //false
-        }
-
-        return callback(null, true);
-    },
-
-    credentials: true,
-}));
+app.use(cors());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

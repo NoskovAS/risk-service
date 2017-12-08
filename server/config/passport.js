@@ -1,6 +1,8 @@
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GithubStrategy = require('passport-github2').Strategy;
 const passport = require('passport');
 const User = require("../models/user");
 const Admin = require("../models/admin");
@@ -12,6 +14,13 @@ module.exports = function(passport) {
     let opts = {};
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
     opts.secretOrKey = config.secret;
+    passport.serializeUser(function(user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function(user, done) {
+        done(null, user);
+    });
     passport.use(
         new JwtStrategy(opts, (jwt_payload, done) => {
             User.getUserById(jwt_payload._doc._id, (err, user) => {
@@ -38,7 +47,9 @@ module.exports = function(passport) {
     );
 
 
-    var fbOptions = {
+
+    /* Facebook authenticate */
+    const fbOptions = {
         clientID: auth.facebookAuth.clientID,
         clientSecret: auth.facebookAuth.clientSecret,
         callbackURL: auth.facebookAuth.callbackURL,
@@ -53,29 +64,35 @@ module.exports = function(passport) {
         console.log('\n\nemails: ' + profile.emails[0].value + '\n\n');
         console.log('\n\nprofile.name.: ' + profile.name.familyName + '\n\n'); */
         process.nextTick(() => {
-            User.findOne({ id: profile.id }, (err, user) => {
+            User.findOne({ username: 'facebook' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
                 if (user) {
                     return done(null, user);
                 } else {
+                    var email;
+                    if ((profile.emails === '') || (profile.emails === undefined)) {
+                        email = 'Email not available';
+                    } else {
+                        email = profile.emails[0].value;
+                    }
                     let newDate = new Date();
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
-                        email: profile.emails[0].value,
-                        id: profile.id,
+                        email: email,
+                        username: 'facebook' + profile.id,
                         date: newDate
                     });
-                    newUser.save();
-                    /* (err) => {
-                                            if (err) {
-                                                throw err;
-                                            } else {
-                                                return done(null, newUser);
-                                            }
-                                        }); */
+                    newUser.save(
+                        (err) => {
+                            if (err) {
+                                throw err;
+                            } else {
+                                return done(null, newUser);
+                            }
+                        });
                 }
             });
         });
@@ -84,4 +101,120 @@ module.exports = function(passport) {
     };
 
     passport.use(new FacebookStrategy(fbOptions, fbCallback));
+
+
+    //////////////////////////////////////////////////////////
+
+
+    /* Google authenticate */
+    const googleOptions = {
+        clientID: auth.googleAuth.clientID,
+        clientSecret: auth.googleAuth.clientSecret,
+        callbackURL: auth.googleAuth.callbackURL,
+        /* profileFields: ['id', 'emails', 'name'], */
+        /* return_scopes: true */
+    };
+
+    let googleCallback = function(accessToken, refreshToken, profile, done) {
+        console.log('\n\nid: ' + profile.id + '\n\n');
+        console.log('\n\naccessToken: ' + profile.accessToken + '\n\n');
+        console.log('\n\n/givenName: ' + profile.name.givenName + '\n\n');
+        console.log('\n\n/emails: ' + profile.emails[0].value + '\n\n');
+        console.log('\n\n/profile.displayName.: ' + profile.displayName + '\n\n');
+        process.nextTick(() => {
+            User.findOne({ username: 'google' + profile.id }, (err, user) => {
+                if (err) {
+                    return done(err);
+                }
+                if (user) {
+                    return done(null, user);
+                } else {
+                    /* var email;
+                    if ((profile.emails === '') || (profile.emails === undefined)) {
+                        email = 'Email not available';
+                    } else {
+                        email = profile.emails[0].value;
+                    } */
+                    let newDate = new Date();
+                    let newUser = new User({
+                        firstname: profile.name.givenName,
+                        lastname: profile.name.familyName,
+                        email: profile.emails[0].value,
+                        username: 'google' + profile.id,
+                        date: newDate
+                    });
+                    newUser.save(
+                        (err) => {
+                            if (err) {
+                                throw err;
+                            } else {
+                                return done(null, newUser);
+                            }
+                        });
+                }
+            });
+        });
+
+        done(null, profile);
+    };
+
+    passport.use(new GoogleStrategy(googleOptions, googleCallback));
+
+
+    //////////////////////////////////////////////////////////
+
+    /* Github authenticate */
+    const githubOptions = {
+        clientID: auth.githubAuth.clientID,
+        clientSecret: auth.githubAuth.clientSecret,
+        callbackURL: auth.githubAuth.callbackURL,
+        /* profileFields: ['id', 'emails', 'name'], */
+        /* return_scopes: true */
+    };
+
+    let githubCallback = function(accessToken, refreshToken, profile, done) {
+        console.log('\n\nid: ' + profile.id + '\n\n');
+        console.log('\n\naccessToken: ' + profile.accessToken + '\n\n');
+        console.log('\n\n/givenName: ' + profile.name.givenName + '\n\n');
+        console.log('\n\n/emails: ' + profile.emails[0].value + '\n\n');
+        console.log('\n\n/profile.displayName.: ' + profile.displayName + '\n\n');
+        process.nextTick(() => {
+            User.findOne({ username: 'github' + profile.id }, (err, user) => {
+                if (err) {
+                    return done(err);
+                }
+                if (user) {
+                    return done(null, user);
+                } else {
+                    /* var email;
+                    if ((profile.emails === '') || (profile.emails === undefined)) {
+                        email = 'Email not available';
+                    } else {
+                        email = profile.emails[0].value;
+                    } */
+                    let newDate = new Date();
+                    let newUser = new User({
+                        firstname: profile.name.givenName,
+                        lastname: profile.name.familyName,
+                        email: profile.emails[0].value,
+                        username: 'github' + profile.id,
+                        date: newDate
+                    });
+                    newUser.save(
+                        (err) => {
+                            if (err) {
+                                throw err;
+                            } else {
+                                return done(null, newUser);
+                            }
+                        });
+                }
+            });
+        });
+
+        done(null, profile);
+    };
+
+    passport.use(new GithubStrategy(githubOptions, githubCallback));
+
 };

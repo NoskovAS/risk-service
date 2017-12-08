@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
         this.logSuccess = true;
         this.authService.storeUserData(data.token, data.user);
         localStorage.setItem('username', user.username);
-        this.router.navigate(['risk-list']); // table
+        this.router.navigate(['risk-list/table']); // table
       } else if (data.msg === 'User not found') {
         this.logSuccess = false;
         this.router.navigate(['login']);

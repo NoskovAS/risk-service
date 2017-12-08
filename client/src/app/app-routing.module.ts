@@ -14,7 +14,7 @@ import { RiskListRoutingModule } from './risk-list/risk-list-routing.module';
 import { BasicInfoComponent } from './profile/basic-info/basic-info.component';
 import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { ReportComponent } from './footer/report/report.component';
-import { FacebookAuthComponent } from './login/facebook-auth/facebook-auth.component';
+import { SocialAuthComponent } from './login/social-auth/social-auth.component';
 // Temp
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
     },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'facebook', component: FacebookAuthComponent },
+    { path: 'auth/:id', component: SocialAuthComponent },
     {
         path: 'report',
         canActivate: [AuthGuard],

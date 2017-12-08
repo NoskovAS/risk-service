@@ -5,14 +5,28 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/database");
 const User = require("../models/user");
 const Admin = require("../models/admin");
+const host = require("../config/host");
 
 var facebookUser = {
-    firstName: '',
+    firstname: '',
+    lastname: '',
+    username: '',
+    email: ''
+};
+
+var googleUser = {
+    firstname: '',
     lastname: '',
     id: 0,
     email: ''
 };
 
+var githubUser = {
+    firstname: '',
+    lastname: '',
+    username: '',
+    email: ''
+};
 
 // Register
 router.post("/register", (req, res, next) => {
@@ -164,8 +178,8 @@ router.post("/editPassword", (req, res, next) => {
     });
 });
 
+/* Facebook authenticate */
 router.get('/getFacebookData', (req, res, next) => {
-    /* res.send(facebookUser); */
     res.json({
         facebookUser: facebookUser,
         success: true,
@@ -176,43 +190,77 @@ router.get('/getFacebookData', (req, res, next) => {
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
 router.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: 'http://localhost:4200/login' }),
+    passport.authenticate('facebook', { failureRedirect: host.clientHost + 'login' }),
     function(req, res) {
-        facebookUser.firstName = req.user.name.givenName;
+        facebookUser.firstname = req.user.name.givenName;
         facebookUser.lastname = req.user.name.familyName;
-        facebookUser.email = req.user.emails[0].value;
-        facebookUser.id = req.user.id;
+        facebookUser.username = 'facebook' + req.user.id;
+        if (req.user.email === undefined) {
+            facebookUser.email = 'NoEmail';
+        } else {
+            facebookUser.email = req.user.emails[0].value;
+        }
+        res.redirect(host.clientHost + 'auth/facebook');
+    });
 
-        res.redirect('http://localhost:4200/facebook');
 
-        /* res.send(`
-        <html>
-        <head></head>
-        <body>
-                <script type="text/javascript">
-                (function() {
-                    setTimeout(function() {
-                      if (window.opener) {
-                        if (window.authSuccess) {
-                          window.authSuccess({
-                            firstName: ${req.user.name.givenName},
-                            id: ${req.user.id}
-                          });
-                          window.opener.focus();
-                          window.close();
-                        } else {
-                          console.log('else window.authSuccess()');
-                          window.authSuccess = true;
-                        }
-                      }
-                    }, 100);
-                  })();
-                </script>
-                HELLO THERE MUTHERFUCKA
-                ${req.user.name.givenName}
-        </body>
-        </html>
-        `); */
+/* Google authenticate */
+router.get('/getGoogleData', (req, res, next) => {
+    res.json({
+        googleUser: googleUser,
+        success: true,
+        msg: "Success to google auth",
+    });
+});
+
+router.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile'] })); //email yet
+
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: host.clientHost + 'login' }),
+    function(req, res) {
+        /* console.log('auth/google/callback');
+        res.redirect(host.clientHost + 'admin');
+        googleUser.firstname = req.user.name.givenName;
+        googleUser.lastname = req.user.name.familyName;
+        googleUser.username = 'google' + req.user.id;
+        googleUser.email = req.user.emails[0].value; */
+        /*     if (req.user.email === undefined) {
+                googleUser.email = 'NoEmail';
+            } else {
+                googleUser.email = req.user.emails[0].value;
+            } */
+        res.redirect(host.clientHost + 'admin'); /* auth/google */
+    });
+
+
+/* Github authenticate */
+router.get('/getGithubData', (req, res, next) => {
+    res.json({
+        githubUser: githubUser,
+        success: true,
+        msg: "Success to google auth",
+    });
+});
+
+router.get('/auth/github',
+    passport.authenticate('github', { scope: ['user:email'] }));
+
+router.get('/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: host.clientHost + 'login' }),
+    function(req, res) {
+        /* console.log('auth/github/callback');
+        res.redirect(host.clientHost + 'admin');
+        githubUser.firstname = req.user.name.givenName;
+        githubUser.lastname = req.user.name.familyName;
+        githubUser.username = 'google' + req.user.id;
+        githubUser.email = req.user.emails[0].value; */
+        /*     if (req.user.email === undefined) {
+                githubUser.email = 'NoEmail';
+            } else {
+                githubUser.email = req.user.emails[0].value;
+            } */
+        res.redirect(host.clientHost + 'admin'); /* auth/google */
     });
 
 
