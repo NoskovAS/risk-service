@@ -31,6 +31,7 @@ import { FooterService } from './service/footer/footer.service';
 import { NavbarService } from './service/navbar/navbar.service';
 import { ProfileModule } from './profile/profile.module';
 import { ReportComponent } from './footer/report/report.component';
+import { FacebookAuthComponent } from './login/facebook-auth/facebook-auth.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ReportComponent } from './footer/report/report.component';
     FooterComponent,
     LandingPageComponent,
     PageNotFoundComponent,
-    ReportComponent
+    ReportComponent,
+    FacebookAuthComponent
   ],
   imports: [
     BrowserModule,

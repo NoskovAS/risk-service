@@ -30,9 +30,10 @@ export class AuthService {
             .map(res => res.json());
     }
 
-    facebookAuthenticate() {
-        console.log('this.host + auth/facebook: ' + this.host + 'users/auth/facebook');
-        return this.http.get(this.host + 'users/auth/facebook', {withCredentials: true})
+    facebookGetData() {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get(this.host + 'users/getFacebookData', { headers: headers } )
             .map(res => res.json());
     }
 

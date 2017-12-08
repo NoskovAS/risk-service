@@ -6,6 +6,14 @@ const config = require("../config/database");
 const User = require("../models/user");
 const Admin = require("../models/admin");
 
+var facebookUser = {
+    firstName: '',
+    lastname: '',
+    id: 0,
+    email: ''
+};
+
+
 // Register
 router.post("/register", (req, res, next) => {
     "use strict";
@@ -52,7 +60,6 @@ router.post("/authenticate", (req, res, next) => {
                 const token = jwt.sign(user, config.secret, {
                     expiresIn: 604800 // 1 week
                 });
-
                 res.json({
                     success: true,
                     token: "JWT " + token,
@@ -157,13 +164,55 @@ router.post("/editPassword", (req, res, next) => {
     });
 });
 
+router.get('/getFacebookData', (req, res, next) => {
+    /* res.send(facebookUser); */
+    res.json({
+        facebookUser: facebookUser,
+        success: true,
+        msg: "Success to facebook auth",
+    });
+});
+
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: 'http://localhost:4200/login' }),
     function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('http://localhost:4200/register');
+        facebookUser.firstName = req.user.name.givenName;
+        facebookUser.lastname = req.user.name.familyName;
+        facebookUser.email = req.user.emails[0].value;
+        facebookUser.id = req.user.id;
+
+        res.redirect('http://localhost:4200/facebook');
+
+        /* res.send(`
+        <html>
+        <head></head>
+        <body>
+                <script type="text/javascript">
+                (function() {
+                    setTimeout(function() {
+                      if (window.opener) {
+                        if (window.authSuccess) {
+                          window.authSuccess({
+                            firstName: ${req.user.name.givenName},
+                            id: ${req.user.id}
+                          });
+                          window.opener.focus();
+                          window.close();
+                        } else {
+                          console.log('else window.authSuccess()');
+                          window.authSuccess = true;
+                        }
+                      }
+                    }, 100);
+                  })();
+                </script>
+                HELLO THERE MUTHERFUCKA
+                ${req.user.name.givenName}
+        </body>
+        </html>
+        `); */
     });
 
 

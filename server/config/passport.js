@@ -47,22 +47,20 @@ module.exports = function(passport) {
     };
 
     let fbCallback = function(accessToken, refreshToken, profile, done) {
-        console.log('\n\nfamilyName: ' + profile.profileUrl + '\n\n');
+        /* console.log('\n\nfamilyName: ' + profile.profileUrl + '\n\n');
         console.log('\n\nusername: ' + profile.username + '\n\n');
         console.log('\n\ngivenName: ' + profile.name.givenName + '\n\n');
         console.log('\n\nemails: ' + profile.emails[0].value + '\n\n');
+        console.log('\n\nprofile.name.: ' + profile.name.familyName + '\n\n'); */
         process.nextTick(() => {
             User.findOne({ id: profile.id }, (err, user) => {
                 if (err) {
-                    console.log('err!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
                     return done(err);
                 }
                 if (user) {
-                    console.log('User!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ' + user);
                     return done(null, user);
                 } else {
                     let newDate = new Date();
-                    console.log('Else!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
@@ -70,17 +68,14 @@ module.exports = function(passport) {
                         id: profile.id,
                         date: newDate
                     });
-                    console.log('profile.id: \n\n' + profile.id);
-                    console.log('profile._json.name: \n\n' + profile._json.name);
-                    newUser.save((err) => {
-                        if (err) {
-                            console.log('FAILEDD \n\n');
-                            throw err;
-                        } else {
-                            console.log('DONE \n\n');
-                            return done(null, newUser);
-                        }
-                    });
+                    newUser.save();
+                    /* (err) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                return done(null, newUser);
+                                            }
+                                        }); */
                 }
             });
         });

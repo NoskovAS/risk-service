@@ -21,19 +21,19 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   fieldError = false;
 
   constructor(private authService: AuthService,
-              private router: Router,
-              private validateService: ValidateService,
-              private fb: FormBuilder) {
+    private router: Router,
+    private validateService: ValidateService,
+    private fb: FormBuilder) {
 
-    this.loginForm = fb.group ({
+    this.loginForm = fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngAfterContentChecked() {}
+  ngAfterContentChecked() { }
 
   onLoginSubmit() {
     const user = this.loginForm.value;
@@ -53,16 +53,6 @@ export class LoginComponent implements OnInit, AfterContentChecked {
         this.router.navigate(['login']);
       }
 
-    });
-  }
-
-  facebookAuth() {
-    this.authService.facebookAuthenticate().subscribe(data => {
-      console.log('ROBOTAET: data: ' + data);
-      if (data.success) {
-        this.logSuccess = true;
-        this.router.navigate(['risk-list']); // table
-      }
     });
   }
 
