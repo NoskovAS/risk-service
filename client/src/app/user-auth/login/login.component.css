@@ -1,0 +1,111 @@
+.login-form {
+    margin-top: 10px;
+}
+
+.login-main {
+    margin-bottom: 200px;
+}
+
+h1 {
+    color: #1793d3;
+    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-size: 80px;
+}
+
+.title,
+.tss,
+.link,
+.form-label,
+.btn-block {
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.tss {
+    font-feature-settings: 'kern';
+    font-weight: 300;
+    line-height: 1.5;
+    color: #595c5e;
+    font-size: 85%;
+}
+
+.form-label {
+    color: #000000ca;
+    font-weight: 600;
+    font-size: 90%;
+    margin-bottom: 0px;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.btn {
+    margin-top: 30px;
+    border: none;
+}
+
+.pointer {
+    cursor: pointer;
+    /* Disabled double click selection */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    display: inline;
+    margin-right: 5px;
+}
+
+li i {
+    text-align: center;
+    text-decoration: none;
+}
+
+.sign-in-title {
+    display: inline-block;
+    vertical-align: 5px;
+    margin-right: 10px;
+}
+
+.svg-inline--fa {
+    color: #111111;
+    font-size: 30px;
+}
+
+
+/* //////////////////////////////////////////////////////////// */
+
+.fa-question-circle {
+    font-size: 13px;
+    margin-right: 2px;
+    margin-top: 8px;
+    color: #1793d3;
+}
+
+.forgot {
+    font-size: 0.8em;
+    text-decoration: underline;
+}

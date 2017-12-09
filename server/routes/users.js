@@ -173,7 +173,7 @@ router.get('/getFacebookData', (req, res, next) => {
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
 router.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: host.clientHost + 'login' }),
+    passport.authenticate('facebook', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res) {
         facebookUser.firstname = req.user.name.givenName;
         facebookUser.lastname = req.user.name.familyName;
@@ -183,7 +183,7 @@ router.get('/auth/facebook/callback',
         } else {
             facebookUser.email = req.user.emails[0].value;
         }
-        res.redirect(host.clientHost + 'auth/facebook');
+        res.redirect(host.clientHost + 'users/auth/facebook');
     });
 
 
@@ -200,7 +200,7 @@ router.get('/auth/google',
     passport.authenticate('google', { scope: ['profile', 'email'] })); //email yet
 
 router.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: host.clientHost + 'login' }),
+    passport.authenticate('google', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res) {
         googleUser.firstname = req.user.name.givenName;
         googleUser.lastname = req.user.name.familyName;
@@ -210,7 +210,7 @@ router.get('/auth/google/callback',
         } else {
             googleUser.email = req.user.emails[0].value;
         }
-        res.redirect(host.clientHost + 'auth/google');
+        res.redirect(host.clientHost + 'users/auth/google');
     });
 
 
@@ -227,7 +227,7 @@ router.get('/auth/github',
     passport.authenticate('github', { scope: ['user:email'] }));
 
 router.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: host.clientHost + 'login' }),
+    passport.authenticate('github', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res) {
 
         githubUser.firstname = req.user.displayName;
@@ -237,7 +237,7 @@ router.get('/auth/github/callback',
         } else {
             githubUser.email = req.user.emails[0].value;
         }
-        res.redirect(host.clientHost + 'auth/github');
+        res.redirect(host.clientHost + 'users/auth/github');
     });
 
 

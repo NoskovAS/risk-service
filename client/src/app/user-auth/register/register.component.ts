@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
-import { ValidateService } from '../service/validator/validate.service';
-import { AuthService } from '../service/auth/auth.service';
-import { ValidatorService } from '../service/validator/validator.service';
-import { TableService } from '../service/table/table.service';
+import { ValidateService } from '../../service/validator/validate.service';
+import { AuthService } from '../../service/auth/auth.service';
+import { ValidatorService } from '../../service/validator/validator.service';
+import { TableService } from '../../service/table/table.service';
 
 
 @Component({

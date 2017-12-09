@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
-import { ValidateService } from '../service/validator/validate.service';
-import { AuthService } from '../service/auth/auth.service';
+import { ValidateService } from '../../service/validator/validate.service';
+import { AuthService } from '../../service/auth/auth.service';
 
 
 @Component({

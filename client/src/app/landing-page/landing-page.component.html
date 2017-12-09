@@ -1,39 +1,39 @@
 <body>
-  <div class="container-fluid">
-    <header class="header">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="row right">
-            <img class="logo" [src]="logo" width="30" height="30" alt="logo">
-            <p class="title">
-              Risk Service
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6"></div>
-        <div class="col-md-3 left">
-          <p class="doc pointer">Documentation</p>
-        </div>
-      </div>
-    </header>
+    <div class="container-fluid">
+        <header class="header">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="row right">
+                        <img class="logo" [src]="logo" width="30" height="30" alt="logo">
+                        <p class="title">
+                            Risk Service
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-3 left">
+                    <p class="doc pointer">Documentation</p>
+                </div>
+            </div>
+        </header>
 
-    <div class="row main-title">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="main-header">
-          <h1>Web Service for Risk Management in the Development of Software Products</h1>
-          <p class="small-title">Free and Open-Source</p>
+        <div class="row main-title">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="main-header">
+                    <h1>Web Service for Risk Management in the Development of Software Products</h1>
+                    <p class="small-title">Free and Open-Source</p>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-      </div>
-      <div class="col-md-3"></div>
+        <div class="row main-button">
+            <div class="col-md-1 col-centered">
+                <button class="btn btn-primary pointer" [routerLink]="['/users/login']">Get Started</button>
+            </div>
+        </div>
+        <div class="row main-screen">
+            <img class="main-img" src="../../assets/img/main-screen.png" alt="Image not found">
+        </div>
     </div>
-    <div class="row main-button">
-      <div class="col-md-1 col-centered">
-        <button class="btn btn-primary pointer" [routerLink]="['/login']">Get Started</button>
-      </div>
-    </div>
-    <div class="row main-screen">
-          <img class="main-img" src="../../assets/img/main-screen.png" alt="Image not found">
-    </div>
-  </div>
 </body>

@@ -8,8 +8,6 @@ import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RiskListComponent } from './risk-list/risk-list.component';
@@ -32,21 +30,18 @@ import { FooterService } from './service/footer/footer.service';
 import { NavbarService } from './service/navbar/navbar.service';
 import { ProfileModule } from './profile/profile.module';
 import { ReportComponent } from './footer/report/report.component';
-import { SocialAuthComponent } from './login/social-auth/social-auth.component';
+import { UserAuthModule } from './user-auth/user-auth.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
     LandingPageComponent,
     PageNotFoundComponent,
-    ReportComponent,
-    SocialAuthComponent
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +54,8 @@ import { SocialAuthComponent } from './login/social-auth/social-auth.component';
     ReactiveFormsModule,
     SharedModule,
     AdminPageModule,
-    ProfileModule
+    ProfileModule,
+    UserAuthModule
   ],
   exports: [],
   providers: [

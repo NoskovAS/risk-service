@@ -1,24 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../service/auth/auth.service';
+import { AuthService } from '../../../service/auth/auth.service';
 import { error } from 'util';
+import { NavbarService } from '../../../service/navbar/navbar.service';
+import { FooterService } from '../../../service/footer/footer.service';
 
 @Component({
   selector: 'app-social-auth',
   templateUrl: './social-auth.component.html',
   styleUrls: ['./social-auth.component.css']
 })
-export class SocialAuthComponent implements OnInit {
+export class SocialAuthComponent implements OnInit, OnDestroy {
   socialRoute: string;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private ar: ActivatedRoute
+    private ar: ActivatedRoute,
+    private navbarService: NavbarService,
+    private footerService: FooterService
   ) {
     ar.params.subscribe((param) => {
       this.socialRoute = param['id'];
-      console.log('param: ' + param['id']);
     });
   }
 
@@ -37,9 +40,16 @@ export class SocialAuthComponent implements OnInit {
         break;
       }
       default: {
-        throw error;
+        this.router.navigate['**'];
       }
     }
+    this.navbarService.hide();
+    this.footerService.hide();
+  }
+
+  ngOnDestroy() {
+    this.navbarService.show();
+    this.footerService.show();
   }
 
   getSocialData(social: string) {

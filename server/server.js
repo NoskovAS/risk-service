@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const mongoose = require("mongoose");
-/* const http = require("http"); */
 mongoose.Promise = global.Promise;
 const config = require("./config/database");
 const routes = require('./config/route-config');
@@ -38,27 +37,6 @@ const app = express();
 
 // CORS Middleware
 app.use(cors());
-
-/* app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-}); */
-
-
-/* var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-    if ('OPTIONS' == req.method) {
-        res.send(200);
-    } else {
-        next();
-    }
-}; */
-
 
 // Morgan logger
 app.use(morgan('tiny'));

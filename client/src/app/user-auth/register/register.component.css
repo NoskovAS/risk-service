@@ -1,0 +1,51 @@
+body {
+    background-color: whitesmoke;
+}
+
+.register-form {
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+h1 {
+    color: #1793d3;
+}
+
+.tss,
+.title,
+.form-label,
+.btn-block {
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.tss {
+    font-feature-settings: 'kern';
+    font-weight: 300;
+    line-height: 1.5;
+    color: #595c5e;
+    font-size: 85%;
+}
+
+.form-label {
+    color: #000000ca;
+    font-weight: 600;
+    font-size: 90%;
+    margin-bottom: 0px;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.btn {
+    margin-top: 30px;
+}
+
+.pointer {
+    cursor: pointer;
+    /* Disabled double click selection */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
