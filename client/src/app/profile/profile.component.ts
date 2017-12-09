@@ -10,9 +10,11 @@ import { ProfileService } from '../service/profile/profile.service';
 
 export class ProfileComponent implements OnInit {
     user = JSON.parse(localStorage.getItem('user') || 'null');
+    public socialLogin = JSON.parse(localStorage.getItem('social') || 'null');
+
 
     constructor() {}
 
-    ngOnInit() { }
+    ngOnInit() {}
 
 }

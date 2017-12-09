@@ -14,7 +14,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RiskListComponent } from './risk-list/risk-list.component';
 
-import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guard/auth/auth.guard';
+import { SocialAuthGuard } from './guard/social-auth/social-auth.guard';
 import { ProfileService } from './service/profile/profile.service';
 import { RiskListService } from './service/risk-list/risk-list.service';
 import { AuthService } from './service/auth/auth.service';
@@ -71,7 +72,8 @@ import { SocialAuthComponent } from './login/social-auth/social-auth.component';
     AdminService,
     NavbarService,
     FooterService,
-    AuthGuard
+    AuthGuard,
+    SocialAuthGuard
   ],
   bootstrap: [AppComponent]
 })

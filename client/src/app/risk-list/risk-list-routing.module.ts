@@ -4,7 +4,7 @@ import { RiskListComponent } from './risk-list.component';
 import { TableComponent } from './table/table.component';
 import { ChartsComponent } from './charts/charts.component';
 import { RiskFormComponent } from './risk-form/risk-form.component';
-import { AuthGuard } from '../guard/auth.guard';
+import { AuthGuard } from '../guard/auth/auth.guard';
 
 const riskRoutes: Routes = [
     {

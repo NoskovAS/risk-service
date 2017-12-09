@@ -116,11 +116,6 @@ module.exports = function(passport) {
     };
 
     let googleCallback = function(accessToken, refreshToken, profile, done) {
-        console.log('\n\nid: ' + profile.id + '\n\n');
-        console.log('\n\naccessToken: ' + profile.accessToken + '\n\n');
-        console.log('\n\n/givenName: ' + profile.name.givenName + '\n\n');
-        console.log('\n\n/emails: ' + profile.emails[0].value + '\n\n');
-        console.log('\n\n/profile.displayName.: ' + profile.displayName + '\n\n');
         process.nextTick(() => {
             User.findOne({ username: 'google' + profile.id }, (err, user) => {
                 if (err) {
@@ -129,17 +124,17 @@ module.exports = function(passport) {
                 if (user) {
                     return done(null, user);
                 } else {
-                    /* var email;
+                    var email;
                     if ((profile.emails === '') || (profile.emails === undefined)) {
                         email = 'Email not available';
                     } else {
                         email = profile.emails[0].value;
-                    } */
+                    }
                     let newDate = new Date();
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
-                        email: profile.emails[0].value,
+                        email: email,
                         username: 'google' + profile.id,
                         date: newDate
                     });
@@ -168,16 +163,9 @@ module.exports = function(passport) {
         clientID: auth.githubAuth.clientID,
         clientSecret: auth.githubAuth.clientSecret,
         callbackURL: auth.githubAuth.callbackURL,
-        /* profileFields: ['id', 'emails', 'name'], */
-        /* return_scopes: true */
     };
 
     let githubCallback = function(accessToken, refreshToken, profile, done) {
-        console.log('\n\nid: ' + profile.id + '\n\n');
-        console.log('\n\naccessToken: ' + profile.accessToken + '\n\n');
-        console.log('\n\n/givenName: ' + profile.name.givenName + '\n\n');
-        console.log('\n\n/emails: ' + profile.emails[0].value + '\n\n');
-        console.log('\n\n/profile.displayName.: ' + profile.displayName + '\n\n');
         process.nextTick(() => {
             User.findOne({ username: 'github' + profile.id }, (err, user) => {
                 if (err) {
@@ -186,17 +174,17 @@ module.exports = function(passport) {
                 if (user) {
                     return done(null, user);
                 } else {
-                    /* var email;
+                    var email;
                     if ((profile.emails === '') || (profile.emails === undefined)) {
                         email = 'Email not available';
                     } else {
                         email = profile.emails[0].value;
-                    } */
+                    }
+                    console.log('Profile: ' + profile + profile.displayName);
                     let newDate = new Date();
                     let newUser = new User({
-                        firstname: profile.name.givenName,
-                        lastname: profile.name.familyName,
-                        email: profile.emails[0].value,
+                        firstname: profile.displayName,
+                        email: email,
                         username: 'github' + profile.id,
                         date: newDate
                     });

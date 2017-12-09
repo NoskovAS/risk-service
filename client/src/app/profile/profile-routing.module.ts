@@ -4,7 +4,8 @@ import { BasicInfoComponent } from './basic-info/basic-info.component';
 import { ProfileComponent } from './profile.component';
 import { AccountDelComponent } from './account-del/account-del.component';
 import { PassChangeComponent } from './pass-change/pass-change.component';
-import { AuthGuard } from '../guard/auth.guard';
+import { AuthGuard } from '../guard/auth/auth.guard';
+import { SocialAuthGuard } from '../guard/social-auth/social-auth.guard';
 
 const profileRoutes: Routes = [
   {
@@ -25,12 +26,14 @@ const profileRoutes: Routes = [
       {
         path: 'password',
         pathMatch: 'full',
-        component: PassChangeComponent
+        component: PassChangeComponent,
+        canActivate: [SocialAuthGuard],
       },
       {
         path: 'delete_acct',
         pathMatch: 'full',
-        component: AccountDelComponent
+        component: AccountDelComponent,
+        canActivate: [SocialAuthGuard],
       },
     ]
   }

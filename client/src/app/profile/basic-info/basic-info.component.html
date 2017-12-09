@@ -1,35 +1,35 @@
 <div class="container-fluid basic">
-  <div class="row">
-    <div>
-      <h3 class="title">Basic Information</h3>
-      <div *ngIf="update" class="alert alert-success" role="alert">
-        Account update successful
-      </div>
-      <form class="edit-profile-form" novalidate [formGroup]="editProfileForm" (submit)="onProfileSubmit()">
-        <div class="form-group">
-          <label class="form-label" for="firstname">First name</label>
-          <input class="form-input form-control" id="firstname" type="text" formControlName="firstname">
-          <app-validator-message class="validator" [field]="editProfileForm.get('firstname')"></app-validator-message>
+    <div class="row">
+        <div>
+            <h3 class="title">Basic Information</h3>
+            <div *ngIf="update" class="alert alert-success" role="alert">
+                Account update successful
+            </div>
+            <form class="edit-profile-form" novalidate [formGroup]="editProfileForm" (submit)="onProfileSubmit()">
+                <div class="form-group">
+                    <label class="form-label" for="firstname">First name</label>
+                    <input class="form-input form-control" id="firstname" type="text" formControlName="firstname">
+                    <app-validator-message class="validator" [field]="editProfileForm.get('firstname')"></app-validator-message>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="lastname">Last name</label>
+                    <input class="form-input form-control" id="lastname" type="text" formControlName="lastname">
+                    <app-validator-message class="validator" [field]="editProfileForm.get('lastname')"></app-validator-message>
+                </div>
+                <div *ngIf="!socialLogin" class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-input form-control" id="username" type="text" value="username" formControlName="username">
+                    <app-validator-message class="validator" [field]="editProfileForm.get('username')"></app-validator-message>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-input form-control" id="email" type="text" formControlName="email">
+                    <app-validator-message class="validator" [field]="editProfileForm.get('email')"></app-validator-message>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary pointer" type="submit" value="Profile">Update Profile</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="lastname">Last name</label>
-          <input class="form-input form-control" id="lastname" type="text" formControlName="lastname">
-          <app-validator-message class="validator" [field]="editProfileForm.get('lastname')"></app-validator-message>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="username">Username</label>
-          <input class="form-input form-control" id="username" type="text" value="username" formControlName="username">
-          <app-validator-message class="validator" [field]="editProfileForm.get('username')"></app-validator-message>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-input form-control" id="email" type="text" formControlName="email">
-          <app-validator-message class="validator" [field]="editProfileForm.get('email')"></app-validator-message>
-        </div>
-        <div class="form-group text-center">
-          <button class="btn btn-primary pointer" type="submit" value="Profile">Update Profile</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>

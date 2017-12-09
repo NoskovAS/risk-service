@@ -30,17 +30,10 @@ export class AuthService {
             .map(res => res.json());
     }
 
-    facebookGetData() {
+    getSocialData(social: string) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get(this.host + 'users/getFacebookData', { headers: headers } )
-            .map(res => res.json());
-    }
-
-    googleGetData() {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get(this.host + 'users/getGoogleData', { headers: headers } )
+        return this.http.get(this.host + 'users/' + social, { headers: headers } )
             .map(res => res.json());
     }
 

@@ -25,38 +25,44 @@ export class SocialAuthComponent implements OnInit {
   ngOnInit() {
     switch (this.socialRoute) {
       case 'facebook': {
-        this.facebookAuth();
+        this.getSocialData('getFacebookData');
         break;
       }
       case 'google': {
-        /* this.facebookAuth(); */
+        this.getSocialData('getGoogleData');
+        break;
+      }
+      case 'github': {
+        this.getSocialData('getGithubData');
         break;
       }
       default: {
         throw error;
       }
     }
-    /* this.facebookAuth(); */
   }
 
-  facebookAuth() {
-    this.authService.facebookGetData().subscribe(data => {
-      console.log('ROBOTAET: data: ' + data.email);
+  getSocialData(social: string) {
+    this.authService.getSocialData(social).subscribe(data => {
       if (data.success) {
-        this.authService.storeUserData(null, data.facebookUser);
-        localStorage.setItem('username', data.facebookUser.username);
-        this.router.navigate(['risk-list/table']);
-      }
-    });
-  }
-
-  googleAuth() {
-    this.authService.googleGetData().subscribe(data => {
-      console.log('ROBOTAET: data: ' + data.email);
-      if (data.success) {
-        this.authService.storeUserData(null, data.googleUser);
-        localStorage.setItem('username', data.googleUser.username);
-        this.router.navigate(['risk-list/table']);
+        if (data.facebookUser) {
+          this.authService.storeUserData(null, data.facebookUser);
+          localStorage.setItem('username', data.facebookUser.username);
+          localStorage.setItem('social', 'true');
+          this.router.navigate(['risk-list/table']);
+        }
+        if (data.googleUser) {
+          this.authService.storeUserData(null, data.googleUser);
+          localStorage.setItem('username', data.googleUser.username);
+          localStorage.setItem('social', 'true');
+          this.router.navigate(['risk-list/table']);
+        }
+        if (data.githubUser) {
+          this.authService.storeUserData(null, data.githubUser);
+          localStorage.setItem('username', data.githubUser.username);
+          localStorage.setItem('social', 'true');
+          this.router.navigate(['risk-list/table']);
+        }
       }
     });
   }
