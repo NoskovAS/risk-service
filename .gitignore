@@ -46,5 +46,5 @@ server/node_modules
 server/access.log
 
 # database config
-./server/config/database.js
-./server/config/auth.js
+server/config/auth.js
+server/config/database.js
