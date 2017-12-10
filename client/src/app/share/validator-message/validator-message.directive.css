@@ -1,32 +1,35 @@
 .alert {
-  background-color: black;
-  background: #f2edda;
-  padding: 5px; 
-  font-size: .9em;
-  margin-bottom: 2px;
-  display: inline-block;
-  animation: 2s alertAnim forwards;
-  margin-top: 2%;
-  border: 1px solid rgba(255, 0, 0, 0.49);
-  background-color: rgba(238, 173, 173, 0.19);
+    /*   background-color: black; */
+    /* background: #f2edda; */
+    padding: 1px;
+    font-size: 1em;
+    margin-bottom: 0px;
+    display: block;
+    animation: 1s alertAnim forwards;
+    margin-top: 5px;
+    /* border: 1px solid rgba(0, 0, 0, 0.49); */
+    /* background-color: rgba(238, 173, 173, 0.19); */
+    /*   box-shadow: 0 0 5px rgba(0, 0, 0, 0.836); */
 }
 
 .err-message {
-    list-style-type: none;    
+    text-align: center;
+    list-style-type: none;
+    color: #111111;
 }
 
 .material-icons {
     position: relative;
-    top:6px;
+    top: 6px;
 }
 
 @keyframes alertAnim {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

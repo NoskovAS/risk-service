@@ -13,9 +13,9 @@
             <button class="btn btn-primary return-button pointer" [routerLink]="['/risk-list']">Return to home page</button>
             <h5 class="links-title">Here are some links that you might need:</h5>
             <div class="links">
-                <div><a [routerLink]="['/risk-list']">Home Page</a></div>
-                <div><a [routerLink]="['/users/login']">Sign In</a></div>
-                <div><a [routerLink]="['/users/register']">Create New Account</a></div>
+                <div *ngIf="entered !== null"><a [routerLink]="['/risk-list']">Home Page</a></div>
+                <div *ngIf="entered === null"><a [routerLink]="['/users/login']">Sign In</a></div>
+                <div *ngIf="entered === null"><a [routerLink]="['/users/register']">Create New Account</a></div>
             </div>
         </div>
         <div class="col-md-3"></div>

@@ -1,14 +1,40 @@
 .selector-for-some-widget {
-  box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-  height: 100%;
-  background-color: whitesmoke;
+    height: 100%;
+    background-color: whitesmoke;
+}
+
+::selection {
+    background: #c0ecf4;
+}
+
+textarea,
+select,
+input:focus {
+    border-color: #1793d3;
+    border-width: 1.5px;
+}
+
+
+/* Disabled default ugly browser border */
+
+input,
+textarea,
+select,
+button {
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+:-webkit-autofill {
+    color: #fff !important;
 }

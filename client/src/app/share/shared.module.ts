@@ -29,7 +29,7 @@ import { LoaderComponent } from './loader/loader.component';
     PriorityFilterPipe,
     RiskFilterPipe,
     SuggestionFilterPipe,
-    LoaderComponent
+    LoaderComponent,
   ],
   exports: [
     ValidatorMessageComponent,

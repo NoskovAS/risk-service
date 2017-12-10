@@ -175,12 +175,25 @@ module.exports = function(passport) {
                     return done(null, user);
                 } else {
                     var email;
+                    var firstname;
+                    var lastname;
                     if ((profile.emails === '') || (profile.emails === undefined)) {
                         email = 'Email not available';
                     } else {
                         email = profile.emails[0].value;
                     }
-                    console.log('Profile: ' + profile + profile.displayName);
+                    /*     for (let i = 0; i <= profile.displayName.length; i++) {
+                            this.firstname.push(profile.displayName[i]);
+                            if (profile.displayName[i] === ' ') {
+                                return;
+                            }
+                        }
+                        for (let j = 0; j <= profile.displayName.length; j++) {
+                            if (profile.displayName[j] === ' ') {
+                                this.lastname.push(profile.displayName[j]);
+                            }
+                        } */
+
                     let newDate = new Date();
                     let newUser = new User({
                         firstname: profile.displayName,

@@ -1,8 +1,8 @@
 <body>
     <div class="container-fluid">
         <div class="row login-main">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 login-form">
+            <div class="col"></div>
+            <div class="col-5 login-form">
                 <h1 class="title">Sign In</h1>
                 <p class="tss">
                     Don't have a Risk Service account?
@@ -19,16 +19,16 @@
                 <form class="" novalidate [formGroup]="loginForm" (submit)="onLoginSubmit()">
                     <div class="form-group">
                         <label class="form-label" for="username">Username</label>
-                        <input class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username">
-                        <app-validator-message [field]="loginForm.get('username')"></app-validator-message>
+                        <input autofocus #inputFocus class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username">
+                        <!-- <app-validator-message [field]="loginForm.get('username')"></app-validator-message> -->
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="password">Password</label>
                         <input class="form-input form-control" id="password" type="password" formControlName="password" placeholder="Password">
-                        <a class="forgot" href="">
+                        <a class="forgot" [routerLink]="['/users/forgotPass']">
                             <i class="fa fa-question-circle"></i>Forgot your password?
                         </a>
-                        <app-validator-message [field]="loginForm.get('password')"></app-validator-message>
+                        <!-- <app-validator-message [field]="loginForm.get('password')"></app-validator-message> -->
                     </div>
                     <div class="form-group text-center">
                         <button class="btn btn-block btn-lg btn-primary pointer" type="submit" value="Login">Sign in</button>
@@ -41,7 +41,7 @@
                     <li><a href="http://localhost:8080/users/auth/github/"><i class="fab fa-github-square pointer"></i></a></li>
                 </ul>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col"></div>
         </div>
     </div>
 </body>

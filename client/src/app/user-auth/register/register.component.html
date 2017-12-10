@@ -1,10 +1,10 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col">
             </div>
-            <div class="col-md-4 register-form">
-                <h1 class="title">Register</h1>
+            <div class="col-5 register-form">
+                <h1 class="title">Sign Up</h1>
                 <p class="tss">
                     Already have a Risk Service account?
                     <a class="link link--underline" [routerLink]="['/users/login']">Sign in</a>
@@ -16,7 +16,7 @@
                 <form class="" novalidate [formGroup]="registerForm" (submit)="onRegisterSubmit()">
                     <div class="form-group">
                         <label class="form-label" for="firstname">First name</label>
-                        <input class="form-input form-control" id="firstname" type="text" formControlName="firstname" placeholder="First name" aria-describedby="firstnameHelpBlock">
+                        <input #inputFocus class="form-input form-control" id="firstname" type="text" formControlName="firstname" placeholder="First name" aria-describedby="firstnameHelpBlock">
                         <app-validator-message [field]="registerForm.get('firstname')"></app-validator-message>
                     </div>
                     <div class="form-group">
@@ -37,7 +37,8 @@
                     <div class="form-group" formGroupName="password">
                         <div class="form-group">
                             <label class="form-label" for="pwd">Password</label>
-                            <input class="form-input form-control" id="pwd" type="password" formControlName="pwd" placeholder="Password" aria-describedby="passHelpBlock">
+                            <input #passInput class="form-input form-control" id="pwd" type="password" formControlName="pwd" placeholder="Password" aria-describedby="passHelpBlock">
+
                             <app-validator-message [field]="registerForm.get('password').get('pwd')"></app-validator-message>
                         </div>
                         <div class="form-group">
@@ -45,16 +46,17 @@
                             <input class="form-input form-control" id="confirm" type="password" formControlName="confirm" placeholder="Confirm password" aria-describedby="confirmHelpBlock">
                             <app-validator-message [field]="registerForm.get('password').get('confirm')"></app-validator-message>
                         </div>
-                        <div *ngIf="(this.registerForm.value.password.pwd > 1) || (this.registerForm.value.password.confirm > 1)">
-                            <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
-                        </div>
+                        <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
                     </div>
+                    <!-- <div class="show-pass">
+                        <input class="pointer show-checkbox" type="checkbox" autocomplete="off" (click)="toggleShowPassword(passInput)"> Show password
+                    </div> -->
                     <div class="form-group text-center">
                         <button class="btn btn-block btn-lg btn-primary pointer" type="submit" value="Register">Create Account</button>
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
+            <div class="col">
             </div>
         </div>
     </div>

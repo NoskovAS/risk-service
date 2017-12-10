@@ -1,10 +1,9 @@
-body {
-    background-color: whitesmoke;
+.forgot-form {
+    margin-top: 10px;
 }
 
-.register-form {
-    margin-top: 10px;
-    margin-bottom: 100px;
+.forgot-main {
+    margin-bottom: 190px;
 }
 
 h1 {
@@ -12,15 +11,23 @@ h1 {
     font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.tss,
+a {
+    text-decoration: underline;
+}
+
+i {
+    font-size: 80px;
+}
+
 .title,
+.tss,
+.link,
 .form-label,
 .btn-block {
     font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
-.tss,
-.show-pass {
+.tss {
     font-feature-settings: 'kern';
     font-weight: 300;
     line-height: 1.5;
@@ -44,7 +51,8 @@ h1 {
 }
 
 .btn {
-    margin-top: 30px;
+    margin-top: 10px;
+    border: none;
 }
 
 .pointer {
@@ -54,12 +62,4 @@ h1 {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-.show-pass {
-    margin-top: 2px;
-}
-
-.show-checkbox {
-    vertical-align: -2px;
 }

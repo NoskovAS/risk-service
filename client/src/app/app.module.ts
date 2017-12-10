@@ -31,6 +31,7 @@ import { NavbarService } from './service/navbar/navbar.service';
 import { ProfileModule } from './profile/profile.module';
 import { ReportComponent } from './footer/report/report.component';
 import { UserAuthModule } from './user-auth/user-auth.module';
+import { EnteredGuard } from './guard/entered/entered.guard';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { UserAuthModule } from './user-auth/user-auth.module';
     NavbarService,
     FooterService,
     AuthGuard,
-    SocialAuthGuard
+    SocialAuthGuard,
+    EnteredGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row forgot-main">
+        <div class="col"></div>
+        <div class="col-5 forgot-form">
+            <h1 class="title">Forgot your password?</h1>
+            <p class="tss">
+                Trying to
+                <a class="link link--underline" [routerLink]="['/users/login']">sign in</a> or
+                <a class="link link--underline" [routerLink]="['/users/register']">create a free account</a> ?
+            </p>
+            <form class="form" novalidate [formGroup]="forgotForm" (submit)="onSendSubmit()">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input #inputFocus class="form-input form-control" id="email" type="email" formControlName="email" placeholder="Your email address">
+                    <!-- <app-validator-message [field]="loginForm.get('username')"></app-validator-message> -->
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary pointer" type="submit" value="Send">Send Password</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

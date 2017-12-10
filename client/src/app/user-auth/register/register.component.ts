@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { ValidateService } from '../../service/validator/validate.service';
@@ -13,9 +13,13 @@ import { TableService } from '../../service/table/table.service';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements OnInit, AfterContentChecked {
+export class RegisterComponent implements OnInit, AfterContentChecked, AfterViewInit {
   public registerForm: FormGroup = null;
+
+  @ViewChild('inputFocus') vc: any;
+
   fieldError: boolean = false;
+  showPass = false;
 
 
   constructor(private validateService: ValidateService,
@@ -23,7 +27,7 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
               private authService: AuthService,
               private tableService: TableService,
               private router: Router,
-              private fb: FormBuilder
+              private fb: FormBuilder,
   ) {
     const pwdValidators: ValidatorFn[] = [Validators.required, Validators.minLength(6), Validators.maxLength(20)];
     const emailValidator: ValidatorFn[] = [Validators.email];
@@ -48,6 +52,14 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() {
   }
 
+  ngAfterViewInit() {
+    this.vc.nativeElement.focus();
+  }
+
+  toggleShowPassword(passInput: any) {
+    passInput.type = passInput.type === 'password' ?  'text' : 'password';
+  }
+
   onRegisterSubmit() {
     if ((this.registerForm.value.firstname === '') ||
        (this.registerForm.value.lastname === '') ||
@@ -61,9 +73,9 @@ export class RegisterComponent implements OnInit, AfterContentChecked {
     // Register user
     this.authService.registerUser(user).subscribe(data => {
       if (data.success) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['users/login']);
       } else {
-        this.router.navigate(['/register']);
+        this.router.navigate(['users/register']);
       }
     });
 

@@ -7,7 +7,7 @@
 }
 
 h1 {
-    color: #1793d3;
+    color: #575a5b;
     font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -42,6 +42,10 @@ i {
     margin-bottom: 0px;
 }
 
+.form-input {
+    height: 44px;
+}
+
 .link {
     text-decoration: underline;
 }
@@ -49,6 +53,8 @@ i {
 .btn {
     margin-top: 30px;
     border: none;
+    background-color: #1793d3;
+    color: #ffffff;
 }
 
 .pointer {
@@ -91,8 +97,12 @@ li i {
 }
 
 .svg-inline--fa {
-    color: #111111;
+    color: #adbdc1;
     font-size: 30px;
+}
+
+.svg-inline--fa:hover {
+    color: #393d40;
 }
 
 

@@ -8,11 +8,13 @@ import { FooterService } from '../service/footer/footer.service';
   styleUrls: ['./page-not-found.component.css']
 })
 export class PageNotFoundComponent implements OnInit, OnDestroy {
+  public entered: string = JSON.parse(localStorage.getItem('user') || 'null');
 
   constructor(private navbarService: NavbarService,
               private footerService: FooterService) { }
 
   ngOnInit() {
+    console.log(this.entered);
     this.navbarService.hide();
     this.footerService.hide();
   }

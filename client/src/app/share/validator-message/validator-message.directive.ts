@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-validator-message',
   template: `
-    <div class="alert alert-danger" *ngIf="field.invalid && field.touched">
+    <div class="alert alert-light" role="alert" *ngIf="field.invalid && field.touched">
       <li class="err-message" *ngFor="let errMsg of validatorMessages"><i class="material-icons">error</i> {{errMsg}}</li>
     </div>
   `,
@@ -18,7 +18,7 @@ export class ValidatorMessageComponent {
   public get validatorMessages() {
     const field = this.field;
     if (!field || !field.errors) {
-      return false;
+      return ['Password are not equal'];
     }
     const errors = [];
     const config = {
