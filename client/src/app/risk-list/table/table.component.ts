@@ -1,8 +1,6 @@
 import { Component, OnInit, AfterContentChecked, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { ChildParentService } from '../../service/child-parent/child-parent.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Data } from '../data.class';
 
 @Component({
@@ -11,43 +9,35 @@ import { Data } from '../data.class';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
-  @Input() riskForm: FormGroup;
+  @Input() riskForm;
   @Input() items;
   @Input() deleted;
   @Output() tableCleared: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  visible: boolean = false;
+  filterVisible: boolean = false;
 
   // Sort
   isDesc: boolean = false;
   column: string;
   direction: number;
+  //////////////////
 
-  count: number;
-  offset: number = 0;
-  limit: number = 5;
+  // Pagination
+  riskCount: number; // total number of risks
+  pageOffset: number = 0;
+  riksLimit: number = 5; // total number of risks on the table page
   selectedRow: number;
   selectedItems: Data[] = [];
 
   firstitem: number;
   lastitem: number;
-
-  searchRisks: string;
-  searchPriorityes: string;
-  searchHours: string;
-  searchCosts: string;
-  searchChances: string;
-  searchDates: string;
-  searchSuggestions: string;
+  //////////////////
 
   // Variable for change table row from EventEmitter
   allowChange: boolean = false;
 
-
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private riskListService: RiskListService,
-              private childParentService: ChildParentService) {
+  constructor(private riskListService: RiskListService,
+    private childParentService: ChildParentService) {
   }
 
   ngOnInit() {
@@ -56,10 +46,10 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   }
 
   ngAfterContentChecked() {
-    this.lastitem = this.selectedRow * this.limit;
-    this.firstitem = this.lastitem - this.limit;
+    this.lastitem = this.selectedRow * this.riksLimit;
+    this.firstitem = this.lastitem - this.riksLimit;
     this.selectedItems = this.items.slice(this.firstitem, this.lastitem);
-    this.count = this.items.length;
+    this.riskCount = this.items.length;
   }
 
   ngOnDestroy() {
@@ -74,24 +64,23 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   tableClear() {
     const user = {
-        username: localStorage.getItem('username'),
+      username: localStorage.getItem('username'),
     };
 
     // clear table
     this.riskListService.clearTable(user).subscribe(data => {
-        this.items = [];
-        this.tableCleared.emit();
-        console.log('Successful clear');
+      this.items = [];
+      this.tableCleared.emit();
     });
   }
 
   togglefilter() {
-    this.visible === true ? this.visible = false : this.visible = true;
+    this.filterVisible === true ? this.filterVisible = false : this.filterVisible = true;
   }
 
   onPageChange(offset) {
-    this.offset = offset;
-    this.selectedRow = (offset / this.limit) + 1;
+    this.pageOffset = offset;
+    this.selectedRow = (offset / this.riksLimit) + 1;
   }
 
   editRow(index, $event) {

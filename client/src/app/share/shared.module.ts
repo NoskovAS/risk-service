@@ -12,7 +12,6 @@ import {
   SuggestionFilterPipe
 } from '../pipes/index';
 import { ChartsModule } from 'ng2-charts';
-import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -29,7 +28,6 @@ import { LoaderComponent } from './loader/loader.component';
     PriorityFilterPipe,
     RiskFilterPipe,
     SuggestionFilterPipe,
-    LoaderComponent,
   ],
   exports: [
     ValidatorMessageComponent,
@@ -42,7 +40,6 @@ import { LoaderComponent } from './loader/loader.component';
     RiskFilterPipe,
     SuggestionFilterPipe,
     ChartsModule,
-    LoaderComponent
   ],
   providers: [
     ValidatorMessageComponent

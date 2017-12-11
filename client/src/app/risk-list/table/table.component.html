@@ -1,176 +1,163 @@
-<body>
-  <div class="table-container">
+<div class="table-container">
     <table class="table table-hover table-responsive table-bordered" height="50%" align="center">
-      <thead class="thead-default">
-        <tr class="tr">
-          <th class="col1">
-            <div class="pointer" (click)="sort('riskname')">
-              Название риска
-              <i class="fa" [ngClass]="{'fa-sort': column != 'riskname', 'fa-sort-asc': (column == 'riskname' && isDesc),
+        <thead class="thead-default">
+            <tr class="tr">
+                <th class="col1">
+                    <div class="pointer" (click)="sort('riskname')">
+                        Название риска
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'riskname', 'fa-sort-asc': (column == 'riskname' && isDesc),
                           'fa-sort-desc': (column == 'riskname' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col2">
-            <div class="pointer" (click)="sort('priority')">
-              Приоритет
-              <i class="fa" [ngClass]="{'fa-sort': column != 'priority', 'fa-sort-asc': (column == 'priority' && isDesc),
+                    </div>
+                </th>
+                <th class="col2">
+                    <div class="pointer" (click)="sort('priority')">
+                        Приоритет
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'priority', 'fa-sort-asc': (column == 'priority' && isDesc),
                           'fa-sort-desc': (column == 'priority' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col3">
-            <div class="pointer" (click)="sort('hoursinfluence')">
-              Влияние (часы)
-              <i class="fa" [ngClass]="{'fa-sort': column != 'hoursinfluence', 'fa-sort-asc': (column == 'hoursinfluence' && isDesc),
+                    </div>
+                </th>
+                <th class="col3">
+                    <div class="pointer" (click)="sort('hoursinfluence')">
+                        Влияние (часы)
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'hoursinfluence', 'fa-sort-asc': (column == 'hoursinfluence' && isDesc),
                           'fa-sort-desc': (column == 'hoursinfluence' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col4">
-            <div class="pointer" (click)="sort('costinfluence')">
-              Влияние ($)
-              <i class="fa" [ngClass]="{'fa-sort': column != 'costinfluence', 'fa-sort-asc': (column == 'costinfluence' && isDesc),
+                    </div>
+                </th>
+                <th class="col4">
+                    <div class="pointer" (click)="sort('costinfluence')">
+                        Влияние ($)
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'costinfluence', 'fa-sort-asc': (column == 'costinfluence' && isDesc),
                           'fa-sort-desc': (column == 'costinfluence' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col5">
-            <div class="pointer" (click)="sort('commonChance')">
-              Уточненная вероятность
-              <i class="fa" [ngClass]="{'fa-sort': column != 'commonChance', 'fa-sort-asc': (column == 'commonChance' && isDesc),
+                    </div>
+                </th>
+                <th class="col5">
+                    <div class="pointer" (click)="sort('commonChance')">
+                        Уточненная вероятность
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'commonChance', 'fa-sort-asc': (column == 'commonChance' && isDesc),
                           'fa-sort-desc': (column == 'commonChance' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col6">
-            <div class="pointer" (click)="sort('date')">
-              Дата
-              <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc),
+                    </div>
+                </th>
+                <th class="col6">
+                    <div class="pointer" (click)="sort('date')">
+                        Дата
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc),
                           'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col7">
-            <div class="pointer" (click)="sort('suggestions')">
-              Предложения
-              <i class="fa" [ngClass]="{'fa-sort': column != 'suggestions', 'fa-sort-asc': (column == 'suggestions' && isDesc),
+                    </div>
+                </th>
+                <th class="col7">
+                    <div class="pointer" (click)="sort('suggestions')">
+                        Предложения
+                        <i class="fa" [ngClass]="{'fa-sort': column != 'suggestions', 'fa-sort-asc': (column == 'suggestions' && isDesc),
                           'fa-sort-desc': (column == 'suggestions' && !isDesc) }" aria-hidden="true"> </i>
-            </div>
-          </th>
-          <th class="col8">
-            <i class="material-icons md-48 pointer" data-toggle="modal" data-target="#clearTable">delete_sweep</i>
-            <i class="material-icons md-48 pointer" (click)="togglefilter()">filter_list</i>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="filter" *ngIf="visible === true && items.length > 1">
-          <td class="col1">
-            <input class="filter-input" type="search" [(ngModel)]="searchRisks" class="form-control" placeholder="Search By Risk Name"
-            />
-          </td>
-          <td class="col2">
-            <input class="filter-input" type="search" [(ngModel)]="searchPriorityes" class="form-control" placeholder="Search By Priority"
-            />
-          </td>
-          <td class="col3">
-            <input class="filter-input" type="search" [(ngModel)]="searchHours" class="form-control" placeholder="Search By Influence(hours)"
-            />
-          </td>
-          <td class="col4">
-            <input class="filter-input" type="search" [(ngModel)]="searchCosts" class="form-control" placeholder="Search By Influence($)"
-            />
-          </td>
-          <td class="col5">
-            <input class="filter-input" type="search" [(ngModel)]="searchChances" class="form-control" placeholder="Search By Chance"
-            />
-          </td>
-          <td class="col6">
-            <input class="filter-input" type="search" [(ngModel)]="searchDates" class="form-control" placeholder="Search By Date" />
-          </td>
-          <td class="col7">
-            <input class="filter-input" type="search" [(ngModel)]="searchSuggestions" class="form-control" placeholder="Search By Suggestions"
-            />
-          </td>
-          <td class="col8">
-          </td>
-        </tr>
-        <tr *ngFor="let item of selectedItems | riskFilter : searchRisks
+                    </div>
+                </th>
+                <th class="col8">
+                    <i class="material-icons md-48 pointer" data-toggle="modal" data-target="#clearTable">delete_sweep</i>
+                    <i class="material-icons md-48 pointer" (click)="togglefilter()">filter_list</i>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="filter" *ngIf="filterVisible === true && items.length > 1">
+                <td class="col1">
+                    <input class="filter-input" type="search" [(ngModel)]="searchRisks" class="form-control" placeholder="Search By Risk Name" />
+                </td>
+                <td class="col2">
+                    <input class="filter-input" type="search" [(ngModel)]="searchPriorityes" class="form-control" placeholder="Search By Priority" />
+                </td>
+                <td class="col3">
+                    <input class="filter-input" type="search" [(ngModel)]="searchHours" class="form-control" placeholder="Search By Influence(hours)" />
+                </td>
+                <td class="col4">
+                    <input class="filter-input" type="search" [(ngModel)]="searchCosts" class="form-control" placeholder="Search By Influence($)" />
+                </td>
+                <td class="col5">
+                    <input class="filter-input" type="search" [(ngModel)]="searchChances" class="form-control" placeholder="Search By Chance" />
+                </td>
+                <td class="col6">
+                    <input class="filter-input" type="search" [(ngModel)]="searchDates" class="form-control" placeholder="Search By Date" />
+                </td>
+                <td class="col7">
+                    <input class="filter-input" type="search" [(ngModel)]="searchSuggestions" class="form-control" placeholder="Search By Suggestions" />
+                </td>
+                <td class="col8">
+                </td>
+            </tr>
+            <tr *ngFor="let item of selectedItems | riskFilter : searchRisks
                 | priorityFilter : searchPriorityes | hoursFilter : searchHours | costFilter: searchCosts 
                 | chanceFilter : searchChances | dateFilter: searchDates | suggestionFilter : searchSuggestions 
                 | orderBy: {property: column, direction: direction}; let i = index">
-          <td class="col1">
-            <div contenteditable="true">{{item.riskname}}</div>
-          </td>
-          <td class="col2">
-            <div contenteditable="true">{{item.priority}}</div>
-          </td>
-          <td class="col3">
-            <div contenteditable="true">{{item.hoursinfluence}}</div>
-          </td>
-          <td class="col4">
-            <div contenteditable="true">{{item.costinfluence | currency:"USD":true:'4.1-2' }}</div>
-          </td>
-          <td class="col5">
-            <div contenteditable="true">{{item.commonChance}}</div>
-          </td>
-          <td class="col6">
-            <div contenteditable="true">{{item.date | date: 'dd MMMM yyyy'}}</div>
-          </td>
-          <td class="col7">
-            <div contenteditable="true">{{item.suggestions}}</div>
-          </td>
-          <td class="col8">
-            <app-item-edit [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
-            <app-item-del [index]="item.index" [i]="i" [items]="items" [limit]="limit" (deleted)="deleted($event)"></app-item-del>
-          </td>
-        </tr>
-      </tbody>
+                <td class="col1">
+                    <div contenteditable="true">{{item.riskname}}</div>
+                </td>
+                <td class="col2">
+                    <div contenteditable="true">{{item.priority}}</div>
+                </td>
+                <td class="col3">
+                    <div contenteditable="true">{{item.hoursinfluence}}</div>
+                </td>
+                <td class="col4">
+                    <div contenteditable="true">{{item.costinfluence | currency:"USD":true:'4.1-2' }}</div>
+                </td>
+                <td class="col5">
+                    <div contenteditable="true">{{item.commonChance}}</div>
+                </td>
+                <td class="col6">
+                    <div contenteditable="true">{{item.date | date: 'dd MMMM yyyy'}}</div>
+                </td>
+                <td class="col7">
+                    <div contenteditable="true">{{item.suggestions}}</div>
+                </td>
+                <td class="col8">
+                    <app-item-edit [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
+                    <app-item-del [index]="item.index" [i]="i" [items]="items" [limit]="riksLimit" (deleted)="deleted($event)"></app-item-del>
+                </td>
+            </tr>
+        </tbody>
     </table>
-
     <div class="paggination">
-      <app-pagination [offset]="offset" [limit]="limit" [size]="count" (pageChange)="onPageChange($event)"></app-pagination>
+        <app-pagination [offset]="pageOffset" [limit]="riksLimit" [size]="riskCount" (pageChange)="onPageChange($event)"></app-pagination>
     </div>
-
     <div class="row under-table-row">
-      <div class="col-md-2">
-        <div class="total">
-          <pre class="pre-total">Total risks: {{items.length}}</pre>
+        <div class="col-md-2">
+            <div class="total">
+                <pre class="pre-total">Total risks: {{items.length}}</pre>
+            </div>
         </div>
-      </div>
-      <div class="col"></div>
-      <div class="col-md-4">
-        <div class="limit-set" *ngIf="items.length > 10">
-          <div class="set">
-            <pre>Set number of risks per page:</pre>
-          </div>
-          <div class="select">
-            <select class="form-control" id="limit" [(ngModel)]="limit">
+        <div class="col"></div>
+        <div class="col-md-4">
+            <div class="limit-set" *ngIf="items.length > 10">
+                <div class="set">
+                    <pre>Set number of risks per page:</pre>
+                </div>
+                <div class="select">
+                    <select class="form-control" id="riksLimit" [(ngModel)]="riksLimit">
               <option value="5">5</option>
               <option value="10">10</option>
               <option *ngIf="items.length > 15" value="15">15</option>
               <option *ngIf="items.length > 20" value="20">20</option>
             </select>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-
-
-  <div class="modal fade" id="clearTable" tabindex="-1" role="dialog" aria-labelledby="clearTable" aria-hidden="true">
+</div>
+<div class="modal fade" id="clearTable" tabindex="-1" role="dialog" aria-labelledby="clearTable" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Clear table</h5>
-          <button type="button" class="close pointer" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Clear table</h5>
+                <button type="button" class="close pointer" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to clear the table?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pointer" data-dismiss="modal" (click)="tableClear()">Clear</button>
+                <button type="button" class="btn btn-secondary pointer" data-dismiss="modal">Cancel</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>Are you sure you want to clear the table?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary pointer" data-dismiss="modal" (click)="tableClear()">Clear</button>
-          <button type="button" class="btn btn-secondary pointer" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
     </div>
-  </div>
-
-</body>
+</div>

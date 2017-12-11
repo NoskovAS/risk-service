@@ -15,20 +15,20 @@
 .footer {
     background-color: white;
     height: 100px;
-    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.589); */
+    border-top: 0.1px solid #bcc0c2;
 }
 
 a {
     text-decoration: none;
 }
 
-.ion {
-    font-size: 2rem;
+.svg-inline--fa {
+    font-size: 30px;
 }
 
 span,
 a,
-.ion {
+.fab {
     color: #1793d3;
 }
 

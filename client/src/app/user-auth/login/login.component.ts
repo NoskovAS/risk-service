@@ -1,7 +1,6 @@
-import { Component, OnInit, AfterContentChecked, AfterViewInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
-import { ValidateService } from '../../service/validator/validate.service';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth/auth.service';
 
 
@@ -11,21 +10,19 @@ import { AuthService } from '../../service/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit, AfterContentChecked, AfterViewInit {
+export class LoginComponent implements AfterViewInit {
   public loginForm: FormGroup = null;
 
   @ViewChild('inputFocus') vc: any;
 
-
   username: string;
   password: string;
-  logSuccess = true;
-  passSuccess = true;
-  fieldError = false;
+  logSuccess: boolean = true;
+  passSuccess: boolean = true;
+  fieldError: boolean = false;
 
   constructor(private authService: AuthService,
     private router: Router,
-    private validateService: ValidateService,
     private fb: FormBuilder) {
 
     this.loginForm = fb.group({
@@ -33,10 +30,6 @@ export class LoginComponent implements OnInit, AfterContentChecked, AfterViewIni
       password: ['', Validators.required]
     });
   }
-
-  ngOnInit() { }
-
-  ngAfterContentChecked() { }
 
   ngAfterViewInit() {
     this.vc.nativeElement.focus();

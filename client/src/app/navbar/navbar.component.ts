@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
 import { NavbarService } from '../service/navbar/navbar.service';
 
@@ -9,20 +9,17 @@ import { NavbarService } from '../service/navbar/navbar.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  public logo = ('./assets/logo.png');
+export class NavbarComponent {
+  public logo: string = ('./assets/logo.png');
 
   constructor(public authService: AuthService,
-              private router: Router,
-              public navbarService: NavbarService) { }
+    private router: Router,
+    public navbarService: NavbarService) { }
 
-  ngOnInit() {
-  }
-
-  onLogoutClick() {
+  onLogoutClick(): boolean {
     this.authService.logout();
     this.router.navigate(['/users/login']);
     return false;
-}
+  }
 
 }

@@ -6,9 +6,9 @@
     margin: auto;
     margin-top: 20px;
     font-weight: 300;
-    color: #204056;
     font-size: 40px;
     line-height: 46px;
+    color: #204056;
 }
 
 .menu {
@@ -20,9 +20,8 @@
 }
 
 .menu-item,
-.title
-h5 {
-    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+.title h5 {
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 .pointer {
@@ -38,8 +37,7 @@ h5 {
 }
 
 .menu-link,
-.menu-item
-{
+.menu-item {
     border: none;
     outline: none;
 }

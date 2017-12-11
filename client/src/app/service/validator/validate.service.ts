@@ -5,7 +5,7 @@ export class ValidateService {
 
   constructor() {}
 
-  validateLogin(user) {
+  validateLogin(user): boolean {
     if (user.username === undefined || user.password === '') {
       return false;
     } else {
@@ -13,7 +13,7 @@ export class ValidateService {
     }
   }
 
-  validateRegister(user) {
+  validateRegister(user): boolean {
     if (user.firstname === undefined || user.lastname === undefined ||
       user.email === undefined || user.username === undefined || user.password === undefined) {
       return false;
@@ -22,7 +22,7 @@ export class ValidateService {
     }
   }
 
-  validateProfile(user) {
+  validateProfile(user): boolean {
     if (user.firstname === undefined || user.lastname === undefined ||
       user.email === undefined || user.username === undefined) {
       return false;
@@ -32,7 +32,7 @@ export class ValidateService {
   }
 
 
-  validateEmail(email) {
+  validateEmail(email: string): boolean {
     // tslint:disable-next-line:max-line-length
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);

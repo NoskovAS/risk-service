@@ -1,15 +1,10 @@
 .alert {
-    /*   background-color: black; */
-    /* background: #f2edda; */
     padding: 1px;
     font-size: 1em;
     margin-bottom: 0px;
+    margin-top: 5px;
     display: block;
     animation: 1s alertAnim forwards;
-    margin-top: 5px;
-    /* border: 1px solid rgba(0, 0, 0, 0.49); */
-    /* background-color: rgba(238, 173, 173, 0.19); */
-    /*   box-shadow: 0 0 5px rgba(0, 0, 0, 0.836); */
 }
 
 .err-message {

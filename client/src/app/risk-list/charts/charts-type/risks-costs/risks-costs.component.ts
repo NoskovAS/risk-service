@@ -13,10 +13,20 @@ export class RisksCostsComponent implements OnInit, OnDestroy {
   lineChartLegend: boolean = false;
 
   // lineChart
-  public lineChartData = []; // y
-  public lineChartLabels = []; // x
+  public lineChartData = [];
+  public lineChartLabels = [];
   public lineChartType: string = 'line';
   public lineChartOptions: any = {
+    legend: {
+      display: false
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem) {
+          return tooltipItem.yLabel;
+        }
+      }
+    },
     responsive: true,
     scales: {
       yAxes: [{
@@ -58,13 +68,9 @@ export class RisksCostsComponent implements OnInit, OnDestroy {
     this.lineChartData.length = 0;
   }
 
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
+  public chartClicked(e: any): void { }
 
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
+  public chartHovered(e: any): void { }
 
   buildChart(riskSample, costSample) {
     this.lineChartLabels = riskSample;

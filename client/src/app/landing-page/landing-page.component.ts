@@ -8,7 +8,7 @@ import { FooterService } from '../service/footer/footer.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit, OnDestroy {
-  public logo = ('./assets/logo.png');
+  public logo: string = ('./assets/logo.png');
 
   constructor(private navbarService: NavbarService,
               private footerService: FooterService) { }

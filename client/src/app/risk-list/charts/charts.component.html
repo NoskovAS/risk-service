@@ -1,52 +1,50 @@
-<body>
-    <div class="container-fluid">
-        <div class="row charts-module">
-            <!-- Sidebar -->
-            <div class="col-md-2 menu">
-                <app-risk-sidebar></app-risk-sidebar>
+<div class="container-fluid">
+    <div class="row charts-module">
+        <!-- Sidebar -->
+        <div class="col-md-2 menu">
+            <app-risk-sidebar></app-risk-sidebar>
+        </div>
+        <!-- Sidebar -->
+        <div class="col-md-10">
+            <div class="row title-row">
+                <div class="col-md-2">
+                    <h5 class="mb-3 bd-text-purple-bright left-title">
+                        Charts
+                    </h5>
+                </div>
+                <div class="col-md-7"></div>
+                <div class="col-md-3">
+                    <h6 *ngIf="user" class="mb-3 bd-text-purple-bright right-title">
+                        User:
+                        <small class="small-right">{{user.firstname}} {{user.lastname}}</small>
+                    </h6>
+                </div>
             </div>
-            <!-- Sidebar -->
-            <div class="col-md-10">
-                <div class="row title-row">
-                    <div class="col-md-2">
-                        <h5 class="mb-3 bd-text-purple-bright left-title">
-                            Charts
-                        </h5>
-                    </div>
-                    <div class="col-md-7"></div>
-                    <div class="col-md-3">
-                        <h6 *ngIf="user" class="mb-3 bd-text-purple-bright right-title">
-                            User:
-                            <small class="small-right">{{user.firstname}} {{user.lastname}}</small>
-                        </h6>
+            <div class="row main-row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <h6 class="card-header text-center">The graph of the dependence of the influence of costs on various risks</h6>
+                        <app-risks-pie [riskSample]="riskSample"></app-risks-pie>
+                        <div class="card-footer text-right">ChartJS</div>
                     </div>
                 </div>
-                <div class="row main-row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <h6 class="card-header text-center">The graph of the dependence of the influence of costs on various risks</h6>
-                            <app-risks-pie [riskSample]="riskSample"></app-risks-pie>
-                            <div class="card-footer text-right">ChartJS</div>
-                        </div>
+            </div>
+            <div class="row second-row">
+                <div class="col-md-6">
+                    <div class="card card-left">
+                        <h6 class="card-header text-center">Number of risks with different priorities</h6>
+                        <app-risks-priority [prioritySample]="prioritySample"></app-risks-priority>
+                        <div class="card-footer text-right">ChartJS</div>
                     </div>
                 </div>
-                <div class="row second-row">
-                    <div class="col-md-6">
-                        <div class="card card-left">
-                            <h6 class="card-header text-center">Number of risks with different priorities</h6>
-                            <app-risks-priority [prioritySample]="prioritySample"></app-risks-priority>
-                            <div class="card-footer text-right">ChartJS</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card card-right">
-                            <h6 class="card-header text-center">Influence in costs for each risk</h6>
-                            <app-risks-costs [costSample]="costSample" [riskSample]="riskSample"></app-risks-costs>
-                            <div class="card-footer text-right">ChartJS</div>
-                        </div>
+                <div class="col-md-6">
+                    <div class="card card-right">
+                        <h6 class="card-header text-center">Influence in costs for each risk</h6>
+                        <app-risks-costs [costSample]="costSample" [riskSample]="riskSample"></app-risks-costs>
+                        <div class="card-footer text-right">ChartJS</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+</div>

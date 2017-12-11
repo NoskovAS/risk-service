@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../service/profile/profile.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -8,13 +6,10 @@ import { ProfileService } from '../service/profile/profile.service';
   styleUrls: ['./profile.component.css']
 })
 
-export class ProfileComponent implements OnInit {
-    user = JSON.parse(localStorage.getItem('user') || 'null');
-    public socialLogin = JSON.parse(localStorage.getItem('social') || 'null');
+export class ProfileComponent {
+  user: object = JSON.parse(localStorage.getItem('user') || 'null');
+  public socialLogin: boolean = JSON.parse(localStorage.getItem('social') || 'null');
 
-
-    constructor() {}
-
-    ngOnInit() {}
+  constructor() { }
 
 }

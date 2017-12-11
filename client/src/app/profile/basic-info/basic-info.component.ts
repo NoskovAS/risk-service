@@ -1,7 +1,6 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { FormGroup, FormBuilder, ValidatorFn, Validators, AbstractControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ValidateService } from '../../service/validator/validate.service';
 import { ProfileService } from '../../service/profile/profile.service';
 import { ValidatorService } from '../../service/validator/validator.service';
 
@@ -10,7 +9,7 @@ import { ValidatorService } from '../../service/validator/validator.service';
   templateUrl: './basic-info.component.html',
   styleUrls: ['./basic-info.component.css']
 })
-export class BasicInfoComponent implements OnInit, AfterContentChecked {
+export class BasicInfoComponent {
   public editProfileForm: FormGroup = null;
   user = JSON.parse(localStorage.getItem('user'));
   public socialLogin = JSON.parse(localStorage.getItem('social') || 'null');
@@ -18,11 +17,9 @@ export class BasicInfoComponent implements OnInit, AfterContentChecked {
 
 
   constructor(private router: Router,
-    private validateService: ValidateService,
     private profileService: ProfileService,
     private fb: FormBuilder,
     private validatorService: ValidatorService) {
-    const pwdValidators: ValidatorFn[] = [Validators.required, Validators.minLength(6), Validators.maxLength(20)];
     const emailValidator: ValidatorFn[] = [Validators.email];
 
     this.editProfileForm = this.fb.group({
@@ -33,10 +30,6 @@ export class BasicInfoComponent implements OnInit, AfterContentChecked {
       oldUsername: []
     });
   }
-
-  ngOnInit() { }
-
-  ngAfterContentChecked() { }
 
   onProfileSubmit() {
     this.editProfileForm.patchValue({

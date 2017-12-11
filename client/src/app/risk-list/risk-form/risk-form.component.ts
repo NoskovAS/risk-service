@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, OnChanges, OnDestroy, Input, Output, HostListener } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators, ValidatorFn } from '@angular/forms';
 import { Data } from '../data.class';
 import { Risk } from '../risk.class';
@@ -11,13 +11,14 @@ import { ChildParentService } from '../../service/child-parent/child-parent.serv
     templateUrl: './risk-form.component.html',
     styleUrls: ['./risk-form.component.css']
 })
-export class RiskFormComponent implements OnInit, AfterContentChecked, OnDestroy {
+export class RiskFormComponent implements OnInit, AfterContentChecked {
     formError: boolean = false;
     ownRisk: boolean = false;
 
     user: Object; // User object
     public riskForm: FormGroup = null;
 
+    // main risks array
     items: Data[] = [];
     index: number = 0;
 
@@ -36,6 +37,7 @@ export class RiskFormComponent implements OnInit, AfterContentChecked, OnDestroy
         { id: 6, name: 'Высокая вероятность изменения требований проекта' }
     ];
 
+    // Sugestions name options
     suggestItems1: any[] = [
         { id: 1, name: 'Минимизация количества привлеченных для разработки проекта junior-программстов' },
         { id: 2, name: 'Разбиение задачи на короткие этапы' },
@@ -82,11 +84,9 @@ export class RiskFormComponent implements OnInit, AfterContentChecked, OnDestroy
         { id: 3, name: 'High' }
     ];
 
-
     constructor(private fb: FormBuilder,
         private riskListService: RiskListService,
-        private tableService: TableService,
-        private childParentService: ChildParentService
+        private tableService: TableService
     ) {
         this.riskForm = fb.group({
             'riskname': ['', Validators.required],
@@ -127,11 +127,6 @@ export class RiskFormComponent implements OnInit, AfterContentChecked, OnDestroy
         if (this.items.length > 0) {
             this.index = (this.tableService.findMaxItem(this.items)) + 1;
         }
-    }
-
-    ngOnDestroy() { }
-
-    @HostListener('document:click') onMouseEnter() {
     }
 
     // Adding table values from array
@@ -210,7 +205,6 @@ export class RiskFormComponent implements OnInit, AfterContentChecked, OnDestroy
 
     tableClear(emit) {
         this.index = 0;
-        console.log('emit tableClear' + this.index);
     }
 
     public toggleOwn() {

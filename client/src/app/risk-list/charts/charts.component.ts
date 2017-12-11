@@ -1,23 +1,22 @@
-import { Component, OnInit, AfterContentChecked, OnDestroy, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { Data } from '../data.class';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
+export class ChartsComponent implements OnInit {
   items: Data[] = [];
   user: Object;
 
   public riskSample: string[] = [];
-  public costSample: any[] = [];
-  public hoursSample: any[] = [];
-  public prioritySample: any[] = [];
-  public chanceSample: any[] = [];
-  public suggestionsSample: any[] = [];
+  public costSample: number[] = [];
+  public hoursSample: number[] = [];
+  public prioritySample: number[] = [];
+  public chanceSample: number[] = [];
+  public suggestionsSample: string[] = [];
 
   constructor(private riskListService: RiskListService) { }
 
@@ -25,12 +24,6 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
     this.riskRecovery();
     this.user = JSON.parse(localStorage.getItem('user') || 'null');
   }
-
-  ngAfterContentChecked() {
-  }
-
-  ngOnDestroy() { }
-
 
   // Recovery risks in table
   private riskRecovery() {
@@ -67,6 +60,4 @@ export class ChartsComponent implements OnInit, AfterContentChecked, OnDestroy {
     if (item === 'commonChance') { this.chanceSample = sampleArray; }
     if (item === 'suggestions') { this.suggestionsSample = sampleArray; }
   }
-
-
 }

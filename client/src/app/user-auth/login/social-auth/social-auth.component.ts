@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../service/auth/auth.service';
-import { error } from 'util';
 import { NavbarService } from '../../../service/navbar/navbar.service';
 import { FooterService } from '../../../service/footer/footer.service';
 
@@ -76,5 +75,4 @@ export class SocialAuthComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 }

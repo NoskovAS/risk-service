@@ -1,63 +1,65 @@
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-5 register-form">
+            <h1 class="title">Sign Up</h1>
+            <p class="tss">
+                Already have a Risk Service account?
+                <a class="link link--underline" [routerLink]="['/users/login']">Sign in</a>
+            </p>
+            <div *ngIf="fieldError" class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" (click)="fieldError=false">&times;</button>
+                <strong>Warning! </strong>Please fill in all fields
             </div>
-            <div class="col-5 register-form">
-                <h1 class="title">Sign Up</h1>
-                <p class="tss">
-                    Already have a Risk Service account?
-                    <a class="link link--underline" [routerLink]="['/users/login']">Sign in</a>
-                </p>
-                <div *ngIf="fieldError" class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" (click)="fieldError=false">&times;</button>
-                    <strong>Warning! </strong>Please fill in all fields
+            <div *ngIf="validError" class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" (click)="fieldError=false">&times;</button>
+                <strong>Warning! </strong>Please check the correctness of the entered data
+            </div>
+            <form class="" novalidate [formGroup]="registerForm" (submit)="onRegisterSubmit()">
+                <div class="form-group">
+                    <label class="form-label" for="firstname">First name</label>
+                    <input #inputFocus class="form-input form-control" id="firstname" type="text" formControlName="firstname" placeholder="First name">
+                    <app-validator-message [field]="registerForm.get('firstname')"></app-validator-message>
                 </div>
-                <form class="" novalidate [formGroup]="registerForm" (submit)="onRegisterSubmit()">
+                <div class="form-group">
+                    <label class="form-label" for="lastname">Last name</label>
+                    <input class="form-input form-control" id="lastname" type="text" formControlName="lastname" placeholder="Last name">
+                    <app-validator-message [field]="registerForm.get('lastname')"></app-validator-message>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username">
+                    <app-validator-message [field]="registerForm.get('username')"></app-validator-message>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-input form-control" id="email" type="text" formControlName="email" placeholder="Email">
+                    <app-validator-message [field]="registerForm.get('email')"></app-validator-message>
+                </div>
+                <div class="form-group" formGroupName="password">
                     <div class="form-group">
-                        <label class="form-label" for="firstname">First name</label>
-                        <input #inputFocus class="form-input form-control" id="firstname" type="text" formControlName="firstname" placeholder="First name" aria-describedby="firstnameHelpBlock">
-                        <app-validator-message [field]="registerForm.get('firstname')"></app-validator-message>
+                        <label class="form-label" for="pwd">Password</label>
+                        <input #passInput class="form-input form-control" id="pwd" type="password" formControlName="pwd" placeholder="Password">
+                        <app-validator-message [field]="registerForm.get('password').get('pwd')"></app-validator-message>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="lastname">Last name</label>
-                        <input class="form-input form-control" id="lastname" type="text" formControlName="lastname" placeholder="Last name" aria-describedby="lastnameHelpBlock">
-                        <app-validator-message [field]="registerForm.get('lastname')"></app-validator-message>
+                        <label class="form-label" for="pwd">Confirm</label>
+                        <input class="form-input form-control" id="confirm" type="password" formControlName="confirm" placeholder="Confirm password">
+                        <app-validator-message [field]="registerForm.get('password').get('confirm')"></app-validator-message>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="username">Username</label>
-                        <input class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username" aria-describedby="usernameHelpBlock">
-                        <app-validator-message [field]="registerForm.get('username')"></app-validator-message>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input class="form-input form-control" id="email" type="text" formControlName="email" placeholder="Email" aria-describedby="emailHelpBlock">
-                        <app-validator-message [field]="registerForm.get('email')"></app-validator-message>
-                    </div>
-                    <div class="form-group" formGroupName="password">
-                        <div class="form-group">
-                            <label class="form-label" for="pwd">Password</label>
-                            <input #passInput class="form-input form-control" id="pwd" type="password" formControlName="pwd" placeholder="Password" aria-describedby="passHelpBlock">
-
-                            <app-validator-message [field]="registerForm.get('password').get('pwd')"></app-validator-message>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="pwd">Confirm</label>
-                            <input class="form-input form-control" id="confirm" type="password" formControlName="confirm" placeholder="Confirm password" aria-describedby="confirmHelpBlock">
-                            <app-validator-message [field]="registerForm.get('password').get('confirm')"></app-validator-message>
-                        </div>
-                        <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
-                    </div>
-                    <!-- <div class="show-pass">
-                        <input class="pointer show-checkbox" type="checkbox" autocomplete="off" (click)="toggleShowPassword(passInput)"> Show password
-                    </div> -->
-                    <div class="form-group text-center">
-                        <button class="btn btn-block btn-lg btn-primary pointer" type="submit" value="Register">Create Account</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col">
-            </div>
+                    <app-validator-message [field]="registerForm.get('password')"></app-validator-message>
+                </div>
+                <!-- Show password checkbox (Optional) -->
+                <!-- <div class="show-pass">
+                            <input class="pointer show-checkbox" type="checkbox" autocomplete="off" (click)="toggleShowPassword(passInput)"> Show password
+                        </div> -->
+                <div class="form-group text-center">
+                    <button class="btn btn-block btn-lg btn-primary pointer" type="submit" value="Register">Create Account</button>
+                </div>
+            </form>
+        </div>
+        <div class="col">
         </div>
     </div>
-</body>
+</div>

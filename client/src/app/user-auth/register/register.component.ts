@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterContentChecked, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AbstractControl, FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { ValidateService } from '../../service/validator/validate.service';
 import { AuthService } from '../../service/auth/auth.service';
 import { ValidatorService } from '../../service/validator/validator.service';
@@ -13,22 +13,20 @@ import { TableService } from '../../service/table/table.service';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements OnInit, AfterContentChecked, AfterViewInit {
+export class RegisterComponent implements AfterViewInit {
   public registerForm: FormGroup = null;
 
   @ViewChild('inputFocus') vc: any;
 
   fieldError: boolean = false;
-  showPass = false;
+  validError: boolean = false;
+  showPass: boolean = false;
 
 
-  constructor(private validateService: ValidateService,
-              private validatorService: ValidatorService,
-              private authService: AuthService,
-              private tableService: TableService,
-              private router: Router,
-              private fb: FormBuilder,
-  ) {
+  constructor(private validatorService: ValidatorService,
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder) {
     const pwdValidators: ValidatorFn[] = [Validators.required, Validators.minLength(6), Validators.maxLength(20)];
     const emailValidator: ValidatorFn[] = [Validators.email];
 
@@ -41,15 +39,11 @@ export class RegisterComponent implements OnInit, AfterContentChecked, AfterView
       password: fb.group({
         pwd: ['', pwdValidators],
         confirm: ['', pwdValidators]
-      }, {
-        validator: validatorService.passwordsAreEqual()
-      })
+      },
+        {
+          validator: validatorService.passwordsAreEqual()
+        })
     });
-  }
-
-  ngOnInit() {}
-
-  ngAfterContentChecked() {
   }
 
   ngAfterViewInit() {
@@ -57,17 +51,21 @@ export class RegisterComponent implements OnInit, AfterContentChecked, AfterView
   }
 
   toggleShowPassword(passInput: any) {
-    passInput.type = passInput.type === 'password' ?  'text' : 'password';
+    passInput.type = passInput.type === 'password' ? 'text' : 'password';
   }
 
   onRegisterSubmit() {
-    if ((this.registerForm.value.firstname === '') ||
-       (this.registerForm.value.lastname === '') ||
-       (this.registerForm.value.username === '') ||
-       (this.registerForm.value.email === '') ||
-       (this.registerForm.value.password === '')) {
-         this.fieldError = true;
+    if ((this.registerForm.value.firstname === '') || (this.registerForm.value.lastname === '') ||
+      (this.registerForm.value.username === '') || (this.registerForm.value.email === '') ||
+      (this.registerForm.value.password === '')) {
+      this.fieldError = true;
+      return;
     }
+    if (!this.registerForm.valid) {
+      this.validError = true;
+      return;
+    }
+
     const user = this.registerForm.value;
 
     // Register user
@@ -78,6 +76,5 @@ export class RegisterComponent implements OnInit, AfterContentChecked, AfterView
         this.router.navigate(['users/register']);
       }
     });
-
   }
 }

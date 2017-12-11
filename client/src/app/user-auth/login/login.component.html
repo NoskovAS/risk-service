@@ -16,10 +16,10 @@
                     <button type="button" class="close" data-dismiss="alert" (click)="passSuccess=true">&times;</button>
                     <strong>Warning! </strong>Please use a valid password
                 </div>
-                <form class="" novalidate [formGroup]="loginForm" (submit)="onLoginSubmit()">
+                <form novalidate [formGroup]="loginForm" (submit)="onLoginSubmit()">
                     <div class="form-group">
                         <label class="form-label" for="username">Username</label>
-                        <input autofocus #inputFocus class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username">
+                        <input #inputFocus class="form-input form-control" id="username" type="text" formControlName="username" placeholder="Username">
                         <!-- <app-validator-message [field]="loginForm.get('username')"></app-validator-message> -->
                     </div>
                     <div class="form-group">

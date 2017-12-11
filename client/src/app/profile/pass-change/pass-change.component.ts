@@ -1,16 +1,14 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { Router } from '@angular/router';
-import { ValidateService } from '../../service/validator/validate.service';
+import { Component } from '@angular/core';
 import { ProfileService } from '../../service/profile/profile.service';
 import { ValidatorService } from '../../service/validator/validator.service';
-import { FormBuilder, ValidatorFn, Validators, AbstractControl, FormGroup } from '@angular/forms';
+import { FormBuilder, ValidatorFn, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-pass-change',
   templateUrl: './pass-change.component.html',
   styleUrls: ['./pass-change.component.css']
 })
-export class PassChangeComponent implements OnInit, AfterContentChecked {
+export class PassChangeComponent {
   public passwordForm: FormGroup = null;
 
   public errors = {
@@ -20,11 +18,9 @@ export class PassChangeComponent implements OnInit, AfterContentChecked {
     fieldError: false
   };
 
-  constructor(private router: Router,
-    private validateService: ValidateService,
-    private profileService: ProfileService,
-    private fb: FormBuilder,
-    private validatorService: ValidatorService) {
+  constructor(private profileService: ProfileService,
+    private validatorService: ValidatorService,
+    private fb: FormBuilder) {
 
     const pwdValidators: ValidatorFn[] = [Validators.required, Validators.minLength(6), Validators.maxLength(20)];
 
@@ -32,18 +28,13 @@ export class PassChangeComponent implements OnInit, AfterContentChecked {
       password: fb.group({
         pwd: ['', pwdValidators],
         confirm: ['', pwdValidators]
-      }, {
+      },
+        {
           validator: validatorService.passwordsAreEqual()
         }),
       currentPass: ['', Validators.required],
       username: []
     });
-  }
-
-  ngOnInit() {
-  }
-
-  ngAfterContentChecked() {
   }
 
   onChangeSubmit() {
@@ -55,13 +46,11 @@ export class PassChangeComponent implements OnInit, AfterContentChecked {
     if ((this.passwordForm.value.password.pwd === '') ||
       (this.passwordForm.value.password.confirm === '') ||
       (this.passwordForm.value.currentPass === '')) {
-        console.log('fieldError');
       this.errors.fieldError = true;
       return;
     }
 
     if (this.passwordForm.value.password.pwd !== this.passwordForm.value.password.confirm) {
-      console.log('noMatch');
       this.errors.noMatch = true;
       return;
     }
@@ -75,10 +64,8 @@ export class PassChangeComponent implements OnInit, AfterContentChecked {
     this.profileService.editPassword(user).subscribe(data => {
       if (data.success) {
         this.errors.changed = true;
-        console.log('Successfull pass change');
       } else {
         this.errors.changedError = true;
-        console.log('Wrong pass change');
       }
     });
   }

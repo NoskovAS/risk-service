@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-
 import { environment } from '../../../environments/environment';
-
 
 @Injectable()
 export class AuthService {
@@ -37,7 +35,7 @@ export class AuthService {
             .map(res => res.json());
     }
 
-    loggedIn() {
+    loggedIn(): string {
         return localStorage.getItem('user');
     }
 

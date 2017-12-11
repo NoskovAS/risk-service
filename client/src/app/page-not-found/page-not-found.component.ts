@@ -14,7 +14,6 @@ export class PageNotFoundComponent implements OnInit, OnDestroy {
               private footerService: FooterService) { }
 
   ngOnInit() {
-    console.log(this.entered);
     this.navbarService.hide();
     this.footerService.hide();
   }

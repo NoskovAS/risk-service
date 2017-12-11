@@ -1,12 +1,4 @@
 <div *ngIf="isDataAvailable">
-  <canvas class="risk-cost" baseChart
-    [data]="lineChartData"
-    [labels]="lineChartLabels"
-    [options]="lineChartOptions"
-    [colors]="lineChartColors"
-    [chartType]="lineChartType"
-    [legend]="lineChartLegend"
-    (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)">
+    <canvas class="risk-cost" baseChart [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [chartType]="lineChartType" [legend]="lineChartLegend" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
   </canvas>
 </div>

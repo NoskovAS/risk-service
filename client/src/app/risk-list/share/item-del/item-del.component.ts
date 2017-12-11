@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, Input, Output, EventEmitter } from '@angular/core';
+import { Component, AfterContentChecked, Input, Output, EventEmitter } from '@angular/core';
 import { RiskListService } from '../../../service/risk-list/risk-list.service';
 import { ChildParentService } from '../../../service/child-parent/child-parent.service';
 
@@ -7,7 +7,7 @@ import { ChildParentService } from '../../../service/child-parent/child-parent.s
   templateUrl: './item-del.component.html',
   styleUrls: ['./item-del.component.css']
 })
-export class ItemDelComponent implements OnInit, AfterContentChecked {
+export class ItemDelComponent implements AfterContentChecked {
   @Input() index; // from item.index
   @Input() items;
   @Input() i; // from table index
@@ -20,9 +20,6 @@ export class ItemDelComponent implements OnInit, AfterContentChecked {
     private riskListService: RiskListService,
     private childParentService: ChildParentService,
   ) { }
-
-  ngOnInit() {
-  }
 
   ngAfterContentChecked() {
     this.currentPage = this.childParentService.getVariable();
@@ -42,9 +39,6 @@ export class ItemDelComponent implements OnInit, AfterContentChecked {
         } else {
           this.items.splice(((this.limit * (this.currentPage - 1)) + i), 1);
         }
-        console.log('Successfull removal');
-      } else {
-        console.log('Wrong removal');
       }
     });
   }

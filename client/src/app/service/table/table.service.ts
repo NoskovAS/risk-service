@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers} from '@angular/http';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TableService {
 
-    constructor(private router: Router) { }
+    constructor() { }
 
     // Common chance calculate
-    chanceCalculate(riskSprints, numberOfSprints): number {
-        let num;
+    chanceCalculate(riskSprints: number, numberOfSprints: number): number {
+        let num: number;
         num = ((riskSprints) / (numberOfSprints));
         return Math.trunc(num * 1000) / 1000;
     }
 
     // Priority calculate
-    priorityCalculate(probability, impact): number {
+    priorityCalculate(probability: number, impact: number): number {
         return probability * impact;
     }
 
@@ -37,7 +34,7 @@ export class TableService {
     }
 
     // Impact conversion
-    formatImpact(impact) {
+    formatImpact(impact: any): number {
         switch (impact) {
             case 'Low':
                 impact = 1;
@@ -53,7 +50,7 @@ export class TableService {
     }
 
     // Probability conversion
-    formatProbability(probability) {
+    formatProbability(probability: any): number {
         switch (probability) {
             case 'Low':
                 probability = 1;
@@ -68,7 +65,7 @@ export class TableService {
         return probability;
     }
 
-    findMaxItem(items) {
+    findMaxItem(items): number {
         let indexArray = [];
         for (let i = 0; i < (items.length); i++) {
             indexArray.push(items[i].index);

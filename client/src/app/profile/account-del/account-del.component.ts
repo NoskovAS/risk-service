@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileService } from '../../service/profile/profile.service';
 import { Router } from '@angular/router';
 
@@ -7,13 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './account-del.component.html',
   styleUrls: ['./account-del.component.css']
 })
-export class AccountDelComponent implements OnInit {
+export class AccountDelComponent {
   public dellError: boolean = false;
+
   constructor(private profileService: ProfileService,
               private router: Router) { }
-
-  ngOnInit() {
-  }
 
   accountDel() {
     const user = {
@@ -22,11 +20,9 @@ export class AccountDelComponent implements OnInit {
 
     this.profileService.deleteUser(user).subscribe(data => {
       if (data.success) {
-        this.router.navigate(['login']);
-        console.log('Successful account deletion');
+        this.router.navigate(['users/login']);
       } else {
         this.dellError = true;
-        console.log('Wrong account deletion');
       }
     });
   }

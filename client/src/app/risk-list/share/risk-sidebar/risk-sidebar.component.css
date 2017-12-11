@@ -12,9 +12,7 @@
 }
 
 .sidebar-title {
-    margin-left: 30px;
-    margin-top: 19px;
-    margin-bottom: 20px;
+    margin: 19px 0px 19px 30px;
     color: #d6d6d6;
     font-size: 18px;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './risks-priority.component.html',
   styleUrls: ['./risks-priority.component.css']
 })
-export class RisksPriorityComponent implements OnInit, AfterContentChecked {
+export class RisksPriorityComponent implements OnInit {
   @Input() prioritySample;
   isDataAvailable: boolean = false;
 
@@ -19,7 +19,7 @@ export class RisksPriorityComponent implements OnInit, AfterContentChecked {
   public barChartLegend: boolean = true;
 
   public barChartData: any[] = [
-    { data: [], label: 'Number of risks' }, // y
+    { data: [], label: 'Number of risks' },
   ];
   public barChartColors: Array<any> = [
     {
@@ -45,16 +45,10 @@ export class RisksPriorityComponent implements OnInit, AfterContentChecked {
     this.prioritySample.subscribe();
   }
 
-  ngAfterContentChecked() { }
-
   // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
+  public chartClicked(e: any): void { }
 
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
+  public chartHovered(e: any): void { }
 
   prioritySelect(prioritySample) {
     let firstPriority: number = 0;

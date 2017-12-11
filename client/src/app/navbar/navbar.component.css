@@ -1,53 +1,54 @@
 .navbar-nav {
-  float: none;
-  margin: 0 auto;
-  text-align: center;
+    float: none;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .navbar {
-  background-color: white;
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.836); */
+    background-color: white;
+    border-bottom: 0.1px solid #bcc0c2;
 }
 
 .nav-link {
-  color: #1793d3;
+    color: #1793d3;
 }
 
 .nav-link:hover {
-  color: #0044ff;
+    color: #0044ff;
 }
 
 .navbar-brand {
-  color: #343a40;;
+    color: #343a40;
+    ;
 }
 
 .navbar-toggler {
-  background-color: #1793d3;
-  border-width: 2px;
+    background-color: #1793d3;
+    border-width: 2px;
 }
 
 .icon {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 h6 {
-  display: inline;
-  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 24px;
+    display: inline;
+    font-family: 'Osvald', sans-serif;
+    font-size: 24px;
 }
 
 title {
-  font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
-  line-height: 1.5;
-  font-weight: 700;
-  color: #0a0a0abe;
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #0a0a0abe;
 }
 
 .logo .navbar-brand {
-  border: 100px solid transparent black;
-  padding: 15px;
+    border: 100px solid transparent black;
+    padding: 15px;
 }
 
 .active .nav-link {
-  color: #0044ff;
+    color: #0044ff;
 }

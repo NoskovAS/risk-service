@@ -11,9 +11,9 @@ describe('RiskListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, RouterTestingModule],
-      declarations: [ RiskListComponent ]
+      declarations: [RiskListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

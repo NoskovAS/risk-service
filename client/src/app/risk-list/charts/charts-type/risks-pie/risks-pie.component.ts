@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
 
 @Component({
   selector: 'app-risks-pie',
@@ -8,7 +7,7 @@ import 'rxjs/Rx';
   styleUrls: ['./risks-pie.component.css'],
 })
 
-export class RisksPieComponent implements OnInit, AfterContentChecked {
+export class RisksPieComponent implements OnInit {
   @Input() riskSample;
   isDataAvailable: boolean = false;
 
@@ -53,16 +52,10 @@ export class RisksPieComponent implements OnInit, AfterContentChecked {
     );
   }
 
-  ngAfterContentChecked() {}
-
   // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
+  public chartClicked(e: any): void { }
 
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
+  public chartHovered(e: any): void { }
 
   private riskSelect() {
     for (let i = 0; i <= this.riskSample.length; i++) {
@@ -100,7 +93,6 @@ export class RisksPieComponent implements OnInit, AfterContentChecked {
       this.fifthRisk,
       this.sixthRisk,
      /*  this.otherRisk */);
-    console.log('this.pieChartData: ' + this.pieChartData);
     this.isDataAvailable = true;
   }
 }

@@ -1,144 +1,133 @@
 .user {
-  margin: auto;
-  margin-top: 2%;
-}
-
-body {
-  background-color: whitesmoke;
+    margin: auto;
+    margin-top: 2%;
 }
 
 .form-module {
-  margin-bottom: 80px;
+    margin-bottom: 80px;
 }
 
 .main-module {
-  border-bottom: 2px solid #1793d3;
+    border-bottom: 2px solid #1793d3;
 }
 
 .own-input {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .clear-button {
-  margin-left: 20px;
-  width: 170px;
+    margin-left: 20px;
+    width: 170px;
 }
 
 .own-title {
-  color: #007bff;
+    color: #007bff;
 }
 
 .card-body {
-  padding: 10px;
-  padding-left: 15px;
+    padding: 10px;
+    padding-left: 15px;
 }
 
 .form-group {
-  padding: 0;
-}
-
-.close {
-  /* padding-top: 180%; */
+    padding: 0;
 }
 
 .col {
-  padding-right: 0;
+    padding-right: 0;
 }
 
 .add-row {
-  position: relative;
-  margin-top: 20px;
+    position: relative;
+    margin-top: 20px;
 }
 
 .bottom-row {
-  margin-bottom: 70px;
+    margin-bottom: 70px;
 }
 
 .buttonAdd {
-  margin: auto;
-  margin-bottom: 15px;
+    margin: auto;
+    margin-bottom: 15px;
 }
 
 .small {
-  color: black;
-  font-family: cursive;
-  font-size: 24px;
+    color: black;
+    font-family: cursive;
+    font-size: 24px;
 }
 
 
 /* Button */
 
 .btn {
-  background-color: rgba(0, 0, 0, 0);
-  border-width: 1.4px;
-  border-color: #1793d3;
-  ;
-  color: #1793d3;
-  ;
-  font-size: 18px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1.4px;
+    border-color: #1793d3;
+    color: #1793d3;
+    font-size: 18px;
 }
 
 .btn:hover {
-  background-color: #1793d3;
-  ;
-  color: white;
-  font-size: 18px;
+    background-color: #1793d3;
+    color: white;
+    font-size: 18px;
 }
 
 .btn:disabled {
-  background-color: rgba(128, 128, 128, 0.69);
-  color: #BDBDBD;
-  border-color: rgba(128, 128, 128, 0.69);
+    background-color: rgba(128, 128, 128, 0.69);
+    color: #BDBDBD;
+    border-color: rgba(128, 128, 128, 0.69);
 }
 
 .btn:disabled:hover {
-  background-color: rgba(128, 128, 128, 0.69);
-  color: #BDBDBD;
-  border-color: rgba(128, 128, 128, 0.69);
+    background-color: rgba(128, 128, 128, 0.69);
+    color: #BDBDBD;
+    border-color: rgba(128, 128, 128, 0.69);
 }
 
 .btn-link {
-  text-decoration: none;
-  border: none;
-  outline: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
 }
 
 
 /* enable absolute positioning */
 
 .inner-addon {
-  position: relative;
+    position: relative;
 }
 
 
 /* style icon */
 
 .inner-addon .material-icons {
-  position: absolute;
-  padding: 10px;
+    position: absolute;
+    padding: 10px;
 }
 
 .material-icons {
-  bottom: -3px;
+    bottom: -3px;
 }
 
 
 /* align icon */
 
 .right-addon .material-icons {
-  right: 10px;
+    right: 10px;
 }
 
 
 /* add padding  */
 
 .right-addon input {
-  padding-right: 40px;
+    padding-right: 40px;
 }
 
 select {
-  padding: 0;
-  padding-right: 30px;
+    padding: 0;
+    padding-right: 30px;
 }
 
 
@@ -146,79 +135,76 @@ select {
 
 .ng-valid[required],
 .ng-valid.required {
-  border-left: 4px solid #42A948;
-  /* green */
+    border-left: 4px solid #42A948;
 }
 
 .ng-invalid:not(form) {
-  border-left: 4px solid #cf4b4bc5;
-  /* red */
+    border-left: 4px solid #cf4b4bc5;
 }
 
 .pointer {
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0;
-  /* <-- Apparently some margin are still there even though it's hidden */
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 .menu {
-  background-color: #343a40;
+    background-color: #343a40;
 }
 
 .title-row {
-  background-color: #1793d3;
-  height: 60px;
-  margin-bottom: 30px;
+    background-color: #1793d3;
+    height: 60px;
+    margin-bottom: 30px;
 }
 
 .left-title {
-  margin-top: 18px;
-  margin-left: 5px;
-  color: white;
-  font-size: 1.5em;
-  font-weight: 600;
+    margin-top: 18px;
+    margin-left: 5px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 .right-title {
-  margin-top: 20px;
-  margin-left: 40px;
-  color: white;
+    margin-top: 20px;
+    margin-left: 40px;
+    color: white;
 }
 
 .small-right {
-  font-weight: bold;
-  font-size: 1em;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 .form-label {
-  margin-left: 20px;
-  margin-bottom: 2px;
-  line-height: 1.45455;
-  font-weight: 300;
-  letter-spacing: 0.016em;
-  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    margin-left: 20px;
+    margin-bottom: 2px;
+    line-height: 1.45455;
+    font-weight: 300;
+    letter-spacing: 0.016em;
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .impact-select,
 .riskname-select,
 .suggestions-select,
 .probability-select {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 .left-title,
 .right-title,
-.form-label
-.buttonAdd {
-  font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+.form-label .buttonAdd {
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
 }
