@@ -5,3 +5,8 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.svg-inline--fa {
+    color: #7e7b7b;
+    font-size: 22px;
+}

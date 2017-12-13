@@ -1,6 +1,6 @@
-/* .main {
-    margin-top: 56px;
-} */
+.main {
+    margin-bottom: 20px;
+}
 
 
 /* .card {
@@ -15,4 +15,8 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.card {
+    border: 1px solid #1793d3;
 }

@@ -17,8 +17,8 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   filterVisible: boolean = false;
 
   // Sort
-  isDesc: boolean = false;
-  column: string;
+  public isDesc: boolean = false;
+  public column: string;
   direction: number;
   //////////////////
 
@@ -32,6 +32,14 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   firstitem: number;
   lastitem: number;
   //////////////////
+
+  searchRisks: string;
+  searchPriorityes: string;
+  searchHours: string;
+  searchCosts: string;
+  searchChances: string;
+  searchDates: string;
+  searchSuggestions: string;
 
   // Variable for change table row from EventEmitter
   allowChange: boolean = false;
@@ -57,9 +65,11 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   }
 
   sort(property: string) {
+    console.log('sort column: ' + this.column);
+    console.log('sort isDesk: ' + this.isDesc);
     this.isDesc = !this.isDesc; // change the direction
     this.column = property;
-    this.direction = this.isDesc ? 1 : -1;
+    this.direction = this.isDesc ? -1 : 1;
   }
 
   tableClear() {

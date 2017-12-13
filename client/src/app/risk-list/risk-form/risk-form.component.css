@@ -102,19 +102,23 @@
 
 /* style icon */
 
-.inner-addon .material-icons {
+.inner-addon .remove-icon {
     position: absolute;
     padding: 10px;
 }
 
-.material-icons {
+.remove-icon {
     bottom: -3px;
+}
+
+.svg-inline--fa {
+    color: #7e7b7b;
 }
 
 
 /* align icon */
 
-.right-addon .material-icons {
+.right-addon .remove-icon {
     right: 10px;
 }
 

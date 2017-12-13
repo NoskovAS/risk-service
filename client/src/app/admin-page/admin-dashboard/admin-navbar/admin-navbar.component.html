@@ -7,15 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <i class="material-icons md-light pointer messages" [routerLink]="['messages']">message</i>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        <span class="fa-layers fa-fw fa-2x pointer" [routerLink]="['../admin/messages'] " routerLinkActive="active" style="color:white">
+            <i class="fas fa-envelope "></i>
+            <span class="fa-layers-counter">20</span>
+        </span>
+        <form class="form-inline my-2 my-lg-0 ">
         </form>
-        <ul class="navbar-nav exit-batton">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['../users/login']" routerLinkActive="active">
-                    <i class="material-icons icon">exit_to_app</i> Exit</a>
+        <ul class="navbar-nav exit-batton ">
+            <li class="nav-item ">
+                <a class="nav-link" [routerLink]="['../users/login'] " routerLinkActive="active">Exit</a>
             </li>
         </ul>
     </div>

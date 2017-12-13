@@ -3,26 +3,28 @@
         <ul class="sidebar-nav navbar-nav" [style.margin-left.px]="navMarginLeft">
             <li>
                 <a class="nav-link" [routerLink]="['../admin']">
-                    <i class="material-icons icon">dashboard</i><span *ngIf="navLinkActive">Dashboard</span></a>
-            </li>
-            <li>
-                <a class="nav-link" [routerLink]="['tables']" routerLinkActive="active">
-                    <i class="material-icons icon">reorder</i><span *ngIf="navLinkActive">Tables</span></a>
+                    <i class="fa fa-desktop icon"></i><span *ngIf="navLinkActive">Dashboard</span></a>
             </li>
             <li>
                 <a class="nav-link" [routerLink]="['charts']" routerLinkActive="active">
-                    <i class="material-icons icon">show_chart</i><span *ngIf="navLinkActive">Charts</span></a>
+                    <i class="fa fa-chart-pie icon"></i><span *ngIf="navLinkActive">Charts</span></a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['tables']" routerLinkActive="active">
+                    <i class="fa fa-table icon"></i><span *ngIf="navLinkActive">Tables</span></a>
             </li>
             <li>
                 <a class="nav-link" [routerLink]="['messages']" routerLinkActive="active">
-                    <i class="material-icons icon">message</i><span *ngIf="navLinkActive">Messages</span></a>
+                    <i class="fa fa-envelope icon"></i><span *ngIf="navLinkActive">Messages</span></a>
             </li>
         </ul>
     </div>
     <div>
         <button class="button pointer" (click)="toggleSidebarType()" [style.width.px]="buttonWidth">
-        <i *ngIf="navLinkActive" class="material-icons icon leftIcon">keyboard_arrow_left</i>
-        <i *ngIf="!navLinkActive" class="material-icons icon rightIcon">keyboard_arrow_right</i>
+            <a *ngIf="navLinkActive" class="icon leftIcon"><i class="fa fa-chevron-left"></i></a>
+            <a *ngIf="!navLinkActive" class="icon leftIcon"><i class="fa fa-chevron-right"></i></a>
+        
+       
     </button>
     </div>
 </div>

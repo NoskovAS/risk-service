@@ -12,15 +12,15 @@ import { ChildParentService } from '../../service/child-parent/child-parent.serv
     styleUrls: ['./risk-form.component.css']
 })
 export class RiskFormComponent implements OnInit, AfterContentChecked {
-    formError: boolean = false;
-    ownRisk: boolean = false;
-
     user: Object; // User object
     public riskForm: FormGroup = null;
 
     // main risks array
     items: Data[] = [];
     index: number = 0;
+
+    formError: boolean = false;
+    ownRisk: boolean = false;
 
     riskSelected;
     suggestSelected;

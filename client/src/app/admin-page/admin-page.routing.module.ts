@@ -6,6 +6,7 @@ import { DashboardChartsComponent } from './admin-dashboard/admin-main/dashboard
 import { AdminPageComponent } from './admin-page.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin-dashboard/admin-main/admin-main.component';
+import { DashboardInfoComponent } from './admin-dashboard/admin-main/dashboard-info/dashboard-info.component';
 
 
 const adminRoutes: Routes = [
@@ -32,7 +33,12 @@ const adminRoutes: Routes = [
                 path: 'messages',
                 pathMatch: 'full',
                 component: DashboardMessagesComponent
-            }
+            },
+            {
+                path: 'info',
+                pathMatch: 'full',
+                component: DashboardInfoComponent
+            },
         ]
     },
 ];

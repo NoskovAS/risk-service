@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { Data } from '../data.class';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-charts',
@@ -11,6 +12,7 @@ export class ChartsComponent implements OnInit {
   items: Data[] = [];
   user: Object;
 
+  /* public risks: Observable<string>; */
   public riskSample: string[] = [];
   public costSample: number[] = [];
   public hoursSample: number[] = [];
@@ -60,4 +62,13 @@ export class ChartsComponent implements OnInit {
     if (item === 'commonChance') { this.chanceSample = sampleArray; }
     if (item === 'suggestions') { this.suggestionsSample = sampleArray; }
   }
+
+  public getRisks(): Observable<string[]> {
+    return Observable.of(this.riskSample);
+  }
+
+  public getCost(): Observable<number[]> {
+    return Observable.of(this.costSample);
+  }
+
 }

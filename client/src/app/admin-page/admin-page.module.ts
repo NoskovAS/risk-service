@@ -14,6 +14,7 @@ import { DashboardMessagesComponent } from './admin-dashboard/admin-main/dashboa
 import { RouterModule } from '@angular/router';
 import { AdminPageRoutingModule } from './admin-page.routing.module';
 import { AdminSidebarComponent } from './share/admin-sidebar/admin-sidebar.component';
+import { DashboardInfoComponent } from './admin-dashboard/admin-main/dashboard-info/dashboard-info.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { AdminSidebarComponent } from './share/admin-sidebar/admin-sidebar.compo
     DashboardChartsComponent,
     DashboardTablesComponent,
     DashboardMessagesComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    DashboardInfoComponent
   ],
   providers: [
   ]
