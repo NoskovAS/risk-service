@@ -1,17 +1,4 @@
-:host {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-a {
-    cursor: pointer;
-}
-
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.content {
-    flex: 1 0 auto;
+    overflow: hidden;
+    background-color: rgb(223, 230, 230);
 }

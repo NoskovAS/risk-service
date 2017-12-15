@@ -1,9 +1,9 @@
-<div class="container-fluid main">
-    <div class="row">
+<div class="main">
+    <div class="row main-row" [style.margin-left.px]="card.marginLeft" [style.margin-top.px]="card.marginTop" [style.width.%]="card.width">
         <div class="col-md-4">
             <div class="card card-1">
                 <div class="card-body text-center">
-                    <h2 class="card-title users-card">{{numberOfUsers}}</h2>
+                    <h2 class="card-title users-card">{{usersCount}}</h2>
                     <div>
                         <h6><i class="fa fa-users"></i> USERS REGISTERED</h6>
                     </div>
@@ -13,7 +13,7 @@
         <div class="col-md-4">
             <div class="card card-2">
                 <div class="card-body text-center">
-                    <h2 class="card-title risks-card">{{numberOfRisks}}</h2>
+                    <h2 class="card-title risks-card">{{risksCount}}</h2>
                     <div>
                         <h6><i class="fab fa-angellist"></i> RISKS ADDED</h6>
                     </div>
@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="card card-3">
                 <div class="card-body text-center ">
-                    <h2 class="card-title reports-card">{{numberOfReports}}</h2>
+                    <h2 class="card-title reports-card">{{reportsCount}}</h2>
                     <div>
                         <h6><i class="fa fa-bug"></i> REPORTS ADDED</h6>
                     </div>

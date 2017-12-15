@@ -1,13 +1,25 @@
 .main {
     margin-top: 70px;
-    padding-left: 0px;
+    padding: 0;
+}
+
+.main-row {
+    /* margin-right: -100px */
 }
 
 .card {
     border: 1px solid #1793d3;
-    width: 300px;
+    width: 250px;
     height: 120px;
     margin: auto
+}
+
+.card-1 {
+    margin-right: 0px;
+}
+
+.card-3 {
+    margin-left: 0px;
 }
 
 .card-title {

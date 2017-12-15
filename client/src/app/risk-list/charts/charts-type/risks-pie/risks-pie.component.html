@@ -1,10 +1,4 @@
 <div *ngIf="isDataAvailable" style="display: block">
-    <canvas style="height:80vh; width:80vw" baseChart
-            [data]="pieChartData"
-            [labels]="pieChartLabels"
-            [options]="pieChartOptions"
-            [chartType]="pieChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
+    <canvas style="height:80vh; width:80vw" baseChart [data]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
     </canvas>
 </div>

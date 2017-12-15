@@ -48,4 +48,11 @@ export class AdminService {
             .map(res => res.json());
     }
 
+    getInfo() {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.host + 'admin/getInfo', { headers: headers })
+            .map(res => res.json());
+    }
+
 }

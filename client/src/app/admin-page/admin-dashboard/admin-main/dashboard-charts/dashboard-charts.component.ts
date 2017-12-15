@@ -9,7 +9,6 @@ import { ChildParentService } from '../../../../service/child-parent/child-paren
 })
 export class DashboardChartsComponent implements OnInit, AfterContentChecked {
   // The variable show that the current route is the main (Admin Dashboard)
-  mainComponent: boolean = false;
   mainMarginTop: string = '5';
 
   sidebarToggled: boolean = false;
@@ -22,18 +21,11 @@ export class DashboardChartsComponent implements OnInit, AfterContentChecked {
     width: '95'
   };
 
-  riskCard = {
-    marginTop: '10',
-    marginLeft: '20',
-    width: '95'
-  };
-
   constructor(private router: Router,
     private childParentService: ChildParentService) { }
 
   ngOnInit() {
     if (this.router.url === '/admin/charts') {
-      this.mainComponent = true;
       this.mainMarginTop = '56';
     }
   }

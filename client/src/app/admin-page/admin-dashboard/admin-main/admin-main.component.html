@@ -1,11 +1,10 @@
 <div class="admin-main">
     <div class="row main">
-        <div class="col-md-2"></div>
-        <div class="col-md-10">
-            <app-dashboard-info></app-dashboard-info>
+        <div>
+            <app-dashboard-info [reportsCount]="reportsCount"></app-dashboard-info>
             <app-dashboard-charts></app-dashboard-charts>
             <app-dashboard-tables></app-dashboard-tables>
-            <app-dashboard-messages></app-dashboard-messages>
+            <app-dashboard-messages (reportsCount)="getReportsCount($event)"></app-dashboard-messages>
         </div>
     </div>
 </div>

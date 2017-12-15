@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Output, AfterContentChecked, EventEmitter } from '@angular/core';
 import { AdminService } from '../../../../service/admin/admin.service';
 import { Reports } from './reports.class';
 import { Router } from '@angular/router';
@@ -10,9 +10,9 @@ import { ChildParentService } from '../../../../service/child-parent/child-paren
   styleUrls: ['./dashboard-messages.component.css']
 })
 export class DashboardMessagesComponent implements OnInit, AfterContentChecked {
+  @Output() reportsCount: EventEmitter<boolean> = new EventEmitter<boolean>();
   reports: Reports[] = [];
   // The variable show that the current route is the main (Admin Dashboard)
-  mainComponent: boolean = false;
   mainMarginTop: string = '5';
 
   sidebarToggled: boolean = false;
@@ -20,25 +20,18 @@ export class DashboardMessagesComponent implements OnInit, AfterContentChecked {
   /* Page styles */
   card = {
     marginTop: '20',
-    marginLeft: '20',
+    marginLeft: '0',
     marginRight: '0',
     width: '95'
   };
 
-  riskCard = {
-    marginTop: '10',
-    marginLeft: '20',
-    width: '95'
-  };
-
   constructor(private adminService: AdminService,
-              private router: Router,
-              private childParentService: ChildParentService
+    private router: Router,
+    private childParentService: ChildParentService
   ) { }
 
   ngOnInit() {
     if (this.router.url === '/admin/messages') {
-      this.mainComponent = true;
       this.mainMarginTop = '56';
     }
     this.getReports();
@@ -58,6 +51,7 @@ export class DashboardMessagesComponent implements OnInit, AfterContentChecked {
       for (let i = 0; i !== data.length; i++) {
         this.reports.push(new Reports(data[i].username, data[i].message));
       }
+      this.reportsCount.emit(data.length);
     });
   }
 

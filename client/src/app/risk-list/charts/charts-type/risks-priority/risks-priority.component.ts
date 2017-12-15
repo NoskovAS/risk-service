@@ -12,7 +12,15 @@ export class RisksPriorityComponent implements OnInit {
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    layout: {
+      padding: {
+        left: 10,
+        right: 0,
+        top: 0,
+        bottom: 0
+      }
+    }
   };
   public barChartLabels: string[] = ['1', '2', '3', '4', '6', '9'];
   public barChartType: string = 'bar';

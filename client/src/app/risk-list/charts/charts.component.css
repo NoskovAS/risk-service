@@ -71,3 +71,7 @@
 .card-right {
     margin-top: 10px;
 }
+
+.pie-card {
+    min-height: 500px;
+}

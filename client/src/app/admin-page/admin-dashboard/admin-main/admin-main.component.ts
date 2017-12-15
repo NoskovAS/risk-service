@@ -14,8 +14,14 @@ import { Users } from '../../users/users.class';
   styleUrls: ['./admin-main.component.css']
 })
 export class AdminMainComponent implements OnInit {
+  reportsCount: number;
 
   constructor() {}
 
   ngOnInit() {}
+
+  getReportsCount(emit) {
+    this.reportsCount = emit;
+  }
+
 }

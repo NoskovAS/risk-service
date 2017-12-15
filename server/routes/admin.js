@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const config = require("../config/database");
 const User = require("../models/user");
+const Risk = require("../models/risk");
 const Admin = require("../models/admin");
 const Report = require("../models/report");
 
@@ -81,8 +82,6 @@ router.post('/deleteUser', (req, res, next) => {
 
 router.post('/getReport', (req, res, next) => {
     "use strict";
-    console.log('req.body.username: ' + req.body.username);
-    console.log('req.body.report: ' + req.body.report);
 
     let newReport = new Report({
         username: req.body.username,
@@ -105,12 +104,20 @@ router.post('/getReports', (req, res, next) => {
     "use strict";
     Report.find(function(err, user) {
         if (err) {
-            res.status(500).send(err);
+            res.sendStatus('500').send(err);
         } else {
-            /* console.log('res.send(user): ' + res.send(user)); */
             res.send(user);
         }
     });
 });
+
+router.post('/getInfo', async(req, res, next) => {
+    usersCount = await User.find();
+    risksCount = await Risk.find();
+    res.json({
+        'usersCount': usersCount.length,
+        'risksCount': risksCount.length
+    });
+})
 
 module.exports = router;

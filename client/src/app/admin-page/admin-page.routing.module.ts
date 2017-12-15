@@ -34,11 +34,11 @@ const adminRoutes: Routes = [
                 pathMatch: 'full',
                 component: DashboardMessagesComponent
             },
-            {
+            /* {
                 path: 'info',
                 pathMatch: 'full',
-                component: DashboardInfoComponent
-            },
+                redirectTo: AdminMainComponent
+            }, */
         ]
     },
 ];

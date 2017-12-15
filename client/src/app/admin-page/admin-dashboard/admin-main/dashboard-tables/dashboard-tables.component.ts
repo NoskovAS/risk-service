@@ -17,7 +17,7 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
   users: Users[] = [];
   adminItems: Data[] = [];
   // The variable show that the current route is the main (Admin Dashboard)
-  mainComponent: boolean = false;
+  mainMarginTop: string = '5';
 
   // Sort
   isDesc: boolean = false;
@@ -34,7 +34,7 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
   /* Page styles */
   card = {
     marginTop: '20',
-    marginLeft: '20',
+    marginLeft: '0',
     marginRight: '0',
     width: '95'
   };
@@ -49,7 +49,7 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
 
   ngOnInit() {
     if (this.router.url === '/admin/tables') {
-      this.mainComponent = true;
+      this.mainMarginTop = '56';
     }
     // Get variable for editing page view after sidebar edit
     this.users = [];
