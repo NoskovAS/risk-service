@@ -3,19 +3,18 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         </ul>
         <span class="fa-layers fa-fw fa-2x pointer" [routerLink]="['../admin/messages'] " routerLinkActive="active" style="color:white">
             <i class="fas fa-envelope "></i>
-            <span class="fa-layers-counter">20</span>
+            <span class="fa-layers-counter">{{reportsCount}}</span>
         </span>
         <form class="form-inline my-2 my-lg-0 ">
         </form>
         <ul class="navbar-nav exit-batton ">
             <li class="nav-item ">
-                <a class="nav-link" [routerLink]="['../users/login'] " routerLinkActive="active">Exit</a>
+                <a class="nav-link" [routerLink]="['../users/login']" routerLinkActive="active">Exit</a>
             </li>
         </ul>
     </div>

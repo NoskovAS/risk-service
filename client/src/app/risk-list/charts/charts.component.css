@@ -75,3 +75,11 @@
 .pie-card {
     min-height: 500px;
 }
+
+.costs-card {
+    min-height: 270px;
+}
+
+.priority-card {
+    min-height: 270px;
+}

@@ -8,6 +8,7 @@
 }
 
 .err-message {
+    font-size: 14px;
     text-align: center;
     list-style-type: none;
     color: #111111;

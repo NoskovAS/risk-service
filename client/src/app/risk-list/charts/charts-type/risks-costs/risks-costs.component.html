@@ -2,3 +2,6 @@
     <canvas class="risk-cost" baseChart [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [chartType]="lineChartType" [legend]="lineChartLegend" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
   </canvas>
 </div>
+<div *ngIf="!isDataAvailable" class="loader">
+    <i class="fas fa-circle-notch fa-spin fa-5x"></i>
+</div>

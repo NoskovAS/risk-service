@@ -33,14 +33,14 @@
                 <div class="col-md-6">
                     <div class="card card-left">
                         <h6 class="card-header text-center">Number of risks with different priorities</h6>
-                        <app-risks-priority [prioritySample]="prioritySample"></app-risks-priority>
+                        <app-risks-priority class="priority-card" [prioritySample]="prioritySample"></app-risks-priority>
                         <div class="card-footer text-right">ChartJS</div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card card-right">
                         <h6 class="card-header text-center">Influence in costs for each risk</h6>
-                        <app-risks-costs [costSample]="costSample" [riskSample]="riskSample"></app-risks-costs>
+                        <app-risks-costs class="costs-card" [costSample]="costSample" [riskSample]="riskSample"></app-risks-costs>
                         <div class="card-footer text-right">ChartJS</div>
                     </div>
                 </div>

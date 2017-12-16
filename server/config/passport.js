@@ -47,7 +47,6 @@ module.exports = function(passport) {
     );
 
 
-
     /* Facebook authenticate */
     const fbOptions = {
         clientID: auth.facebookAuth.clientID,
@@ -58,11 +57,6 @@ module.exports = function(passport) {
     };
 
     let fbCallback = function(accessToken, refreshToken, profile, done) {
-        /* console.log('\n\nfamilyName: ' + profile.profileUrl + '\n\n');
-        console.log('\n\nusername: ' + profile.username + '\n\n');
-        console.log('\n\ngivenName: ' + profile.name.givenName + '\n\n');
-        console.log('\n\nemails: ' + profile.emails[0].value + '\n\n');
-        console.log('\n\nprofile.name.: ' + profile.name.familyName + '\n\n'); */
         process.nextTick(() => {
             User.findOne({ username: 'facebook' + profile.id }, (err, user) => {
                 if (err) {
@@ -111,8 +105,6 @@ module.exports = function(passport) {
         clientID: auth.googleAuth.clientID,
         clientSecret: auth.googleAuth.clientSecret,
         callbackURL: auth.googleAuth.callbackURL,
-        /* profileFields: ['id', 'emails', 'name'], */
-        /* return_scopes: true */
     };
 
     let googleCallback = function(accessToken, refreshToken, profile, done) {
@@ -174,32 +166,21 @@ module.exports = function(passport) {
                 if (user) {
                     return done(null, user);
                 } else {
-                    var email;
-                    var firstname;
-                    var lastname;
+                    let email;
+                    let date = new Date();
+
                     if ((profile.emails === '') || (profile.emails === undefined)) {
                         email = 'Email not available';
                     } else {
                         email = profile.emails[0].value;
                     }
-                    /*     for (let i = 0; i <= profile.displayName.length; i++) {
-                            this.firstname.push(profile.displayName[i]);
-                            if (profile.displayName[i] === ' ') {
-                                return;
-                            }
-                        }
-                        for (let j = 0; j <= profile.displayName.length; j++) {
-                            if (profile.displayName[j] === ' ') {
-                                this.lastname.push(profile.displayName[j]);
-                            }
-                        } */
 
-                    let newDate = new Date();
                     let newUser = new User({
-                        firstname: profile.displayName,
+                        firstname: profile.displayName.split(' ')[0],
+                        lastname: profile.displayName.split(' ')[1],
                         email: email,
                         username: 'github' + profile.id,
-                        date: newDate
+                        date: date
                     });
                     newUser.save(
                         (err) => {

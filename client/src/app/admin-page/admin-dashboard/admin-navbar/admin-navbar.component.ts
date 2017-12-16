@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-navbar.component.css']
 })
 export class AdminNavbarComponent implements OnInit, OnDestroy {
+  reportsCount: number = 0;
 
   constructor(private navbarService: NavbarService,
               private footerService: FooterService,

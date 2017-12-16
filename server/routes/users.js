@@ -179,7 +179,7 @@ router.get('/auth/facebook/callback',
         facebookUser.lastname = req.user.name.familyName;
         facebookUser.username = 'facebook' + req.user.id;
         if (req.user.email === undefined) {
-            facebookUser.email = 'NoEmail';
+            facebookUser.email = 'Email not available';
         } else {
             facebookUser.email = req.user.emails[0].value;
         }
@@ -206,7 +206,7 @@ router.get('/auth/google/callback',
         googleUser.lastname = req.user.name.familyName;
         googleUser.username = 'google' + req.user.id;
         if (req.user.email === undefined) {
-            googleUser.email = 'NoEmail';
+            googleUser.email = 'Email not available';
         } else {
             googleUser.email = req.user.emails[0].value;
         }
@@ -229,16 +229,17 @@ router.get('/auth/github',
 router.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res) {
-
-        githubUser.firstname = req.user.displayName;
+        githubUser.firstname = req.user.displayName.split(' ')[0];
+        githubUser.lastname = req.user.displayName.split(' ')[1];
         githubUser.username = 'github' + req.user.id;
+
         if (req.user.email === undefined) {
-            githubUser.email = 'NoEmail';
+            githubUser.email = 'Email not available';
         } else {
             githubUser.email = req.user.emails[0].value;
         }
+
         res.redirect(host.clientHost + 'users/auth/github');
     });
-
 
 module.exports = router;

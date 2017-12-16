@@ -2,3 +2,6 @@
     <canvas style="height:80vh; width:80vw" baseChart [data]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
     </canvas>
 </div>
+<div *ngIf="!isDataAvailable" class="loader">
+    <i class="fas fa-circle-notch fa-spin fa-5x"></i>
+</div>
