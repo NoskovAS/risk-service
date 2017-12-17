@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./risks-priority.component.css']
 })
 export class RisksPriorityComponent implements OnInit {
+  @Input() itemsLength;
   @Input() prioritySample;
   isDataAvailable: boolean = false;
 

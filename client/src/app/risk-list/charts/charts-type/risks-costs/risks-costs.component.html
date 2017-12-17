@@ -1,7 +1,10 @@
-<div *ngIf="isDataAvailable">
+<div *ngIf="isDataAvailable && itemsLength > 2">
     <canvas class="risk-cost" baseChart [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [chartType]="lineChartType" [legend]="lineChartLegend" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
   </canvas>
 </div>
-<div *ngIf="!isDataAvailable" class="loader">
+<div *ngIf="!isDataAvailable && itemsLength > 2" class="loader">
     <i class="fas fa-circle-notch fa-spin fa-5x"></i>
+</div>
+<div *ngIf="itemsLength < 2">
+    <h4 class="empty-chart-title">Please add at least two risks</h4>
 </div>

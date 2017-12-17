@@ -52,8 +52,8 @@
                     </div>
                 </th>
                 <th class="col8">
-                    <a class="pointer clear-icon" data-toggle="modal" data-target="#clearTable"><i class="fa fa-trash-alt"></i></a>
-                    <a class="pointer" (click)="togglefilter()"><i class="fa fa-filter"></i></a>
+                    <a class="pointer clear-icon" *ngIf="items.length > 1" data-toggle="modal" data-target="#clearTable"><i class="fa fa-trash-alt"></i></a>
+                    <a class="pointer" *ngIf="items.length > 1" (click)="togglefilter()"><i class="fa fa-filter"></i></a>
                 </th>
             </tr>
         </thead>
@@ -113,9 +113,14 @@
                     <app-item-del [index]="item.index" [i]="i" [items]="items" [limit]="riksLimit" (deleted)="deleted($event)"></app-item-del>
                 </td>
             </tr>
+            <tr *ngIf="items.length === 0">
+                <td colspan="8">
+                    <div class="empty-table-title">The table with risks is empty. You can add risks using the form presented above</div>
+                </td>
+            </tr>
         </tbody>
     </table>
-    <div class="paggination">
+    <div *ngIf="items.length !== 0" class="paggination">
         <app-pagination [offset]="pageOffset" [limit]="riksLimit" [size]="riskCount" (pageChange)="onPageChange($event)"></app-pagination>
     </div>
     <div class="row under-table-row">

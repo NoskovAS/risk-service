@@ -124,3 +124,9 @@ select.form-control:not([size]):not([multiple]) {
     height: 2.2em;
     width: 4.15em;
 }
+
+.empty-table-title {
+    text-align: center;
+    font-size: 24px;
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+}

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class RisksPieComponent implements OnInit {
+  @Input() itemsLength;
   @Input() riskSample;
   isDataAvailable: boolean = false;
 

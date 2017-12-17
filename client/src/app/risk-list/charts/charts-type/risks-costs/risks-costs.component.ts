@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./risks-costs.component.css']
 })
 export class RisksCostsComponent implements OnInit, OnDestroy {
+  @Input() itemsLength;
   @Input() costSample;
   @Input() riskSample;
   isDataAvailable: boolean = false;

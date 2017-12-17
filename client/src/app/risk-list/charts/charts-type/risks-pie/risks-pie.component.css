@@ -2,3 +2,10 @@
     text-align: center;
     margin-top: 200px;
 }
+
+.empty-chart-title {
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
+    text-align: center;
+    margin-top: 200px;
+    color: cadetblue;
+}

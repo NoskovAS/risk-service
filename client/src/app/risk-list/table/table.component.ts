@@ -14,6 +14,7 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
   @Input() deleted;
   @Output() tableCleared: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  /* Controls the display of the filter */
   filterVisible: boolean = false;
 
   // Sort
