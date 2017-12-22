@@ -14,7 +14,6 @@
 
 .form-group {
     margin-bottom: 15px;
-    margin-right: 20px;
 }
 
 .form-internal {
@@ -40,7 +39,7 @@ i {
 .form-label,
 .alert,
 i {
-    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 .pointer {
@@ -54,11 +53,4 @@ i {
 .close {
     border: none;
     outline: none;
-}
-
-.alert {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
 }

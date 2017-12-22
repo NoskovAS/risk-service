@@ -3,7 +3,7 @@ const config = require("../config/database");
 
 // Risk Schema
 const RiskSchema = mongoose.Schema({
-    username: {
+    uid: {
         type: String,
         required: true
     },

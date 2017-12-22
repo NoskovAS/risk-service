@@ -60,7 +60,7 @@ module.exports = function(passport) {
 
     let fbCallback = function(accessToken, refreshToken, profile, done) {
         process.nextTick(() => {
-            User.findOne({ id: 'facebook' + profile.id }, (err, user) => {
+            User.findOne({ uid: 'facebook' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
@@ -77,7 +77,7 @@ module.exports = function(passport) {
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
-                        id: 'facebook' + profile.id,
+                        uid: 'facebook' + profile.id,
                         email: email,
                         username: 'facebook' + profile.id,
                         date: newDate
@@ -112,7 +112,7 @@ module.exports = function(passport) {
 
     let googleCallback = function(accessToken, refreshToken, profile, done) {
         process.nextTick(() => {
-            User.findOne({ id: 'google' + profile.id }, (err, user) => {
+            User.findOne({ uid: 'google' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
@@ -129,7 +129,7 @@ module.exports = function(passport) {
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
-                        id: 'google' + profile.id,
+                        uid: 'google' + profile.id,
                         email: email,
                         username: 'google' + profile.id,
                         date: newDate
@@ -163,7 +163,7 @@ module.exports = function(passport) {
 
     let githubCallback = function(accessToken, refreshToken, profile, done) {
         process.nextTick(() => {
-            User.findOne({ id: 'github' + profile.id }, (err, user) => {
+            User.findOne({ uid: 'github' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
@@ -182,7 +182,7 @@ module.exports = function(passport) {
                     let newUser = new User({
                         firstname: profile.displayName.split(' ')[0],
                         lastname: profile.displayName.split(' ')[1],
-                        id: 'github' + profile.id,
+                        uid: 'github' + profile.id,
                         email: email,
                         username: 'github' + profile.id,
                         date: date

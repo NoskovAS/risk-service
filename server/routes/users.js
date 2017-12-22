@@ -6,6 +6,8 @@ const config = require("../config/database");
 const User = require("../models/user");
 const Admin = require("../models/admin");
 const host = require("../config/host");
+const uuidv1 = require('uuid/v1');
+
 
 var facebookUser = {};
 var googleUser = {};
@@ -17,6 +19,7 @@ router.post("/register", (req, res, next) => {
     let newUser = new User({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
+        uid: uuidv1(),
         username: req.body.username,
         email: req.body.email,
         date: req.body.date,
@@ -57,6 +60,7 @@ router.post("/authenticate", (req, res, next) => {
                 const token = jwt.sign(user, config.secret, {
                     expiresIn: 604800 // 1 week
                 });
+                console.log('USER: ' + user._id + ' ' + user.uid);
                 res.json({
                     success: true,
                     token: "JWT " + token,
@@ -64,6 +68,7 @@ router.post("/authenticate", (req, res, next) => {
                         id: user._id,
                         firstname: user.firstname,
                         lastname: user.lastname,
+                        uid: user.uid,
                         username: user.username,
                         email: user.email
                     }
@@ -241,7 +246,7 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res, done) {
-        User.findOne({ id: 'facebook' + req.user.id }, (err, user) => {
+        User.findOne({ uid: 'facebook' + req.user.id }, (err, user) => {
             if (err) {
                 return done(err);
             }
@@ -281,7 +286,7 @@ router.get('/auth/google',
 router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res, done) {
-        User.findOne({ id: 'google' + req.user.id }, (err, user) => {
+        User.findOne({ uid: 'google' + req.user.id }, (err, user) => {
             if (err) {
                 return done(err);
             }
@@ -321,7 +326,7 @@ router.get('/auth/github',
 router.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: host.clientHost + 'users/login' }),
     function(req, res, done) {
-        User.findOne({ id: 'github' + req.user.id }, (err, user) => {
+        User.findOne({ uid: 'github' + req.user.id }, (err, user) => {
             if (err) {
                 return done(err);
             }

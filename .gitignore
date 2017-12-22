@@ -23,6 +23,8 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.vscode
+./vscode
 
 # misc
 /.sass-cache
@@ -46,5 +48,9 @@ server/node_modules
 server/access.log
 
 # database config
-server/config/auth.js
-server/config/database.js
+./server/config/auth.js
+./server/config/database.js
+/server/config/auth.js
+/server/config/database.js
+.server/config/auth.js
+.server/config/database.js

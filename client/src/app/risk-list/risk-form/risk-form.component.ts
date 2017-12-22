@@ -166,7 +166,7 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
             hoursinfluence: form.value.hoursinfluence,
             costinfluence: form.value.costinfluence,
             commonChance: this.tableService.chanceCalculate(form.value.riskSprints, form.value.numberOfSprints),
-            username: localStorage.getItem('username'),
+            uid: localStorage.getItem('uid'),
             date: new Date,
             suggestions: form.value.suggestions,
             index: this.index
@@ -186,7 +186,7 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
     // Recovery risks in table
     public riskRecovery() {
         const user = {
-            username: localStorage.getItem('username'),
+            uid: localStorage.getItem('uid'),
         };
 
         // get risks

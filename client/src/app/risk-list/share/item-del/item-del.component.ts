@@ -28,7 +28,7 @@ export class ItemDelComponent implements AfterContentChecked {
   riskDelete(index: number = this.index, i: number = this.i) {
     const SerialNumber = {
       index: index,
-      username: localStorage.getItem('username'),
+      uid: localStorage.getItem('uid'),
     };
 
     // delete risks

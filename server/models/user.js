@@ -5,22 +5,25 @@ const config = require("../config/database");
 // User Schema
 const UserSchema = mongoose.Schema({
     firstname: {
-        type: String
-            /* required: true */
+        type: String,
+        required: true
     },
     lastname: {
-        type: String
-            /* required: true */
+        type: String,
+        required: true
+    },
+    uid: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
     },
     username: {
         type: String,
         unique: true,
         required: true
-    },
-    email: {
-        type: String,
-        /* unique: true, */
-        /* required: true */
     },
     date: {
         type: Date,
@@ -28,12 +31,7 @@ const UserSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        /*   required: true */
-    },
-    id: {
-        type: String,
-        /*   required: true */
-    },
+    }
 });
 
 const User = (module.exports = mongoose.model("User", UserSchema));

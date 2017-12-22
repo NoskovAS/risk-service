@@ -12,9 +12,13 @@ p {
     font-size: 16px;
 }
 
-.del-button {
+.del-button-block {
     margin-left: 20px;
     margin-bottom: 20px;
+}
+
+.del-button {
+    white-space: normal;
 }
 
 .pointer {
@@ -27,5 +31,5 @@ p {
 
 .title,
 p {
-    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
+    font-family: "Oxygen", "Oxygen", "Segoe UI", "Helvetica Neue", sans-serif;
 }

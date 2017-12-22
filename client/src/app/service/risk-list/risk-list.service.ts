@@ -18,7 +18,7 @@ export class RiskListService {
     addingRisk(risk) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post(this.host + 'risks/table', risk, { headers: headers })
+        return this.http.post(this.host + 'risks/addRisk', risk, { headers: headers })
             .map(res => res.json());
     }
 

@@ -75,7 +75,7 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   tableClear() {
     const user = {
-      username: localStorage.getItem('username'),
+      uid: localStorage.getItem('uid'),
     };
 
     // clear table

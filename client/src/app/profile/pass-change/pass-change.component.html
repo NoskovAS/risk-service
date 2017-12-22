@@ -2,19 +2,19 @@
     <div class="row">
         <div class="col-lg-8">
             <h3 class="title">Change Password</h3>
-            <div *ngIf="errors.changed" class="alert alert-success" role="alert">
-                Password changed successfully
-            </div>
-            <div *ngIf="errors.fieldError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                Please fill in all the fields
-            </div>
-            <div *ngIf="errors.changedError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                Current password is incorrect
-            </div>
-            <div *ngIf="errors.noMatch" class="alert alert-danger alert-dismissible fade show" role="alert">
-                Confirmation password does not match
-            </div>
             <form class="change-pass-form" novalidate [formGroup]="passwordForm" (submit)="onChangeSubmit()">
+                <div *ngIf="errors.changed" class="alert alert-success" role="alert">
+                    Password changed successfully
+                </div>
+                <div *ngIf="errors.fieldError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Please fill in all the fields
+                </div>
+                <div *ngIf="errors.changedError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Current password is incorrect
+                </div>
+                <div *ngIf="errors.noMatch" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Confirmation password does not match
+                </div>
                 <div class="form-group" formGroupName="password">
                     <div class="form-internal">
                         <input class="form-input form-control" id="pwd" type="password" formControlName="pwd" placeholder="Password" aria-describedby="passHelpBlock">

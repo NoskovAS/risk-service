@@ -30,7 +30,7 @@ export class ChartsComponent implements OnInit {
   // Recovery risks in table
   private riskRecovery() {
     const user = {
-      username: localStorage.getItem('username'),
+      uid: localStorage.getItem('uid'),
     };
 
     // get risks
@@ -55,6 +55,7 @@ export class ChartsComponent implements OnInit {
     for (let i = 0; i < this.items.length; i++) {
       sampleArray.push(this.items[i][item]);
     }
+
     if (item === 'riskname') { this.riskSample = sampleArray; }
     if (item === 'costinfluence') { this.costSample = sampleArray; }
     if (item === 'hoursinfluence') { this.hoursSample = sampleArray; }

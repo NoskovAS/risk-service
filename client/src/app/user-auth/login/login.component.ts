@@ -42,7 +42,6 @@ export class LoginComponent implements AfterViewInit {
       if (data.success) {
         this.logSuccess = true;
         this.authService.storeUserData(data.token, data.user);
-        localStorage.setItem('username', user.username);
         this.router.navigate(['risk-list/table']);
       } else if (data.msg === 'User not found') {
         this.logSuccess = false;

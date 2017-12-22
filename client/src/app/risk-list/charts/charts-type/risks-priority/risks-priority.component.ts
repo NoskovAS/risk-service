@@ -21,7 +21,21 @@ export class RisksPriorityComponent implements OnInit {
         top: 0,
         bottom: 0
       }
-    }
+    },
+    scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: true,
+              userCallback: function(label, index, labels) {
+                  // when the floored value is the same as the value we have a whole number
+                  if (Math.floor(label) === label) {
+                      return label;
+                  }
+
+              },
+          }
+      }],
+  },
   };
   public barChartLabels: string[] = ['1', '2', '3', '4', '6', '9'];
   public barChartType: string = 'bar';

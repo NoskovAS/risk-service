@@ -2,22 +2,22 @@
     <div class="row">
         <div class="col-lg-8">
             <h3 class="title">Basic Information</h3>
-            <div *ngIf="alerts.successfulUpdate" class="alert alert-success" role="alert">
-                Account update successful
-            </div>
-            <div *ngIf="alerts.badUsername" class="alert alert-danger" role="alert">
-                This username already exists
-            </div>
-            <div *ngIf="alerts.changeDetected" class="alert alert-warning" role="alert">
-                Please change the profile information
-            </div>
-            <div *ngIf="alerts.fieldError" class="alert alert-warning" role="alert">
-                Please field all fields
-            </div>
-            <div *ngIf="alerts.validError" class="alert alert-warning" role="alert">
-                Please check the correctness of the entered data
-            </div>
             <form class="edit-profile-form" novalidate [formGroup]="editProfileForm" (submit)="onProfileSubmit()">
+                <div *ngIf="alerts.successfulUpdate" class="alert alert-success" role="alert">
+                    Account update successful
+                </div>
+                <div *ngIf="alerts.badUsername" class="alert alert-danger" role="alert">
+                    This username already exists
+                </div>
+                <div *ngIf="alerts.changeDetected" class="alert alert-warning" role="alert">
+                    Please change the profile information
+                </div>
+                <div *ngIf="alerts.fieldError" class="alert alert-warning" role="alert">
+                    Please field all fields
+                </div>
+                <div *ngIf="alerts.validError" class="alert alert-warning" role="alert">
+                    Please check the correctness of the entered data
+                </div>
                 <div class="form-group">
                     <label class="form-label" for="firstname">First name</label>
                     <input class="form-input form-control" id="firstname" type="text" formControlName="firstname">

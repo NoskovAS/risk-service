@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Risk = require("../models/risk");
 
-router.post("/table", (req, res, next) => {
+router.post("/addRisk", (req, res, next) => {
     "use strict";
     let newRisk = new Risk({
-        username: req.body.username,
+        uid: req.body.uid,
         riskname: req.body.riskname,
         priority: req.body.priority,
         hoursinfluence: req.body.hoursinfluence,
@@ -30,9 +30,9 @@ router.post("/table", (req, res, next) => {
 // Get the risk
 router.post("/getRisk", (req, res, next) => {
     "use strict";
-    const username = req.body.username;
+    const uid = req.body.uid;
     Risk.find({
-            username: username
+            uid: uid
         },
         function(err, risk) {
             if (err) {
@@ -48,10 +48,10 @@ router.post("/getRisk", (req, res, next) => {
 router.post("/deleteRisk", (req, res, next) => {
     "use strict";
     const i = req.body.index; // index
-    const username = req.body.username;
+    const uid = req.body.uid;
     Risk.find({
             index: i,
-            username: username
+            uid: uid
         },
         function(err, risk) {
             if (err) throw err;
@@ -59,7 +59,7 @@ router.post("/deleteRisk", (req, res, next) => {
             // delete him
             Risk.deleteOne({
                     index: i,
-                    username: username
+                    uid: uid
                 },
                 function(err, removed) {
                     if (err) {
@@ -79,9 +79,9 @@ router.post("/deleteRisk", (req, res, next) => {
 // Clear table
 router.post("/clearTable", (req, res, next) => {
     "use strict";
-    const username = req.body.username;
+    const uid = req.body.uid;
     Risk.remove({
-            username: username
+            uid: uid
         },
         function(err) {
             if (err) {
