@@ -9,6 +9,8 @@ const Admin = require("../models/admin");
 const config = require("../config/database");
 const auth = require('./auth');
 
+module.exports = googleUser = {};
+
 module.exports = function(passport) {
     "use strict";
     let opts = {};
@@ -58,7 +60,7 @@ module.exports = function(passport) {
 
     let fbCallback = function(accessToken, refreshToken, profile, done) {
         process.nextTick(() => {
-            User.findOne({ username: 'facebook' + profile.id }, (err, user) => {
+            User.findOne({ id: 'facebook' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
@@ -75,6 +77,7 @@ module.exports = function(passport) {
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
+                        id: 'facebook' + profile.id,
                         email: email,
                         username: 'facebook' + profile.id,
                         date: newDate
@@ -109,7 +112,7 @@ module.exports = function(passport) {
 
     let googleCallback = function(accessToken, refreshToken, profile, done) {
         process.nextTick(() => {
-            User.findOne({ username: 'google' + profile.id }, (err, user) => {
+            User.findOne({ id: 'google' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
@@ -126,6 +129,7 @@ module.exports = function(passport) {
                     let newUser = new User({
                         firstname: profile.name.givenName,
                         lastname: profile.name.familyName,
+                        id: 'google' + profile.id,
                         email: email,
                         username: 'google' + profile.id,
                         date: newDate
@@ -159,7 +163,7 @@ module.exports = function(passport) {
 
     let githubCallback = function(accessToken, refreshToken, profile, done) {
         process.nextTick(() => {
-            User.findOne({ username: 'github' + profile.id }, (err, user) => {
+            User.findOne({ id: 'github' + profile.id }, (err, user) => {
                 if (err) {
                     return done(err);
                 }
@@ -178,6 +182,7 @@ module.exports = function(passport) {
                     let newUser = new User({
                         firstname: profile.displayName.split(' ')[0],
                         lastname: profile.displayName.split(' ')[1],
+                        id: 'github' + profile.id,
                         email: email,
                         username: 'github' + profile.id,
                         date: date

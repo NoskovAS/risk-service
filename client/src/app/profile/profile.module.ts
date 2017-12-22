@@ -7,6 +7,7 @@ import { PassChangeComponent } from './pass-change/pass-change.component';
 import { BasicInfoComponent } from './basic-info/basic-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../share/shared.module';
+import { AddPasswordComponent } from './add-password/add-password.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { SharedModule } from '../share/shared.module';
   declarations: [
     BasicInfoComponent,
     PassChangeComponent,
-    AccountDelComponent
+    AccountDelComponent,
+    AddPasswordComponent
   ]
 })
 export class ProfileModule { }

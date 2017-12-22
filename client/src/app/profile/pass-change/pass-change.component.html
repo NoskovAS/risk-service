@@ -1,27 +1,18 @@
 <div class="container-fluid pass-change">
     <div class="row">
-        <div>
+        <div class="col-lg-8">
             <h3 class="title">Change Password</h3>
             <div *ngIf="errors.changed" class="alert alert-success" role="alert">
                 Password changed successfully
             </div>
             <div *ngIf="errors.fieldError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error!</strong> Please fill in all the fields.
-                <button type="button" class="close pointer" (click)="errors.fieldError = false" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                Please fill in all the fields
             </div>
             <div *ngIf="errors.changedError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error!</strong> Current password is incorrect.
-                <button type="button" class="close pointer" (click)="errors.changedError = false" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                Current password is incorrect
             </div>
             <div *ngIf="errors.noMatch" class="alert alert-danger alert-dismissible fade show" role="alert">
-                Confirmation password does not match.
-                <button type="button" class="close pointer" (click)="errors.noMatch = false" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                Confirmation password does not match
             </div>
             <form class="change-pass-form" novalidate [formGroup]="passwordForm" (submit)="onChangeSubmit()">
                 <div class="form-group" formGroupName="password">
@@ -41,7 +32,7 @@
                         <app-validator-message [field]="passwordForm.get('password')"></app-validator-message>
                     </div>
                 </div>
-                <i>We need your current password to confirm your changes</i>
+                <i>Your current password to confirm your changes</i>
                 <br>
                 <div class="form-group">
                     <input class="form-input form-control" id="currentPass" type="password" formControlName="currentPass" placeholder="Current Password">

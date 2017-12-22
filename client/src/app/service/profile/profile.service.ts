@@ -28,6 +28,13 @@ export class ProfileService {
             .map(res => res.json());
     }
 
+    addPassword(user) {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.host + 'users/addPassword', user, { headers: headers })
+            .map(res => res.json());
+    }
+
     getProfile() {
         const headers = new Headers();
         this.loadToken();

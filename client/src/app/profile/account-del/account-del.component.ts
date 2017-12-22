@@ -20,6 +20,7 @@ export class AccountDelComponent {
 
     this.profileService.deleteUser(user).subscribe(data => {
       if (data.success) {
+        localStorage.clear();
         this.router.navigate(['users/login']);
       } else {
         this.dellError = true;

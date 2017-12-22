@@ -6,6 +6,7 @@ import { AccountDelComponent } from './account-del/account-del.component';
 import { PassChangeComponent } from './pass-change/pass-change.component';
 import { AuthGuard } from '../guard/auth/auth.guard';
 import { SocialAuthGuard } from '../guard/social-auth/social-auth.guard';
+import { AddPasswordComponent } from './add-password/add-password.component';
 
 const profileRoutes: Routes = [
   {
@@ -30,10 +31,15 @@ const profileRoutes: Routes = [
         canActivate: [SocialAuthGuard],
       },
       {
+        path: 'add_password',
+        pathMatch: 'full',
+        component: AddPasswordComponent,
+      },
+      {
         path: 'delete_acct',
         pathMatch: 'full',
         component: AccountDelComponent,
-        canActivate: [SocialAuthGuard],
+        /* canActivate: [SocialAuthGuard], */
       },
     ]
   }

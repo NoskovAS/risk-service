@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile/profile.service';
@@ -11,15 +11,31 @@ import { ValidatorService } from '../../service/validator/validator.service';
 })
 export class BasicInfoComponent {
   public editProfileForm: FormGroup = null;
-  user = JSON.parse(localStorage.getItem('user'));
-  public socialLogin = JSON.parse(localStorage.getItem('social') || 'null');
-  update: boolean = false;
+  public user;
+  public socialLogin;
+  alerts = {
+    fieldError: false,
+    successfulUpdate: false,
+    badUsername: false,
+    changeDetected: false,
+    validError: false
+  };
 
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    this.alerts.badUsername = false;
+    this.alerts.successfulUpdate = false;
+    this.alerts.changeDetected = false;
+    this.alerts.fieldError = false;
+    this.alerts.validError = false;
+  }
 
   constructor(private router: Router,
     private profileService: ProfileService,
     private fb: FormBuilder,
     private validatorService: ValidatorService) {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.socialLogin = JSON.parse(localStorage.getItem('social') || 'null');
     const emailValidator: ValidatorFn[] = [Validators.email];
 
     this.editProfileForm = this.fb.group({
@@ -32,38 +48,45 @@ export class BasicInfoComponent {
   }
 
   onProfileSubmit() {
+    if ((this.editProfileForm.value.firstname === '') || (this.editProfileForm.value.lastname === '') ||
+      (this.editProfileForm.value.username === '') || (this.editProfileForm.value.email === '')) {
+      this.alerts.fieldError = true;
+      return;
+    }
+
+    if (!this.editProfileForm.valid) {
+      this.alerts.validError = true;
+      return;
+    }
+
     this.editProfileForm.patchValue({
       oldUsername: localStorage.getItem('username')
     });
 
-    const user = this.editProfileForm.value;
+    if (this.editProfileForm.value.username === this.editProfileForm.value.oldUsername) {
+      this.alerts.changeDetected = true;
+      return;
+    }
 
+    const user = this.editProfileForm.value;
 
     // Edit profile
     this.profileService.profileChanges(user).subscribe(data => {
-      if (data.success) {
-        this.update = true;
-        console.log('Successfull change');
-        this.router.navigate(['/profile']);
+      if (!data.success) {
+        this.alerts.badUsername = true;
+        this.editProfileForm.patchValue({ username: this.editProfileForm.value.oldUsername });
       } else {
-        console.log('Wrong change');
-        this.router.navigate(['/editProfile']);
+        this.alerts.successfulUpdate = true;
+        // Local Storage user update
+        const updateUser = JSON.parse(localStorage.user);
+        updateUser.firstname = user.firstname;
+        updateUser.lastname = user.lastname;
+        updateUser.username = user.username;
+        updateUser.email = user.email;
+
+        localStorage.setItem('username', updateUser.username);
+        localStorage.setItem('user', JSON.stringify(updateUser));  // put the object back
       }
     });
-
-
-    // Local Storage user update
-    const updateUser = JSON.parse(localStorage.user);
-
-    updateUser.firstname = user.firstname;
-    updateUser.lastname = user.lastname;
-    updateUser.username = user.username;
-    updateUser.email = user.email;
-
-    localStorage.setItem('username', updateUser.username);
-
-    localStorage.setItem('user', JSON.stringify(updateUser));  // put the object back
   }
-
-
 }

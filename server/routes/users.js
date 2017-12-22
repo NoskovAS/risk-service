@@ -79,11 +79,7 @@ router.post("/authenticate", (req, res, next) => {
 });
 
 // Get profile
-router.get(
-    "/profile",
-    passport.authenticate("jwt", {
-        session: false
-    }),
+router.get("/profile", passport.authenticate("jwt", { session: false }),
     (req, res, next) => {
         res.json({
             user: req.user
@@ -95,24 +91,65 @@ router.get(
 router.post("/editProfile", (req, res, next) => {
     "use strict";
     const oldUsername = req.body.oldUsername;
-    User.findOne({
-            username: oldUsername
-        },
-        function(err, user) {
-            if (err) throw err;
 
-            (user.lastname = req.body.lastname),
-            (user.firstname = req.body.firstname),
-            (user.email = req.body.email),
-            (user.username = req.body.username),
-            user.save();
-
+    User.findOne({ username: req.body.username }, (err, user, done) => {
+        if (err) {
+            return done(err);
+        }
+        if (user) {
             return res.json({
-                success: true,
-                msg: "Successfull change"
+                success: false,
+                msg: "Unsuccessfull change"
+            });
+        } else {
+            User.findOne({ username: oldUsername },
+                function(err, user) {
+                    if (err) throw err;
+
+                    (user.lastname = req.body.lastname),
+                    (user.firstname = req.body.firstname),
+                    (user.email = req.body.email),
+                    (user.username = req.body.username),
+                    user.save();
+
+                    return res.json({
+                        success: true,
+                        msg: "Successfull change"
+                    });
+                }
+            );
+        }
+    });
+});
+
+// Set password
+router.post("/addPassword", (req, res, next) => {
+    "use strict";
+    const username = req.body.username;
+    const password = req.body.password.pwd;
+
+    User.getUserByUsername(username, (err, user) => {
+        if (err) throw err;
+        if (!user) {
+            return res.json({
+                success: false,
+                msg: "User not found"
             });
         }
-    );
+        User.editPass(password, user, (err, user) => {
+            if (err) {
+                res.json({
+                    success: false,
+                    msg: "Failed to add pass"
+                });
+            } else {
+                res.json({
+                    success: true,
+                    msg: "User pass added"
+                });
+            }
+        });
+    });
 });
 
 // Edit password
@@ -161,6 +198,35 @@ router.post("/editPassword", (req, res, next) => {
     });
 });
 
+// Delete user
+router.post("/deleteUser", (req, res, next) => {
+    "use strict";
+    const username = req.body.username;
+    User.findOne({
+            username: username
+        },
+        function(err, user) {
+            if (err) throw err;
+
+            // delete him
+            User.deleteOne({
+                    username: username
+                },
+                function(err, removed) {
+                    if (err) {
+                        res.status(500).send(err);
+                    } else {
+                        return res.json({
+                            success: true,
+                            msg: "Successfull user deleted"
+                        });
+                    }
+                }
+            );
+        }
+    );
+});
+
 /* Facebook authenticate */
 router.get('/getFacebookData', (req, res, next) => {
     res.json({
@@ -174,15 +240,28 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: host.clientHost + 'users/login' }),
-    function(req, res) {
-        facebookUser.firstname = req.user.name.givenName;
-        facebookUser.lastname = req.user.name.familyName;
-        facebookUser.username = 'facebook' + req.user.id;
-        if (req.user.email === undefined) {
-            facebookUser.email = 'Email not available';
-        } else {
-            facebookUser.email = req.user.emails[0].value;
-        }
+    function(req, res, done) {
+        User.findOne({ id: 'facebook' + req.user.id }, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+            if (user) {
+                facebookUser.firstname = user.firstname;
+                facebookUser.lastname = user.lastname;
+                facebookUser.username = user.username;
+                facebookUser.email = user.email;
+                return done(null, user);
+            } else {
+                facebookUser.firstname = req.user.name.givenName;
+                facebookUser.lastname = req.user.name.familyName;
+                facebookUser.username = 'facebook' + req.user.id;
+                if (req.user.emails[0] === undefined) {
+                    facebookUser.email = 'Email not available';
+                } else {
+                    facebookUser.email = req.user.emails[0].value;
+                }
+            }
+        });
         res.redirect(host.clientHost + 'users/auth/facebook');
     });
 
@@ -201,15 +280,28 @@ router.get('/auth/google',
 
 router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: host.clientHost + 'users/login' }),
-    function(req, res) {
-        googleUser.firstname = req.user.name.givenName;
-        googleUser.lastname = req.user.name.familyName;
-        googleUser.username = 'google' + req.user.id;
-        if (req.user.email === undefined) {
-            googleUser.email = 'Email not available';
-        } else {
-            googleUser.email = req.user.emails[0].value;
-        }
+    function(req, res, done) {
+        User.findOne({ id: 'google' + req.user.id }, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+            if (user) {
+                googleUser.firstname = user.firstname;
+                googleUser.lastname = user.lastname;
+                googleUser.username = user.username;
+                googleUser.email = user.email;
+                return done(null, user);
+            } else {
+                googleUser.firstname = req.user.name.givenName;
+                googleUser.lastname = req.user.name.familyName;
+                googleUser.username = 'google' + req.user.id;
+                if (req.user.emails[0] === undefined) {
+                    googleUser.email = 'Email not available';
+                } else {
+                    googleUser.email = req.user.emails[0].value;
+                }
+            }
+        });
         res.redirect(host.clientHost + 'users/auth/google');
     });
 
@@ -228,17 +320,28 @@ router.get('/auth/github',
 
 router.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: host.clientHost + 'users/login' }),
-    function(req, res) {
-        githubUser.firstname = req.user.displayName.split(' ')[0];
-        githubUser.lastname = req.user.displayName.split(' ')[1];
-        githubUser.username = 'github' + req.user.id;
-
-        if (req.user.email === undefined) {
-            githubUser.email = 'Email not available';
-        } else {
-            githubUser.email = req.user.emails[0].value;
-        }
-
+    function(req, res, done) {
+        User.findOne({ id: 'github' + req.user.id }, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+            if (user) {
+                githubUser.firstname = user.firstname;
+                githubUser.lastname = user.lastname;
+                githubUser.username = user.username;
+                githubUser.email = user.email;
+                return done(null, user);
+            } else {
+                githubUser.firstname = req.user.displayName.split(' ')[0];
+                githubUser.lastname = req.user.displayName.split(' ')[1];
+                githubUser.username = 'github' + req.user.id;
+                if (req.user.emails[0] === undefined) {
+                    githubUser.email = 'Email not available';
+                } else {
+                    githubUser.email = req.user.emails[0].value;
+                }
+            }
+        });
         res.redirect(host.clientHost + 'users/auth/github');
     });
 

@@ -15,7 +15,12 @@
                     <h5>Change Password</h5>
                 </a>
             </div>
-            <div *ngIf="!socialLogin" class="menu-item" [routerLinkActive]="['active']" [routerLink]="['delete_acct']">
+            <div *ngIf="socialLogin" class="menu-item" [routerLinkActive]="['active']" [routerLink]="['add_password']">
+                <a class="pointer menu-link">
+                    <h5>Add Password</h5>
+                </a>
+            </div>
+            <div class="menu-item" [routerLinkActive]="['active']" [routerLink]="['delete_acct']">
                 <a class="pointer menu-link">
                     <h5>Delete Account</h5>
                 </a>

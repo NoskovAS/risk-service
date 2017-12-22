@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ProfileService } from '../../service/profile/profile.service';
 import { ValidatorService } from '../../service/validator/validator.service';
 import { FormBuilder, ValidatorFn, Validators, FormGroup } from '@angular/forms';
@@ -17,6 +17,14 @@ export class PassChangeComponent {
     noMatch: false,
     fieldError: false
   };
+
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    this.errors.changed = false;
+    this.errors.changedError = false;
+    this.errors.noMatch = false;
+    this.errors.fieldError = false;
+  }
 
   constructor(private profileService: ProfileService,
     private validatorService: ValidatorService,
@@ -38,11 +46,6 @@ export class PassChangeComponent {
   }
 
   onChangeSubmit() {
-    this.errors.changed = false;
-    this.errors.changedError = false;
-    this.errors.fieldError = false;
-    this.errors.noMatch = false;
-
     if ((this.passwordForm.value.password.pwd === '') ||
       (this.passwordForm.value.password.confirm === '') ||
       (this.passwordForm.value.currentPass === '')) {
