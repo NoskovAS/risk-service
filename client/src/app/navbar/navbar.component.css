@@ -19,11 +19,10 @@
 
 .navbar-brand {
     color: #343a40;
-    ;
 }
 
 .navbar-toggler {
-    background-color: #1793d3;
+    background-color: #525355d2;
     border-width: 2px;
 }
 
@@ -51,4 +50,8 @@ title {
 
 .active .nav-link {
     color: #0044ff;
+}
+
+.fa-sign-out-alt {
+    font-size: 28px;
 }
