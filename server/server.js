@@ -73,6 +73,6 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-app.listen(HTTP_PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log("Server started on HTTP_PORT " + HTTP_PORT);
 });

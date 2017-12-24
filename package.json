@@ -8,7 +8,7 @@
         "node": "8.9.1"
     },
     "scripts": {
-        "start": "node server/server.js"
+        "start": "nodemon server/server.js"
     },
     "dependencies": {
         "angular2-in-memory-web-api": "0.0.20",
