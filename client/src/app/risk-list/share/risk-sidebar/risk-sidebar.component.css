@@ -1,7 +1,7 @@
 /* Sidebar */
 
 .sidebar-body {
-    margin-bottom: 5px;
+    border-bottom: solid 1px #343a40;
 }
 
 .sidebar-item {

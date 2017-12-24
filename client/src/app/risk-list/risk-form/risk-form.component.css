@@ -58,6 +58,16 @@
 }
 
 
+/* Hide username on mobile devices */
+
+@media screen and (max-width: 768px) {
+    #username {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+
 /* Button */
 
 .btn {

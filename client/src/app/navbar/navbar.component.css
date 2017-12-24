@@ -43,6 +43,15 @@ title {
     color: #0a0a0abe;
 }
 
+
+/* Hide title on mobile devices */
+
+@media screen and (max-width: 306px) {
+    #title {
+        font-size: 22px;
+    }
+}
+
 .logo .navbar-brand {
     border: 100px solid transparent black;
     padding: 15px;
