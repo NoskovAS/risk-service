@@ -1,82 +1,79 @@
-body {
-  background-color: whitesmoke;
-}
-
 .title {
-  margin-left: 5px;
-  margin-top: 4px;
-  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 700;
-  color: #0a0a0abe;
+    margin-left: 5px;
+    margin-top: 4px;
+    font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #0a0a0abe;
 }
 
 .logo {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
-.right {
-  margin-top: 10px;
-  margin-left: 15px;
+.left-title {
+    margin: 15px 0px 0px 15px;
+    min-width: 200px;
+    display: block;
+}
+
+.right-title {
+    display: block;
+    /*   min-width: 150px; */
 }
 
 .doc {
-  margin-top: 15px;
-  margin-left: 180px;
-  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 700;
-  color: #1793d3;
+    margin-top: 15px;
+    margin-left: 180px;
+    font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #1793d3;
 }
 
 h1 {
-  text-align: center;
-  font-size: 2em;
-  align-self: center;
-  color: #202020;
-  font-weight: bold;
-  /* padding-left: 30px; */
+    text-align: center;
+    font-size: 2em;
+    align-self: center;
+    color: #202020;
+    font-weight: bold;
+    /* padding-left: 30px; */
 }
 
 .main-header {
-  margin-top: 70px;
+    margin-top: 70px;
 }
 
 .small-title {
-  text-align: center;
-  color: #202020;
+    text-align: center;
+    color: #202020;
 }
 
 .main-button {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .btn {
-  background-color: #1793d3;
-  border-color: transparent;
+    background-color: #1793d3;
+    border-color: transparent;
 }
 
 .btn:hover {
-  background-color: #0f8ac7;
-}
-
-.col-centered {
-  float: none;
-  margin: 0 auto;
+    background-color: #0f8ac7;
 }
 
 .main-img {
-  margin: auto;
-  margin-top: 50px;
-  max-width: 900px;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
+    margin: auto;
+    margin-top: 50px;
+    max-width: 900px;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
 }
 
 .pointer {
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

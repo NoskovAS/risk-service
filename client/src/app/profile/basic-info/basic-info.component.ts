@@ -63,17 +63,22 @@ export class BasicInfoComponent {
       oldUsername: localStorage.getItem('username')
     });
 
-    if (this.editProfileForm.value.username === this.editProfileForm.value.oldUsername) {
+    /* if (this.editProfileForm.value.username === this.editProfileForm.value.oldUsername) {
       this.alerts.changeDetected = true;
       return;
-    }
+    } */
 
     const user = this.editProfileForm.value;
 
     // Edit profile
     this.profileService.profileChanges(user).subscribe(data => {
       if (!data.success) {
+        if (this.editProfileForm.value.oldUsername === user.username) {
+          this.alerts.successfulUpdate = true;
+          return;
+        }
         this.alerts.badUsername = true;
+        // If username is exist
         this.editProfileForm.patchValue({ username: this.editProfileForm.value.oldUsername });
       } else {
         this.alerts.successfulUpdate = true;
