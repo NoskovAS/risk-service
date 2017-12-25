@@ -4,13 +4,17 @@
     "author": "Anton Noskov",
     "license": "MIT",
     "engines": {
-        "npm": "5.5.x",
+        "npm": "5.5.1",
         "node": "8.9.1"
     },
     "scripts": {
-        "start": "nodemon server/server.js"
+        "start": "node server/server.js",
+        "postinstall": "ng build --aot -prod"
     },
     "dependencies": {
+        "@angular/cli": "1.5.5",
+        "@angular/compiler-cli": "^4.4.6",
+        "@angular/language-service": "^4.4.6",
         "@angular/animations": "^4.4.6",
         "@angular/cdk": "^2.0.0-beta.12",
         "@angular/common": "^4.4.6",
@@ -58,11 +62,5 @@
         "reflect-metadata": "^0.1.3",
         "systemjs": "0.19.27",
         "uuid": "^3.1.0"
-    },
-    "devDependencies": {
-        "concurrently": "^2.2.0",
-        "lite-server": "^2.2.2",
-        "typescript": "^2.0.2",
-        "typings": "^1.3.2"
     }
 }

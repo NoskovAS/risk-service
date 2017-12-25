@@ -21,7 +21,7 @@ const HTTPS_PORT = process.env.PORT || 8443;
 var sslOptions = {
     key: fs.readFileSync('ssl/ca-key.pem', 'utf8'),
     cert: fs.readFileSync('ssl/ca-crt.pem', 'utf8'),
-    passphrase: 'coolpixs9100',
+    passphrase: host.ssl_password,
     requestCert: false,
     rejectUnauthorized: false
 };
@@ -78,6 +78,16 @@ app.use("/", routes);
 // Index Route
 app.get("/", (req, res) => {
     res.send("Invalid Endpoint");
+});
+
+// Run the app by serving the static files
+// in the dist directory 
+app.use(express.static(__dirname + '/dist'));
+
+// For all GET requests, send back index.html
+// so that PathLocationStrategy can be used
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 /* Create https server */
