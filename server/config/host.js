@@ -1,4 +1,4 @@
 module.exports = {
-    serverHost: "http://localhost:8080/",
+    serverHost: "https://localhost:8443/",
     clientHost: "http://localhost:4200/"
 };

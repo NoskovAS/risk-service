@@ -49,7 +49,7 @@ export class RisksPieComponent implements OnInit {
     this.riskSample.subscribe(
       value => console.log('value: ' + value),
       error => console.log('Error'),
-      () => (console.log('Complited' + this.riskSelect()))
+      () => (this.riskSelect())
     );
   }
 

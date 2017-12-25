@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const https = require("https");
 const passport = require("passport");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
@@ -12,8 +13,18 @@ const morgan = require('morgan');
 const host = require('./config/host');
 
 
-/* const HTTP_PORT = 3000; 8080 */
+/* const HTTP_PORT = 8080, HTTPS_PORT = 8443 */
 const HTTP_PORT = process.env.PORT || 8080;
+const HTTPS_PORT = process.env.PORT || 8443;
+
+/* Https configs */
+var sslOptions = {
+    key: fs.readFileSync('ssl/ca-key.pem', 'utf8'),
+    cert: fs.readFileSync('ssl/ca-crt.pem', 'utf8'),
+    passphrase: 'coolpixs9100',
+    requestCert: false,
+    rejectUnauthorized: false
+};
 
 // create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
@@ -43,9 +54,6 @@ app.use(morgan('tiny'));
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }));
 
-// Set Static Folder
-app.use(express.static(path.join(__dirname, "public")));
-
 // Body Parser Middleware
 app.use(bodyParser.json());
 
@@ -72,7 +80,12 @@ app.get("/", (req, res) => {
     res.send("Invalid Endpoint");
 });
 
-// Start Server
-app.listen(process.env.PORT || 8080, () => {
-    console.log("Server started on HTTP_PORT " + HTTP_PORT);
+/* Create https server */
+https.createServer(sslOptions, app).listen(HTTPS_PORT, function() {
+    console.log('Express HTTPS server listening on port ' + HTTPS_PORT);
 });
+
+// Start Server
+/* app.listen(HTTP_PORT, () => {
+    console.log("Server started on HTTP_PORT " + HTTP_PORT);
+}); */

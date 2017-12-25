@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth/auth.service';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -12,6 +13,11 @@ import { AuthService } from '../../service/auth/auth.service';
 
 export class LoginComponent implements AfterViewInit {
   public loginForm: FormGroup = null;
+  public socialAuthLinks = {
+    facebook: `${environment.host}users/auth/facebook/`,
+    google: `${environment.host}users/auth/google/`,
+    github: `${environment.host}users/auth/github/`
+  };
 
   @ViewChild('inputFocus') vc: any;
 
