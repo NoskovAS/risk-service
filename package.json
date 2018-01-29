@@ -9,7 +9,8 @@
     },
     "scripts": {
         "start": "cd server/ && node server.js",
-        "deploy": "git push origin master && git push heroku master"
+        "deploy": "git push origin master && git push heroku master",
+        "postinstall": "cd client/ && ng build --aot -prod"
     },
     "dependencies": {
         "@angular/cli": "1.5.5",
