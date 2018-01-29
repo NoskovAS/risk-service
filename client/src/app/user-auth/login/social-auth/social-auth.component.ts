@@ -26,15 +26,15 @@ export class SocialAuthComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     switch (this.socialRoute) {
-      case 'facebook': {
+      case 'facebookAuth': {
         this.getSocialData('getFacebookData');
         break;
       }
-      case 'google': {
+      case 'googleAuth': {
         this.getSocialData('getGoogleData');
         break;
       }
-      case 'github': {
+      case 'githubAuth': {
         this.getSocialData('getGithubData');
         break;
       }
@@ -52,6 +52,7 @@ export class SocialAuthComponent implements OnInit, OnDestroy {
   }
 
   getSocialData(social: string) {
+    console.log('Data Success! ::::' + 'getSocialData' + ' ');
     this.authService.getSocialData(social).subscribe(data => {
       if (data.success) {
         if (data.facebookUser) {

@@ -67,7 +67,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
         this.adminSuccess = true;
         return true;
       } else {
-        this.router.navigate(['login']);
+        this.router.navigate(['users/login']);
         return false;
       }
 

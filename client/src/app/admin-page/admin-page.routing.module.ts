@@ -12,7 +12,7 @@ import { DashboardInfoComponent } from './admin-dashboard/admin-main/dashboard-i
 const adminRoutes: Routes = [
     {
         path: 'admin',
-        component: AdminDashboardComponent, // AdminPageComponent
+        component: AdminPageComponent, // AdminPageComponent
         children: [
             {
                 path: '',

@@ -267,7 +267,7 @@ router.get('/auth/facebook/callback',
                 }
             }
         });
-        res.redirect(host.clientHost + 'users/auth/facebook');
+        res.redirect('/users/auth/facebookAuth'); /* host.clientHost +  */
     });
 
 
@@ -307,7 +307,7 @@ router.get('/auth/google/callback',
                 }
             }
         });
-        res.redirect(host.clientHost + 'users/auth/google');
+        res.redirect('/users/auth/googleAuth');
     });
 
 
@@ -347,7 +347,7 @@ router.get('/auth/github/callback',
                 }
             }
         });
-        res.redirect(host.clientHost + 'users/auth/github');
+        res.redirect('/users/auth/githubAuth');
     });
 
 module.exports = router;

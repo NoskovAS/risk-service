@@ -76,9 +76,9 @@ require("./config/passport")(passport);
 app.use("/", routes);
 
 // Index Route
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
     res.send("Invalid Endpoint");
-});
+}); */
 
 // Run the app by serving the static files
 // in the dist directory 
@@ -95,7 +95,7 @@ https.createServer(sslOptions, app).listen(HTTPS_PORT, function() {
     console.log('Express HTTPS server listening on port ' + HTTPS_PORT);
 });
 
-// Start Server
+// Start HTTP Server
 /* app.listen(HTTP_PORT, () => {
     console.log("Server started on HTTP_PORT " + HTTP_PORT);
 }); */
