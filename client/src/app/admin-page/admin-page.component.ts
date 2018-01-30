@@ -57,7 +57,7 @@ export class AdminPageComponent implements OnInit, OnChanges, OnDestroy {
       return false;
     }
 
-    const admin = {
+    const admin: object = {
       username: this.adminForm.value.login,
       password: this.adminForm.value.password
     };

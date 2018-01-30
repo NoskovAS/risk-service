@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ProfileService {
-    authToken: any;
+    authToken: string;
     public host: string;
 
     constructor(private http: Http,
@@ -14,28 +14,28 @@ export class ProfileService {
         this.host = environment.host;
     }
 
-    profileChanges(user) {
+    profileChanges(user: object) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/editProfile', user, { headers: headers })
             .map(res => res.json());
     }
 
-    editPassword(user) {
+    editPassword(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/editPassword', user, { headers: headers })
             .map(res => res.json());
     }
 
-    addPassword(user) {
+    addPassword(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/addPassword', user, { headers: headers })
             .map(res => res.json());
     }
 
-    getProfile() {
+    getProfile(): any {
         const headers = new Headers();
         this.loadToken();
         headers.append('authorization', this.authToken);
@@ -44,17 +44,16 @@ export class ProfileService {
             .map(res => res.json());
     }
 
-    deleteUser(user) {
+    deleteUser(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/deleteUser', user, { headers: headers })
             .map(res => res.json());
     }
 
-    loadToken() {
-        const token = localStorage.getItem('id_token');
+    loadToken(): any {
+        const token: string = localStorage.getItem('id_token');
         this.authToken = token;
     }
-
 
 }

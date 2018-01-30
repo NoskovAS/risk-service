@@ -8,19 +8,19 @@ export class ChildParentService {
     variable: any;
     secondVar: any;
 
-    passVariable(index) {
+    passVariable(index: any): any {
         this.variable = index;
     }
 
-    getVariable() {
+    getVariable(): any {
         return this.variable;
     }
 
-    passSecondVariable(index) {
+    passSecondVariable(index: any): any {
         this.secondVar = index;
     }
 
-    getSecondVariable() {
+    getSecondVariable(): any {
         return this.secondVar;
     }
 

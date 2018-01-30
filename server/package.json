@@ -5,7 +5,7 @@
     "author": "Anton Noskov",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
+        "start": "nodemon server.js",
         "lite": "lite-server"
     },
     "license": "ISC",

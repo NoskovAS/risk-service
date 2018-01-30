@@ -16,7 +16,7 @@ export class UserDelComponent implements OnInit {
   ngOnInit() { }
 
   userDelete(username: string = this.username, i: number = this.i) {
-    const user = {
+    const user: object = {
       username: username,
     };
 

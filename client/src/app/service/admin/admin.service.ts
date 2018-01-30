@@ -13,42 +13,42 @@ export class AdminService {
         this.host = environment.host;
     }
 
-    authenticateAdmin(admin) {
+    authenticateAdmin(admin: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/authenticate', admin, { headers: headers })
             .map(res => res.json());
     }
 
-    getUsers() {
+    getUsers(): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/getUsers', { headers: headers })
             .map(res => res.json());
     }
 
-    deleteUser(user) {
+    deleteUser(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/deleteUser', user, { headers: headers })
             .map(res => res.json());
     }
 
-    sendReport(reportMessage) {
+    sendReport(reportMessage: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/getReport', reportMessage, { headers: headers })
             .map(res => res.json());
     }
 
-    getReports() {
+    getReports(): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/getReports', { headers: headers })
             .map(res => res.json());
     }
 
-    getInfo() {
+    getInfo(): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'admin/getInfo', { headers: headers })

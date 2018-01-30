@@ -101,7 +101,20 @@ router.post("/editProfile", (req, res, next) => {
         if (err) {
             return done(err);
         }
+        if (req.body.username === req.body.oldUsername) {
+            /* Username does not change */
+            (user.lastname = req.body.lastname),
+            (user.firstname = req.body.firstname),
+            (user.email = req.body.email),
+            user.save();
+
+            return res.json({
+                success: true,
+                msg: "Successfull change"
+            });
+        }
         if (user) {
+            /* User is exist */
             return res.json({
                 success: false,
                 msg: "Unsuccessfull change"

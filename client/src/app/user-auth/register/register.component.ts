@@ -66,7 +66,7 @@ export class RegisterComponent implements AfterViewInit {
       return;
     }
 
-    const user = this.registerForm.value;
+    const user: object = this.registerForm.value;
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {

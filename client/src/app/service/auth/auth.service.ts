@@ -5,30 +5,29 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-    authToken: any;
-    user: any;
-    risk: any;
+    authToken: string;
+    user: object;
     public host: string;
 
     constructor(private http: Http) {
         this.host = environment.host;
     }
 
-    registerUser(user) {
+    registerUser(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/register', user, { headers: headers })
             .map(res => res.json());
     }
 
-    authenticateUser(user) {
+    authenticateUser(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'users/authenticate', user, { headers: headers })
             .map(res => res.json());
     }
 
-    getSocialData(social: string) {
+    getSocialData(social: string): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.get(this.host + 'users/' + social, { headers: headers } )
@@ -39,7 +38,7 @@ export class AuthService {
         return localStorage.getItem('user');
     }
 
-    storeUserData(token, user) {
+    storeUserData(token: string, user: any): any {
         if ((token !== undefined) || (token !== null)) {
             localStorage.setItem('id_token', token);
             this.authToken = token;
@@ -50,7 +49,7 @@ export class AuthService {
         this.user = user;
     }
 
-    logout() {
+    logout(): any {
         this.authToken = null;
         this.user = null;
         localStorage.clear();
