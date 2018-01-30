@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentChecked, OnDestroy, Input, Output, Event
 import { RiskListService } from '../../service/risk-list/risk-list.service';
 import { ChildParentService } from '../../service/child-parent/child-parent.service';
 import { Data } from '../data.class';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
@@ -9,9 +10,8 @@ import { Data } from '../data.class';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
-  @Input() riskForm;
-  @Input() items;
-  @Input() deleted;
+  @Input() riskForm: FormGroup;
+  @Input() items: Data[];
   @Output() tableCleared: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /* Controls the display of the filter */
@@ -65,16 +65,14 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
     this.items = [];
   }
 
-  sort(property: string) {
-    console.log('sort column: ' + this.column);
-    console.log('sort isDesk: ' + this.isDesc);
+  sort(property: string): any {
     this.isDesc = !this.isDesc; // change the direction
     this.column = property;
     this.direction = this.isDesc ? -1 : 1;
   }
 
-  tableClear() {
-    const user = {
+  tableClear(): any {
+    const user: object = {
       uid: localStorage.getItem('uid'),
     };
 
@@ -85,16 +83,16 @@ export class TableComponent implements OnInit, AfterContentChecked, OnDestroy {
     });
   }
 
-  togglefilter() {
+  togglefilter(): any {
     this.filterVisible === true ? this.filterVisible = false : this.filterVisible = true;
   }
 
-  onPageChange(offset) {
+  onPageChange(offset: number): any {
     this.pageOffset = offset;
     this.selectedRow = (offset / this.riksLimit) + 1;
   }
 
-  editRow(index, $event) {
+  editRow(index: number, $event: Event) {
     console.log('index: ' + index);
   }
 

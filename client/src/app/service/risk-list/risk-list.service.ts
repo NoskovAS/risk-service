@@ -15,28 +15,28 @@ export class RiskListService {
         this.host = environment.host;
     }
 
-    addingRisk(risk) {
+    addingRisk(risk: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'risks/addRisk', risk, { headers: headers })
             .map(res => res.json());
     }
 
-    getRisks(user) {
+    getRisks(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'risks/getRisk', user, { headers: headers })
             .map(res => res.json());
     }
 
-    deleteRisk(SerialNumber) {
+    deleteRisk(SerialNumber: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'risks/deleteRisk', SerialNumber, { headers: headers })
             .map(res => res.json());
     }
 
-    clearTable(user) {
+    clearTable(user: object): any {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.host + 'risks/clearTable', user, { headers: headers });

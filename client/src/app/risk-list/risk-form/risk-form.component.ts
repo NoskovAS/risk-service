@@ -22,9 +22,9 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
     formError: boolean = false;
     ownRisk: boolean = false;
 
-    riskSelected;
-    suggestSelected;
-    dergeeSelected;
+    riskSelected: string;
+    suggestSelected: string;
+    dergeeSelected: string;
     riskCheck: number = 1; // If it is true, suggestions input are included (riskname check in input)
 
     // Risk name options
@@ -130,7 +130,7 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
     }
 
     // Adding table values from array
-    public addItem(form) {
+    public addItem(form): any {
         // Adding values
         this.items.push(new Data(
             form.value.riskname,
@@ -145,11 +145,10 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
             form.value.suggestions,
             this.index)
         );
-
     }
 
     // Saving risks in the DB
-    public onRiskSubmit(form) {
+    public onRiskSubmit(form: any): any {
         if (this.riskForm.invalid) {
             this.formError = true;
             return;
@@ -157,7 +156,7 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
 
         this.addItem(form);
 
-        const risk = {
+        const risk: object = {
             riskname: form.value.riskname,
             priority: this.tableService.priorityCalculate(
                 this.tableService.formatProbability(form.value.probability),
@@ -184,8 +183,8 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
     }
 
     // Recovery risks in table
-    public riskRecovery() {
-        const user = {
+    public riskRecovery(): any {
+        const user: object = {
             uid: localStorage.getItem('uid'),
         };
 
@@ -199,15 +198,15 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
     }
 
 
-    public clearFormInput(valuee: string) {
-        this.riskForm.patchValue({ [valuee]: '' });
+    public clearFormInput(value: string): any {
+        this.riskForm.patchValue({ [value]: '' });
     }
 
-    tableClear(emit) {
+    tableClear(emit: Event): any {
         this.index = 0;
     }
 
-    public toggleOwn() {
+    public toggleOwn(): any {
         if (this.ownRisk === false) {
             this.ownRisk = true;
             this.riskCheck = 0;
@@ -217,7 +216,7 @@ export class RiskFormComponent implements OnInit, AfterContentChecked {
         }
     }
 
-    public clearInputs() {
+    public clearInputs(): any {
         this.riskForm.reset();
     }
 }
