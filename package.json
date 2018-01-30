@@ -48,7 +48,7 @@
         "cors": "*",
         "express": "^4.0",
         "express-session": "^1.15.6",
-        "typescript": "2.6.0",
+        "typescript": "^2.0.0",
         "helmet": "^3.9.0",
         "jsonwebtoken": "7.4.3",
         "mongodb": "^2.2.27",
