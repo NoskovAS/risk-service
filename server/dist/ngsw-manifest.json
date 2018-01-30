@@ -1,0 +1,36 @@
+{
+  "static": {
+    "urls": {
+      "/polyfills.73ad7c9337219f50180d.bundle.js": "e6f4363dddce4bf5650f5618791e0912673986d7",
+      "/main.1171861b94a7f8e4217c.bundle.js": "215643b9be8b18bd3f5279490fa8f75aa06847ee",
+      "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
+      "/vendor.762ac6107516680a4f73.bundle.js": "359ae881f5a105878ecb437fa4abc913589d8fca",
+      "/inline.c545f04ce40bcc359b6a.bundle.js": "77037b8153f4a47dc080d433cecd158cac1b4a98",
+      "/styles.dabc77e153278d5ec6f0.bundle.css": "5ae8e58d99db2b1b43d7a7a2a4f8454a8cbf2ae4",
+      "/assets/img/404_2.png": "53a4919f15d14fa8b36ca61c9ffe4a9059b9bed3",
+      "/assets/img/404_3.png": "efc607a78122b5f56ba73b65245a639388589de0",
+      "/assets/img/404.png": "33831bb25de02725bef317ce7085d2308326e60f",
+      "/assets/img/favicons/android-chrome-192x192.png": "c9d6e41dcbd76f8080cd283850010b6e4c6a1fbf",
+      "/assets/img/favicons/apple-touch-icon.png": "780be80842cdd14a84b2fa93184ef222c4252f79",
+      "/assets/img/favicons/favicon-16x16.png": "c4753390a63cecfda37aee4094199a7854598551",
+      "/assets/img/favicons/browserconfig.xml": "974aea18bda5a95802c06b80126ab1d96d91d708",
+      "/assets/img/404.jpg": "e71f4b307d487d23087aa0c574b5a1663ccdd919",
+      "/assets/img/favicons/android-chrome-512x512.png": "7ef51563d39d02f2a7fccf512ade70f00c9cbb65",
+      "/assets/img/favicons/favicon-32x32.png": "b08def04e84963373e244916ab6429157e15618b",
+      "/assets/img/favicons/favicon.ico": "eb88b0b73894b2ef2504aa5fa6b7850cd91b2314",
+      "/assets/img/favicons/mstile-150x150.png": "f81236bdbce0142ddade8e1b7179e8d63231b080",
+      "/assets/img/favicons/manifest.json": "a862bad9793624b5e54d6852650b36a10d16bf8c",
+      "/assets/img/main-screen.png": "dfec621f65f2b3911f816ba1dc023256614ed14d",
+      "/assets/ionicons/fonts/ionicons.eot": "61532e89e212f8dd16ba31f3ebcf35c0a7334035",
+      "/assets/img/favicons/safari-pinned-tab.svg": "5e35cf4767321317ad872056e3e60158a30ec2da",
+      "/assets/ionicons/fonts/ionicons.ttf": "1b0a0de084905946a20300ca8c354865dec46764",
+      "/assets/ionicons/ionicons.css": "8333c0168b2d2d50a2c3192032c4969937be03f7",
+      "/assets/logo.png": "c9d6e41dcbd76f8080cd283850010b6e4c6a1fbf",
+      "/assets/ionicons/fonts/ionicons.svg": "3f1ca28fcb042d2bcc6ee6a4e3dd817e5132eeea",
+      "/assets/ionicons/fonts/ionicons.woff": "e46819e863a46751d622c1190c4e8a83ebc20612",
+      "/favicon.ico": "eb88b0b73894b2ef2504aa5fa6b7850cd91b2314",
+      "/index.html": "b3fef134b134d5abb0f148381586ae359043ab49"
+    },
+    "_generatedFromWebpack": true
+  }
+}
