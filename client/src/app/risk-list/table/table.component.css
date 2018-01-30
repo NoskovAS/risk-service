@@ -37,7 +37,7 @@ td {
 }
 
 .col3 {
-    width: 12%;
+    width: 10%;
 }
 
 .col4 {
@@ -58,10 +58,18 @@ td {
 
 .col8 {
     width: 6%;
+    position: relative;
 }
 
 .clear-icon {
     margin-right: 8px;
+}
+
+.del-logo {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translateY(-50%);
 }
 
 .pointer {

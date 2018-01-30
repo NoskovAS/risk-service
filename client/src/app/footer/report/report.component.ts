@@ -29,14 +29,12 @@ export class ReportComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.vc.nativeElement.focus();
- }
+  }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (!(this.eRef.nativeElement.querySelector('textarea').contains(event.target))) {
-      this.borderColor = '#204056';
-      this.borderWidth = 1;
-    }
+    this.borderColor = '#204056';
+    this.borderWidth = 1;
   }
 
   sendReport() {
@@ -46,15 +44,15 @@ export class ReportComponent implements AfterViewInit {
     };
 
     if ((this.reportForm.value.report === '') || (this.reportForm.value.report === undefined) ||
-    (this.reportForm.value.username === '') || (this.reportForm.value.username === undefined)) {
-      this.borderWidth = 1.5;
+      (this.reportForm.value.username === '') || (this.reportForm.value.username === undefined)) {
+      this.borderWidth = 2;
       this.borderColor = 'red';
       return;
     }
 
     this.adminService.sendReport(reportMessage).subscribe(data => {
       if (data.success) {
-        this.borderWidth = 3;
+        this.borderWidth = 1.5;
         this.borderColor = 'green';
         this.reportSuccess = true;
         console.log('Successful addition');

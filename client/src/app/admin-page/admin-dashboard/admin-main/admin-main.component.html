@@ -2,7 +2,7 @@
     <div class="row main">
         <div>
             <app-dashboard-info [reportsCount]="reportsCount"></app-dashboard-info>
-            <app-dashboard-charts></app-dashboard-charts>
+            <app-dashboard-charts hidden></app-dashboard-charts>
             <app-dashboard-tables></app-dashboard-tables>
             <app-dashboard-messages (reportsCount)="getReportsCount($event)"></app-dashboard-messages>
         </div>

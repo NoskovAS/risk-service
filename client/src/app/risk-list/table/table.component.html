@@ -60,25 +60,25 @@
         <tbody>
             <tr class="filter" *ngIf="filterVisible === true && items.length > 1">
                 <td class="col1">
-                    <input class="filter-input" type="search" [(ngModel)]="searchRisks" class="form-control" placeholder="Search By Risk Name" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchRisks" class="form-control" placeholder="Risk Name" />
                 </td>
                 <td class="col2">
-                    <input class="filter-input" type="search" [(ngModel)]="searchPriorityes" class="form-control" placeholder="Search By Priority" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchPriorityes" class="form-control" placeholder="Priority" />
                 </td>
                 <td class="col3">
-                    <input class="filter-input" type="search" [(ngModel)]="searchHours" class="form-control" placeholder="Search By Influence(hours)" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchHours" class="form-control" placeholder="Influence(hours)" />
                 </td>
                 <td class="col4">
-                    <input class="filter-input" type="search" [(ngModel)]="searchCosts" class="form-control" placeholder="Search By Influence($)" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchCosts" class="form-control" placeholder="Influence($)" />
                 </td>
                 <td class="col5">
-                    <input class="filter-input" type="search" [(ngModel)]="searchChances" class="form-control" placeholder="Search By Chance" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchChances" class="form-control" placeholder="Chance" />
                 </td>
                 <td class="col6">
-                    <input class="filter-input" type="search" [(ngModel)]="searchDates" class="form-control" placeholder="Search By Date" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchDates" class="form-control" placeholder="Date" />
                 </td>
                 <td class="col7">
-                    <input class="filter-input" type="search" [(ngModel)]="searchSuggestions" class="form-control" placeholder="Search By Suggestions" />
+                    <input class="filter-input" type="search" [(ngModel)]="searchSuggestions" class="form-control" placeholder="Suggestions" />
                 </td>
                 <td class="col8">
                 </td>
@@ -109,8 +109,8 @@
                     <div contenteditable="true">{{item.suggestions}}</div>
                 </td>
                 <td class="col8">
-                    <app-item-edit [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
-                    <app-item-del [index]="item.index" [i]="i" [items]="items" [limit]="riksLimit" (deleted)="deleted($event)"></app-item-del>
+                    <app-item-edit hidden [index]="item.index" [i]="i" [items]="items" (editRow)="editRow($event)"></app-item-edit>
+                    <app-item-del class="del-logo" [index]="item.index" [i]="i" [items]="items" [limit]="riksLimit"></app-item-del>
                 </td>
             </tr>
             <tr *ngIf="items.length === 0">
