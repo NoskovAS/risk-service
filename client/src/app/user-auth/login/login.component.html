@@ -16,6 +16,10 @@
                     <button type="button" class="close" data-dismiss="alert" (click)="passSuccess=true">&times;</button>
                     <strong>Warning! </strong>Please use a valid password
                 </div>
+                <div *ngIf="!fieldSuccess" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" (click)="fieldSuccess=true">&times;</button>
+                    <strong>Warning! </strong>Please fill in all the fields
+                </div>
                 <form novalidate [formGroup]="loginForm" (submit)="onLoginSubmit()">
                     <div class="form-group">
                         <label class="form-label" for="username">Username</label>
