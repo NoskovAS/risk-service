@@ -25,7 +25,7 @@ export class LoginComponent implements AfterViewInit {
   password: string;
   logSuccess: boolean = true;
   passSuccess: boolean = true;
-  fieldError: boolean = false;
+  fieldSuccess: boolean = true;
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -43,7 +43,11 @@ export class LoginComponent implements AfterViewInit {
 
   onLoginSubmit() {
     const user = this.loginForm.value;
-
+    if ((this.loginForm.value.username === '' || this.loginForm.value.username === undefined) ||
+      (this.loginForm.value.password === '' || this.loginForm.value.password === undefined)) {
+        this.fieldSuccess = false;
+        return;
+    }
     this.authService.authenticateUser(user).subscribe(data => {
       if (data.success) {
         this.logSuccess = true;
@@ -56,7 +60,6 @@ export class LoginComponent implements AfterViewInit {
         this.passSuccess = false;
         this.router.navigate(['users/login']);
       }
-
     });
   }
 
