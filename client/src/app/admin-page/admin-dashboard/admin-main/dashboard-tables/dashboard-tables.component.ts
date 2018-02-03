@@ -76,16 +76,16 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
     this.adminService.getUsers().subscribe(data => {
       for (let i = 0; i !== data.length; i++) {
         this.users.push(new Users(data[i].firstname, data[i].lastname, data[i].username,
-          data[i].email, data[i].date));
+          data[i].email, data[i].uid, data[i].date));
       }
     });
   }
 
   // Recovery risks in table
-  public riskRecovery(username = 'Semon') {
+  public riskRecovery(uid) {
     this.adminItems = [];
-    const user = {
-      username
+    const user: object = {
+      uid
     };
 
     // get risks
@@ -117,9 +117,9 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
     this.direction = this.isDesc ? 1 : -1;
   }
 
-  toggleTable(username) {
+  toggleTable(uid, username) {
     this.username = username;
-    this.riskRecovery(username);
+    this.riskRecovery(uid);
     this.displayTable === false ? this.displayTable = true : this.displayTable = false;
   }
 

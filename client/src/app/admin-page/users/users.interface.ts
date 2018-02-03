@@ -3,5 +3,6 @@ export interface IUsers {
     lastname: string;
     username: string;
     email: string;
+    uid: string;
     date: Date;
 }

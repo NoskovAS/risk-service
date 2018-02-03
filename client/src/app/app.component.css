@@ -1,23 +1,16 @@
 :host {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-/* .wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: whitesmoke;
+.flex-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
- */
-/* app-footer {
-  flex: 0 0 auto;
-}
- */

@@ -49,10 +49,11 @@
                                 <td>{{user.lastname}}</td>
                                 <td>{{user.username}}</td>
                                 <td>{{user.email}}</td>
+                                <td hidden>{{user.uid}}</td>
                                 <td>{{user.date | date: 'dd MMMM yyyy'}} </td>
                                 <td class="text-center">
                                     <app-user-del [username]="user.username" [i]="i" [users]="users"></app-user-del>
-                                    <a class="pointer" (click)="toggleTable(user.username)"><i class="fa fa-table"></i></a>
+                                    <a class="pointer" (click)="toggleTable(user.uid, user.username)"><i class="fa fa-table"></i></a>
                                 </td>
                             </tr>
                         </tbody>
