@@ -119,6 +119,8 @@ export class DashboardTablesComponent implements OnInit, AfterContentChecked, On
 
   toggleTable(uid, username) {
     this.username = username;
+    localStorage.setItem('username', username);
+    localStorage.setItem('uid', uid);
     this.riskRecovery(uid);
     this.displayTable === false ? this.displayTable = true : this.displayTable = false;
   }
