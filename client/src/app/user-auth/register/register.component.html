@@ -8,13 +8,17 @@
                 Already have a Risk Service account?
                 <a class="link link--underline" [routerLink]="['/users/login']">Sign in</a>
             </p>
-            <div *ngIf="fieldError" class="alert alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="alert" (click)="fieldError=false">&times;</button>
+            <div *ngIf="alerts.fieldError" class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" (click)="alerts.fieldError=false">&times;</button>
                 <strong>Warning! </strong>Please fill in all fields
             </div>
-            <div *ngIf="validError" class="alert alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="alert" (click)="fieldError=false">&times;</button>
+            <div *ngIf="alerts.validError" class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" (click)="alerts.fieldError=false">&times;</button>
                 <strong>Warning! </strong>Please check the correctness of the entered data
+            </div>
+            <div *ngIf="alerts.usernameError" class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" (click)="alerts.usernameError=false">&times;</button>
+                <strong>Error! </strong>This username already exists
             </div>
             <form class="" novalidate [formGroup]="registerForm" (submit)="onRegisterSubmit()">
                 <div class="form-group">

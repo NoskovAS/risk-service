@@ -8,16 +8,16 @@
                     Don't have a Risk Service account?
                     <a class="link link--underline" [routerLink]="['/users/register']">Create account</a>
                 </p>
-                <div *ngIf="!logSuccess" class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" (click)="logSuccess=true">&times;</button>
+                <div *ngIf="!alerts.logSuccess" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" (click)="alerts.logSuccess=true">&times;</button>
                     <strong>Warning! </strong>This username does not exist
                 </div>
-                <div *ngIf="!passSuccess" class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" (click)="passSuccess=true">&times;</button>
+                <div *ngIf="!alerts.passSuccess" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" (click)="alerts.passSuccess=true">&times;</button>
                     <strong>Warning! </strong>Please use a valid password
                 </div>
-                <div *ngIf="!fieldSuccess" class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" (click)="fieldSuccess=true">&times;</button>
+                <div *ngIf="!alerts.fieldSuccess" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" (click)="alerts.fieldSuccess=true">&times;</button>
                     <strong>Warning! </strong>Please fill in all the fields
                 </div>
                 <form novalidate [formGroup]="loginForm" (submit)="onLoginSubmit()">

@@ -50,11 +50,13 @@ export class BasicInfoComponent {
   onProfileSubmit() {
     if ((this.editProfileForm.value.firstname === '') || (this.editProfileForm.value.lastname === '') ||
       (this.editProfileForm.value.username === '') || (this.editProfileForm.value.email === '')) {
+      window.scrollTo(0, 0);
       this.alerts.fieldError = true;
       return;
     }
 
     if (!this.editProfileForm.valid) {
+      window.scrollTo(0, 0);
       this.alerts.validError = true;
       return;
     }
@@ -68,6 +70,7 @@ export class BasicInfoComponent {
     // Edit profile
     this.profileService.profileChanges(user).subscribe(data => {
       if (!data.success) {
+        window.scrollTo(0, 0);
         this.alerts.badUsername = true;
         // If username is exist
         this.editProfileForm.patchValue({ username: this.editProfileForm.value.oldUsername });
