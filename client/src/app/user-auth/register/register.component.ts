@@ -18,10 +18,12 @@ export class RegisterComponent implements AfterViewInit {
 
   @ViewChild('inputFocus') vc: any;
 
-  fieldError: boolean = false;
-  validError: boolean = false;
-  showPass: boolean = false;
-
+  alerts = {
+    fieldError: false,
+    validError: false,
+    usernameError: false,
+    showPass: false
+  };
 
   constructor(private validatorService: ValidatorService,
     private authService: AuthService,
@@ -58,11 +60,13 @@ export class RegisterComponent implements AfterViewInit {
     if ((this.registerForm.value.firstname === '') || (this.registerForm.value.lastname === '') ||
       (this.registerForm.value.username === '') || (this.registerForm.value.email === '') ||
       (this.registerForm.value.password === '')) {
-      this.fieldError = true;
+      window.scrollTo(0, 0);
+      this.alerts.fieldError = true;
       return;
     }
     if (!this.registerForm.valid) {
-      this.validError = true;
+      window.scrollTo(0, 0);
+      this.alerts.validError = true;
       return;
     }
 
@@ -73,6 +77,8 @@ export class RegisterComponent implements AfterViewInit {
       if (data.success) {
         this.router.navigate(['users/login']);
       } else {
+        window.scrollTo(0, 0);
+        this.alerts.usernameError = true;
         this.router.navigate(['users/register']);
       }
     });

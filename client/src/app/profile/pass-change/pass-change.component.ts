@@ -49,11 +49,13 @@ export class PassChangeComponent {
     if ((this.passwordForm.value.password.pwd === '') ||
       (this.passwordForm.value.password.confirm === '') ||
       (this.passwordForm.value.currentPass === '')) {
+      window.scrollTo(0, 0);
       this.errors.fieldError = true;
       return;
     }
 
     if (this.passwordForm.value.password.pwd !== this.passwordForm.value.password.confirm) {
+      window.scrollTo(0, 0);
       this.errors.noMatch = true;
       return;
     }
@@ -68,6 +70,7 @@ export class PassChangeComponent {
       if (data.success) {
         this.errors.changed = true;
       } else {
+        window.scrollTo(0, 0);
         this.errors.changedError = true;
       }
     });

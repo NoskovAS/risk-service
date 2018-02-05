@@ -23,9 +23,13 @@ export class LoginComponent implements AfterViewInit {
 
   username: string;
   password: string;
-  logSuccess: boolean = true;
-  passSuccess: boolean = true;
-  fieldSuccess: boolean = true;
+
+  alerts = {
+    logSuccess: true,
+    passSuccess: true,
+    fieldSuccess: true
+  };
+
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -45,19 +49,22 @@ export class LoginComponent implements AfterViewInit {
     const user = this.loginForm.value;
     if ((this.loginForm.value.username === '' || this.loginForm.value.username === undefined) ||
       (this.loginForm.value.password === '' || this.loginForm.value.password === undefined)) {
-        this.fieldSuccess = false;
+        window.scrollTo(0, 0);
+        this.alerts.fieldSuccess = false;
         return;
     }
     this.authService.authenticateUser(user).subscribe(data => {
       if (data.success) {
-        this.logSuccess = true;
+        this.alerts.logSuccess = true;
         this.authService.storeUserData(data.token, data.user);
         this.router.navigate(['risk-list/table']);
       } else if (data.msg === 'User not found') {
-        this.logSuccess = false;
+        window.scrollTo(0, 0);
+        this.alerts.logSuccess = false;
         this.router.navigate(['users/login']);
       } else if (data.msg === 'Wrong password') {
-        this.passSuccess = false;
+        window.scrollTo(0, 0);
+        this.alerts.passSuccess = false;
         this.router.navigate(['users/login']);
       }
     });

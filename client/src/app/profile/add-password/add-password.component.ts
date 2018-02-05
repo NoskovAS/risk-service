@@ -48,11 +48,13 @@ export class AddPasswordComponent implements OnInit {
 
   onAddSubmit() {
     if ((this.addPasswordForm.value.password.pwd === '') || (this.addPasswordForm.value.password.confirm === '')) {
+      window.scrollTo(0, 0);
       this.errors.fieldError = true;
       return;
     }
 
     if (this.addPasswordForm.value.password.pwd !== this.addPasswordForm.value.password.confirm) {
+      window.scrollTo(0, 0);
       this.errors.noMatch = true;
       return;
     }
@@ -67,6 +69,7 @@ export class AddPasswordComponent implements OnInit {
       if (data.success) {
         this.errors.added = true;
       } else {
+        window.scrollTo(0, 0);
         this.errors.addedError = true;
       }
     });

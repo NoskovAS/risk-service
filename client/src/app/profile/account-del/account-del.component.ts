@@ -23,6 +23,7 @@ export class AccountDelComponent {
         localStorage.clear();
         this.router.navigate(['users/login']);
       } else {
+        window.scrollTo(0, 0);
         this.dellError = true;
       }
     });
